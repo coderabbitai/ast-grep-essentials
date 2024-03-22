@@ -1,6 +1,0 @@
-id: no-eval
-message: Do not use eval! Dangerous! Hazardous! Perilous!
-severity: warning
-language: JavaScript
-rule:
-  pattern: eval($CODE)

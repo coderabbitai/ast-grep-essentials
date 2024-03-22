@@ -1,1 +1,2 @@
-# ast-grep-rules
+# ast-grep-essentials
+
