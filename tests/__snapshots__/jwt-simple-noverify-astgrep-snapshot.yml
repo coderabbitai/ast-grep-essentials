@@ -1,0 +1,14 @@
+id: jwt-simple-noverify-astgrep
+snapshots:
+  jwt.decode("token", "secret", true):
+    labels:
+    - source: jwt.decode("token", "secret", true)
+      style: primary
+      start: 0
+      end: 35
+  jwt.decode("token", "secret", true, {}):
+    labels:
+    - source: jwt.decode("token", "secret", true, {})
+      style: primary
+      start: 0
+      end: 39
