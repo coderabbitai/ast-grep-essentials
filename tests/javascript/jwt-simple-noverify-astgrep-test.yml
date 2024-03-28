@@ -1,0 +1,8 @@
+id: jwt-simple-noverify-astgrep
+valid:
+  - jwt.decode("token", "secret", false)
+  - jwt.decode("token", "secret")
+  - jwt.decode("token", "secret", false, {})
+invalid:
+  - jwt.decode("token", "secret", true)
+  - jwt.decode("token", "secret", true, {})
