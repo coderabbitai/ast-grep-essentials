@@ -1,0 +1,7 @@
+id: bad-tmp-go
+valid:
+  - |
+    ioutil.TempFile("", "tmp")
+invalid:
+  - |
+    ioutil.WriteFile("/tmp/demo2", "tmp")

@@ -1,0 +1,13 @@
+id: session-cookie-missing-secure
+valid:
+  - |
+    &sessions.Options{ Secure: true }
+  - |
+    &sessions.Options{ Secure: true, Path: "/"}
+  - |
+    &sessions.Options{ Domain: "example.com", Secure: true, Path: "/"}
+invalid:
+  - |
+    &sessions.Options{ Secure: false }
+  - |
+    &sessions.Options{ Secure: false, Path: "/"}

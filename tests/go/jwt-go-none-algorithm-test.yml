@@ -1,0 +1,12 @@
+id: jwt-go-none-algorithm
+valid:
+  - |
+    jwt.New(jwt.SigningMethodHS256)
+invalid:
+  - |
+    jwt.New(jwt.SigningMethodNone)
+  - |
+    jwt.New(jwt.SigningMethodNone, jwt.WithClaims(jwt.MapClaims{"foo": "bar"}))
+  - |
+    jwt.New(jwt.UnsafeAllowNoneSignatureType, jwt.WithHeader(jwt.MapClaims{"foo": "bar"}))
+

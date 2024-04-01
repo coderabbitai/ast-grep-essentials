@@ -1,0 +1,7 @@
+id: jwt-go-parse-unverified
+valid:
+  - |
+    token, _, err := new(jwt.Parser).ParseWithClaims(tokenString, jwt.MapClaims{}, keyFunc)
+invalid:
+  - |
+    token, _, err := new(jwt.Parser).ParseUnverified(tokenString, jwt.MapClaims{})

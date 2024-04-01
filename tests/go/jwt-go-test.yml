@@ -1,0 +1,7 @@
+id: jwt-go
+valid:
+  - |
+    token.SignedString([]byte(env.secret))
+invalid:
+  - |
+    token.SignedString([]byte("secret"))

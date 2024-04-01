@@ -1,8 +1,0 @@
-id: jwt-simple-noverify-astgrep
-language: javascript
-severity: warning
-rule:
-  all:
-    - any:
-        - pattern: $JWT.decode($TOKEN, $SECRET, true)
-        - pattern: $JWT.decode($TOKEN, $SECRET, true, $$$)

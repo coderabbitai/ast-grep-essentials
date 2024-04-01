@@ -1,0 +1,29 @@
+id: go-template-insecure-types
+language: go
+message: >-
+  usage of insecure template types. They are documented as a security risk. See https://golang.org/pkg/html/template/#HTML.
+severity: warning
+metadata:
+  cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+  references: >-
+   https://golang.org/pkg/html/template/#HTML
+   https://twitter.com/empijei/status/1275177219011350528
+  category: security
+  technology: template
+  confidence: LOW
+  owasp: >-
+   A07:2017 - Cross-Site Scripting (XSS)
+   A03:2021 - Injection
+  cwe2022-top25: true
+  cwe2021-top25: true
+  subcategory: audit
+  likelihood: LOW
+  impact: MEDIUM
+rule:
+  any:
+    - pattern: var $VAR template.HTML = $$$
+    - pattern: var $VAR template.CSS = $$$
+    - pattern: var $VAR template.HTMLAttr = $$$
+    - pattern: var $VAR template.JS = $$$
+    - pattern: var $VAR template.JSStr = $$$
+    - pattern: var $VAR template.Srcset = $$$

@@ -1,0 +1,7 @@
+id: wildcard-postmessage-configuration
+valid:
+    - window.postMessage("hello", 'https://example.com')
+    - window.postMessage("world", 'example.com')
+invalid:
+  - window.postMessage("hello", '*')
+  - window.postMessage("world", "*")

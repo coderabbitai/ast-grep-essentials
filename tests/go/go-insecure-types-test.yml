@@ -1,0 +1,7 @@
+id: go-template-insecure-types
+valid:
+  - |
+    tmpl, err := template.New("test").ParseFiles("file.txt")
+invalid:
+  - |
+    var b template.CSS = "a { text-decoration: underline; } "

@@ -1,0 +1,13 @@
+id: session-cookie-missing-httponly
+valid:
+  - |
+    &sessions.Options{ HttpOnly: true }
+  - |
+    &sessions.Options{ HttpOnly: true, Path: "/"}
+  - |
+    &sessions.Options{ Domain: "example.com", HttpOnly: true, Path: "/"}
+invalid:
+  - |
+    &sessions.Options{ HttpOnly: false }
+  - |
+    &sessions.Options{ HttpOnly: false, Path: "/"}
