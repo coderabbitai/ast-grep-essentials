@@ -1,0 +1,12 @@
+id: insecure-use-scanf-function
+language: c
+message: >-
+  Avoid 'scanf()' function, it does not consider buffer boundaries and can lead
+  to buffer overflows. Use 'fgets()' or 'scanf_s()' instead.
+severity: warning
+note: >-
+  [CWE-676]: Use of Potentially Dangerous Function
+  [REFERENCES]
+      - http://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html
+rule:
+  pattern: scanf($$$);

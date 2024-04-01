@@ -1,0 +1,12 @@
+id: insecure-use-gets-function
+language: c
+message: >-
+  Avoid 'gets()' function, it does not consider buffer boundaries and can lead
+  to buffer overflows. Use 'fgets()' or 'gets_s()' instead.
+note: >-
+  [CWE-676] Use of Potentially Dangerous Function
+  [REFERENCES]
+      - https://us-cert.cisa.gov/bsi/articles/knowledge/coding-practices/fgets-and-gets_s
+severity: warning
+rule:
+  pattern: gets($$$);

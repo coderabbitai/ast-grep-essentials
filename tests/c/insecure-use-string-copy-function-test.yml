@@ -1,0 +1,8 @@
+id: insecure-use-string-copy-function
+valid:
+  - |
+    strcpy_s(buffer, sizeof(buffer), "abc");
+invalid:
+  - |
+    strcpy(buffer, "abc");
+    strncpy(buffer, "abc", sizeof(buffer));

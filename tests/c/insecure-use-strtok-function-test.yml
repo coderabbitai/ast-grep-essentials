@@ -1,0 +1,7 @@
+id: insecure-use-strtok-function
+valid:
+  - |
+    strtok_s(buffer, " ", &context);
+invalid:
+  - |
+    strtok(buffer, " ");

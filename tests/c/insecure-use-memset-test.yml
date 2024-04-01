@@ -1,0 +1,7 @@
+id: insecure-use-memset-function
+valid:
+  - |
+    memset_s(buffer, 0, sizeof(buffer));
+invalid:
+  - |
+    memset(buffer, 0, sizeof(buffer));
