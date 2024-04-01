@@ -5,21 +5,13 @@ message: >-
   Manually sanitizing input through a manually built list can be circumvented
   in many situations, and it's better to use a well known sanitization library
   such as `sanitize-html` or `DOMPurify`.
-metadata:
-  category: security
-  owasp: >-
-    A07:2017 - Cross-Site Scripting (XSS)
-    A03:2021 - Injection
-  cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
-  references: >-
-    https://www.npmjs.com/package/dompurify
-    https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
-  cwe2022-top25: true
-  cwe2021-top25: true
-  subcategory: audit
-  likelihood: LOW
-  impact: LOW
-  confidence: LOW
+note: >-
+  [OWASP A07:2017] https://owasp.org/www-project-top-ten/2017/A07_2017-Cross-Site_Scripting_(XSS).html
+  [OWASP A03:2021] https://owasp.org/www-project-top-ten/2021/A03_2021-Injection.html
+  [CWE-79] https://cwe.mitre.org/data/definitions/79.html
+  [REFERENCES]
+      - https://www.npmjs.com/package/dompurify
+      - https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
 rule:
   any:
     - pattern: $STR.replace('<', '&lt;')

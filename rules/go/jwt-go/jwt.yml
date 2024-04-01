@@ -7,18 +7,10 @@ message: >-
   use environment variables to securely provide credentials or retrieve credentials from a secure
   vault or HSM (Hardware Security Module).
 severity: warning
-metadata:
-  cwe: 'CWE-798: Use of Hard-coded Credentials'
-  references: https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html
-  owasp: A07:2021 - Identification and Authentication Failures
-  category: security
-  technology: jwt
-  confidence: MEDIUM
-  cwe2022-top25: true
-  cwe2021-top25: true
-  subcategory: vuln
-  likelihood: HIGH
-  impact: MEDIUM
-  interfile: true
+note: >-
+    [CWE-798] Use of Hard-coded Credentials
+    [OWASP A07:2021] Identification and Authentication Failures
+    [REFERENCES]
+        - https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html
 rule:
   pattern: "$TOKEN.SignedString([]byte($SECRET))"

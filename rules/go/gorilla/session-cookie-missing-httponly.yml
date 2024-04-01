@@ -7,16 +7,10 @@ message: >-
   attacks. Set the 'HttpOnly' flag by setting 'HttpOnly' to 'true'
   in the Options struct.
 severity: warning
-metadata:
-  cwe: "CWE-1004: Sensitive Cookie Without 'HttpOnly' Flag"
-  owasp: A05:2021 - Security Misconfiguration
-  references: https://github.com/0c34/govwa/blob/139693e56406b5684d2a6ae22c0af90717e149b8/user/session/session.go#L69
-  category: security
-  technology: gorilla
-  confidence: MEDIUM
-  subcategory: audit
-  likelihood: LOW
-  impact: LOW
+note: >-
+  [OWASP A05:2021] Security Misconfiguration
+  [REFERENCES]
+      - https://github.com/0c34/govwa/blob/139693e56406b5684d2a6ae22c0af90717e149b8/user/session/session.go#L69
 rule:
   any:
     - pattern: "&sessions.Options{ $$$, HttpOnly: false, $$$ }"
