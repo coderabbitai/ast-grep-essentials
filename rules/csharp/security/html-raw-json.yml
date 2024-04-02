@@ -1,0 +1,18 @@
+id: html-raw-json
+language: csharp
+message: >-
+  Avoid using '@Html.Raw(Json.Encode())', '@Html.Raw(JsonConvert.SerializeObject())' or '@Html.Raw().ToJson()' to prevent Cross-Site Scripting (XSS) attacks.
+  Use '@Html.Raw()' only when necessary and ensure that the data is properly sanitized.
+  For more information checkout the references.
+note: >-
+  [CWE-79]: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+  [OWASP Top 10 2017]: A07:2017 - Cross-Site Scripting (XSS)
+  [OWASP Top 10 2021]: A03:2021 - Injection
+  [REFERENCES]
+      - https://owasp.org/Top10/A03_2021-Injection
+severity: warning
+rule:
+  any:
+    - pattern: '@Html.Raw(Json.Encode($$$))'
+    - pattern: '@Html.Raw(JsonConvert.SerializeObject($$$))'
+    - pattern: '@Html.Raw($$$ToJson($$$))'

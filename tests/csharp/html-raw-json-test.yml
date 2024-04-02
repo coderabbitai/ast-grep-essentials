@@ -1,0 +1,13 @@
+id: html-raw-json
+valid:
+  - |
+    var obj = @Html.Raw(Model.HtmlField);
+  - |
+    <div data-json="@Json.Encode(Model)"></div>
+invalid:
+  - |
+    var obj = @Html.Raw(JsonConvert.SerializeObject(Model));
+  - |
+    anotherCall();
+    var obj = @Html.Raw(Json.Encode(Model));
+    alert("hello world");

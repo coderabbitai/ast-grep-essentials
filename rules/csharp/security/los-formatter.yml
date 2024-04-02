@@ -1,0 +1,12 @@
+id: los-formatter
+language: csharp
+message: 'Avoid using LosFormatter, it is insecure and can lead to remote code execution'
+severity: warning
+note: >-
+  [CWE-502]: Deserialization of Untrusted Data
+  [OWASP A08:2017]: Insecure Deserialization
+  [OWASP A08:2021]: Software and Data Integrity Failures
+  [REFERENCES]
+      - https://docs.microsoft.com/en-us/dotnet/api/system.web.ui.webcontrols.losformatter?view=netframework-4.8
+rule:
+  pattern: new LosFormatter()

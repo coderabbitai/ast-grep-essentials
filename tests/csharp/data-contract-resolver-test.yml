@@ -1,0 +1,10 @@
+id: data-contract-resolver
+valid:
+invalid:
+  - |
+    namespace DCR
+    {
+        class CustomDCR : DataContractResolver
+        {
+        }
+    }
