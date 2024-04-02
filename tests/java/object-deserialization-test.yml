@@ -1,0 +1,8 @@
+id: object-deserialization
+valid:
+invalid:
+  - |
+    ObjectInputStream ois = new ObjectInputStream(new FileInputStream("object.ser"));
+    Object obj = ois.readObject();
+    ois.close();
+    // obj is now deserialized
