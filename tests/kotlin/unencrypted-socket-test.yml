@@ -1,0 +1,12 @@
+id: unencrypted-socket
+valid:
+  - |
+    val ssoc: ServerSocket = SSLServerSocketFactory.getDefault().createServerSocket(1234)
+invalid:
+  - |
+    val socket = Socket("localhost", 8080)
+    val out = PrintWriter(socket.getOutputStream(), true)
+    val input = BufferedReader(InputStreamReader(socket.getInputStream()))
+    out.println("Hello, World!")
+    val response = input.readLine()
+    println(response)

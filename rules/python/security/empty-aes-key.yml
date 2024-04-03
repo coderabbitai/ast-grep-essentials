@@ -1,0 +1,16 @@
+id: empty-aes-key
+language: python
+severity: warning
+message: >-
+  The AES cipher should not be initialized with an empty key. This can lead to
+  insecure encryption and decryption. The key should be at least 16 bytes long
+  for AES-128, 24 bytes long for AES-192, and 32 bytes long for AES-256.
+note: >-
+  [CWE-327]: Use of a Broken or Risky Cryptographic Algorithm
+  [CWE-310]: Cryptographic Issues
+  [OWASP A06:2017]: Security Misconfiguration
+  [REFERENCES]
+      - https://cwe.mitre.org/data/definitions/327.html
+      - https://cwe.mitre.org/data/definitions/310.html
+rule:
+  pattern: AES.new("", $$$)

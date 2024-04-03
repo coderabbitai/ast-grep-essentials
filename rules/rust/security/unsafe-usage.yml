@@ -1,0 +1,12 @@
+id: unsafe-usage
+language: rust
+severity: warning
+message: >-
+  Found use of unsafe code. Unsafe code should be avoided whenever possible.
+  Instead, prefer safe code and use unsafe code only when necessary.
+note: >-
+  [CWE-242]: Use of Inherently Dangerous Function
+  [REFERENCES]
+      - https://doc.rust-lang.org/std/keyword.unsafe.html
+rule:
+  pattern: unsafe { $$$ }

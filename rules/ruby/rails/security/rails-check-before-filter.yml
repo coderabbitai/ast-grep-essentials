@@ -1,0 +1,17 @@
+id: rails-check-before-filter
+language: ruby
+severity: warning
+message: >-
+  Rails controller checks make it much easier to introduce access control
+    mistakes. Prefer an allow list approach with `:only => [...]` rather than `except: => [...]`
+note: >-
+  [CWE-284]: Improper Access Control
+  [OWASP A01:2021]: Broken Access Control
+  [REFERENCES]
+      - https://owasp.org/Top10/A01_2021-Broken_Access_Control
+rule:
+  any:
+    - pattern: |
+        skip_filter $$$, :except => $ARGS
+    - pattern: |
+        skip_before_filter $$$, :except => $ARGS

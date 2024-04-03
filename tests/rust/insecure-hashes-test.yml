@@ -1,0 +1,15 @@
+id: insecure-hashes
+valid:
+  - |
+    use sha2::{Sha256};
+    
+    let mut hasher = Sha256::new();
+invalid:
+  - |
+    let mut hasher = Md2::new();
+  - |
+    let mut hasher = Md4::new();
+  - |
+    let mut hasher = Md5::new();
+  - |
+    let mut hasher = Sha1::new();

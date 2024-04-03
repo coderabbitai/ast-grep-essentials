@@ -1,0 +1,9 @@
+id: jwt-non-alg-ruby
+valid:
+  - |
+    token = JWT.encode(payload, nil, 'HS256');
+invalid:
+  - |
+    token = JWT.encode(payload, nil, 'none');
+  - |
+    token = JWT.encode(payload, nil, 'none', { algorithm: 'none' });

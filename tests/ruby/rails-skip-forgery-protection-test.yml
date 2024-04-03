@@ -1,0 +1,10 @@
+id: rails-skip-forgery-protection
+valid:
+  - |
+    class ApplicationController < ActionController::Base
+    end
+invalid:
+  - |
+    class ApplicationController < ActionController::Base
+      skip_forgery_protection
+    end

@@ -1,0 +1,23 @@
+id: insecure-hashes
+severity: warning
+language: rust
+message: >-
+  Insecure cryptographic hash functions should not be used. Prefer using a
+  cryptographically secure hash function like SHA-256 or SHA-3.
+
+note: >-
+  [CWE-328]: Use of Weak Hash
+  [OWASP A03:2021]: Sensitive Data Exposure
+  [REFERENCES]
+    - https://github.com/RustCrypto/hashes
+    - https://docs.rs/md2/latest/md2/
+    - https://docs.rs/md4/latest/md4/
+    - https://docs.rs/md5/latest/md5/
+    - https://docs.rs/sha-1/latest/sha1/
+rule:
+  any:
+    - pattern: Md2::new($$$)
+    - pattern: Md2::new($$$)
+    - pattern: Md4::new($$$)
+    - pattern: Md5::new($$$)
+    - pattern: Sha1::new($$$)
