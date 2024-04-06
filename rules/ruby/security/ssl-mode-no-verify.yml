@@ -1,0 +1,13 @@
+id: ssl-mode-no-verify
+language: ruby
+severity: warning
+message: >-
+  Found use of OpenSSL::SSL::VERIFY_NONE. This constant disables SSL certificate verification and should not be used in production code.
+  Instead, use OpenSSL::SSL::VERIFY_PEER to enable SSL certificate verification.
+note: >-
+  [CWE-295]: Improper Certificate Validation
+  [OWASP A07:2021]: Identification and Authentication Failures
+  [REFERENCES]
+      - https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures
+rule:
+  pattern: OpenSSL::SSL::VERIFY_NONE

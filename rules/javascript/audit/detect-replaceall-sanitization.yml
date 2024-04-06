@@ -1,0 +1,26 @@
+id: detect-replaceall-sanitization
+language: javascript
+message: >-
+  Detected a call to replace or replaceAll in an attempt to HTML escape the string `$STR`.
+  Manually sanitizing input through a manually built list can be circumvented
+  in many situations, and it's better to use a well known sanitization library
+  such as `sanitize-html` or `DOMPurify`.
+note: >-
+  [OWASP A07:2017] https://owasp.org/www-project-top-ten/2017/A07_2017-Cross-Site_Scripting_(XSS).html
+  [OWASP A03:2021] https://owasp.org/www-project-top-ten/2021/A03_2021-Injection.html
+  [CWE-79] https://cwe.mitre.org/data/definitions/79.html
+  [REFERENCES]
+      - https://www.npmjs.com/package/dompurify
+      - https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+rule:
+  any:
+    - pattern: $STR.replace('<', '&lt;')
+    - pattern: $STR.replaceAll('<', '&lt;')
+    - pattern: $STR.replace('>', '&gt;')
+    - pattern: $STR.replaceAll('>', '&gt;')
+    - pattern: $STR.replace('"', '&quot;')
+    - pattern: $STR.replaceAll('"', '&quot;')
+    - pattern: $STR.replace("'", '&apos;')
+    - pattern: $STR.replaceAll("'", '&apos;')
+    - pattern: $STR.replace('&', '&amp;')
+    - pattern: $STR.replaceAll('&', '&amp;')

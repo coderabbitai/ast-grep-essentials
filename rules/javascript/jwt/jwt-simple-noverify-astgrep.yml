@@ -1,0 +1,26 @@
+id: jwt-simple-noverify-astgrep
+language: javascript
+severity: warning
+message: >-
+  Detected the decoding of a JWT token without a verify step.
+  JWT tokens must be verified before use, otherwise the token's
+  integrity is unknown. This means a malicious actor could forge
+  a JWT token with any claims. Set 'verify' to `true` before using the token.
+note: >-
+  [CWE-287] Improper Authentication
+  [CWE-345] Insufficient Verification of Data Authenticity
+  [CWE-347] Improper Verification of Cryptographic Signature
+  [OWASP A05:2021] Security Misconfiguration
+  [OWASP A07:2021] Identification and Authentication Failures
+  [REFERENCES]
+      - https://www.npmjs.com/package/jwt-simple
+      - https://cwe.mitre.org/data/definitions/287
+      - https://cwe.mitre.org/data/definitions/345
+      - https://cwe.mitre.org/data/definitions/347
+      - https://owasp.org/Top10/A05_2021-Security_Misconfiguration
+      - https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures
+rule:
+  all:
+    - any:
+        - pattern: $JWT.decode($TOKEN, $SECRET, true)
+        - pattern: $JWT.decode($TOKEN, $SECRET, true, $$$)

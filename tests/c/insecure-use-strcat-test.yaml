@@ -1,0 +1,8 @@
+id: insecure-use-strcat-function
+valid:
+  - |
+    strcat_s(buffer, sizeof(buffer), "abc");
+invalid:
+  - |
+    strcat(buffer, "abc");
+    strncat(buffer, "abc", sizeof(buffer));

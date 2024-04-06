@@ -1,0 +1,14 @@
+id: insecure-use-memset-function
+language: c
+message: >-
+  Avoid 'memset()' function, it does not consider buffer boundaries and can lead
+  to buffer overflows. Use 'memset_s()' instead.
+severity: warning
+note: >-
+  [CWE-14]: Compiler Removal of Code to Clear Buffers
+  [OWASP A04:2021] Insecure Design
+  [REFERENCES]
+      - https://cwe.mitre.org/data/definitions/14.html
+      - https://owasp.org/Top10/A02_2021-Cryptographic_Failures/
+rule:
+  pattern: memset($$$);

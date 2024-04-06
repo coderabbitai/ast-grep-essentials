@@ -1,0 +1,15 @@
+id: insecure-use-strcat-function
+language: c
+message: >-
+  Avoid 'strcat()' or 'strncat()' functions, it does not consider buffer boundaries and can lead
+  to buffer overflows. Use 'strcat_s()' instead.
+severity: warning
+note: >-
+  [CWE-676]: Use of Potentially Dangerous Function
+  [REFERENCES]
+      - https://nvd.nist.gov/vuln/detail/CVE-2019-12553
+      - https://techblog.mediaservice.net/2020/04/cve-2020-2851-stack-based-buffer-overflow-in-cde-libdtsvc/
+rule:
+  any:
+    - pattern: strcat($$$);
+    - pattern: strncat($$$);

@@ -1,0 +1,15 @@
+id: insecure-use-string-copy-function
+language: c
+severity: warning
+message: >-
+  Avoid 'strcpy()' or 'strncpy()' function, it does not consider buffer boundaries and can lead
+  to buffer overflows. Use 'strcpy_s()' instead.
+note: >-
+  [CWE-676]: Use of Potentially Dangerous Function
+  [REFERENCES]
+      - https://cwe.mitre.org/data/definitions/676
+      - https://nvd.nist.gov/vuln/detail/CVE-2019-11365
+rule:
+  any:
+    - pattern: strcpy($$$);
+    - pattern: strncpy($$$);

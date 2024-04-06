@@ -1,0 +1,16 @@
+id: wildcard-postmessage-configuration
+language: javascript
+severity: warning
+message: >-
+  Wildcard postMessage configuration detected. This allows any origin to send
+  messages to the target window. This can lead to security vulnerabilities.
+  Set the targetOrigin parameter to the specific origin you expect messages from.
+note: >-
+  [CWE-345] Insufficient Verification of Data Authenticity
+  [OWASP A08:2021] Software and Data Integrity Failures
+  [REFERENCES]
+      - https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures
+rule:
+  any:
+    - pattern: $_.postMessage($A, '*')
+    - pattern: $_.postMessage($A, "*")

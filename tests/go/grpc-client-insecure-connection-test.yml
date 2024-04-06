@@ -1,0 +1,17 @@
+id: grpc-client-insecure-connection
+valid:
+  - |
+    grpc.Dial("example.com", grpc.WithTransportCredentials(credentials.NewTLS(&tls.Config{})))
+invalid:
+  - |
+    grpc.Dial("example.com", grpc.WithInsecure())
+  - |
+    grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock())
+  - |
+    grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second))
+  - |
+    grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second), grpc.WithUserAgent("example"))
+  - |
+    grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second), grpc.WithUserAgent("example"), grpc.WithAuthority("example.com"))
+  - |
+    grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second), grpc.WithUserAgent("example"), grpc.WithAuthority("example.com"), grpc.WithDial)

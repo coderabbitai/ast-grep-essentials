@@ -1,0 +1,16 @@
+id: unencrypted-socket
+language: kotlin
+severity: warning
+message: >-
+  The socket is not encrypted. Use a secure protocol such as TLS/SSL to encrypt the data.
+  SSLSocketFactory and SSLServerSocketFactory should be used to create secure sockets.
+note: >-
+  [CWE-319]: Cleartext Transmission of Sensitive Information
+  [OWASP A03:2017]: Sensitive Data Exposure
+  [OWASP A02:2021]: Cryptographic Failures
+  [REFERENCES]
+      - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
+rule:
+  any:
+    - pattern: Socket($$$)
+    - pattern: ServerSocket($$$)

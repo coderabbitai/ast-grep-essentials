@@ -1,0 +1,7 @@
+id: empty-aes-key
+valid:
+  - |
+    cipher = AES.new(key, AES.MODE_CFB, iv)
+invalid:
+  - |
+    cipher = AES.new("", AES.MODE_CFB, iv)

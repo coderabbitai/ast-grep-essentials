@@ -1,0 +1,14 @@
+id: data-contract-resolver
+language: csharp
+note: >-
+  [CWE-502]: Deserialization of Untrusted Data
+  [OWASP A08:2017]: Insecure Deserialization
+  [OWASP A08:2021]: Software and Data Integrity Failures
+  [REFERENCES]
+      - https://docs.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide
+message: >-
+  Use DataContractResolver if you are sure that the data is safe to deserialize.
+severity: warning
+rule:
+  pattern: |
+    class $DCR : DataContractResolver { $$$ }

@@ -1,0 +1,15 @@
+id: unsafe-usage
+valid:
+  - |
+    fn main() {
+        let x = 42;
+        println!("{}", x);
+    }
+invalid:
+  - |
+    fn main() {
+        let x = 42;
+        unsafe {
+            println!("{}", x);
+        }
+    }

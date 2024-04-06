@@ -1,0 +1,20 @@
+id: jwt-go-none-algorithm
+language: go
+message: >-
+  Detected use of the 'none' algorithm in a JWT token.
+  The 'none' algorithm assumes the integrity of the token has already
+  been verified. This would allow a malicious actor to forge a JWT token
+  that will automatically be verified. Do not explicitly use the 'none'
+  algorithm. Instead, use an algorithm such as 'HS256'.
+note: >-
+  [CWE-327] Use of a Broken or Risky Cryptographic Algorithm
+  [OWASP A03:2017] Sensitive Data Exposure
+  [OWASP A02:2021] Cryptographic Failures
+  [REFERENCES]
+      - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
+rule:
+  any:
+    - regex: "jwt.UnsafeAllowNoneSignatureType"
+      kind: selector_expression
+    - regex: "jwt.SigningMethodNone"
+      kind: selector_expression

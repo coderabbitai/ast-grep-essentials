@@ -1,0 +1,11 @@
+id: rails-skip-forgery-protection
+language: ruby
+severity: warning
+message: This call turns off CSRF protection allowing CSRF attacks against the application
+note: >-
+  [CWE-352]: Cross-Site Request Forgery (CSRF)
+  [OWASP A01:2021]: Broken Access Control
+  [REFERENCES]
+      - https://api.rubyonrails.org/classes/ActionController/RequestForgeryProtection/ClassMethods.html#method-i-skip_forgery_protection
+rule:
+  pattern: skip_forgery_protection

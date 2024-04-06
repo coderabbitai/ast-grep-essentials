@@ -1,6 +1,5 @@
 # Other package managers
 bun.lockb
-package-lock.json
 
 # Created by https://www.toptal.com/developers/gitignore/api/node,tags,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,tags,macos

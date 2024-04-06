@@ -1,0 +1,11 @@
+id: detect-replaceall-sanitization
+valid:
+  - |
+    "Hello World.".replace('.', '!')
+invalid:
+  - |
+    "<strong>Hello World</strong>".replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+  - |
+    "<strong>Hello World</strong>".replace('<', '&lt;').replace('>', '&gt;')
+  - |
+    "<strong>Hello World</strong>".replaceAll('"', '&quot;').replaceAll("'", '&apos;').replaceAll('&', '&amp;')

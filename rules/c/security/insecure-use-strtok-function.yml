@@ -1,0 +1,12 @@
+id: insecure-use-strtok-function
+language: c
+severity: warning
+message: >-
+  Avoid 'strtok()' function, it is not reentrant and can lead to security
+  vulnerabilities. Use 'strtok_r()' instead.
+note: >-
+  [CWE-676]: Use of Potentially Dangerous Function
+  [REFERENCES]
+      - https://wiki.sei.cmu.edu/confluence/display/c/STR06-C.+Do+not+assume+that+strtok%28%29+leaves+the+parse+string+unchanged
+rule:
+  pattern: strtok($$$);

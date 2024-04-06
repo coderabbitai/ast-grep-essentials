@@ -1,0 +1,17 @@
+id: jwt-go-parse-unverified
+language: go
+message: >-
+  Detected the decoding of a JWT token without a verify step.
+  Don't use `ParseUnverified` unless you know what you're doing
+  This method parses the token but doesn't validate the signature. It's only ever useful in cases where
+  you know the signature is valid (because it has been checked previously in the stack) and you want
+  to extract values from it.
+note: >-
+  [CWE-345] Insufficient Verification of Data Authenticity
+  [OWASP A08:2021] Software and Data Integrity Failures
+  [REFERENCES]
+      - https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures
+rule:
+  any:
+    - pattern: "$$$.ParseUnverified($$$)"
+    - pattern: "new($$$).ParseUnverified($$$)"

@@ -1,0 +1,18 @@
+id: session-cookie-missing-secure
+language: go
+message: >-
+  A session cookie was detected without setting the 'Secure' flag.
+  The 'secure' flag for cookies prevents the client from transmitting
+  the cookie over insecure channels such as HTTP. Set the 'Secure'
+  flag by setting 'Secure' to 'true' in the Options struct.
+severity: warning
+note: >-
+  [CWE-614] Sensitive Cookie in HTTPS Session Without 'Secure' Attribute
+  [OWASP A05:2021] Security Misconfiguration
+  [REFERENCES]
+      - https://github.com/0c34/govwa/blob/139693e56406b5684d2a6ae22c0af90717e149b8/user/session/session.go
+rule:
+  any:
+    - pattern: "&sessions.Options{ $$$, Secure: false, $$$ }"
+    - pattern: "&sessions.Options{ $$$, Secure: false}"
+    - pattern: "&sessions.Options{ Secure: false, $$$}"

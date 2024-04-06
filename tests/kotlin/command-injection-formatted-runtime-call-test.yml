@@ -1,0 +1,12 @@
+id: command-injection-formatted-runtime-call
+valid:
+  - |
+    val r: Runtime = Runtime.getRuntime()
+    r.exec("echo 'Hello, World!'")
+invalid:
+  - |
+    val r: Runtime = Runtime.getRuntime()
+    r.exec("/bin/sh -c tool_command" + input)
+  - |
+    val r: Runtime = Runtime.getRuntime()
+    r.loadLibrary(String.format("%s.dll", input))

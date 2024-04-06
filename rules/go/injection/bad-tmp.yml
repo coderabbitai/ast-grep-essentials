@@ -1,0 +1,13 @@
+id: bad-tmp-go
+language: go
+message: File creation in shared tmp directory without using ioutil.Tempfile
+severity: warning
+note: >-
+  [CWE-377] Insecure Temporary File
+  [OWASP A01:2021] Broken Access Control
+  [REFERENCES]
+      - https://owasp.org/Top10/A01_2021-Broken_Access_Control
+rule:
+  any:
+    - pattern: ioutil.WriteFile("=~//tmp/.*$/", $$$)
+    - pattern: os.Create("=~//tmp/.*$/", $$$)

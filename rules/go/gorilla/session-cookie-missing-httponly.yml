@@ -1,0 +1,18 @@
+id: session-cookie-missing-httponly
+language: go
+message: >-
+  A session cookie was detected without setting the 'HttpOnly' flag.
+  The 'HttpOnly' flag for cookies instructs the browser to forbid
+  client-side scripts from reading the cookie which mitigates XSS
+  attacks. Set the 'HttpOnly' flag by setting 'HttpOnly' to 'true'
+  in the Options struct.
+severity: warning
+note: >-
+  [OWASP A05:2021] Security Misconfiguration
+  [REFERENCES]
+      - https://github.com/0c34/govwa/blob/139693e56406b5684d2a6ae22c0af90717e149b8/user/session/session.go#L69
+rule:
+  any:
+    - pattern: "&sessions.Options{ $$$, HttpOnly: false, $$$ }"
+    - pattern: "&sessions.Options{ $$$, HttpOnly: false}"
+    - pattern: "&sessions.Options{ HttpOnly: false, $$$}"

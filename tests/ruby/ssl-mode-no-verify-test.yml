@@ -1,0 +1,7 @@
+id: ssl-mode-no-verify
+valid:
+  - |
+    OpenSSL::SSL::VERIFY_PEER
+invalid:
+  - |
+    OpenSSL::SSL::VERIFY_NONE

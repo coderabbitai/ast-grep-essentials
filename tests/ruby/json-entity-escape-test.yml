@@ -1,0 +1,7 @@
+id: json-entity-escape
+valid:
+  - |
+    ActiveSupport.escape_html_entities_in_json = true
+invalid:
+  - |
+    ActiveSupport.escape_html_entities_in_json = false

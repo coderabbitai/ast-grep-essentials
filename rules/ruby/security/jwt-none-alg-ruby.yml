@@ -1,0 +1,16 @@
+id: jwt-non-alg-ruby
+language: ruby
+severity: warning
+message: >-
+  Found use none algorithm in JWT. This algorithm is insecure and should not be used.
+  Instead, use a more secure algorithm like HS256, RS256, or ES256.
+note: >-
+  [CWE-327]: Use of a Broken or Risky Cryptographic Algorithm
+  [OWASP A03:2017]: Sensitive Data Exposure
+  [OWASP A02:2021]: Cryptographic Failures
+  [REFERENCES]
+      - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
+rule:
+  any:
+    - pattern: JWT.encode($PAYLOAD, $SECRET, 'none', $$$)
+    - pattern: JWT.encode($PAYLOAD, $SECRET, 'none')

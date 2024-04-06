@@ -1,0 +1,8 @@
+id: insecure-use-scanf-function
+valid:
+  - |
+    fgets(buffer, sizeof(buffer), stdin);
+    gets_s(buffer, sizeof(buffer));
+invalid:
+  - |
+    scanf("%s", buffer);

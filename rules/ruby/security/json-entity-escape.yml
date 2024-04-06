@@ -1,0 +1,16 @@
+id: json-entity-escape
+language: ruby
+severity: warning
+message: >-
+  Found use of JSON entity escape. This can lead to security vulnerabilities such as XSS attacks.
+  Instead, use a secure method to escape JSON entities.
+note: >-
+  [CWE-79]: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+  [OWASP A07:2017]: Cross-Site Scripting (XSS)
+  [OWASP A03:2021]: Injection
+  [REFERENCES]
+      - https://owasp.org/Top10/A03_2021-Injection
+rule:
+  any:
+    - pattern: config.active_support.escape_html_entities_in_json = false
+    - pattern: ActiveSupport.escape_html_entities_in_json = false

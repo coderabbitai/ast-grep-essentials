@@ -1,0 +1,11 @@
+id: info-leak-on-non-formated-string
+valid:
+  - |
+    printf("Hello, World! %s", "Hello");
+    printf("Hello, World! %s %d", "Hello", 1);
+    printf("Hello, World! %s %d %c", "Hello", 1, 'a');
+    printf("Hello, World! %s %d %c %f", "Hello", 1, 'a', 1.0);
+    printf("Hello, World! %s %d %c %f %lf", "Hello", 1, 'a', 1.0, 1.0);
+invalid:
+  - |
+      printf(argv[0]);
