@@ -1,0 +1,8 @@
+id: binary-formatter
+snapshots:
+  BinaryFormatter binaryFormatter = new BinaryFormatter();:
+    labels:
+    - source: new BinaryFormatter()
+      style: primary
+      start: 34
+      end: 55

@@ -1,0 +1,18 @@
+id: command-injection-formatted-runtime-call
+snapshots:
+  ? |
+    val r: Runtime = Runtime.getRuntime()
+    r.exec("/bin/sh -c tool_command" + input)
+  : labels:
+    - source: r.exec("/bin/sh -c tool_command" + input)
+      style: primary
+      start: 38
+      end: 79
+  ? |-
+    val r: Runtime = Runtime.getRuntime()
+    r.loadLibrary(String.format("%s.dll", input))
+  : labels:
+    - source: r.loadLibrary(String.format("%s.dll", input))
+      style: primary
+      start: 38
+      end: 83

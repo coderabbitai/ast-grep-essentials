@@ -1,0 +1,8 @@
+id: insecure-use-strtok-function
+snapshots:
+  strtok(buffer, " ");:
+    labels:
+    - source: strtok(buffer, " ");
+      style: primary
+      start: 0
+      end: 20

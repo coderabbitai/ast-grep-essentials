@@ -1,0 +1,8 @@
+id: insecure-use-memset-function
+snapshots:
+  memset(buffer, 0, sizeof(buffer));:
+    labels:
+    - source: memset(buffer, 0, sizeof(buffer));
+      style: primary
+      start: 0
+      end: 34

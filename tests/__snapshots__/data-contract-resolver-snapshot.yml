@@ -1,0 +1,17 @@
+id: data-contract-resolver
+snapshots:
+  ? |-
+    namespace DCR
+    {
+        class CustomDCR : DataContractResolver
+        {
+        }
+    }
+  : labels:
+    - source: |-
+        class CustomDCR : DataContractResolver
+            {
+            }
+      style: primary
+      start: 20
+      end: 70

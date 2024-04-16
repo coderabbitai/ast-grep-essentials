@@ -1,0 +1,23 @@
+id: detect-replaceall-sanitization
+snapshots:
+  ? |
+    "<strong>Hello World</strong>".replace('<', '&lt;').replace('>', '&gt;')
+  : labels:
+    - source: '"<strong>Hello World</strong>".replace(''<'', ''&lt;'').replace(''>'', ''&gt;'')'
+      style: primary
+      start: 0
+      end: 72
+  ? |
+    "<strong>Hello World</strong>".replaceAll('"', '&quot;').replaceAll("'", '&apos;').replaceAll('&', '&amp;')
+  : labels:
+    - source: '"<strong>Hello World</strong>".replaceAll(''"'', ''&quot;'').replaceAll("''", ''&apos;'').replaceAll(''&'', ''&amp;'')'
+      style: primary
+      start: 0
+      end: 107
+  ? |
+    "<strong>Hello World</strong>".replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+  : labels:
+    - source: '"<strong>Hello World</strong>".replaceAll(''<'', ''&lt;'').replaceAll(''>'', ''&gt;'')'
+      style: primary
+      start: 0
+      end: 78

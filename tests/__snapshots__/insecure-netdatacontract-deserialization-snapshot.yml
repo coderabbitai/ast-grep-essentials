@@ -1,0 +1,8 @@
+id: insecure-netdatacontract-deserialization
+snapshots:
+  NetDataContractSerializer netDataContractSerializer = new NetDataContractSerializer();:
+    labels:
+    - source: new NetDataContractSerializer()
+      style: primary
+      start: 54
+      end: 85

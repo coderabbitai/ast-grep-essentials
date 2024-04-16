@@ -1,6 +1,3 @@
-# Ignore ast-grep snapshots
-tests/__snapshots__/*
-
 # Other package managers
 bun.lockb
 
