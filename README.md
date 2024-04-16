@@ -2,9 +2,9 @@
 
 ## Overview
 
-`ast-grep-essentials` is a collection of
-[`ast-grep`](https://ast-grep.github.io) rules to help you mitigate security
-vulnerabilities and enforce best practices in your code.
+`ast-grep-essentials` is a community-led collection of
+[`ast-grep`](https://ast-grep.github.io) rules to help developers mitigate
+security vulnerabilities and enforce best practices in their codebases.
 
 > [!TIP]
 >
