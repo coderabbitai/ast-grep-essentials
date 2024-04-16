@@ -96,7 +96,7 @@ Inside the `tests` directory, tests are organized by language:
 > [!NOTE]
 >
 > Tests should follow the `ast-grep` testing rules format. Please refer to the
-> `ast-grep` >
+> `ast-grep`
 > [documentation](https://ast-grep.github.io/guide/test-rule.html#test-case-configuration)
 
 ## Contributing
