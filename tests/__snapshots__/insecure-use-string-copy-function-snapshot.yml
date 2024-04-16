@@ -1,0 +1,10 @@
+id: insecure-use-string-copy-function
+snapshots:
+  ? |-
+    strcpy(buffer, "abc");
+    strncpy(buffer, "abc", sizeof(buffer));
+  : labels:
+    - source: strcpy(buffer, "abc");
+      style: primary
+      start: 0
+      end: 22

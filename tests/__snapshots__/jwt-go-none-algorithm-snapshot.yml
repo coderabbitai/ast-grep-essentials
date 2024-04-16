@@ -1,0 +1,23 @@
+id: jwt-go-none-algorithm
+snapshots:
+  ? |
+    jwt.New(jwt.SigningMethodNone)
+  : labels:
+    - source: jwt.SigningMethodNone
+      style: primary
+      start: 8
+      end: 29
+  ? |
+    jwt.New(jwt.SigningMethodNone, jwt.WithClaims(jwt.MapClaims{"foo": "bar"}))
+  : labels:
+    - source: jwt.SigningMethodNone
+      style: primary
+      start: 8
+      end: 29
+  ? |
+    jwt.New(jwt.UnsafeAllowNoneSignatureType, jwt.WithHeader(jwt.MapClaims{"foo": "bar"}))
+  : labels:
+    - source: jwt.UnsafeAllowNoneSignatureType
+      style: primary
+      start: 8
+      end: 40

@@ -1,0 +1,18 @@
+id: html-raw-json
+snapshots:
+  ? |-
+    anotherCall();
+    var obj = @Html.Raw(Json.Encode(Model));
+    alert("hello world");
+  : labels:
+    - source: '@Html.Raw(Json.Encode(Model))'
+      style: primary
+      start: 25
+      end: 54
+  ? |
+    var obj = @Html.Raw(JsonConvert.SerializeObject(Model));
+  : labels:
+    - source: '@Html.Raw(JsonConvert.SerializeObject(Model))'
+      style: primary
+      start: 10
+      end: 55

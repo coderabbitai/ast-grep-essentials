@@ -1,0 +1,8 @@
+id: info-leak-on-non-formated-string
+snapshots:
+  printf(argv[0]);:
+    labels:
+    - source: printf(argv[0]);
+      style: primary
+      start: 0
+      end: 16

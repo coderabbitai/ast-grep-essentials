@@ -1,0 +1,8 @@
+id: json-entity-escape
+snapshots:
+  ActiveSupport.escape_html_entities_in_json = false:
+    labels:
+    - source: ActiveSupport.escape_html_entities_in_json = false
+      style: primary
+      start: 0
+      end: 50

@@ -1,0 +1,8 @@
+id: empty-aes-key
+snapshots:
+  cipher = AES.new("", AES.MODE_CFB, iv):
+    labels:
+    - source: AES.new("", AES.MODE_CFB, iv)
+      style: primary
+      start: 9
+      end: 38

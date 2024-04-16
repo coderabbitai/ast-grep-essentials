@@ -1,0 +1,15 @@
+id: session-cookie-missing-secure
+snapshots:
+  ? |
+    &sessions.Options{ Secure: false }
+  : labels:
+    - source: '&sessions.Options{ Secure: false }'
+      style: primary
+      start: 0
+      end: 34
+  '&sessions.Options{ Secure: false, Path: "/"}':
+    labels:
+    - source: '&sessions.Options{ Secure: false, Path: "/"}'
+      style: primary
+      start: 0
+      end: 44

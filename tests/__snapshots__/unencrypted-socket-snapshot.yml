@@ -1,0 +1,14 @@
+id: unencrypted-socket
+snapshots:
+  ? |-
+    val socket = Socket("localhost", 8080)
+    val out = PrintWriter(socket.getOutputStream(), true)
+    val input = BufferedReader(InputStreamReader(socket.getInputStream()))
+    out.println("Hello, World!")
+    val response = input.readLine()
+    println(response)
+  : labels:
+    - source: Socket("localhost", 8080)
+      style: primary
+      start: 13
+      end: 38

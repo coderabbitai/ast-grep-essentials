@@ -1,0 +1,8 @@
+id: insecure-use-gets-function
+snapshots:
+  gets(buffer);:
+    labels:
+    - source: gets(buffer);
+      style: primary
+      start: 0
+      end: 13

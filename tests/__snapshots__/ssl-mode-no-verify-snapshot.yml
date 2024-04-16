@@ -1,0 +1,8 @@
+id: ssl-mode-no-verify
+snapshots:
+  OpenSSL::SSL::VERIFY_NONE:
+    labels:
+    - source: OpenSSL::SSL::VERIFY_NONE
+      style: primary
+      start: 0
+      end: 25

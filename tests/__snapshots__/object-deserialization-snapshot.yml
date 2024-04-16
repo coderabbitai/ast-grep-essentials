@@ -1,0 +1,12 @@
+id: object-deserialization
+snapshots:
+  ? |-
+    ObjectInputStream ois = new ObjectInputStream(new FileInputStream("object.ser"));
+    Object obj = ois.readObject();
+    ois.close();
+    // obj is now deserialized
+  : labels:
+    - source: new ObjectInputStream(new FileInputStream("object.ser"))
+      style: primary
+      start: 24
+      end: 80

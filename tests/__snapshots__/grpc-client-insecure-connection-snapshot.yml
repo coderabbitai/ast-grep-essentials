@@ -1,0 +1,43 @@
+id: grpc-client-insecure-connection
+snapshots:
+  ? |
+    grpc.Dial("example.com", grpc.WithInsecure())
+  : labels:
+    - source: grpc.Dial("example.com", grpc.WithInsecure())
+      style: primary
+      start: 0
+      end: 45
+  ? |
+    grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock())
+  : labels:
+    - source: grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock())
+      style: primary
+      start: 0
+      end: 63
+  ? |
+    grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second))
+  : labels:
+    - source: grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second))
+      style: primary
+      start: 0
+      end: 96
+  ? |
+    grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second), grpc.WithUserAgent("example"))
+  : labels:
+    - source: grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second), grpc.WithUserAgent("example"))
+      style: primary
+      start: 0
+      end: 127
+  ? |
+    grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second), grpc.WithUserAgent("example"), grpc.WithAuthority("example.com"))
+  : labels:
+    - source: grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second), grpc.WithUserAgent("example"), grpc.WithAuthority("example.com"))
+      style: primary
+      start: 0
+      end: 162
+  ? grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second), grpc.WithUserAgent("example"), grpc.WithAuthority("example.com"), grpc.WithDial)
+  : labels:
+    - source: grpc.Dial("example.com", grpc.WithInsecure(), grpc.WithBlock(), grpc.WithTimeout(5*time.Second), grpc.WithUserAgent("example"), grpc.WithAuthority("example.com"), grpc.WithDial)
+      style: primary
+      start: 0
+      end: 177
