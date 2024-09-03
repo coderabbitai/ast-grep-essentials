@@ -4,7 +4,7 @@ snapshots:
     Cipher.getInstance("DESede/ECB/PKCS5Padding");
     javax.crypto.KeyGenerator.getInstance("DES")
   : labels:
-      - source: javax.crypto.KeyGenerator.getInstance("DES")
-        style: primary
-        start: 47
-        end: 91
+    - source: javax.crypto.KeyGenerator.getInstance("DES")
+      style: primary
+      start: 47
+      end: 91
