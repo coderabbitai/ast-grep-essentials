@@ -1,0 +1,17 @@
+id: cbc-padding-oracle-java
+snapshots:
+  ? |-
+    Cipher doNothingCihper = new NullCipher();
+    new javax.crypto.NullCipher();
+  : labels:
+    - source: new NullCipher()
+      style: primary
+      start: 25
+      end: 41
+  ? |
+    Cipher.getInstance("AES/CBC/PKCS5Padding");
+  : labels:
+    - source: Cipher.getInstance("AES/CBC/PKCS5Padding")
+      style: primary
+      start: 0
+      end: 42
