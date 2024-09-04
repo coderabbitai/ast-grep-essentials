@@ -1,0 +1,15 @@
+id: plaintext-http-link-html
+valid:
+  - |
+    <a href="https://semgrep.dev">Semgrep</a>
+    <a href="https://semgrep.dev/http://">Semgrep</a>
+    <a href="javascript:alert(1)">Semgrep</a>
+invalid:
+  - |
+    <a href="http://semgrep.dev">Semgrep</a>
+    <a href='http://semgrep.dev'>Semgrep</a>
+    <a href=http://semgrep.dev>Semgrep</a>
+    <a class="foo" href="http://semgrep.dev">Semgrep</a>
+    <a class='foo' href='http://semgrep.dev'>Semgrep</a>
+    <a class=foo href=http://semgrep.dev>Semgrep</a>
+    <a href="HTTP://SEMGREP.DEV">Semgrep</a>

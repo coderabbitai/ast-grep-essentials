@@ -1,0 +1,15 @@
+id: plaintext-http-link-html
+snapshots:
+  ? |
+    <a href="http://semgrep.dev">Semgrep</a>
+    <a href='http://semgrep.dev'>Semgrep</a>
+    <a href=http://semgrep.dev>Semgrep</a>
+    <a class="foo" href="http://semgrep.dev">Semgrep</a>
+    <a class='foo' href='http://semgrep.dev'>Semgrep</a>
+    <a class=foo href=http://semgrep.dev>Semgrep</a>
+    <a href="HTTP://SEMGREP.DEV">Semgrep</a>
+  : labels:
+    - source: <a href="http://semgrep.dev">Semgrep</a>
+      style: primary
+      start: 0
+      end: 40
