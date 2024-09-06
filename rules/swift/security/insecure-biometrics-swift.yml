@@ -14,5 +14,6 @@ note: >-
       - https://mobile-security.gitbook.io/mobile-security-testing-guide/ios-testing-guide/0x06f-testing-local-authentication
       - https://shirazkhan030.medium.com/biometric-authentication-in-ios-6c53c54f17df
 rule:
-  pattern: |
-    $X.evaluatePolicy
+  any:
+    - pattern: LAContext.evaluatePolicy
+    - pattern: $X.evaluatePolicy

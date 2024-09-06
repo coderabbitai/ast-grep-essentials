@@ -13,5 +13,5 @@ note: >-
 rule:
   pattern: Cipher.getInstance($MODE)
 constraints:
-      MODE:
-          regex: '.*/CBC/PKCS5Padding'
+  MODE:
+    regex: ".*/CBC/PKCS5Padding"

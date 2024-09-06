@@ -10,5 +10,5 @@ note: >-
 rule:
   pattern: $YST.getInstance($MODE)
 constraints:
-      MODE:
-          regex: 'RSA/[Nn][Oo][Nn][Ee]/NoPadding'
+  MODE:
+    regex: "RSA/[Nn][Oo][Nn][Ee]/NoPadding"

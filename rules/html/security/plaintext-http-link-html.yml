@@ -1,9 +1,8 @@
 id: plaintext-http-link-html
 language: html
-severity: info
+severity: warning
 message: >-
-  This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL
-       if possible.
+  "This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible."
 note: >-
   [CWE-319] Authentication Bypass by Primary Weakness
   [REFERENCES]

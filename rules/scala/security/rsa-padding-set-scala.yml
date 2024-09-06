@@ -2,14 +2,17 @@ id: rsa-padding-set-scala
 language: scala
 severity: warning
 message: >-
-  Usage of RSA without OAEP (Optimal Asymmetric Encryption Padding) may.
+  Usage of RSA without OAEP (Optimal Asymmetric Encryption Padding) may
+    weaken encryption. This could lead to sensitive data exposure. Instead,
+    use RSA with `OAEPWithMD5AndMGF1Padding` instead.
+
 note: >-
   [CWE-780] Use of RSA Algorithm without OAEP
   [REFERENCES]
       - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
 rule:
   any:
-  - pattern: $CIPHER.getInstance($MODE)
+    - pattern: $CIPHER.getInstance($MODE)
 constraints:
-      MODE:
-          regex: '.*RSA/.*/NoPadding.*'
+  MODE:
+    regex: ".*RSA/.*/NoPadding.*"
