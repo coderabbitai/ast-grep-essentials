@@ -1,0 +1,25 @@
+id: libxml2-audit-parser-c
+language: c
+severity: info
+message: >-
+  The libxml2 library is used to parse XML. When auditing such code, make
+  sure that either the document being parsed is trusted or that the parsing
+  options are safe to consume untrusted documents. In such case make sure
+  DTD or XInclude documents cannot be loaded and there is no network access.
+note: >-
+  [CWE-611] Improper Restriction of XML External Entity Reference.
+  [REFERENCES]
+      - https://owasp.org/Top10/A05_2021-Security_Misconfiguration
+rule:
+  any:
+    - pattern: xmlParseInNodeContext($CUR, $SRC, $DATALEN, $XML_OPTIONS, $LST)
+    - pattern: xmlReadDoc($CUR, $SRC, $ENC, $XML_OPTIONS)
+    - pattern: xmlReadFd($FD, $SRC, $ENC, $XML_OPTIONS)
+    - pattern: xmlReadFile($SRC, $ENC, $XML_OPTIONS)
+    - pattern: xmlReadIO($IO_READ, $IO_CLOSE, $IO_CTX, $SRC, $ENC, $XML_OPTIONS)
+    - pattern: xmlReadMemory($SRC, $SIZE, $URL, $ENC, $XML_OPTIONS)
+    - pattern: xmlCtxtReadDoc($CTX, $CUR, $SRC, $ENC, $XML_OPTIONS)
+    - pattern: xmlCtxtReadFd($CTX, $FD, $SRC, $ENC, $XML_OPTIONS)
+    - pattern: xmlCtxtReadFile($CTX, $SRC, $ENC, $XML_OPTIONS)
+    - pattern: xmlCtxtReadIO($CTX, $IO_READ, $IO_CLOSE, $IO_CTX, $SRC, $ENC,$XML_OPTIONS)
+    - pattern: xmlCtxtReadMemory($CTX, $SRC, $SIZE, $URL, $ENC, $XML_OPTIONS)
