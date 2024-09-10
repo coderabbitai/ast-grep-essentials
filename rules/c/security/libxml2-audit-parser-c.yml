@@ -1,6 +1,6 @@
 id: libxml2-audit-parser-c
 language: c
-severity: info
+severity: warning
 message: >-
   The libxml2 library is used to parse XML. When auditing such code, make
   sure that either the document being parsed is trusted or that the parsing

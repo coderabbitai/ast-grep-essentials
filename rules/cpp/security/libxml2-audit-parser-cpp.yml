@@ -1,6 +1,6 @@
 id: libxml2-audit-parser-cpp
 language: Cpp
-severity: info
+severity: warning
 message: >-
   The libxml2 library is used to parse XML. When auditing such code, make
   sure that either the document being parsed is trusted or that the parsing

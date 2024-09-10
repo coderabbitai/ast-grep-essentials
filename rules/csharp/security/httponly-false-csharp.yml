@@ -1,6 +1,6 @@
 id: httponly-false-csharp
 language: csharp
-severity: info
+severity: warning
 message: >-
   "Detected a cookie where the `HttpOnly` flag is either missing or
       disabled. The `HttpOnly` cookie flag instructs the browser to forbid
