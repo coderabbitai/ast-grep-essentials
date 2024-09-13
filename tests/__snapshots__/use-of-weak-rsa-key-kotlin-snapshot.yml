@@ -1,0 +1,10 @@
+id: use-of-weak-rsa-key-kotlin
+snapshots:
+  ? |
+    KeyPairGenerator.getInstance("RSA")
+    keyGen.initialize(-5.12);
+  : labels:
+    - source: keyGen.initialize(-5.12)
+      style: primary
+      start: 36
+      end: 60

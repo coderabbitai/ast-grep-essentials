@@ -1,0 +1,11 @@
+id: xmlinputfactory-dtd-enabled-scala
+valid:
+  - |
+    val factory = XMLInputFactory.newInstance
+    factory.setProperty("javax.xml.stream.isSupportingExternalEntities", false)
+    val fileReader = new FileReader(file)
+invalid:
+  - |
+    val factory = XMLInputFactory.newFactory()
+    val fileReader = new FileReader(file)
+    val fileReader = new FileReader(file)

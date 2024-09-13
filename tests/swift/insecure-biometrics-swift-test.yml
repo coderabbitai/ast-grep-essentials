@@ -1,0 +1,7 @@
+id: insecure-biometrics-swift
+valid:
+  - |
+    context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error)
+invalid:
+  - |
+    context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authenticate to the application"
