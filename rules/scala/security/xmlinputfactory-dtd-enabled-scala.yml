@@ -1,0 +1,25 @@
+id: xmlinputfactory-dtd-enabled-scala
+language: scala
+severity: warning
+message: >-
+  XMLInputFactory being instantiated without calling the setProperty
+  functions that are generally used for disabling entity processing. User
+  controlled data in XML Document builder can result in XML Internal Entity
+  Processing vulnerabilities like the disclosure of confidential data,
+  denial of service, Server Side Request Forgery (SSRF), port scanning. Make
+  sure to disable entity processing functionality.
+note: >-
+  [CWE-611] Improper Restriction of XML External Entity.
+  [REFERENCES]
+      - https://owasp.org/Top10/A05_2021-Security_Misconfiguration
+rule:
+  any:
+    - pattern: XMLInputFactory.newFactory($$$)
+    - pattern: XMLInputFactory.newInstance($$$)
+    - pattern: new XMLInputFactory($$$)
+precedes:
+  not:
+    pattern: $XMLFACTORY.setProperty($MODE, false)
+constraints:
+  MODE:
+    regex: "javax.xml.stream.isSupportingExternalEntities"

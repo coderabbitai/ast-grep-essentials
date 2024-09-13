@@ -1,0 +1,20 @@
+id: use-of-md5-java
+severity: warning
+language: java
+message: >-
+  Detected MD5 hash algorithm which is considered insecure. MD5 is not
+  collision resistant and is therefore not suitable as a cryptographic
+  signature. Use HMAC instead.
+note: >-
+  [CWE-328] Use of Weak Hash.
+  [REFERENCES]
+      - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
+rule:
+  any:
+    - pattern: java.security.MessageDigest.getInstance($ALGO)
+    - pattern: java.security.MessageDigest.getInstance($ALGO, $$$)
+    - pattern: MessageDigest.getInstance($ALGO)
+    - pattern: MessageDigest.getInstance($ALGO, $$$)
+constraints:
+  ALGO:
+    regex: "MD5"
