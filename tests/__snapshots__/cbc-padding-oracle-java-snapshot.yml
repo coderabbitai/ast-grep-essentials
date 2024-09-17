@@ -1,0 +1,15 @@
+id: cbc-padding-oracle-java
+snapshots:
+  Cipher.getInstance("AES/CBC/PKCS5Padding");:
+    labels:
+    - source: Cipher.getInstance("AES/CBC/PKCS5Padding")
+      style: primary
+      start: 0
+      end: 42
+  ? |
+    Cipher.getInstance("AES/CBC/PKCS5Padding");
+  : labels:
+    - source: Cipher.getInstance("AES/CBC/PKCS5Padding")
+      style: primary
+      start: 0
+      end: 42
