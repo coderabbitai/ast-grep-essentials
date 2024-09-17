@@ -1,0 +1,9 @@
+id: cookie-secure-flag-false-java
+snapshots:
+  ? |
+    cookie.setSecure(false);
+  : labels:
+    - source: cookie.setSecure(false);
+      style: primary
+      start: 0
+      end: 24
