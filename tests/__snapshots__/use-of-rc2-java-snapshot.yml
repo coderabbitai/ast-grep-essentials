@@ -1,0 +1,10 @@
+id: use-of-rc2-java
+snapshots:
+  ? |
+    useCipher(Cipher.getInstance("RC2"));
+    Cipher.getInstance("RC2");
+  : labels:
+    - source: Cipher.getInstance("RC2")
+      style: primary
+      start: 10
+      end: 35
