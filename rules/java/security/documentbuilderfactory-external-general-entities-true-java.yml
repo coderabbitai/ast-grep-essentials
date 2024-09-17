@@ -9,8 +9,6 @@ note: >-
   [CWE-798]: Use of Hard-coded Credentials
   [OWASP A07:2021]: Identification and Authentication Failures
   [REFERENCES]
-      - https://semgrep.dev/blog/2022/xml-security-in-java
-      - https://semgrep.dev/docs/cheat-sheets/java-xxe/
       - https://blog.sonarsource.com/secure-xml-processor
 rule:
   pattern:
