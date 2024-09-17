@@ -19,4 +19,7 @@ rule:
     - pattern: new XMLInputFactory($$$)
 precedes:
   not:
-    pattern: $XMLFACTORY.setProperty(javax.xml.stream.isSupportingExternalEntities, false)
+    pattern: $XMLFACTORY.setProperty($MODE, false)
+constraints:
+  MODE:
+    regex: "javax.xml.stream.isSupportingExternalEntities"
