@@ -1,6 +1,7 @@
 id: python-elasticsearch-hardcoded-bearer-auth-python
 valid:
   - |
+    es = Elasticsearch("https://localhost:9200");
 
 invalid:
   - |
