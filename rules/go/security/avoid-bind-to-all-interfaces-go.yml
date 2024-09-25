@@ -14,8 +14,6 @@ rule:
   any:
     - pattern: tls.Listen($NETWORK, $IP $$$)
     - pattern: net.Listen($NETWORK, $IP $$$)
-    - pattern: tls.Listen($NETWORK, $IP $$$)
-    - pattern: net.Listen($NETWORK, $IP $$$)
 
 constraints:
   IP:
