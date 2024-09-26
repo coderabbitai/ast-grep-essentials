@@ -6,6 +6,50 @@ snapshots:
     "github.com/dgrijalva/jwt-go"
          )
     func bad1(key []byte) {
+    claims := jwt.StandardClaims{
+       ExpiresAt:15000,
+       Issuer:"test",}
+    token := jwt.NewWithClaims(jwt.SigningMethodNone, claims)
+    ss, err := token.SignedString(jwt.UnsafeAllowNoneSignatureType)
+    fmt.Printf("%v %v\n", ss, err)}
+  : labels:
+    - source: jwt.SigningMethodNone
+      style: primary
+      start: 172
+      end: 193
+    - source: |-
+        (
+        "fmt"
+        "github.com/dgrijalva/jwt-go"
+             )
+      style: secondary
+      start: 7
+      end: 51
+    - source: |-
+        import (
+        "fmt"
+        "github.com/dgrijalva/jwt-go"
+             )
+      style: secondary
+      start: 0
+      end: 51
+    - source: |-
+        func bad1(key []byte) {
+        claims := jwt.StandardClaims{
+           ExpiresAt:15000,
+           Issuer:"test",}
+        token := jwt.NewWithClaims(jwt.SigningMethodNone, claims)
+        ss, err := token.SignedString(jwt.UnsafeAllowNoneSignatureType)
+        fmt.Printf("%v %v\n", ss, err)}
+      style: secondary
+      start: 52
+      end: 298
+  ? |
+    import (
+    "fmt"
+    "github.com/dgrijalva/jwt-go"
+         )
+    func bad1(key []byte) {
     claims = jwt.StandardClaims{
        ExpiresAt:15000,
        Issuer:"test",}
