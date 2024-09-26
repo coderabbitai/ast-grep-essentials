@@ -1,5 +1,5 @@
 id: jwt-simple-noverify-js
-language: Javascript
+language: JavaScript
 severity: warning
 message: >-
   "Detected the decoding of a JWT token without a verify step. JWT tokens

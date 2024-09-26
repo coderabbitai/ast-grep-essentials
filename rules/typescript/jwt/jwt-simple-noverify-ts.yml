@@ -1,5 +1,5 @@
 id: jwt-simple-noverify-ts
-language: Typescript
+language: TypeScript
 severity: warning
 message: >-
   "Detected the decoding of a JWT token without a verify step. JWT tokens
