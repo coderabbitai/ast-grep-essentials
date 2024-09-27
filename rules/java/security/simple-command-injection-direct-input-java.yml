@@ -9,8 +9,7 @@ message: >-
       commands with user input. If this is unavoidable, validate and sanitize
       the input, and use safe methods for executing the commands. For more
       information, see: [Java command injection
-      prevention](https://semgrep.dev/docs/cheat-sheets/java-command-injection/\
-      )"
+      prevention]"
 note: >-
   [CWE-78] Improper Neutralization of Special Elements used in an OS
   [REFERENCES]
