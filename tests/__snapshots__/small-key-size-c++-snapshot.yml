@@ -1,0 +1,50 @@
+id: small-key-size-c++
+snapshots:
+  ? |
+    void foo() {
+    size_t bad_size = 1024;
+    size_t good_size = 2048;
+    DH_generate_parameters_ex(NULL, bad_size);
+    DSA_generate_parameters_ex(NULL, bad_size);
+    EVP_PKEY_CTX_set_dh_paramgen_prime_len(NULL, bad_size);
+    EVP_PKEY_CTX_set_dsa_paramgen_bits(NULL, bad_size);
+    EVP_PKEY_CTX_set_rsa_keygen_bits(NULL, bad_size);
+    RSA_generate_key_ex(NULL, bad_size);
+    RSA_generate_key_fips(NULL, bad_size);}
+  : labels:
+    - source: DH_generate_parameters_ex(NULL, bad_size);
+      style: primary
+      start: 62
+      end: 104
+    - source: DH_generate_parameters_ex
+      style: secondary
+      start: 62
+      end: 87
+    - source: bad_size
+      style: secondary
+      start: 94
+      end: 102
+    - source: (NULL, bad_size)
+      style: secondary
+      start: 87
+      end: 103
+    - source: DH_generate_parameters_ex(NULL, bad_size)
+      style: secondary
+      start: 62
+      end: 103
+    - source: bad_size
+      style: secondary
+      start: 20
+      end: 28
+    - source: '1024'
+      style: secondary
+      start: 31
+      end: 35
+    - source: bad_size = 1024
+      style: secondary
+      start: 20
+      end: 35
+    - source: size_t bad_size = 1024;
+      style: secondary
+      start: 13
+      end: 36
