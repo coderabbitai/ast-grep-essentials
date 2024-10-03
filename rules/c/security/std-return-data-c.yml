@@ -1,0 +1,113 @@
+id: std-return-data-c
+language: c
+severity: warning
+message: >-
+  $FUNC` returns a pointer to the memory owned by `$VAR`. This pointer
+  is invalid after `$VAR` goes out of scope, which can trigger a use after
+  free.
+note: >-
+  [CWE-416: Use After Free.
+  [REFERENCES]
+      - https://wiki.sei.cmu.edu/confluence/display/c/DCL30-C.+Declare+objects+with+appropriate+storage+durations
+utils:
+  MATCH_RETURN_STATEMENT_WITH_STD:
+    kind: return_statement
+    all:
+      - has:
+          stopBy: end
+          kind: call_expression
+          has:
+            stopBy: end
+            kind: field_expression
+            has:
+              stopBy: end
+              kind: identifier
+              pattern: $R
+      - follows:
+          stopBy: end
+          kind: labeled_statement
+          all:
+            - has:
+                stopBy: end
+                kind: statement_identifier
+                regex: ^std
+            - has:
+                stopBy: end
+                kind: expression_statement
+                has:
+                  stopBy: end
+                  kind: binary_expression
+                  all:
+                    - has:
+                        stopBy: end
+                        kind: binary_expression
+                        all:
+                          - has:
+                              stopBy: end
+                              kind: identifier
+                              regex: (vector|array|deque|forward_list|list|map|multimap|multiset|set|unordered_map|unordered_multimap|unordered_multiset|unordered_set)
+                          - has:
+                              stopBy: end
+                              kind: identifier
+                    - has:
+                        stopBy: end
+                        kind: identifier
+                        pattern: $R
+      - inside:
+          stopBy: end
+          kind: compound_statement
+          follows:
+            stopBy: end
+            kind: pointer_declarator
+            has:
+              stopBy: end
+              kind: function_declarator
+              all:
+                - has:
+                    stopBy: end
+                    kind: identifier
+                    regex: ^return.*
+                - has:
+                    stopBy: end
+                    kind: parameter_list
+
+  MATCH_RETURN_STATEMENT_WITHOUT_STD:
+    kind: return_statement
+    all:
+      - has:
+          stopBy: end
+          kind: call_expression
+          has:
+            stopBy: end
+            kind: field_expression
+            has:
+              stopBy: end
+              kind: identifier
+              pattern: $R
+      - follows:
+          stopBy: end
+          kind: expression_statement
+          has:
+            stopBy: end
+            kind: binary_expression
+            all:
+              - has:
+                  stopBy: end
+                  kind: binary_expression
+                  all:
+                    - has:
+                        stopBy: end
+                        kind: identifier
+                        regex: (vector|array|deque|forward_list|list|map|multimap|multiset|set|unordered_map|unordered_multimap|unordered_multiset|unordered_set)
+                    - has:
+                        stopBy: end
+                        kind: identifier
+              - has:
+                  stopBy: end
+                  kind: identifier
+                  pattern: $R
+rule:
+  kind: return_statement
+  any:
+    - matches: MATCH_RETURN_STATEMENT_WITH_STD
+    - matches: MATCH_RETURN_STATEMENT_WITHOUT_STD

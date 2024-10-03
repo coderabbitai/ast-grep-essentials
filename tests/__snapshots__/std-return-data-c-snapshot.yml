@@ -1,0 +1,80 @@
+id: std-return-data-c
+snapshots:
+  ? |
+    int *return_vector_data() {
+    std::vector<int> v;
+    return v.data();
+    }
+  : labels:
+    - source: return v.data();
+      style: primary
+      start: 48
+      end: 64
+    - source: v
+      style: secondary
+      start: 55
+      end: 56
+    - source: v.data
+      style: secondary
+      start: 55
+      end: 61
+    - source: v.data()
+      style: secondary
+      start: 55
+      end: 63
+    - source: std
+      style: secondary
+      start: 28
+      end: 31
+    - source: vector
+      style: secondary
+      start: 33
+      end: 39
+    - source: vector
+      style: secondary
+      start: 33
+      end: 39
+    - source: vector<int
+      style: secondary
+      start: 33
+      end: 43
+    - source: v
+      style: secondary
+      start: 45
+      end: 46
+    - source: vector<int> v
+      style: secondary
+      start: 33
+      end: 46
+    - source: vector<int> v;
+      style: secondary
+      start: 33
+      end: 47
+    - source: std::vector<int> v;
+      style: secondary
+      start: 28
+      end: 47
+    - source: return_vector_data
+      style: secondary
+      start: 5
+      end: 23
+    - source: ()
+      style: secondary
+      start: 23
+      end: 25
+    - source: return_vector_data()
+      style: secondary
+      start: 5
+      end: 25
+    - source: '*return_vector_data()'
+      style: secondary
+      start: 4
+      end: 25
+    - source: |-
+        {
+        std::vector<int> v;
+        return v.data();
+        }
+      style: secondary
+      start: 26
+      end: 66
