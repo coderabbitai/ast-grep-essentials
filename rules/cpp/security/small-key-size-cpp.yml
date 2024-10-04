@@ -1,5 +1,5 @@
-id: small-key-size-c++
-language: c
+id: small-key-size-cpp
+language: cpp
 severity: warning
 message: >-
   $KEY_FUNCTION` is using a key size of only $KEY_BITS bits. This is
