@@ -1,4 +1,4 @@
-id: small-key-size-c++
+id: small-key-size-cpp
 valid:
   - |
     void foo() {
