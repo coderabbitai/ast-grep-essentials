@@ -53,23 +53,12 @@ utils:
                         stopBy: end
                         kind: identifier
                         pattern: $R
-      - inside:
-          stopBy: end
-          kind: compound_statement
-          follows:
-            stopBy: end
-            kind: pointer_declarator
-            has:
-              stopBy: end
-              kind: function_declarator
-              all:
-                - has:
-                    stopBy: end
-                    kind: identifier
-                    regex: ^return.*
-                - has:
-                    stopBy: end
-                    kind: parameter_list
+                        inside:
+                          stopBy: end
+                          kind: function_definition
+                          has:
+                            stopBy: end
+                            kind: primitive_type
 
   MATCH_RETURN_STATEMENT_WITHOUT_STD:
     kind: return_statement
@@ -106,6 +95,13 @@ utils:
                   stopBy: end
                   kind: identifier
                   pattern: $R
+                  inside:
+                    stopBy: end
+                    kind: function_definition
+                    has:
+                      stopBy: end
+                      kind: primitive_type
+
 rule:
   kind: return_statement
   any:
