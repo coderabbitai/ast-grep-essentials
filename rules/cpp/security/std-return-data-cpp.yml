@@ -1,0 +1,124 @@
+id: std-return-data-cpp
+language: cpp
+severity: warning
+message: >-
+  $FUNC` returns a pointer to the memory owned by `$VAR`. This pointer
+  is invalid after `$VAR` goes out of scope, which can trigger a use after
+  free.
+note: >-
+  [CWE-416: Use After Free.
+  [REFERENCES]
+      - https://wiki.sei.cmu.edu/confluence/display/c/DCL30-C.+Declare+objects+with+appropriate+storage+durations
+utils:
+  MATCH_RETURN_STATEMENT_WITH_STD:
+    kind: return_statement
+    has:
+      kind: call_expression
+      has:
+        kind: field_expression
+        has:
+          kind: identifier
+          pattern: $VAR
+          inside:
+            stopBy: end
+            kind: return_statement
+            follows:
+              stopBy: end
+              kind: declaration
+              all:
+                - has:
+                    stopBy: end
+                    kind: identifier
+                    pattern: $VAR
+                - has:
+                    stopBy: end
+                    kind: template_type
+                    has:
+                      stopBy: end
+                      kind: type_identifier
+                      regex: (^vector|^array$|^deque$|^forward_list$|^list$|^map$|^multimap$|^multiset$|^set$|^unordered_map$|^unordered_multimap$|^unordered_multiset$|^unordered_set$)
+                - has:
+                    stopBy: end
+                    kind: qualified_identifier
+                    has:
+                      stopBy: end
+                      kind: namespace_identifier
+                      pattern: $I
+                      inside:
+                        stopBy: end
+                        kind: compound_statement
+                        all:
+                          - follows:
+                              stopBy: end
+                              kind: pointer_declarator
+                              has:
+                                stopBy: end
+                                kind: function_declarator
+                                has:
+                                  stopBy: end
+                                  kind: identifier
+                                  regex: ^return.*
+                          - follows:
+                              stopBy: end
+                              kind: primitive_type
+                              pattern: $J
+  MATCH_RETURN_STATEMENT_WITHOUT_STD:
+    kind: return_statement
+    has:
+      kind: call_expression
+      has:
+        kind: field_expression
+        has:
+          kind: identifier
+          pattern: $VAR
+          inside:
+            stopBy: end
+            kind: return_statement
+            follows:
+              stopBy: end
+              kind: declaration
+              all:
+                - has:
+                    stopBy: end
+                    kind: identifier
+                    pattern: $VAR
+                - has:
+                    stopBy: end
+                    kind: template_type
+                    has:
+                      stopBy: end
+                      kind: type_identifier
+                      regex: (^vector|^array$|^deque$|^forward_list$|^list$|^map$|^multimap$|^multiset$|^set$|^unordered_map$|^unordered_multimap$|^unordered_multiset$|^unordered_set$)
+                      inside:
+                        stopBy: end
+                        kind: compound_statement
+                        all:
+                          - follows:
+                              stopBy: end
+                              kind: pointer_declarator
+                              has:
+                                stopBy: end
+                                kind: function_declarator
+                                all:
+                                  - has:
+                                      stopBy: end
+                                      kind: identifier
+                                      regex: ^return.*
+                                  - has:
+                                      stopBy: end
+                                      kind: parameter_list
+                          - follows:
+                              stopBy: end
+                              kind: primitive_type
+                              pattern: $J
+rule:
+  kind: return_statement
+  any:
+    - matches: MATCH_RETURN_STATEMENT_WITH_STD
+    - matches: MATCH_RETURN_STATEMENT_WITHOUT_STD
+
+constraints:
+  I:
+    regex: "^std$"
+  J:
+    regex: ^(int|char|float)$

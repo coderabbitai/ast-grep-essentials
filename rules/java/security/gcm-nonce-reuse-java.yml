@@ -1,0 +1,16 @@
+id: gcm-nonce-reuse-java
+language: java
+severity: warning
+message: >-
+  GCM IV/nonce is reused: encryption can be totally useless.
+note: >-
+  [CWE-323] Reusing a Nonce, Key Pair in Encryption.
+  [REFERENCES]
+      - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
+rule:
+  any:
+    - pattern: GCMParameterSpec $$$ = new GCMParameterSpec(GCM_TAG_LENGTH * 8, $A);
+      follows:
+        pattern: byte[] $A = $_;
+        stopBy: end
+    - pattern: new GCMParameterSpec($$$, "$$$".getBytes($$$), $$$)
