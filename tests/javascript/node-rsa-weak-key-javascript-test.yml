@@ -1,0 +1,18 @@
+id: node-rsa-weak-key-javascript
+valid:
+  - |
+    const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
+    modulusLength: 2048,
+    });
+invalid:
+  - |
+    const crypto = require("crypto");
+    const NodeRSA = require('node-rsa');
+    const forge = require('node-forge');
+    const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
+    a: 123,
+    modulusLength: 512,
+    });
+    const key = new NodeRSA({b: 2048});
+    const key = new NodeRSA({b: 512});
+    const pki = forge.pki;
