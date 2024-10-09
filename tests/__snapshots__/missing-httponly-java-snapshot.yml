@@ -1,0 +1,33 @@
+id: missing-httponly-java
+snapshots:
+  ? |
+    SimpleCookie s = new SimpleCookie("foo", "bar");
+    ( new NettyCookie( "foo", "bar" ) )
+    Cookie cc2 = Cookie.of("zzz", "ddd");
+    Cookie z = new NettyCookie("foo", "bar");
+    (Cookie.of("zzz", "ddd"))
+  : labels:
+    - source: SimpleCookie s = new SimpleCookie("foo", "bar");
+      style: primary
+      start: 0
+      end: 48
+    - source: '"foo"'
+      style: secondary
+      start: 34
+      end: 39
+    - source: '"foo"'
+      style: secondary
+      start: 34
+      end: 39
+    - source: ("foo", "bar")
+      style: secondary
+      start: 33
+      end: 47
+    - source: new SimpleCookie("foo", "bar")
+      style: secondary
+      start: 17
+      end: 47
+    - source: s = new SimpleCookie("foo", "bar")
+      style: secondary
+      start: 13
+      end: 47
