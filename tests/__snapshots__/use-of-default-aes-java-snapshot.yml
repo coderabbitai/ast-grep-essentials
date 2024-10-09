@@ -1,0 +1,22 @@
+id: use-of-default-aes-java
+snapshots:
+  ? "import javax;\nimport javax.crypto;     \nimport javax.crypto.*;\nimport javax.crypto.Cipher;\nclass AES{\npublic void useofAES() {\nCipher.getInstance(\"AES\");\ncrypto.Cipher.getInstance(\"AES\");\njavax.crypto.Cipher.getInstance(\"AES\");\n}\n"
+  : labels:
+    - source: Cipher.getInstance("AES")
+      style: primary
+      start: 127
+      end: 152
+    - source: import javax;
+      style: secondary
+      start: 0
+      end: 13
+    - source: |-
+        class AES{
+        public void useofAES() {
+        Cipher.getInstance("AES");
+        crypto.Cipher.getInstance("AES");
+        javax.crypto.Cipher.getInstance("AES");
+        }
+      style: secondary
+      start: 91
+      end: 229
