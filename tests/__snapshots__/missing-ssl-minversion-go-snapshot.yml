@@ -1,0 +1,13 @@
+id: missing-ssl-minversion-go
+snapshots:
+  ? |
+    server.TLS = &tls.Config{ Rand: zeroSource{}, }
+  : labels:
+    - source: 'tls.Config{ Rand: zeroSource{}, }'
+      style: primary
+      start: 14
+      end: 47
+    - source: 'server.TLS = &tls.Config{ Rand: zeroSource{}, }'
+      style: secondary
+      start: 0
+      end: 47
