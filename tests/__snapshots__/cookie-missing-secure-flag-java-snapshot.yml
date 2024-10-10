@@ -1,0 +1,35 @@
+id: cookie-missing-secure-flag-java
+snapshots:
+  ? |
+    public class CookieController {
+
+    @RequestMapping(value = "/cookie1", method = "GET")
+    public void setCookie(@RequestParam String value, HttpServletResponse response) {
+        Cookie cookie = new Cookie("cookie", value);
+        response.addCookie(cookie);
+    }
+  : labels:
+    - source: response.addCookie(cookie);
+      style: primary
+      start: 220
+      end: 247
+    - source: response
+      style: secondary
+      start: 220
+      end: 228
+    - source: addCookie
+      style: secondary
+      start: 229
+      end: 238
+    - source: cookie
+      style: secondary
+      start: 239
+      end: 245
+    - source: (cookie)
+      style: secondary
+      start: 238
+      end: 246
+    - source: response.addCookie(cookie)
+      style: secondary
+      start: 220
+      end: 246
