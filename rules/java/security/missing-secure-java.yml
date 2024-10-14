@@ -1,0 +1,70 @@
+id: missing-secure-java
+language: java
+severity: warning
+message: >-
+  Detected a cookie where the `Secure` flag is either missing or
+  disabled. The `Secure` cookie flag instructs the browser to forbid sending
+  the cookie over an insecure HTTP request. Set the `Secure` flag to `true`
+  so the cookie will only be sent over HTTPS.
+note: >-
+  [CWE-614]: Sensitive Cookie in HTTPS Session Without 'Secure' Attribute
+  [OWASP A05:2021]: Security Misconfiguration
+  [REFERENCES]
+      - https://owasp.org/Top10/A05_2021-Security_Misconfiguration
+utils:
+  match_without_httponly:
+    kind: argument_list
+    has:
+      kind: object_creation_expression
+    inside:
+      stopBy: end
+      kind: method_invocation
+
+  match_cookie_last:
+    kind: argument_list
+    has:
+      kind: method_invocation
+      has:
+        kind: argument_list
+        has:
+          kind: string_literal
+
+  match_instance:
+    kind: local_variable_declaration
+    has:
+      stopBy: end
+      kind: identifier
+      follows:
+        stopBy: end
+        kind: variable_declarator
+
+  match_identifier_with_simplecookie:
+    kind: identifier
+    inside:
+      stopBy: end
+      kind: local_variable_declaration
+      all:
+        - has:
+            stopBy: end
+            kind: type_identifier
+            regex: "^SimpleCookie$|^Cookie$"
+        - has:
+            stopBy: neighbor
+            kind: variable_declarator
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+              - has:
+                  stopBy: neighbor
+                  kind: object_creation_expression
+        - not:
+            precedes:
+              stopBy: neighbor
+              kind: expression_statement
+rule:
+  any:
+    - matches: match_instance
+    - matches: match_without_httponly
+    - matches: match_cookie_last
+    - matches: match_identifier_with_simplecookie
