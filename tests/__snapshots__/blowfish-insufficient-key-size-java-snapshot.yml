@@ -1,0 +1,56 @@
+id: blowfish-insufficient-key-size-java
+snapshots:
+  ? |
+    public void unsafeKeySize() {
+       KeyGenerator keyGen = KeyGenerator.getInstance("Blowfish");
+       keyGen.init(64);
+    }
+  : labels:
+    - source: keyGen.init(64);
+      style: primary
+      start: 96
+      end: 112
+    - source: keyGen
+      style: secondary
+      start: 96
+      end: 102
+    - source: init
+      style: secondary
+      start: 103
+      end: 107
+    - source: '64'
+      style: secondary
+      start: 108
+      end: 110
+    - source: (64)
+      style: secondary
+      start: 107
+      end: 111
+    - source: keyGen.init(64)
+      style: secondary
+      start: 96
+      end: 111
+    - source: KeyGenerator
+      style: secondary
+      start: 55
+      end: 67
+    - source: getInstance
+      style: secondary
+      start: 68
+      end: 79
+    - source: '"Blowfish"'
+      style: secondary
+      start: 80
+      end: 90
+    - source: ("Blowfish")
+      style: secondary
+      start: 79
+      end: 91
+    - source: KeyGenerator.getInstance("Blowfish")
+      style: secondary
+      start: 55
+      end: 91
+    - source: KeyGenerator keyGen = KeyGenerator.getInstance("Blowfish");
+      style: secondary
+      start: 33
+      end: 92
