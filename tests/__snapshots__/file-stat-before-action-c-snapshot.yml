@@ -1,0 +1,150 @@
+id: file-stat-before-action-c
+snapshots:
+  ? |
+    if (stat(file.c_str(), &buf) == 0)
+     {
+
+         // Open the file for reading
+         // ruleid: file-stat-before-action
+         fp = fopen(file.c_str(), "r");
+         if (fp == NULL)
+         {
+             char message[2560];
+             sprintf(message, "File '%s' Cound Not be Opened", file.c_str());
+             // DISPLAY_MSG_ERROR( this, message, "GetFileContents", "System" );
+             throw message;
+         }
+
+         // Read the file
+         MvString s, ss;
+         while (fgets(data, sizeof(data), fp) != (char *)0)
+         {
+             s = data;
+             s.trimBoth();
+             if (s.compare(0, 5, "GROUP") == 0)
+             {
+                 // size_t t = s.find_last_of( ":" );
+                 size_t t = s.find(":");
+                 if (t != string::npos)
+                 {
+                     ss = s.substr(t + 1).c_str();
+                     ss.trimBoth();
+                     ss = ss.substr(1, ss.length() - 3).c_str();
+                     group_list.push_back(ss);
+                 }
+             }
+         }
+
+         // Close the file
+         fclose(fp);
+     }
+  : labels:
+    - source: fopen
+      style: primary
+      start: 123
+      end: 128
+    - source: stat
+      style: secondary
+      start: 4
+      end: 8
+    - source: file.c_str()
+      style: secondary
+      start: 9
+      end: 21
+    - source: (file.c_str(), &buf)
+      style: secondary
+      start: 8
+      end: 28
+    - source: stat(file.c_str(), &buf)
+      style: secondary
+      start: 4
+      end: 28
+    - source: |-
+        if (stat(file.c_str(), &buf) == 0)
+         {
+
+             // Open the file for reading
+             // ruleid: file-stat-before-action
+             fp = fopen(file.c_str(), "r");
+             if (fp == NULL)
+             {
+                 char message[2560];
+                 sprintf(message, "File '%s' Cound Not be Opened", file.c_str());
+                 // DISPLAY_MSG_ERROR( this, message, "GetFileContents", "System" );
+                 throw message;
+             }
+
+             // Read the file
+             MvString s, ss;
+             while (fgets(data, sizeof(data), fp) != (char *)0)
+             {
+                 s = data;
+                 s.trimBoth();
+                 if (s.compare(0, 5, "GROUP") == 0)
+                 {
+                     // size_t t = s.find_last_of( ":" );
+                     size_t t = s.find(":");
+                     if (t != string::npos)
+                     {
+                         ss = s.substr(t + 1).c_str();
+                         ss.trimBoth();
+                         ss = ss.substr(1, ss.length() - 3).c_str();
+                         group_list.push_back(ss);
+                     }
+                 }
+             }
+
+             // Close the file
+             fclose(fp);
+         }
+      style: secondary
+      start: 0
+      end: 989
+    - source: |-
+        {
+
+             // Open the file for reading
+             // ruleid: file-stat-before-action
+             fp = fopen(file.c_str(), "r");
+             if (fp == NULL)
+             {
+                 char message[2560];
+                 sprintf(message, "File '%s' Cound Not be Opened", file.c_str());
+                 // DISPLAY_MSG_ERROR( this, message, "GetFileContents", "System" );
+                 throw message;
+             }
+
+             // Read the file
+             MvString s, ss;
+             while (fgets(data, sizeof(data), fp) != (char *)0)
+             {
+                 s = data;
+                 s.trimBoth();
+                 if (s.compare(0, 5, "GROUP") == 0)
+                 {
+                     // size_t t = s.find_last_of( ":" );
+                     size_t t = s.find(":");
+                     if (t != string::npos)
+                     {
+                         ss = s.substr(t + 1).c_str();
+                         ss.trimBoth();
+                         ss = ss.substr(1, ss.length() - 3).c_str();
+                         group_list.push_back(ss);
+                     }
+                 }
+             }
+
+             // Close the file
+             fclose(fp);
+         }
+      style: secondary
+      start: 36
+      end: 989
+    - source: fp = fopen(file.c_str(), "r");
+      style: secondary
+      start: 118
+      end: 148
+    - source: fopen(file.c_str(), "r")
+      style: secondary
+      start: 123
+      end: 147
