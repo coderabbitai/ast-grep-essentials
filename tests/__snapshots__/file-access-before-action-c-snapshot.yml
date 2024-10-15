@@ -77,3 +77,11 @@ snapshots:
       style: secondary
       start: 293
       end: 313
+    - source: original_key
+      style: secondary
+      start: 300
+      end: 312
+    - source: (original_key)
+      style: secondary
+      start: 299
+      end: 313
