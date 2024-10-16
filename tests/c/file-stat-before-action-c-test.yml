@@ -18,7 +18,6 @@ invalid:
              throw message;
          }
 
-         // Read the file
          MvString s, ss;
          while (fgets(data, sizeof(data), fp) != (char *)0)
          {
