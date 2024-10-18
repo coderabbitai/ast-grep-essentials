@@ -1,0 +1,38 @@
+id: tls-with-insecure-cipher-go
+snapshots:
+  ? |
+    tr := &http.Transport{
+    TLSClientConfig: &tls.Config{CipherSuites: []uint16{
+      tls.TLS_RSA_WITH_RC4_128_SHA,
+      tls.TLS_RSA_WITH_AES_128_CBC_SHA256,
+      }},
+    }
+  : labels:
+    - source: |-
+        tls.Config{CipherSuites: []uint16{
+          tls.TLS_RSA_WITH_RC4_128_SHA,
+          tls.TLS_RSA_WITH_AES_128_CBC_SHA256,
+          }}
+      style: primary
+      start: 41
+      end: 151
+    - source: tls.Config
+      style: secondary
+      start: 41
+      end: 51
+    - source: |-
+        []uint16{
+          tls.TLS_RSA_WITH_RC4_128_SHA,
+          tls.TLS_RSA_WITH_AES_128_CBC_SHA256,
+          }
+      style: secondary
+      start: 66
+      end: 150
+    - source: |-
+        {CipherSuites: []uint16{
+          tls.TLS_RSA_WITH_RC4_128_SHA,
+          tls.TLS_RSA_WITH_AES_128_CBC_SHA256,
+          }}
+      style: secondary
+      start: 51
+      end: 151
