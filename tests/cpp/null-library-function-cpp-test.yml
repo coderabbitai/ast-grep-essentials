@@ -1,0 +1,30 @@
+id: null-library-function-cpp
+valid:
+  - |
+    errno = 0;
+    fwrite(data, len, 1, f);
+    if (errno) {
+    ERRS("unable to write output file");
+    goto out_flush;
+    }
+
+invalid:
+  - |
+    gid_t f() {
+    return getgrent()->gr_gid;
+    }
+    void f() {
+    char buf[128];
+    strcpy(buf, getenv("FOO"));
+    }
+    {
+    fwrite("foo", 3, 1, fopen("foo.txt", "w"));
+    }
+    {
+    FILE *fptr;
+    fwrite("foo", 3, 1, fptr = fopen("foo.txt", "w"));
+    }
+    void test_getc() {
+    int c = getc(fopen(file_name, "r")); 
+    int c = getc(fptr = fopen(file_name, "r"));
+    }
