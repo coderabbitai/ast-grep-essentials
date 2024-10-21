@@ -1,0 +1,79 @@
+id: file-access-before-action-c
+snapshots:
+  ? |
+    {
+    const char *original_key = "path/to/file/filename";
+    const char *mirror_key = "path/to/another/file/filename";
+
+    if ((access(original_key, F_OK) == 0) && (access(mirror_key, F_OK) == 0))
+    {
+        copy_file("/bin/cp %s %s", original_key, mirror_key);
+
+        // ruleid: file-access-before-action
+        unlink(original_key);
+    }
+    }
+    void test_002()
+    {
+    const char *original_key = "path/to/file/filename";
+
+    if (access(original_key, W_OK) == 0)
+    {
+        // ruleid: file-access-before-action
+        FILe *fp = fopen(original_key, "wb");
+    }
+    }
+  : labels:
+    - source: unlink
+      style: primary
+      start: 293
+      end: 299
+    - source: access
+      style: secondary
+      start: 118
+      end: 124
+    - source: original_key
+      style: secondary
+      start: 125
+      end: 137
+    - source: F_OK
+      style: secondary
+      start: 139
+      end: 143
+    - source: (original_key, F_OK)
+      style: secondary
+      start: 124
+      end: 144
+    - source: access(original_key, F_OK)
+      style: secondary
+      start: 118
+      end: 144
+    - source: |-
+        if ((access(original_key, F_OK) == 0) && (access(mirror_key, F_OK) == 0))
+        {
+            copy_file("/bin/cp %s %s", original_key, mirror_key);
+
+            // ruleid: file-access-before-action
+            unlink(original_key);
+        }
+      style: secondary
+      start: 113
+      end: 316
+    - source: |-
+        {
+            copy_file("/bin/cp %s %s", original_key, mirror_key);
+
+            // ruleid: file-access-before-action
+            unlink(original_key);
+        }
+      style: secondary
+      start: 187
+      end: 316
+    - source: unlink(original_key);
+      style: secondary
+      start: 293
+      end: 314
+    - source: unlink(original_key)
+      style: secondary
+      start: 293
+      end: 313
