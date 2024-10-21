@@ -1,0 +1,29 @@
+id: return-c-str-c
+valid:
+  - |
+    StringWrapper return_wrapped() {
+    std::string s = "foo";
+    return s.c_str();
+    }
+invalid:
+  - |
+    char *f(){
+    std::string s;
+    return s.c_str();
+    }
+    char *f() {
+    std::string s = std::string("foo");
+    return s.c_str();
+    }
+    char *f(std::string s) {
+    return s.c_str();
+    }
+    class Foo {
+    char *f() {
+    std::string s;
+    return s.c_str();
+    }
+    char *f() {
+    std::string s = std::string("foo");
+    return s.c_str();
+    }
