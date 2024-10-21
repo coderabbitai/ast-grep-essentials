@@ -1,0 +1,82 @@
+id: file-stat-before-action-c
+language: c
+severity: warning
+message: >-
+  A check is done with `stat` and then the file is used. There is no
+  guarantee that the status of the file has not changed since the call to
+  `stat` which may allow attackers to bypass permission checks.
+note: >-
+  [CWE-367]: Time-of-check Time-of-use (TOCTOU) Race Condition
+  [REFERENCES]
+      - https://wiki.sei.cmu.edu/confluence/display/c/FIO45-C.+Avoid+TOCTOU+race+conditions+while+accessing+files
+utils:
+  match_fopen_identifier:
+    kind: identifier
+    regex: unlink|fopen|freopen|remove|rename|access|open|stat|lstat|unlink|mkdir|rmdir|chdir|folly::readFile|folly::writeFile|folly::writeFileAtomic|folly::writeFileAtomicNoThrow|folly::File
+    all:
+      - inside:
+          kind: call_expression
+          inside:
+            stopBy: end
+            kind: expression_statement
+            inside:
+              kind: compound_statement
+              inside:
+                kind: if_statement
+                has:
+                  stopBy: end
+                  kind: call_expression
+                  all:
+                    - has:
+                        kind: identifier
+                        regex: ^(fstatat|_fstatat)$
+                    - has:
+                        stopBy: neighbor
+                        kind: argument_list
+                        all:
+                          - has:
+                              stopBy: neighbor
+                              kind: identifier
+                          - has:
+                              stopBy: neighbor
+                              kind: call_expression
+                              all:
+                                - has:
+                                    stopBy: neighbor
+                                    kind: field_expression
+                                - has:
+                                    stopBy: neighbor
+                                    kind: argument_list
+
+  match_fopen_identifier_2:
+    kind: identifier
+    regex: unlink|fopen|freopen|remove|rename|access|open|stat|lstat|unlink|mkdir|rmdir|chdir|folly::readFile|folly::writeFile|folly::writeFileAtomic|folly::writeFileAtomicNoThrow|folly::File
+    all:
+      - inside:
+          kind: call_expression
+          inside:
+            stopBy: end
+            kind: expression_statement
+            inside:
+              kind: compound_statement
+              inside:
+                kind: if_statement
+                has:
+                  stopBy: end
+                  kind: call_expression
+                  all:
+                    - has:
+                        stopBy: neighbor
+                        kind: identifier
+                        regex: "^stat|_stat|lstat|_lstat$"
+                    - has:
+                        stopBy: neighbor
+                        kind: argument_list
+                        has:
+                          stopBy: neighbor
+                          kind: call_expression
+
+rule:
+  any:
+    - matches: match_fopen_identifier
+    - matches: match_fopen_identifier_2
