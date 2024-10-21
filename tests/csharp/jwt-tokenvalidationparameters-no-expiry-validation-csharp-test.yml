@@ -1,0 +1,18 @@
+id: jwt-tokenvalidationparameters-no-expiry-validation-csharp
+valid:
+  - |
+    parameters.ValidateLifetime = true;
+    parameters.RequireExpirationTime = true
+invalid:
+  - |
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+    ValidateLifetime = false,
+    RequireSignedTokens = true,
+    ValidateIssuer = false,
+    ValidateAudience = false,
+    RequireExpirationTime = false
+    };
+    TokenValidationParameters parameters = new TokenValidationParameters();
+    parameters.RequireExpirationTime = false;
+    parameters.ValidateLifetime = false;
