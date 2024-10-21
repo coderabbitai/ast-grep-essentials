@@ -1,0 +1,53 @@
+id: std-vector-invalidation-c
+language: c
+severity: warning
+message: >-
+  Modifying an `std::vector` while iterating over it could cause the
+  container to reallocate, triggering memory corruption.
+note: >-
+  [CWE-416: Use After Free.
+  [REFERENCES]
+      - https://wiki.sei.cmu.edu/confluence/display/c/MEM30-C.+Do+not+access+freed+memory
+      - https://wiki.sei.cmu.edu/confluence/display/cplusplus/EXP54-CPP.+Do+not+access+an+object+outside+of+its+lifetime
+rule:
+  kind: call_expression
+  all:
+    - pattern: $CONTAINER.$R($$$)
+      inside:
+        stopBy: end
+        kind: for_statement
+        any:
+          - pattern: for(std::vector<$TY>::$IT_TYPE $IT = $CONTAINER.begin(); $IT!= $CONTAINER.end(); ++$IT){$$$}
+          - pattern: for(std::vector<$TY>::$IT_TYPE $IT = $CONTAINER.begin(); $IT!= $CONTAINER.end(); $IT++){$$$}
+          - pattern:
+              for(std::vector<$TY>::$IT_TYPE $IT = $CONTAINER.rbegin(); $IT!= $CONTAINER.rend(); ++$IT)
+              {$$$}
+          - pattern:
+              for(std::vector<$TY>::$IT_TYPE $IT = $CONTAINER.rbegin(); $IT!= $CONTAINER.rend(); $IT++)
+              {$$$}
+          - pattern: for(std::vector<$TY>::$IT_TYPE $IT = $CONTAINER.begin(),$IT_END = $CONTAINER.end(); $IT !=$IT_END; ++$IT){$$$}
+          - pattern: for(std::vector<$TY>::$IT_TYPE $IT = $CONTAINER.begin(),
+              $IT_END = $CONTAINER.end(); $IT != $IT_END; $IT++){$$$}
+          - pattern: for(std::vector<$TY>::$IT_TYPE $IT = $CONTAINER.rbegin(),
+              $IT_END = $CONTAINER.rend(); $IT != $IT_END; ++$IT){$$$}
+          - pattern: for(std::vector<$TY>::$IT_TYPE $IT = $CONTAINER.rbegin(),
+              $IT_END = $CONTAINER.rend(); $IT != $IT_END; $IT++){$$$}
+    - inside:
+        not:
+          kind: assignment_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                pattern: $IT
+            - has:
+                stopBy: neighbor
+                regex: "^=$"
+            - has:
+                stopBy: neighbor
+                kind: call_expression
+                pattern: $CONTAINER.$R($IT)
+
+constraints:
+  R:
+    regex: "^erase|assign|clear|insert|resize|push_back|reserve|shrink_to_fit|resize|pop_back$"
