@@ -1,0 +1,19 @@
+id: gorilla-csrf-hardcoded-auth-key-go
+valid:
+  - |
+    import (
+    "github.com/gorilla/csrf"
+    )
+    func main() {
+     http.ListenAndServe(":8000",
+       csrf.Protect([]byte(os.Getenv("CSRF_AUTH_KEY")))(r))
+       }
+invalid:
+  - |
+    import (
+    "github.com/gorilla/csrf"
+    )
+    func main() {
+     http.ListenAndServe(":8000",
+       csrf.Protect([]byte("32-byte-long-auth-key"))(r))
+       }
