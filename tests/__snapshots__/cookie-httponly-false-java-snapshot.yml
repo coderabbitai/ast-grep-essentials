@@ -1,0 +1,16 @@
+id: cookie-httponly-false-java
+snapshots:
+  ? |2
+
+    @RequestMapping(value = "/cookie4", method = "GET")
+    public void explicitDisable(@RequestParam String value, HttpServletResponse response) {
+        Cookie cookie = new Cookie("cookie", value);
+        cookie.setSecure(false);
+        cookie.setHttpOnly(false);
+        response.addCookie(cookie);
+    }
+  : labels:
+    - source: cookie.setHttpOnly(false);
+      style: primary
+      start: 223
+      end: 249
