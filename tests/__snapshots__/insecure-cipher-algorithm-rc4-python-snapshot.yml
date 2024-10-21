@@ -1,0 +1,64 @@
+id: insecure-cipher-algorithm-rc4-python
+snapshots:
+  ? "from Cryptodome.Cipher import ARC4 as pycryptodomex_arc4\nfrom Crypto.Cipher import ARC4 as pycrypto_arc4\nkey = b'Very long and confidential key'\nnonce = Random.new().read(16)\ntempkey = SHA.new(key+nonce).digest()\ncipher = pycrypto_arc4.new(tempkey)\nmsg = nonce + cipher.encrypt(b'Open the pod bay doors, HAL') \ncipher = pycryptodomex_arc4.new(tempkey)\nmsg = nonce + cipher.encrypt(b'Open the pod bay doors, HAL')\n"
+  : labels:
+    - source: pycrypto_arc4.new(tempkey)
+      style: primary
+      start: 222
+      end: 248
+    - source: pycrypto_arc4
+      style: secondary
+      start: 222
+      end: 235
+    - source: new
+      style: secondary
+      start: 236
+      end: 239
+    - source: pycrypto_arc4.new
+      style: secondary
+      start: 222
+      end: 239
+    - source: tempkey
+      style: secondary
+      start: 240
+      end: 247
+    - source: (tempkey)
+      style: secondary
+      start: 239
+      end: 248
+    - source: Crypto
+      style: secondary
+      start: 62
+      end: 68
+    - source: Cipher
+      style: secondary
+      start: 69
+      end: 75
+    - source: Crypto.Cipher
+      style: secondary
+      start: 62
+      end: 75
+    - source: ARC4
+      style: secondary
+      start: 83
+      end: 87
+    - source: ARC4
+      style: secondary
+      start: 83
+      end: 87
+    - source: pycrypto_arc4
+      style: secondary
+      start: 91
+      end: 104
+    - source: ARC4 as pycrypto_arc4
+      style: secondary
+      start: 83
+      end: 104
+    - source: from Crypto.Cipher import ARC4 as pycrypto_arc4
+      style: secondary
+      start: 57
+      end: 104
+    - source: cipher = pycrypto_arc4.new(tempkey)
+      style: secondary
+      start: 213
+      end: 248
