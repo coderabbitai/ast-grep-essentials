@@ -1,0 +1,28 @@
+id: insecure-hash-cpp
+snapshots:
+  ? |
+    MD2_Init();
+    SHA1_Init();
+    const char *md4 = "MD4";
+    EVP_MD_fetch(NULL, md4, NULL);
+    EVP_get_digestbyname(md4);
+    const char *sha1 = "SHA1";
+    EVP_MD_fetch(NULL, sha1, NULL);
+    EVP_get_digestbyname(sha1);
+  : labels:
+    - source: MD2_Init();
+      style: primary
+      start: 0
+      end: 11
+    - source: MD2_Init
+      style: secondary
+      start: 0
+      end: 8
+    - source: ()
+      style: secondary
+      start: 8
+      end: 10
+    - source: MD2_Init()
+      style: secondary
+      start: 0
+      end: 10
