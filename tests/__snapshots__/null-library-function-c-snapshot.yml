@@ -1,0 +1,20 @@
+id: null-library-function-c
+snapshots:
+  ? "gid_t f() {\nreturn getgrent()->gr_gid;\n}\nvoid f() {\nchar buf[128];\nstrcpy(buf, getenv(\"FOO\"));\n}\n{\nfwrite(\"foo\", 3, 1, fopen(\"foo.txt\", \"w\"));\n}\n{\nFILE *fptr;\nfwrite(\"foo\", 3, 1, fptr = fopen(\"foo.txt\", \"w\"));\n}\nvoid test_getc() {\nint c = getc(fopen(file_name, \"r\")); \nint c = getc(fptr = fopen(file_name, \"r\"));\n}\n"
+  : labels:
+    - source: return getgrent()->gr_gid;
+      style: primary
+      start: 12
+      end: 38
+    - source: getgrent
+      style: secondary
+      start: 19
+      end: 27
+    - source: getgrent()
+      style: secondary
+      start: 19
+      end: 29
+    - source: getgrent()->gr_gid
+      style: secondary
+      start: 19
+      end: 37

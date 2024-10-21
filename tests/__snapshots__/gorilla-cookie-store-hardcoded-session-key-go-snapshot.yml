@@ -1,0 +1,44 @@
+id: gorilla-cookie-store-hardcoded-session-key-go
+snapshots:
+  ? "import (\n\"github.com/gorilla/sessions\"\n)\n \tvar store = sessions.NewCookieStore([]byte(\"hardcoded-session-key-here\"))\n   var store = sessions.NewCookieStore(\n   []byte(\"new-authentication-key\"),\n   []byte(\"new-encryption-key\"),\n   []byte(\"old-authentication-key\"),\n   []byte(\"old-encryption-key\"),\n   )\n"
+  : labels:
+    - source: sessions.NewCookieStore([]byte("hardcoded-session-key-here"))
+      style: primary
+      start: 55
+      end: 116
+    - source: sessions
+      style: secondary
+      start: 55
+      end: 63
+    - source: NewCookieStore
+      style: secondary
+      start: 64
+      end: 78
+    - source: sessions.NewCookieStore
+      style: secondary
+      start: 55
+      end: 78
+    - source: byte
+      style: secondary
+      start: 81
+      end: 85
+    - source: '[]byte'
+      style: secondary
+      start: 79
+      end: 85
+    - source: '[]byte'
+      style: secondary
+      start: 79
+      end: 85
+    - source: '[]byte("hardcoded-session-key-here")'
+      style: secondary
+      start: 79
+      end: 115
+    - source: ([]byte("hardcoded-session-key-here"))
+      style: secondary
+      start: 78
+      end: 116
+    - source: sessions.NewCookieStore([]byte("hardcoded-session-key-here"))
+      style: secondary
+      start: 55
+      end: 116
