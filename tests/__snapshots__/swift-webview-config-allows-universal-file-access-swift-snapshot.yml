@@ -1,0 +1,72 @@
+id: swift-webview-config-allows-universal-file-access-swift
+snapshots:
+  ? |
+    let w = WKWebView(frame: .zero, configuration: config)
+    w.setValue(true, forKey: "allowUniversalAccessFromFileURLs")
+    let config = w.configuration
+    config.setValue(true, forKey: "allowUniversalAccessFromFileURLs")
+  : labels:
+    - source: 'w.setValue(true, forKey: "allowUniversalAccessFromFileURLs")'
+      style: primary
+      start: 55
+      end: 115
+    - source: w
+      style: secondary
+      start: 55
+      end: 56
+    - source: setValue
+      style: secondary
+      start: 57
+      end: 65
+    - source: .setValue
+      style: secondary
+      start: 56
+      end: 65
+    - source: w.setValue
+      style: secondary
+      start: 55
+      end: 65
+    - source: 'true'
+      style: secondary
+      start: 66
+      end: 70
+    - source: 'true'
+      style: secondary
+      start: 66
+      end: 70
+    - source: forKey
+      style: secondary
+      start: 72
+      end: 78
+    - source: allowUniversalAccessFromFileURLs
+      style: secondary
+      start: 81
+      end: 113
+    - source: '"allowUniversalAccessFromFileURLs"'
+      style: secondary
+      start: 80
+      end: 114
+    - source: 'forKey: "allowUniversalAccessFromFileURLs"'
+      style: secondary
+      start: 72
+      end: 114
+    - source: '(true, forKey: "allowUniversalAccessFromFileURLs")'
+      style: secondary
+      start: 65
+      end: 115
+    - source: w
+      style: secondary
+      start: 4
+      end: 5
+    - source: w
+      style: secondary
+      start: 4
+      end: 5
+    - source: 'WKWebView(frame: .zero, configuration: config)'
+      style: secondary
+      start: 8
+      end: 54
+    - source: 'let w = WKWebView(frame: .zero, configuration: config)'
+      style: secondary
+      start: 0
+      end: 54

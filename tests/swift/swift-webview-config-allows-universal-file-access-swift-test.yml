@@ -1,0 +1,11 @@
+id: swift-webview-config-allows-universal-file-access-swift
+valid:
+  - |
+    let w2 = WKWebView(frame: .zero, configuration: config)
+    w2.configuration.setValue(false, forKey: "allowUniversalAccessFromFileURLs")
+invalid:
+  - |
+    let w = WKWebView(frame: .zero, configuration: config)
+    w.setValue(true, forKey: "allowUniversalAccessFromFileURLs")
+    let config = w.configuration
+    config.setValue(true, forKey: "allowUniversalAccessFromFileURLs")
