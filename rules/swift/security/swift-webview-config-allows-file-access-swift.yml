@@ -1,0 +1,48 @@
+id: swift-webview-config-allows-file-access-swift
+language: swift
+severity: warning
+message: >-
+  Webviews were observed that do not disable access to application files.
+  If the WebView does not require loading content from the local filesystem
+  of the application, this setting should be disabled.
+note: >-
+  [CWE-272]: Least Privilege Violation
+  [REFERENCES]
+       https://mas.owasp.org/MASVS/controls/MASVS-PLATFORM-2/
+utils:
+  match_call_expression:
+    kind: call_expression
+    has:
+      stopBy: end
+      kind: call_suffix
+      has:
+        stopBy: end
+        kind: value_arguments
+        all:
+          - has:
+              stopBy: end
+              kind: value_argument
+              has:
+                stopBy: end
+                kind: boolean_literal
+                field: value
+                regex: "^true$"
+          - has:
+              stopBy: end
+              kind: value_argument
+              all:
+                - has:
+                    stopBy: end
+                    kind: simple_identifier
+                    regex: "^forKey$"
+                - has:
+                    stopBy: end
+                    kind: line_string_literal
+                    has:
+                      stopBy: end
+                      kind: line_str_text
+                      regex: "^allowFileAccessFromFileURLs$"
+
+rule:
+  any:
+    - matches: match_call_expression
