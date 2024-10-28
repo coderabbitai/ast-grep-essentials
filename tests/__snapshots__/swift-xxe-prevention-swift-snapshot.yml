@@ -1,0 +1,153 @@
+id: swift-xxe-prevention-swift
+snapshots:
+  ? |
+    let parser = XMLParser(data: xmlData)
+    parser.shouldResolveExternalEntities = true
+    parser.delegate = self
+    parser.parse()
+  : labels:
+    - source: parser.shouldResolveExternalEntities = true
+      style: primary
+      start: 38
+      end: 81
+    - source: parser
+      style: secondary
+      start: 38
+      end: 44
+    - source: shouldResolveExternalEntities
+      style: secondary
+      start: 45
+      end: 74
+    - source: .shouldResolveExternalEntities
+      style: secondary
+      start: 44
+      end: 74
+    - source: parser.shouldResolveExternalEntities
+      style: secondary
+      start: 38
+      end: 74
+    - source: =
+      style: secondary
+      start: 75
+      end: 76
+    - source: 'true'
+      style: secondary
+      start: 77
+      end: 81
+    - source: parser
+      style: secondary
+      start: 4
+      end: 10
+    - source: parser
+      style: secondary
+      start: 4
+      end: 10
+    - source: 'XMLParser(data: xmlData)'
+      style: secondary
+      start: 13
+      end: 37
+    - source: 'let parser = XMLParser(data: xmlData)'
+      style: secondary
+      start: 0
+      end: 37
+  ? |
+    var parser3 = XMLParser(contentsOfURL: url)
+    parser3.delegate = self
+    parser3.shouldResolveExternalEntities = true
+    parser3.parse()
+  : labels:
+    - source: parser3.shouldResolveExternalEntities = true
+      style: primary
+      start: 68
+      end: 112
+    - source: parser3
+      style: secondary
+      start: 68
+      end: 75
+    - source: shouldResolveExternalEntities
+      style: secondary
+      start: 76
+      end: 105
+    - source: .shouldResolveExternalEntities
+      style: secondary
+      start: 75
+      end: 105
+    - source: parser3.shouldResolveExternalEntities
+      style: secondary
+      start: 68
+      end: 105
+    - source: =
+      style: secondary
+      start: 106
+      end: 107
+    - source: 'true'
+      style: secondary
+      start: 108
+      end: 112
+    - source: parser3
+      style: secondary
+      start: 4
+      end: 11
+    - source: parser3
+      style: secondary
+      start: 4
+      end: 11
+    - source: 'XMLParser(contentsOfURL: url)'
+      style: secondary
+      start: 14
+      end: 43
+    - source: 'var parser3 = XMLParser(contentsOfURL: url)'
+      style: secondary
+      start: 0
+      end: 43
+  ? |
+    var parser6 = XMLParser(contentsOfURL: url)
+    parser6.delegate = self
+    parser6.shouldResolveExternalEntities = false
+    parser6.shouldResolveExternalEntities = true
+    parser6.parse()
+  : labels:
+    - source: parser6.shouldResolveExternalEntities = true
+      style: primary
+      start: 114
+      end: 158
+    - source: parser6
+      style: secondary
+      start: 114
+      end: 121
+    - source: shouldResolveExternalEntities
+      style: secondary
+      start: 122
+      end: 151
+    - source: .shouldResolveExternalEntities
+      style: secondary
+      start: 121
+      end: 151
+    - source: parser6.shouldResolveExternalEntities
+      style: secondary
+      start: 114
+      end: 151
+    - source: =
+      style: secondary
+      start: 152
+      end: 153
+    - source: 'true'
+      style: secondary
+      start: 154
+      end: 158
+    - source: parser6
+      style: secondary
+      start: 4
+      end: 11
+    - source: parser6
+      style: secondary
+      start: 4
+      end: 11
+    - source: 'XMLParser(contentsOfURL: url)'
+      style: secondary
+      start: 14
+      end: 43
+    - source: 'var parser6 = XMLParser(contentsOfURL: url)'
+      style: secondary
+      start: 0
+      end: 43

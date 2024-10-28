@@ -1,0 +1,114 @@
+id: swift-xxe-prevention-swift
+severity: warning
+language: swift
+message: >-
+  Usage of Apple's native XML Parser was observed where the parser is
+  explicitly instructed to resolve external entities. This can lead to XXE
+  attacks if untrusted input is parsed. Consider disabling this
+  functionality where feasible.
+note: >-
+  [CWE-611] Improper Restriction of XML External Entity Reference.
+  [REFERENCES]
+      - https://developer.apple.com/library/archive/documentation/Security/Conceptual/SecureCodingGuide/Articles/ValidatingInput.html
+      - https://mas.owasp.org/MASVS/controls/MASVS-CODE-4/
+      - https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing
+utils:
+  match_pattern_upgradeKnownHostsToHTTPS:
+    kind: assignment
+    all:
+      - has:
+          stopBy: neighbor
+          kind: directly_assignable_expression
+          all:
+            - has:
+                stopBy: end
+                kind: simple_identifier
+                pattern: $F
+            - has:
+                stopBy: end
+                kind: navigation_suffix
+                has:
+                  stopBy: neighbor
+                  kind: simple_identifier
+                  regex: "^shouldResolveExternalEntities$"
+      - has:
+          stopBy: neighbor
+          regex: "^=$"
+      - has:
+          stopBy: neighbor
+          kind: boolean_literal
+          regex: "^true$"
+      - follows:
+          stopBy: end
+          kind: property_declaration
+          all:
+            - has:
+                stopBy: end
+                kind: pattern
+                has:
+                  stopBy: neighbor
+                  kind: simple_identifier
+                  pattern: $F
+            - has:
+                stopBy: neighbor
+                kind: call_expression
+                pattern: XMLParser($$$)
+      - not:
+          follows:
+            stopBy: end
+            kind: assignment
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: directly_assignable_expression
+                  all:
+                    - has:
+                        stopBy: end
+                        kind: simple_identifier
+                        pattern: $F
+                    - has:
+                        stopBy: end
+                        kind: navigation_suffix
+                        has:
+                          stopBy: neighbor
+                          kind: simple_identifier
+                          regex: "^shouldResolveExternalEntities$"
+              - has:
+                  stopBy: neighbor
+                  regex: "^=$"
+              - has:
+                  stopBy: neighbor
+                  kind: boolean_literal
+                  regex: "^true$"
+      - not:
+          precedes:
+            stopBy: end
+            kind: assignment
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: directly_assignable_expression
+                  all:
+                    - has:
+                        stopBy: end
+                        kind: simple_identifier
+                        pattern: $F
+                    - has:
+                        stopBy: end
+                        kind: navigation_suffix
+                        has:
+                          stopBy: neighbor
+                          kind: simple_identifier
+                          regex: "^shouldResolveExternalEntities$"
+              - has:
+                  stopBy: neighbor
+                  regex: "^=$"
+              - has:
+                  stopBy: neighbor
+                  any:
+                    - has:
+                        stopBy: neighbor
+                        pattern: $$$
+rule:
+  kind: assignment
+  matches: match_pattern_upgradeKnownHostsToHTTPS
