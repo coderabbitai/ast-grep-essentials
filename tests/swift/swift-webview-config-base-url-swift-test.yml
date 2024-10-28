@@ -1,0 +1,12 @@
+id: swift-webview-config-base-url-swift
+valid:
+  - |
+    let webview2 = WKWebView(...)
+    webview2.loadHTMLString(someHtmlString, baseURL: nil)
+invalid:
+  - |
+    let webview = UIWebView(...)
+    webview.loadHTMLString(someHtmlString, baseURL: nil)
+  - |
+    let webview3 = UIWebView(...)
+    webview3.load(data, mimetype: "application/json", textEncodingName: "UTF8", baseURL: nil)

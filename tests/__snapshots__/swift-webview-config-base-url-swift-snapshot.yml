@@ -1,0 +1,114 @@
+id: swift-webview-config-base-url-swift
+snapshots:
+  ? |
+    let webview = UIWebView(...)
+    webview.loadHTMLString(someHtmlString, baseURL: nil)
+  : labels:
+    - source: 'webview.loadHTMLString(someHtmlString, baseURL: nil)'
+      style: primary
+      start: 29
+      end: 81
+    - source: webview
+      style: secondary
+      start: 29
+      end: 36
+    - source: loadHTMLString
+      style: secondary
+      start: 37
+      end: 51
+    - source: .loadHTMLString
+      style: secondary
+      start: 36
+      end: 51
+    - source: webview.loadHTMLString
+      style: secondary
+      start: 29
+      end: 51
+    - source: baseURL
+      style: secondary
+      start: 68
+      end: 75
+    - source: nil
+      style: secondary
+      start: 77
+      end: 80
+    - source: 'baseURL: nil'
+      style: secondary
+      start: 68
+      end: 80
+    - source: '(someHtmlString, baseURL: nil)'
+      style: secondary
+      start: 51
+      end: 81
+    - source: webview
+      style: secondary
+      start: 4
+      end: 11
+    - source: webview
+      style: secondary
+      start: 4
+      end: 11
+    - source: UIWebView(...)
+      style: secondary
+      start: 14
+      end: 28
+    - source: let webview = UIWebView(...)
+      style: secondary
+      start: 0
+      end: 28
+  ? |
+    let webview3 = UIWebView(...)
+    webview3.load(data, mimetype: "application/json", textEncodingName: "UTF8", baseURL: nil)
+  : labels:
+    - source: 'webview3.load(data, mimetype: "application/json", textEncodingName: "UTF8", baseURL: nil)'
+      style: primary
+      start: 30
+      end: 119
+    - source: webview3
+      style: secondary
+      start: 30
+      end: 38
+    - source: load
+      style: secondary
+      start: 39
+      end: 43
+    - source: .load
+      style: secondary
+      start: 38
+      end: 43
+    - source: webview3.load
+      style: secondary
+      start: 30
+      end: 43
+    - source: baseURL
+      style: secondary
+      start: 106
+      end: 113
+    - source: nil
+      style: secondary
+      start: 115
+      end: 118
+    - source: 'baseURL: nil'
+      style: secondary
+      start: 106
+      end: 118
+    - source: '(data, mimetype: "application/json", textEncodingName: "UTF8", baseURL: nil)'
+      style: secondary
+      start: 43
+      end: 119
+    - source: webview3
+      style: secondary
+      start: 4
+      end: 12
+    - source: webview3
+      style: secondary
+      start: 4
+      end: 12
+    - source: UIWebView(...)
+      style: secondary
+      start: 15
+      end: 29
+    - source: let webview3 = UIWebView(...)
+      style: secondary
+      start: 0
+      end: 29
