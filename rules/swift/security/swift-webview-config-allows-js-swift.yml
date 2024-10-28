@@ -1,0 +1,110 @@
+id: swift-webview-config-allows-js-swift
+severity: warning
+language: swift
+message: >-
+  Webviews were observed that do not have JavaScript disabled. Consider
+  disabling JavaScript wherever the functionality is not required, following
+  the principle of least privelege.
+note: >-
+  [CWE-272] Least Privilege Violation.
+  [REFERENCES]
+      - https://mas.owasp.org/MASVS/controls/MASVS-PLATFORM-2/
+utils:
+  match_pattern_upgradeKnownHostsToHTTPS:
+    kind: assignment
+    all:
+      - has:
+          stopBy: neighbor
+          kind: directly_assignable_expression
+          all:
+            - has:
+                stopBy: end
+                kind: simple_identifier
+                pattern: $F
+            - has:
+                stopBy: end
+                kind: navigation_suffix
+                has:
+                  stopBy: neighbor
+                  kind: simple_identifier
+                  regex: "^javaScriptEnabled|allowsContentJavaScript$"
+      - has:
+          stopBy: neighbor
+          regex: "^=$"
+      - has:
+          stopBy: neighbor
+          kind: boolean_literal
+          regex: "^true$"
+      - follows:
+          stopBy: end
+          kind: property_declaration
+          all:
+            - has:
+                stopBy: end
+                kind: pattern
+                has:
+                  stopBy: neighbor
+                  kind: simple_identifier
+                  pattern: $F
+            - has:
+                stopBy: neighbor
+                kind: call_expression
+                any:
+                  - pattern: WKWebpagePreferences()
+                  - pattern: WKPreferences()
+      - not:
+          follows:
+            stopBy: end
+            kind: assignment
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: directly_assignable_expression
+                  all:
+                    - has:
+                        stopBy: end
+                        kind: simple_identifier
+                        pattern: $F
+                    - has:
+                        stopBy: end
+                        kind: navigation_suffix
+                        has:
+                          stopBy: neighbor
+                          kind: simple_identifier
+                          regex: "^(javaScriptEnabled|allowsContentJavaScript)$"
+              - has:
+                  stopBy: neighbor
+                  regex: "^=$"
+              - has:
+                  stopBy: neighbor
+                  kind: boolean_literal
+                  regex: "^true$"
+      - not:
+          precedes:
+            stopBy: end
+            kind: assignment
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: directly_assignable_expression
+                  all:
+                    - has:
+                        stopBy: end
+                        kind: simple_identifier
+                        pattern: $F
+                    - has:
+                        stopBy: end
+                        kind: navigation_suffix
+                        has:
+                          stopBy: neighbor
+                          kind: simple_identifier
+                          regex: "^(javaScriptEnabled|allowsContentJavaScript)$"
+              - has:
+                  stopBy: neighbor
+                  regex: "^=$"
+              - has:
+                  stopBy: neighbor
+                  pattern: $$$
+rule:
+  kind: assignment
+  matches: match_pattern_upgradeKnownHostsToHTTPS
