@@ -1,0 +1,10 @@
+id: swift-webview-config-allows-js-open-windows-swift
+valid:
+  - |
+    let prefs2 = WKPreferences()
+    prefs2.JavaScriptCanOpenWindowsAutomatically  = true
+    prefs2.JavaScriptCanOpenWindowsAutomatically  = false
+invalid:
+  - |
+    let prefs = WKPreferences()
+    prefs.JavaScriptCanOpenWindowsAutomatically  = true
