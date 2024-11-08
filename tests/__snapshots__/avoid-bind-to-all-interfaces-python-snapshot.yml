@@ -1,0 +1,62 @@
+id: avoid-bind-to-all-interfaces-python
+snapshots:
+  ? |
+    s = socket.socket(doesnt, matter)
+    s.bind(('',))
+    s = socket.socket(doesnt, matter)
+    s.bind(('::', 1337))
+    s = socket.socket(doesnt, matter)
+    s.bind(('0.0.0.0', 1337))
+  : labels:
+    - source: s.bind(('',))
+      style: primary
+      start: 34
+      end: 47
+    - source: s
+      style: secondary
+      start: 34
+      end: 35
+    - source: bind
+      style: secondary
+      start: 36
+      end: 40
+    - source: s.bind
+      style: secondary
+      start: 34
+      end: 40
+    - source: ''''''
+      style: secondary
+      start: 42
+      end: 44
+    - source: ('',)
+      style: secondary
+      start: 41
+      end: 46
+    - source: (('',))
+      style: secondary
+      start: 40
+      end: 47
+    - source: s.bind(('',))
+      style: secondary
+      start: 34
+      end: 47
+    - source: socket
+      style: secondary
+      start: 4
+      end: 10
+    - source: socket
+      style: secondary
+      start: 4
+      end: 10
+    - source: socket.socket
+      style: secondary
+      start: 4
+      end: 17
+    - source: socket.socket(doesnt, matter)
+      style: secondary
+      start: 4
+      end: 33
+    - source: s = socket.socket(doesnt, matter)
+      style: secondary
+      start: 0
+      end: 33
