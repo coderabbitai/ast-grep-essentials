@@ -12,6 +12,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@ast-grep/cli": "^0.26.0"
+    "@ast-grep/cli": "^0.28.1"
   }
 }
