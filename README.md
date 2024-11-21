@@ -1,5 +1,7 @@
 # AST-GREP Essentials
 
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.coderabbit.ai%2Freviews%3Fprovider%3Dgithub%26org%3Dcoderabbitai%26repo%3Dast-grep-essentials&query=%24.reviews&suffix=%20Reviews&style=flat&label=CodeRabbit&labelColor=%23FF570A&color=%2325BAB1&cacheSeconds=3600&link=https%3A%2F%2Fapp.coderabbit.ai%2Flogin)
+
 ## Overview
 
 `ast-grep-essentials` is a community-led collection of
