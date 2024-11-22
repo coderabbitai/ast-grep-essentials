@@ -1,6 +1,6 @@
 # AST-GREP Essentials
 
-[![CodeRabbit Reviews](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.coderabbit.ai%2Fstats%2Fgithub%2Fcoderabbitai%2Fast-grep-essentials&query=%24.reviews&suffix=%20Reviews&style=for-the-badge&label=CodeRabbit&labelColor=%23FF570A&color=%2325BAB1&cacheSeconds=3600)](https://app.coderabbit.ai/login)
+[![CodeRabbit Reviews](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.coderabbit.ai%2Fstats%2Fgithub%2Fcoderabbitai%2Fast-grep-essentials&query=%24.reviews&suffix=%20Reviews&style=for-the-badge&label=CodeRabbit&labelColor=%23FF570A&color=%2325BAB1)](https://app.coderabbit.ai/login)
 
 ## Overview
 
