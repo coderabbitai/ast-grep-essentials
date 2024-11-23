@@ -1,0 +1,24 @@
+id: swift-xxe-prevention-swift
+valid:
+  - |
+    let parser2 = XMLParser(data: xmlData)
+    parser2.shouldResolveExternalEntities = false
+    parser2.delegate = self
+    parser2.parse()
+invalid:
+  - |
+    let parser = XMLParser(data: xmlData)
+    parser.shouldResolveExternalEntities = true
+    parser.delegate = self
+    parser.parse()
+  - |
+    var parser3 = XMLParser(contentsOfURL: url)
+    parser3.delegate = self
+    parser3.shouldResolveExternalEntities = true
+    parser3.parse()
+  - |
+    var parser6 = XMLParser(contentsOfURL: url)
+    parser6.delegate = self
+    parser6.shouldResolveExternalEntities = false
+    parser6.shouldResolveExternalEntities = true
+    parser6.parse()
