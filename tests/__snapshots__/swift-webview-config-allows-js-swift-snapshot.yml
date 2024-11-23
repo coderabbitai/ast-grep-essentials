@@ -1,0 +1,101 @@
+id: swift-webview-config-allows-js-swift
+snapshots:
+  ? |
+    let preferences = WKPreferences()
+    preferences.javaScriptEnabled = true
+    preferences.javaScriptCanOpenWindowsAutomatically = false
+  : labels:
+    - source: preferences.javaScriptEnabled = true
+      style: primary
+      start: 34
+      end: 70
+    - source: preferences
+      style: secondary
+      start: 34
+      end: 45
+    - source: javaScriptEnabled
+      style: secondary
+      start: 46
+      end: 63
+    - source: .javaScriptEnabled
+      style: secondary
+      start: 45
+      end: 63
+    - source: preferences.javaScriptEnabled
+      style: secondary
+      start: 34
+      end: 63
+    - source: =
+      style: secondary
+      start: 64
+      end: 65
+    - source: 'true'
+      style: secondary
+      start: 66
+      end: 70
+    - source: preferences
+      style: secondary
+      start: 4
+      end: 15
+    - source: preferences
+      style: secondary
+      start: 4
+      end: 15
+    - source: WKPreferences()
+      style: secondary
+      start: 18
+      end: 33
+    - source: let preferences = WKPreferences()
+      style: secondary
+      start: 0
+      end: 33
+  ? |
+    let prefs = WKWebpagePreferences()
+    prefs.allowsContentJavaScript = true
+    let config = WKWebViewConfiguration()
+    config.defaultWebpagePreferences = prefs
+  : labels:
+    - source: prefs.allowsContentJavaScript = true
+      style: primary
+      start: 35
+      end: 71
+    - source: prefs
+      style: secondary
+      start: 35
+      end: 40
+    - source: allowsContentJavaScript
+      style: secondary
+      start: 41
+      end: 64
+    - source: .allowsContentJavaScript
+      style: secondary
+      start: 40
+      end: 64
+    - source: prefs.allowsContentJavaScript
+      style: secondary
+      start: 35
+      end: 64
+    - source: =
+      style: secondary
+      start: 65
+      end: 66
+    - source: 'true'
+      style: secondary
+      start: 67
+      end: 71
+    - source: prefs
+      style: secondary
+      start: 4
+      end: 9
+    - source: prefs
+      style: secondary
+      start: 4
+      end: 9
+    - source: WKWebpagePreferences()
+      style: secondary
+      start: 12
+      end: 34
+    - source: let prefs = WKWebpagePreferences()
+      style: secondary
+      start: 0
+      end: 34

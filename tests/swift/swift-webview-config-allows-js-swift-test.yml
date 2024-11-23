@@ -1,0 +1,18 @@
+id: swift-webview-config-allows-js-swift
+valid:
+  - |
+    let prefs2 = WKWebpagePreferences()
+    prefs2.allowsContentJavaScript = true
+    prefs2.allowsContentJavaScript = false
+    let config = WKWebViewConfiguration()
+    config.defaultWebpagePreferences = prefs2
+invalid:
+  - |
+    let prefs = WKWebpagePreferences()
+    prefs.allowsContentJavaScript = true
+    let config = WKWebViewConfiguration()
+    config.defaultWebpagePreferences = prefs
+  - |
+    let preferences = WKPreferences()
+    preferences.javaScriptEnabled = true
+    preferences.javaScriptCanOpenWindowsAutomatically = false
