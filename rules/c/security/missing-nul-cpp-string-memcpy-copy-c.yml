@@ -1,0 +1,163 @@
+id: missing-nul-cpp-string-memcpy-copy-c
+language: c
+severity: warning
+message: >-
+  The number of bytes copied from `$STR` does not include the NUL
+  terminator. This can lead to an out-of-bounds read and information
+  disclosure. One extra byte should be added to the length to ensure that
+  the NUL terminator is copied.
+note: >-
+  [CWE-125]: Out-of-bounds Read
+  [REFERENCES]
+      - https://wiki.sei.cmu.edu/confluence/display/c/STR31-C.+Guarantee+that+storage+for+strings+has+sufficient+space+for+character+data+and+the+null+terminator
+utils:
+  match_identifier:
+    kind: identifier
+    regex: "^memcpy$"
+    inside:
+      stopBy: end
+      kind: call_expression
+      has:
+        stopBy: end
+        kind: argument_list
+        has:
+          stopBy: end
+          kind: identifier
+          regex: "^to$"
+        all:
+          - has:
+              stopBy: end
+              kind: call_expression
+              has:
+                stopBy: end
+                kind: field_expression
+                all:
+                  - has:
+                      stopBy: end
+                      kind: identifier
+                      regex: "^from$"
+                  - has:
+                      stopBy: end
+                      kind: field_identifier
+                      regex: "^c_str$"
+          - has:
+              kind: call_expression
+              all:
+                - has:
+                    stopBy: end
+                    kind: identifier
+                    regex: "^strlen$"
+                - has:
+                    stopBy: end
+                    kind: argument_list
+                    has:
+                      stopBy: end
+                      kind: call_expression
+                      all:
+                        - has:
+                            stopBy: end
+                            kind: field_expression
+                            has:
+                              stopBy: end
+                              kind: identifier
+                              regex: "^from$"
+                        - has:
+                            stopBy: end
+                            kind: field_identifier
+                            regex: "^c_str$"
+
+  match_identifier_from_size:
+    kind: identifier
+    regex: "^memcpy$"
+    inside:
+      stopBy: end
+      kind: call_expression
+      inside:
+        stopBy: end
+        kind: expression_statement
+        has:
+          stopBy: end
+          kind: argument_list
+          has:
+            stopBy: end
+            kind: identifier
+            regex: "^to$"
+          all:
+            - has:
+                stopBy: end
+                kind: call_expression
+                all:
+                  - has:
+                      stopBy: end
+                      kind: field_expression
+                      has:
+                        stopBy: end
+                        kind: identifier
+                        regex: "^from$"
+                  - has:
+                      stopBy: end
+                      kind: field_identifier
+                      regex: "^c_str$"
+            - has:
+                stopBy: end
+                kind: call_expression
+                all:
+                  - has:
+                      stopBy: end
+                      kind: field_expression
+                      all:
+                        - has:
+                            stopBy: end
+                            kind: identifier
+                            regex: "^from$"
+                        - has:
+                            stopBy: end
+                            kind: field_identifier
+                            regex: "^size$|length"
+                not:
+                  precedes:
+                    stopBy: end
+                    kind: number_literal
+  match_identifier_len:
+    kind: identifier
+    inside:
+      kind: call_expression
+      has:
+        kind: identifier
+        regex: "^memcpy$"
+      inside:
+        kind: expression_statement
+        has:
+          stopBy: end
+          kind: argument_list
+          all:
+            - has:
+                stopBy: end
+                kind: identifier
+                regex: "^to$"
+            - has:
+                stopBy: end
+                kind: call_expression
+                all:
+                  - has:
+                      stopBy: end
+                      kind: field_expression
+                      all:
+                        - has:
+                            stopBy: end
+                            kind: identifier
+                            regex: "^from$"
+                        - has:
+                            stopBy: end
+                            kind: field_identifier
+                            regex: "^c_str$"
+            - has:
+                stopBy: end
+                kind: identifier
+                regex: "^len_001$|len_002$|len_003$"
+
+rule:
+  any:
+    - matches: match_identifier
+    - matches: match_identifier_from_size
+    - matches: match_identifier_len
