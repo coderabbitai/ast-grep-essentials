@@ -1,0 +1,16 @@
+id: jwt-non-alg-ruby
+snapshots:
+  ? |
+    token = JWT.encode(payload, nil, 'none');
+  : labels:
+    - source: JWT.encode(payload, nil, 'none')
+      style: primary
+      start: 8
+      end: 40
+  ? |
+    token = JWT.encode(payload, nil, 'none', { algorithm: 'none' });
+  : labels:
+    - source: 'JWT.encode(payload, nil, ''none'', { algorithm: ''none'' })'
+      style: primary
+      start: 8
+      end: 63

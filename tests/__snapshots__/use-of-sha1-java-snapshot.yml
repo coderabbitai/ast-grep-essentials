@@ -1,0 +1,10 @@
+id: use-of-sha1-java
+snapshots:
+  ? |
+    java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA1", "SUN");
+    DigestUtils.getSha1Digest().digest(password.getBytes());
+  : labels:
+    - source: java.security.MessageDigest.getInstance("SHA1", "SUN")
+      style: primary
+      start: 33
+      end: 87

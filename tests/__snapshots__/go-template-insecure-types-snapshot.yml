@@ -1,0 +1,9 @@
+id: go-template-insecure-types
+snapshots:
+  ? |
+    var b template.CSS = "a { text-decoration: underline; } "
+  : labels:
+    - source: 'var b template.CSS = "a { text-decoration: underline; } "'
+      style: primary
+      start: 0
+      end: 57

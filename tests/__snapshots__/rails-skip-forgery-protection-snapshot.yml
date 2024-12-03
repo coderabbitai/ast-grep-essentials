@@ -1,0 +1,11 @@
+id: rails-skip-forgery-protection
+snapshots:
+  ? |-
+    class ApplicationController < ActionController::Base
+      skip_forgery_protection
+    end
+  : labels:
+    - source: skip_forgery_protection
+      style: primary
+      start: 55
+      end: 78

@@ -1,0 +1,10 @@
+id: python-elasticsearch-hardcoded-bearer-auth-python
+valid:
+  - |
+    es = Elasticsearch("https://localhost:9200");
+
+invalid:
+  - |
+    es.options(bearer_auth="password").indices.
+    es = Elasticsearch("https://localhost:9200",bearer_auth=pswd)
+    es = Elasticsearch("https://localhost:9200",bearer_auth="token-value")

@@ -1,0 +1,17 @@
+id: unsafe-usage
+snapshots:
+  ? |-
+    fn main() {
+        let x = 42;
+        unsafe {
+            println!("{}", x);
+        }
+    }
+  : labels:
+    - source: |-
+        unsafe {
+                println!("{}", x);
+            }
+      style: primary
+      start: 32
+      end: 73

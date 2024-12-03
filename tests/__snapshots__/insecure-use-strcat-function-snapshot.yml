@@ -1,0 +1,10 @@
+id: insecure-use-strcat-function
+snapshots:
+  ? |-
+    strcat(buffer, "abc");
+    strncat(buffer, "abc", sizeof(buffer));
+  : labels:
+    - source: strcat(buffer, "abc");
+      style: primary
+      start: 0
+      end: 22

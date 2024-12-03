@@ -1,0 +1,8 @@
+id: insecure-use-scanf-function
+snapshots:
+  scanf("%s", buffer);:
+    labels:
+    - source: scanf("%s", buffer);
+      style: primary
+      start: 0
+      end: 20

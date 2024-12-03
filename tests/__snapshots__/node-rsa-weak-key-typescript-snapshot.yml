@@ -1,0 +1,122 @@
+id: node-rsa-weak-key-typescript
+snapshots:
+  ? |
+    const crypto = require("crypto");
+    const NodeRSA = require('node-rsa');
+    const forge = require('node-forge');
+    const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
+    a: 123,
+    modulusLength: 512,
+    });
+    const key = new NodeRSA({b: 2048});
+    const key = new NodeRSA({b: 512});
+    const pki = forge.pki;
+  : labels:
+    - source: '512'
+      style: primary
+      start: 201
+      end: 204
+    - source: crypto
+      style: secondary
+      start: 142
+      end: 148
+    - source: generateKeyPairSync
+      style: secondary
+      start: 149
+      end: 168
+    - source: crypto.generateKeyPairSync
+      style: secondary
+      start: 142
+      end: 168
+    - source: rsa
+      style: secondary
+      start: 170
+      end: 173
+    - source: '"rsa"'
+      style: secondary
+      start: 169
+      end: 174
+    - source: modulusLength
+      style: secondary
+      start: 186
+      end: 199
+    - source: '512'
+      style: secondary
+      start: 201
+      end: 204
+    - source: 'modulusLength: 512'
+      style: secondary
+      start: 186
+      end: 204
+    - source: |-
+        {
+        a: 123,
+        modulusLength: 512,
+        }
+      style: secondary
+      start: 176
+      end: 207
+    - source: |-
+        ("rsa", {
+        a: 123,
+        modulusLength: 512,
+        })
+      style: secondary
+      start: 168
+      end: 208
+    - source: |-
+        crypto.generateKeyPairSync("rsa", {
+        a: 123,
+        modulusLength: 512,
+        })
+      style: secondary
+      start: 142
+      end: 208
+    - source: |-
+        { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
+        a: 123,
+        modulusLength: 512,
+        })
+      style: secondary
+      start: 114
+      end: 208
+    - source: crypto
+      style: secondary
+      start: 6
+      end: 12
+    - source: require
+      style: secondary
+      start: 15
+      end: 22
+    - source: crypto
+      style: secondary
+      start: 24
+      end: 30
+    - source: '"crypto"'
+      style: secondary
+      start: 23
+      end: 31
+    - source: ("crypto")
+      style: secondary
+      start: 22
+      end: 32
+    - source: require("crypto")
+      style: secondary
+      start: 15
+      end: 32
+    - source: crypto = require("crypto")
+      style: secondary
+      start: 6
+      end: 32
+    - source: const crypto = require("crypto");
+      style: secondary
+      start: 0
+      end: 33
+    - source: |-
+        const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
+        a: 123,
+        modulusLength: 512,
+        });
+      style: secondary
+      start: 108
+      end: 209

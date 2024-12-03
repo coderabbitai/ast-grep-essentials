@@ -1,0 +1,30 @@
+id: insecure-hashes
+snapshots:
+  ? |
+    let mut hasher = Md2::new();
+  : labels:
+    - source: Md2::new()
+      style: primary
+      start: 17
+      end: 27
+  ? |
+    let mut hasher = Md4::new();
+  : labels:
+    - source: Md4::new()
+      style: primary
+      start: 17
+      end: 27
+  ? |
+    let mut hasher = Md5::new();
+  : labels:
+    - source: Md5::new()
+      style: primary
+      start: 17
+      end: 27
+  ? |
+    let mut hasher = Sha1::new();
+  : labels:
+    - source: Sha1::new()
+      style: primary
+      start: 17
+      end: 28

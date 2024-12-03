@@ -1,0 +1,7 @@
+id: sizeof-this-cpp
+valid:
+  - |
+    return sizeof(*this);
+invalid:
+  - |
+    return sizeof(this);

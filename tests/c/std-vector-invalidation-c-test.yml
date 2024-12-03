@@ -1,0 +1,105 @@
+id: std-vector-invalidation-c
+valid:
+  - |
+    void f(std::vector<int> &vec) {
+    for (std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
+    if (should_erase(*it)) {
+      // This is the correct way to iterate while erasing
+      // ok: std-vector-invalidation
+      it = vec.erase(it);
+    } else {
+      ++it;
+    }
+    }
+    }
+    bool isInList(const TCHAR *token2Find, std::vector<int> &params, bool eraseArg = true)
+    {
+    for (std::vector<int>::iterator = params.begin(); it != params.end(); ++it)
+    {
+    if (lstrcmp(token2Find, it->c_str()) == 0)
+    {
+      // ok: std-vector-invalidation
+      if (eraseArg) params.erase(it);
+      return true;
+    }
+    }
+    return false;
+    }
+invalid:
+  - |
+    void loop_variant_5(std::vector<int> &vec) {
+    for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
+    if (should_erase(*it)) {
+      // ruleid: std-vector-invalidation
+      vec.erase(it);
+    }
+    }
+    }
+    void loop_variant_6(std::vector<int> &vec) {
+    for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
+    if (should_erase(*it)) {
+      // ruleid: std-vector-invalidation
+      vec.erase(it);
+    }
+    }
+    }
+    void loop_variant_7(std::vector<int> &vec) {
+    for(std::vector<int>::iterator it = vec.rbegin(); it != vec.rend(); ++it) {
+    if (should_erase(*it)) {
+      // ruleid: std-vector-invalidation
+      vec.erase(it);
+    }
+    }
+    }
+    void loop_variant_8(std::vector<int> &vec) {
+    for(std::vector<int>::iterator it = vec.rbegin(); it != vec.rend(); it++) {
+    if (should_erase(*it)) {
+      // ruleid: std-vector-invalidation
+      vec.erase(it);
+    }
+    }
+    }
+    void loop_variant_9(std::vector<int> &vec) {
+    for(std::vector<int>::iterator it = vec.begin(), end = vec.end(); it != end; ++it) {
+    if (should_erase(*it)) {
+      // ruleid: std-vector-invalidation
+      vec.erase(it);
+    }
+    }
+    }
+    void loop_variant_10(std::vector<int> &vec) {
+    for(std::vector<int>::iterator it = vec.begin(), end = vec.end(); it != end; it++) {
+    if (should_erase(*it)) {
+      // ruleid: std-vector-invalidation
+      vec.erase(it);
+    }
+    }
+    }
+    void loop_variant_11(std::vector<int> &vec) {
+    for(std::vector<int>::iterator it = vec.rbegin(), end = vec.rend(); it != end; ++it) {
+    if (should_erase(*it)) {
+      // ruleid: std-vector-invalidation
+      vec.erase(it);
+    }
+    }
+    }
+    void loop_variant_12(std::vector<int> &vec) {
+    for(std::vector<int>::iterator it = vec.rbegin(), end = vec.rend(); it != end; it++) {
+    if (should_erase(*it)) {
+      // ruleid: std-vector-invalidation
+      vec.erase(it);
+    }
+    }
+    }  
+    void f(std::vector<int> &vec, std::vector<int> &other_vec) {
+    for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {
+    if (foo()) {
+      // ruleid: std-vector-invalidation
+      vec.push_back(0);
+
+      // Modifying a different container is OK
+      // ok: std-vector-invalidation
+      other_vec.push_back(0);
+    }
+    }
+    }

@@ -1,0 +1,8 @@
+id: jwt-go
+snapshots:
+  token.SignedString([]byte("secret")):
+    labels:
+    - source: token.SignedString([]byte("secret"))
+      style: primary
+      start: 0
+      end: 36

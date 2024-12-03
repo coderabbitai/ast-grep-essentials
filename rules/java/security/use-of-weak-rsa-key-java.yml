@@ -1,0 +1,16 @@
+id: use-of-weak-rsa-key-java
+language: java
+severity: warning
+message: >-
+  RSA keys should be at least 2048 bits based on NIST recommendation.
+note: >-
+  [CWE-326] Inadequate Encryption Strength.
+  [REFERENCES]
+      - https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html#algorithms
+rule:
+  pattern: |
+    $KEY.initialize($AST)
+follows: KeyPairGenerator $KEY = $G.getInstance("RSA");
+constraints:
+  AST:
+    regex: '^(-?(0|[1-9][0-9]?|[1-9][0-9]{2}|1[0-9]{3}|20[0-3][0-9]|204[0-7])(\.[0-9]+)?|0|-[1-9][0-9]*|-[1-9][0-9]{2,}|-1[0-9]{3}|-20[0-3][0-9]|-204[0-7])$'

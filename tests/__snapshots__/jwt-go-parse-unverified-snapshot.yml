@@ -1,0 +1,8 @@
+id: jwt-go-parse-unverified
+snapshots:
+  token, _, err := new(jwt.Parser).ParseUnverified(tokenString, jwt.MapClaims{}):
+    labels:
+    - source: new(jwt.Parser).ParseUnverified(tokenString, jwt.MapClaims{})
+      style: primary
+      start: 17
+      end: 78

@@ -1,0 +1,15 @@
+id: session-cookie-missing-httponly
+snapshots:
+  ? |
+    &sessions.Options{ HttpOnly: false }
+  : labels:
+    - source: '&sessions.Options{ HttpOnly: false }'
+      style: primary
+      start: 0
+      end: 36
+  '&sessions.Options{ HttpOnly: false, Path: "/"}':
+    labels:
+    - source: '&sessions.Options{ HttpOnly: false, Path: "/"}'
+      style: primary
+      start: 0
+      end: 46

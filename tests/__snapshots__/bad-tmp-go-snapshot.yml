@@ -1,0 +1,8 @@
+id: bad-tmp-go
+snapshots:
+  ioutil.WriteFile("/tmp/demo2", "tmp"):
+    labels:
+    - source: ioutil.WriteFile("/tmp/demo2", "tmp")
+      style: primary
+      start: 0
+      end: 37

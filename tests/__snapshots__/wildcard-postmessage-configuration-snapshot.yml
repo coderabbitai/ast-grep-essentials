@@ -1,0 +1,14 @@
+id: wildcard-postmessage-configuration
+snapshots:
+  window.postMessage("hello", '*'):
+    labels:
+    - source: window.postMessage("hello", '*')
+      style: primary
+      start: 0
+      end: 32
+  window.postMessage("world", "*"):
+    labels:
+    - source: window.postMessage("world", "*")
+      style: primary
+      start: 0
+      end: 32

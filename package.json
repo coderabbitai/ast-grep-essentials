@@ -4,8 +4,10 @@
   "description": "ast-grep essential security rules",
   "main": "index.js",
   "scripts": {
-    "test": "ast-grep test --skip-snapshot-tests -c ./sgconfig.yml",
-    "update-tests": "ast-grep test -U -c ./sgconfig.yml"
+    "test-wip": "ast-grep test --skip-snapshot-tests -c ./sgconfig.yml",
+    "test-ci": "ast-grep test -c ./sgconfig.yml",
+    "test": "ast-grep test --interactive -c ./sgconfig.yml",
+    "test-update-all": "ast-grep test --update-all -c ./sgconfig.yml"
   },
   "author": "",
   "license": "ISC",

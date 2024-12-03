@@ -1,0 +1,8 @@
+id: desede-is-deprecated-java
+valid:
+  - |
+    Cipher.getInstance("AES/GCM/NoPadding");
+invalid:
+  - |
+    Cipher.getInstance("DESede/ECB/PKCS5Padding");
+    javax.crypto.KeyGenerator.getInstance("DES")

@@ -1,0 +1,10 @@
+id: documentbuilderfactory-external-general-entities-true-java
+snapshots:
+  ? |
+    dbf.setFeature("http://xml.org/sax/features/external-general-entities" , true);
+    spf.setFeature("http://xml.org/sax/features/external-general-entities" , true);
+  : labels:
+    - source: dbf.setFeature("http://xml.org/sax/features/external-general-entities" , true);
+      style: primary
+      start: 0
+      end: 79
