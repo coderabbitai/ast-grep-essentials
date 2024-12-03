@@ -1,0 +1,13 @@
+id: info-leak-on-non-formated-string
+language: c
+severity: warning
+message: >-
+  Information leak on non-formatted string detected. This can lead to security
+  vulnerabilities. Use formatted strings to prevent information leaks.
+note: >-
+  [CWE-532] Insertion of Sensitive Information into Log File
+  [OWASP A09:2021] Security Logging and Monitoring Failures
+  [REFERENCES]
+      - http://nebelwelt.net/files/13PPREW.pdf
+rule:
+  pattern: 'printf($A);'
