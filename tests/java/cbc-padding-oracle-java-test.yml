@@ -1,0 +1,7 @@
+id: cbc-padding-oracle-java
+valid:
+  - |
+    Cipher.getInstance("AES/GCM/NoPadding");
+invalid:
+  - |
+    Cipher.getInstance("AES/CBC/PKCS5Padding");
