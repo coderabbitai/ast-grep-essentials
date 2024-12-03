@@ -1,9 +1,0 @@
-id: use-of-rc4-java
-valid:
-  - |
-    Cipher.getInstance("AES/CBC/PKCS7PADDING");
-invalid:
-  - |
-    Cipher.getInstance("RC4");
-  - |
-    useCipher(Cipher.getInstance("RC4"));

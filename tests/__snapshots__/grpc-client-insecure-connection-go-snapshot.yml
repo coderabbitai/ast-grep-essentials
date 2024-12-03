@@ -1,9 +1,0 @@
-id: grpc-client-insecure-connection-go
-snapshots:
-  ? |
-    conn, err := grpc.Dial(address, grpc.WithInsecure())
-  : labels:
-    - source: grpc.Dial(address, grpc.WithInsecure())
-      style: primary
-      start: 13
-      end: 52

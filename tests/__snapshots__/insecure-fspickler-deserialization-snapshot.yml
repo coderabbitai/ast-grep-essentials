@@ -1,8 +1,0 @@
-id: insecure-fspickler-deserialization
-snapshots:
-  var fsPickler = FsPickler.CreateJsonSerializer();:
-    labels:
-    - source: FsPickler.CreateJsonSerializer()
-      style: primary
-      start: 16
-      end: 48

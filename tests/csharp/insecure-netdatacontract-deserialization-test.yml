@@ -1,5 +1,0 @@
-id: insecure-netdatacontract-deserialization
-valid:
-invalid:
-  - |
-    NetDataContractSerializer netDataContractSerializer = new NetDataContractSerializer();
