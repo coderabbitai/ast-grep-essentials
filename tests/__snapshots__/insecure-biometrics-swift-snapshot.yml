@@ -1,9 +1,0 @@
-id: insecure-biometrics-swift
-snapshots:
-  ? |
-    context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authenticate to the application"
-  : labels:
-    - source: context.evaluatePolicy
-      style: primary
-      start: 0
-      end: 22

@@ -1,9 +1,0 @@
-id: sizeof-this-c
-snapshots:
-  ? |
-    return sizeof(this);
-  : labels:
-    - source: sizeof(this)
-      style: primary
-      start: 7
-      end: 19
