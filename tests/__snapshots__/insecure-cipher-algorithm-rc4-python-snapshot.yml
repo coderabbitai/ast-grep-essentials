@@ -1,0 +1,157 @@
+id: insecure-cipher-algorithm-rc4-python
+snapshots:
+  ? |
+    Crypto.Cipher.ARC4.new()
+  : labels:
+    - source: Crypto.Cipher.ARC4.new()
+      style: primary
+      start: 0
+      end: 24
+  ? |
+    Crypto.Cipher.ARC4.new(adasfdasfs)
+  : labels:
+    - source: Crypto.Cipher.ARC4.new(adasfdasfs)
+      style: primary
+      start: 0
+      end: 34
+  ? |
+    Cryptodome.Cipher.ARC4.new()
+  : labels:
+    - source: Cryptodome.Cipher.ARC4.new()
+      style: primary
+      start: 0
+      end: 28
+  Cryptodome.Cipher.ARC4.new(asdsd):
+    labels:
+    - source: Cryptodome.Cipher.ARC4.new(asdsd)
+      style: primary
+      start: 0
+      end: 33
+  ? |
+    from Crypto.Cipher import ARC4 as pycrypto_arc4
+    cipher = pycrypto_arc4.new(tempkey)
+  : labels:
+    - source: pycrypto_arc4.new(tempkey)
+      style: primary
+      start: 57
+      end: 83
+    - source: pycrypto_arc4
+      style: secondary
+      start: 57
+      end: 70
+    - source: new
+      style: secondary
+      start: 71
+      end: 74
+    - source: pycrypto_arc4.new
+      style: secondary
+      start: 57
+      end: 74
+    - source: tempkey
+      style: secondary
+      start: 75
+      end: 82
+    - source: (tempkey)
+      style: secondary
+      start: 74
+      end: 83
+    - source: Crypto
+      style: secondary
+      start: 5
+      end: 11
+    - source: Cipher
+      style: secondary
+      start: 12
+      end: 18
+    - source: Crypto.Cipher
+      style: secondary
+      start: 5
+      end: 18
+    - source: ARC4
+      style: secondary
+      start: 26
+      end: 30
+    - source: ARC4
+      style: secondary
+      start: 26
+      end: 30
+    - source: pycrypto_arc4
+      style: secondary
+      start: 34
+      end: 47
+    - source: ARC4 as pycrypto_arc4
+      style: secondary
+      start: 26
+      end: 47
+    - source: from Crypto.Cipher import ARC4 as pycrypto_arc4
+      style: secondary
+      start: 0
+      end: 47
+    - source: cipher = pycrypto_arc4.new(tempkey)
+      style: secondary
+      start: 48
+      end: 83
+  ? |
+    from Cryptodome.Cipher import ARC4 as pycryptodomex_arc4
+    cipher = pycryptodomex_arc4.new(tempkey)
+  : labels:
+    - source: pycryptodomex_arc4.new(tempkey)
+      style: primary
+      start: 66
+      end: 97
+    - source: pycryptodomex_arc4
+      style: secondary
+      start: 66
+      end: 84
+    - source: new
+      style: secondary
+      start: 85
+      end: 88
+    - source: pycryptodomex_arc4.new
+      style: secondary
+      start: 66
+      end: 88
+    - source: tempkey
+      style: secondary
+      start: 89
+      end: 96
+    - source: (tempkey)
+      style: secondary
+      start: 88
+      end: 97
+    - source: Cryptodome
+      style: secondary
+      start: 5
+      end: 15
+    - source: Cipher
+      style: secondary
+      start: 16
+      end: 22
+    - source: Cryptodome.Cipher
+      style: secondary
+      start: 5
+      end: 22
+    - source: ARC4
+      style: secondary
+      start: 30
+      end: 34
+    - source: ARC4
+      style: secondary
+      start: 30
+      end: 34
+    - source: pycryptodomex_arc4
+      style: secondary
+      start: 38
+      end: 56
+    - source: ARC4 as pycryptodomex_arc4
+      style: secondary
+      start: 30
+      end: 56
+    - source: from Cryptodome.Cipher import ARC4 as pycryptodomex_arc4
+      style: secondary
+      start: 0
+      end: 56
+    - source: cipher = pycryptodomex_arc4.new(tempkey)
+      style: secondary
+      start: 57
+      end: 97
