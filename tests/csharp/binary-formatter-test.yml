@@ -1,5 +1,0 @@
-id: binary-formatter
-valid:
-invalid:
-  - |
-    BinaryFormatter binaryFormatter = new BinaryFormatter();

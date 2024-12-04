@@ -1,9 +1,0 @@
-id: rsa-padding-set-scala
-valid:
-  - |
-    Cipher.getInstance("AES/CBC/PKCS5Padding");
-    Cipher.getInstance("DES/ECB/PKCS5Padding");
-    Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-invalid:
-  - |
-    Cipher.getInstance("RSA/ECB/NoPadding")

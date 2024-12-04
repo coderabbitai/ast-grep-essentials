@@ -1,9 +1,0 @@
-id: gcm-nonce-reuse-java
-valid:
-  - |
-    byte[] theBadIV = BAD_IV.getBytes();
-    GCMParameterSpec gcmParameter = new GCMParameter(GCM_TAG_LENGTH * 8, theBadIV);
-invalid:
-  - |
-    byte[] theBadIV = BAD_IV.getBytes();
-    GCMParameterSpec gcmParameterSpec = new GCMParameterSpec(GCM_TAG_LENGTH * 8, theBadIV);

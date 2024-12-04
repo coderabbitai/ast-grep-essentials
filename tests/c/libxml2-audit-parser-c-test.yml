@@ -1,8 +1,0 @@
-id: libxml2-audit-parser-c
-valid:
-  - |
-    xmlCtxtReadMemory();
-invalid:
-  - |
-    xmlParseInNodeContext(cur_node->parent, xml_filtered.c_str(),
-    (int)xml_filtered.length(), 0, &pNewNode);

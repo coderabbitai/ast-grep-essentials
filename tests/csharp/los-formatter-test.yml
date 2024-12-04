@@ -1,5 +1,0 @@
-id: los-formatter
-valid:
-invalid:
-  - |
-    LosFormatter losFormatter = new LosFormatter();

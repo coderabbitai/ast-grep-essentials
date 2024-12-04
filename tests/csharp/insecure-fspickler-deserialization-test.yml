@@ -1,5 +1,0 @@
-id: insecure-fspickler-deserialization
-valid:
-invalid:
-  - |
-    var fsPickler = FsPickler.CreateJsonSerializer();

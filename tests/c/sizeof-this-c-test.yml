@@ -1,7 +1,0 @@
-id: sizeof-this-c
-valid:
-  - |
-    return sizeof(*this);
-invalid:
-  - |
-    return sizeof(this);

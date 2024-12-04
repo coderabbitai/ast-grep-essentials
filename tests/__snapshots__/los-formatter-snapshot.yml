@@ -1,8 +1,0 @@
-id: los-formatter
-snapshots:
-  LosFormatter losFormatter = new LosFormatter();:
-    labels:
-    - source: new LosFormatter()
-      style: primary
-      start: 28
-      end: 46

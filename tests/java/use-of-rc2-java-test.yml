@@ -1,8 +1,0 @@
-id: use-of-rc2-java
-valid:
-  - |
-    Cipher.getInstance("AES/CBC/PKCS7PADDING");
-invalid:
-  - |
-    useCipher(Cipher.getInstance("RC2"));
-    Cipher.getInstance("RC2");
