@@ -1,0 +1,42 @@
+id: avoid-mktemp-python
+snapshots:
+  ? |
+    from tempfile import mktemp
+    ff = mktemp()
+  : labels:
+    - source: mktemp()
+      style: primary
+      start: 33
+      end: 41
+    - source: mktemp
+      style: secondary
+      start: 33
+      end: 39
+    - source: ()
+      style: secondary
+      start: 39
+      end: 41
+    - source: tempfile
+      style: secondary
+      start: 5
+      end: 13
+    - source: tempfile
+      style: secondary
+      start: 5
+      end: 13
+    - source: mktemp
+      style: secondary
+      start: 21
+      end: 27
+    - source: mktemp
+      style: secondary
+      start: 21
+      end: 27
+    - source: from tempfile import mktemp
+      style: secondary
+      start: 0
+      end: 27
+    - source: ff = mktemp()
+      style: secondary
+      start: 28
+      end: 41

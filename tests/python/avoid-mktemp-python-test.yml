@@ -1,0 +1,8 @@
+id: avoid-mktemp-python
+valid:
+  - |
+  
+invalid:
+  - |
+    from tempfile import mktemp
+    ff = mktemp()
