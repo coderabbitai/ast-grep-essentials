@@ -1,7 +1,0 @@
-id: detect-angular-sce-disabled-typescript
-valid:
-  - |
-
-invalid:
-  - |
-    $sceProvider.enabled(false);

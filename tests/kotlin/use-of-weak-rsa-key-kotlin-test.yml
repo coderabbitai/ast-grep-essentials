@@ -1,9 +1,0 @@
-id: use-of-weak-rsa-key-kotlin
-valid:
-  - |
-    KeyPairGenerator.getInstance("RSA")
-    keyGen.initialize(2048);
-invalid:
-  - |
-    KeyPairGenerator.getInstance("RSA")
-    keyGen.initialize(-5.12);

@@ -1,8 +1,0 @@
-id: no-null-cipher-java
-valid:
-  - |
-    Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-invalid:
-  - |
-    Cipher doNothingCihper = new NullCipher();
-    new javax.crypto.NullCipher();

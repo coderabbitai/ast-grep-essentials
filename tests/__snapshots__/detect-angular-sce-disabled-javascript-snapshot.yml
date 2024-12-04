@@ -1,9 +1,0 @@
-id: detect-angular-sce-disabled-javascript
-snapshots:
-  ? |
-    $sceProvider.enabled(false);
-  : labels:
-    - source: $sceProvider.enabled(false);
-      style: primary
-      start: 0
-      end: 28

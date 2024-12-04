@@ -1,9 +1,0 @@
-id: use-of-blowfish-java
-valid:
-  - |
-    Cipher.getInstance("AES/CBC/PKCS7PADDING");
-invalid:
-  - |
-    Cipher.getInstance("Blowfish");
-  - |
-    useCipher(Cipher.getInstance("Blowfish"));

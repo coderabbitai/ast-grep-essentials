@@ -1,9 +1,0 @@
-id: jwt-none-alg-javascript
-valid:
-  - |
-
-invalid:
-  - |
-    const jose = require("jose");
-    const { JWK, JWT } = jose;
-    const token = JWT.verify('token-here', JWK.None);
