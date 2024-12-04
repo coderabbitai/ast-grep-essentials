@@ -1,0 +1,70 @@
+id: documentbuilderfactory-disallow-doctype-decl-false-java
+snapshots:
+  ? |
+    ParserConfigurationException {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", false);
+    }
+  : labels:
+    - source: dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", false);
+      style: primary
+      start: 106
+      end: 184
+    - source: dbf
+      style: secondary
+      start: 106
+      end: 109
+    - source: setFeature
+      style: secondary
+      start: 110
+      end: 120
+    - source: '"http://apache.org/xml/features/disallow-doctype-decl"'
+      style: secondary
+      start: 121
+      end: 175
+    - source: 'false'
+      style: secondary
+      start: 177
+      end: 182
+    - source: ("http://apache.org/xml/features/disallow-doctype-decl", false)
+      style: secondary
+      start: 120
+      end: 183
+    - source: dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", false)
+      style: secondary
+      start: 106
+      end: 183
+  ? |
+    ParserConfigurationException {
+        SAXParserFactory spf = SAXParserFactory.newInstance();
+        spf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", false);
+    }
+  : labels:
+    - source: spf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", false);
+      style: primary
+      start: 94
+      end: 172
+    - source: spf
+      style: secondary
+      start: 94
+      end: 97
+    - source: setFeature
+      style: secondary
+      start: 98
+      end: 108
+    - source: '"http://apache.org/xml/features/disallow-doctype-decl"'
+      style: secondary
+      start: 109
+      end: 163
+    - source: 'false'
+      style: secondary
+      start: 165
+      end: 170
+    - source: ("http://apache.org/xml/features/disallow-doctype-decl", false)
+      style: secondary
+      start: 108
+      end: 171
+    - source: spf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", false)
+      style: secondary
+      start: 94
+      end: 171

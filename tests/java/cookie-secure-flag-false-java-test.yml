@@ -1,0 +1,10 @@
+id: cookie-secure-flag-false-java
+valid:
+  - |
+    response.addCookie(cookie);
+    cookie.setSecure(true);
+    cookie.setHttpOnly(true);
+    response.addCookie(cookie);
+invalid:
+  - |
+    cookie.setSecure(false);
