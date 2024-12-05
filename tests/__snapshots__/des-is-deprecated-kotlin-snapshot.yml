@@ -1,0 +1,9 @@
+id: des-is-deprecated-kotlin
+snapshots:
+  ? |
+    Cipher.getInstance("DES/ECB/PKCS5Padding");
+  : labels:
+    - source: Cipher.getInstance("DES/ECB/PKCS5Padding")
+      style: primary
+      start: 0
+      end: 42
