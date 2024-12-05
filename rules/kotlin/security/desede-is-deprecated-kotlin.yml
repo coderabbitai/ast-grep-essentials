@@ -1,0 +1,69 @@
+id: desede-is-deprecated-kotlin
+language: kotlin
+severity: warning
+message: >-
+    Triple DES (3DES or DESede) is considered deprecated. AES is the recommended cipher. Upgrade to use AES.
+note: >-
+  [CWE-326]: Inadequate Encryption Strength
+  [OWASP A03:2017]: Sensitive Data Exposure
+  [OWASP A02:2021]: Cryptographic Failures
+  [REFERENCES]
+      - https://find-sec-bugs.github.io/bugs.htm#TDES_USAGE
+      - https://csrc.nist.gov/News/2017/Update-to-Current-Use-and-Deprecation-of-TDEA
+utils:
+  match_call_expression:
+    kind: call_expression
+    all:
+        - has:
+            kind: navigation_expression
+        - has:
+            stopBy: end
+            kind: call_suffix
+            all:
+                - has:
+                    stopBy: end
+                    kind: value_arguments
+                - has:
+                    stopBy: end
+                    kind: value_argument
+                    has:
+                        stopBy: end
+                        kind: string_literal 
+                        regex: 'DESede'
+    inside:
+        kind: infix_expression
+        precedes:
+            kind: call_expression
+  match_key_generator:
+    kind: call_expression   
+    all:
+        - has:
+            kind: navigation_expression
+            all:
+                - has:
+                    kind: navigation_expression
+                - has:
+                    stopBy: end
+                    kind: navigation_suffix
+                    has:
+                        stopBy: end
+                        kind: simple_identifier
+                        regex: '^KeyGenerator$'
+        - has:
+            stopBy: end
+            kind: call_suffix   
+            all:
+                - has:
+                    stopBy: end
+                    kind: value_arguments
+                - has:
+                    stopBy: end
+                    kind: value_argument
+                    has:
+                        stopBy: end
+                        kind: string_literal
+                        regex: 'DES'              
+rule:
+    any:
+      - matches: match_call_expression
+      - matches: match_key_generator
