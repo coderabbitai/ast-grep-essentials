@@ -1,0 +1,16 @@
+id: rsa-no-padding-java
+snapshots:
+  ? |
+    Cipher.getInstance("RSA/NONE/NoPadding");
+  : labels:
+    - source: Cipher.getInstance("RSA/NONE/NoPadding")
+      style: primary
+      start: 0
+      end: 40
+  ? |
+    Cipher.getInstance("RSA/None/NoPadding");
+  : labels:
+    - source: Cipher.getInstance("RSA/None/NoPadding")
+      style: primary
+      start: 0
+      end: 40
