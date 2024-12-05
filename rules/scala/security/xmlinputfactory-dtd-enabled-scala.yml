@@ -1,0 +1,172 @@
+id: xmlinputfactory-dtd-enabled-scala
+language: scala
+severity: warning
+message: >-
+      XMLInputFactory being instantiated without calling the setProperty
+      functions that are generally used for disabling entity processing. User
+      controlled data in XML Document builder can result in XML Internal Entity
+      Processing vulnerabilities like the disclosure of confidential data,
+      denial of service, Server Side Request Forgery (SSRF), port scanning. Make
+      sure to disable entity processing functionality.
+note: >-
+  [CWE-611] Improper Restriction of XML External Entity.
+  [REFERENCES]
+      - https://owasp.org/Top10/A05_2021-Security_Misconfiguration
+utils:
+  match_pattern_ new_XMLInputFactory_newFactory_&_newInstance:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: end
+          kind: field_expression
+          all:
+            - has:
+                stopBy: end
+                kind: identifier
+                regex: '^XMLInputFactory$'
+            - has:
+                stopBy: end
+                kind: identifier
+                regex: '^newFactory|newInstance$'
+      - has:
+          stopBy: end
+          kind: arguments
+      - inside:
+          stopBy: end
+          kind: val_definition
+          all:
+            - not:
+                follows:
+                  stopBy: end
+                  kind: call_expression
+                  all:
+                    - has:
+                        stopBy: end
+                        kind: field_expression
+                        all:
+                          - has:
+                              stopBy: end
+                              kind: identifier
+                          - has:
+                              stopBy: end
+                              kind: identifier
+                              regex: '^setProperty$'
+                    - has:
+                        stopBy: end
+                        kind: arguments
+                        all:
+                          - has:
+                              stopBy: neighbor
+                              kind: string
+                              regex: ^"javax.xml.stream.isSupportingExternalEntities"$
+                          - has:
+                              stopBy: neighbor
+                              kind: boolean_literal
+                              regex: '^false$'
+
+            - not:
+                precedes:
+                  stopBy: end
+                  kind: call_expression
+                  all:
+                    - has:
+                        stopBy: end
+                        kind: field_expression
+                        all:
+                          - has:
+                              stopBy: end
+                              kind: identifier
+                          - has:
+                              stopBy: end
+                              kind: identifier
+                              regex: '^setProperty$'
+                    - has:
+                        stopBy: end
+                        kind: arguments
+                        all:
+                          - has:
+                              stopBy: neighbor
+                              kind: string
+                              regex: ^"javax.xml.stream.isSupportingExternalEntities"$
+                          - has:
+                              stopBy: neighbor
+                              kind: boolean_literal
+                              regex: '^false$'
+
+  match_pattern_new_XMLInputFactory:
+    kind: call_expression   
+    all:
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          regex: '^XMLInputFactory$'
+      - has:
+          stopBy: neighbor
+          kind: arguments
+      - inside:
+          stopBy: end
+          kind: val_definition
+          all:
+            - not:
+                follows:
+                  stopBy: end
+                  kind: call_expression
+                  all:
+                    - has:
+                        stopBy: end
+                        kind: field_expression
+                        all:
+                          - has:
+                              stopBy: end
+                              kind: identifier
+                          - has:
+                              stopBy: end
+                              kind: identifier
+                              regex: '^setProperty$'
+                    - has:
+                        stopBy: end
+                        kind: arguments
+                        all:
+                          - has:
+                              stopBy: neighbor
+                              kind: string
+                              regex: ^"javax.xml.stream.isSupportingExternalEntities"$
+                          - has:
+                              stopBy: neighbor
+                              kind: boolean_literal
+                              regex: '^false$'
+
+            - not:
+                precedes:
+                  stopBy: end
+                  kind: call_expression
+                  all:
+                    - has:
+                        stopBy: end
+                        kind: field_expression
+                        all:
+                          - has:
+                              stopBy: end
+                              kind: identifier
+                          - has:
+                              stopBy: end
+                              kind: identifier
+                              regex: '^setProperty$'
+                    - has:
+                        stopBy: end
+                        kind: arguments
+                        all:
+                          - has:
+                              stopBy: neighbor
+                              kind: string
+                              regex: ^"javax.xml.stream.isSupportingExternalEntities"$
+                          - has:
+                              stopBy: neighbor
+                              kind: boolean_literal
+                              regex: '^false$'
+
+rule:
+  kind: call_expression
+  any:
+    - matches: match_pattern_ new_XMLInputFactory_newFactory_&_newInstance
+    - matches: match_pattern_new_XMLInputFactory
