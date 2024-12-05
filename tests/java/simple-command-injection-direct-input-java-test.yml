@@ -1,0 +1,59 @@
+id: simple-command-injection-direct-input-java
+valid:
+  - |
+    @GetMapping("/run/{command}")
+    public ResponseEntity<?> run1(
+        @PathVariable final String command
+    ) {
+        ResponseEntity<?> response = ResponseEntity.noContent().build();
+        try {
+            String foo = command + "something something...";
+            Runtime.getRuntime().exec(foo); 
+        } catch (IOException e) {
+           response = ResponseEntity.badRequest().build();
+        }
+        return response;
+    }
+  - |
+    @GetMapping("/run/{command}")
+    public ResponseEntity<?> ok(
+        @PathVariable final String command
+    ) {
+        ResponseEntity<?> response = ResponseEntity.noContent().build();
+        try {
+            Runtime.getRuntime().exec("/bin/ls");
+        } catch (IOException e) {
+           response = ResponseEntity.badRequest().build();
+        }
+
+        return response;
+    }
+invalid:
+  - |
+    @GetMapping("/run/{command}")
+    public ResponseEntity<?> run_direct_from_jumbo(
+        @PathVariable() final String command
+    ) {
+        ResponseEntity<?> response = ResponseEntity.noContent().build();
+        try {
+            Runtime.getRuntime().exec(command);
+        } catch (IOException e) {
+           response = ResponseEntity.badRequest().build();
+        }
+
+        return response;
+    }
+  - |
+    @GetMapping("/run/{command}")
+    public ResponseEntity<?> run_direct_from_jumbo(
+        @PathVariable final String command
+    ) {
+        ResponseEntity<?> response = ResponseEntity.noContent().build();
+        try {
+            Runtime.getRuntime().exec(command);
+        } catch (IOException e) {
+           response = ResponseEntity.badRequest().build();
+        }
+
+        return response;
+    }

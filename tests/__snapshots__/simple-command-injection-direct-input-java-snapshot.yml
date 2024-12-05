@@ -1,0 +1,126 @@
+id: simple-command-injection-direct-input-java
+snapshots:
+  ? |
+    @GetMapping("/run/{command}")
+    public ResponseEntity<?> run_direct_from_jumbo(
+        @PathVariable final String command
+    ) {
+        ResponseEntity<?> response = ResponseEntity.noContent().build();
+        try {
+            Runtime.getRuntime().exec(command);
+        } catch (IOException e) {
+           response = ResponseEntity.badRequest().build();
+        }
+
+        return response;
+    }
+  : labels:
+    - source: Runtime.getRuntime().exec(command)
+      style: primary
+      start: 208
+      end: 242
+    - source: PathVariable
+      style: secondary
+      start: 83
+      end: 95
+    - source: '@PathVariable'
+      style: secondary
+      start: 82
+      end: 95
+    - source: command
+      style: secondary
+      start: 109
+      end: 116
+    - source: String
+      style: secondary
+      start: 102
+      end: 108
+    - source: '@PathVariable final'
+      style: secondary
+      start: 82
+      end: 101
+    - source: '@PathVariable final String command'
+      style: secondary
+      start: 82
+      end: 116
+    - source: |-
+        @GetMapping("/run/{command}")
+        public ResponseEntity<?> run_direct_from_jumbo(
+            @PathVariable final String command
+        ) {
+            ResponseEntity<?> response = ResponseEntity.noContent().build();
+            try {
+                Runtime.getRuntime().exec(command);
+            } catch (IOException e) {
+               response = ResponseEntity.badRequest().build();
+            }
+
+            return response;
+        }
+      style: secondary
+      start: 0
+      end: 358
+  ? |
+    @GetMapping("/run/{command}")
+    public ResponseEntity<?> run_direct_from_jumbo(
+        @PathVariable() final String command
+    ) {
+        ResponseEntity<?> response = ResponseEntity.noContent().build();
+        try {
+            Runtime.getRuntime().exec(command);
+        } catch (IOException e) {
+           response = ResponseEntity.badRequest().build();
+        }
+
+        return response;
+    }
+  : labels:
+    - source: Runtime.getRuntime().exec(command)
+      style: primary
+      start: 210
+      end: 244
+    - source: PathVariable
+      style: secondary
+      start: 83
+      end: 95
+    - source: ()
+      style: secondary
+      start: 95
+      end: 97
+    - source: '@PathVariable()'
+      style: secondary
+      start: 82
+      end: 97
+    - source: command
+      style: secondary
+      start: 111
+      end: 118
+    - source: String
+      style: secondary
+      start: 104
+      end: 110
+    - source: '@PathVariable() final'
+      style: secondary
+      start: 82
+      end: 103
+    - source: '@PathVariable() final String command'
+      style: secondary
+      start: 82
+      end: 118
+    - source: |-
+        @GetMapping("/run/{command}")
+        public ResponseEntity<?> run_direct_from_jumbo(
+            @PathVariable() final String command
+        ) {
+            ResponseEntity<?> response = ResponseEntity.noContent().build();
+            try {
+                Runtime.getRuntime().exec(command);
+            } catch (IOException e) {
+               response = ResponseEntity.badRequest().build();
+            }
+
+            return response;
+        }
+      style: secondary
+      start: 0
+      end: 360
