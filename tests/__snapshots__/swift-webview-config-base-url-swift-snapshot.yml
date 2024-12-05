@@ -1,0 +1,514 @@
+id: swift-webview-config-base-url-swift
+snapshots:
+  ? |
+    let webview = UIWebView(...)
+    webview.loadHTMLString(someHtmlString, baseURL: nil)
+  : labels:
+    - source: 'webview.loadHTMLString(someHtmlString, baseURL: nil)'
+      style: primary
+      start: 29
+      end: 81
+    - source: webview
+      style: secondary
+      start: 29
+      end: 36
+    - source: loadHTMLString
+      style: secondary
+      start: 37
+      end: 51
+    - source: .loadHTMLString
+      style: secondary
+      start: 36
+      end: 51
+    - source: webview.loadHTMLString
+      style: secondary
+      start: 29
+      end: 51
+    - source: baseURL
+      style: secondary
+      start: 68
+      end: 75
+    - source: nil
+      style: secondary
+      start: 77
+      end: 80
+    - source: 'baseURL: nil'
+      style: secondary
+      start: 68
+      end: 80
+    - source: '(someHtmlString, baseURL: nil)'
+      style: secondary
+      start: 51
+      end: 81
+    - source: webview
+      style: secondary
+      start: 4
+      end: 11
+    - source: webview
+      style: secondary
+      start: 4
+      end: 11
+    - source: UIWebView
+      style: secondary
+      start: 14
+      end: 23
+    - source: (...)
+      style: secondary
+      start: 23
+      end: 28
+    - source: UIWebView(...)
+      style: secondary
+      start: 14
+      end: 28
+    - source: let webview = UIWebView(...)
+      style: secondary
+      start: 0
+      end: 28
+    - source: |
+        let webview = UIWebView(...)
+        webview.loadHTMLString(someHtmlString, baseURL: nil)
+      style: secondary
+      start: 0
+      end: 82
+  ? |
+    let webview10 = UIWebView(frame: self.view.bounds)
+    let text = "This is a test."
+    let data = text.data(using: .utf8)!
+    webview10.load(data, mimetype: "text/plain", textEncodingName: "UTF-8", baseURL: nil)
+    self.view.addSubview(webview10)
+  : labels:
+    - source: 'webview10.load(data, mimetype: "text/plain", textEncodingName: "UTF-8", baseURL: nil)'
+      style: primary
+      start: 116
+      end: 201
+    - source: webview10
+      style: secondary
+      start: 116
+      end: 125
+    - source: load
+      style: secondary
+      start: 126
+      end: 130
+    - source: .load
+      style: secondary
+      start: 125
+      end: 130
+    - source: webview10.load
+      style: secondary
+      start: 116
+      end: 130
+    - source: baseURL
+      style: secondary
+      start: 188
+      end: 195
+    - source: nil
+      style: secondary
+      start: 197
+      end: 200
+    - source: 'baseURL: nil'
+      style: secondary
+      start: 188
+      end: 200
+    - source: '(data, mimetype: "text/plain", textEncodingName: "UTF-8", baseURL: nil)'
+      style: secondary
+      start: 130
+      end: 201
+    - source: webview10
+      style: secondary
+      start: 4
+      end: 13
+    - source: webview10
+      style: secondary
+      start: 4
+      end: 13
+    - source: UIWebView
+      style: secondary
+      start: 16
+      end: 25
+    - source: '(frame: self.view.bounds)'
+      style: secondary
+      start: 25
+      end: 50
+    - source: 'UIWebView(frame: self.view.bounds)'
+      style: secondary
+      start: 16
+      end: 50
+    - source: 'let webview10 = UIWebView(frame: self.view.bounds)'
+      style: secondary
+      start: 0
+      end: 50
+    - source: |
+        let webview10 = UIWebView(frame: self.view.bounds)
+        let text = "This is a test."
+        let data = text.data(using: .utf8)!
+        webview10.load(data, mimetype: "text/plain", textEncodingName: "UTF-8", baseURL: nil)
+        self.view.addSubview(webview10)
+      style: secondary
+      start: 0
+      end: 234
+  ? |
+    let webview12 = UIWebView(frame: self.view.bounds)
+    let externalHtml = "<html><body><iframe src='https://www.example.com'></iframe></body></html>"
+    webview12.loadHTMLString(externalHtml, baseURL: nil)
+    self.view.addSubview(webview12)
+  : labels:
+    - source: 'webview12.loadHTMLString(externalHtml, baseURL: nil)'
+      style: primary
+      start: 146
+      end: 198
+    - source: webview12
+      style: secondary
+      start: 146
+      end: 155
+    - source: loadHTMLString
+      style: secondary
+      start: 156
+      end: 170
+    - source: .loadHTMLString
+      style: secondary
+      start: 155
+      end: 170
+    - source: webview12.loadHTMLString
+      style: secondary
+      start: 146
+      end: 170
+    - source: baseURL
+      style: secondary
+      start: 185
+      end: 192
+    - source: nil
+      style: secondary
+      start: 194
+      end: 197
+    - source: 'baseURL: nil'
+      style: secondary
+      start: 185
+      end: 197
+    - source: '(externalHtml, baseURL: nil)'
+      style: secondary
+      start: 170
+      end: 198
+    - source: webview12
+      style: secondary
+      start: 4
+      end: 13
+    - source: webview12
+      style: secondary
+      start: 4
+      end: 13
+    - source: UIWebView
+      style: secondary
+      start: 16
+      end: 25
+    - source: '(frame: self.view.bounds)'
+      style: secondary
+      start: 25
+      end: 50
+    - source: 'UIWebView(frame: self.view.bounds)'
+      style: secondary
+      start: 16
+      end: 50
+    - source: 'let webview12 = UIWebView(frame: self.view.bounds)'
+      style: secondary
+      start: 0
+      end: 50
+    - source: |
+        let webview12 = UIWebView(frame: self.view.bounds)
+        let externalHtml = "<html><body><iframe src='https://www.example.com'></iframe></body></html>"
+        webview12.loadHTMLString(externalHtml, baseURL: nil)
+        self.view.addSubview(webview12)
+      style: secondary
+      start: 0
+      end: 231
+  ? |
+    let webview13 = UIWebView(frame: self.view.bounds)
+    let mixedContent = "<html><body><img src='image.jpg' /></body></html>"
+    let dataMixed = mixedContent.data(using: .utf8)!
+    webview13.load(dataMixed, mimetype: "text/html", textEncodingName: "UTF-8", baseURL: nil)
+    self.view.addSubview(webview13)
+  : labels:
+    - source: 'webview13.load(dataMixed, mimetype: "text/html", textEncodingName: "UTF-8", baseURL: nil)'
+      style: primary
+      start: 171
+      end: 260
+    - source: webview13
+      style: secondary
+      start: 171
+      end: 180
+    - source: load
+      style: secondary
+      start: 181
+      end: 185
+    - source: .load
+      style: secondary
+      start: 180
+      end: 185
+    - source: webview13.load
+      style: secondary
+      start: 171
+      end: 185
+    - source: baseURL
+      style: secondary
+      start: 247
+      end: 254
+    - source: nil
+      style: secondary
+      start: 256
+      end: 259
+    - source: 'baseURL: nil'
+      style: secondary
+      start: 247
+      end: 259
+    - source: '(dataMixed, mimetype: "text/html", textEncodingName: "UTF-8", baseURL: nil)'
+      style: secondary
+      start: 185
+      end: 260
+    - source: webview13
+      style: secondary
+      start: 4
+      end: 13
+    - source: webview13
+      style: secondary
+      start: 4
+      end: 13
+    - source: UIWebView
+      style: secondary
+      start: 16
+      end: 25
+    - source: '(frame: self.view.bounds)'
+      style: secondary
+      start: 25
+      end: 50
+    - source: 'UIWebView(frame: self.view.bounds)'
+      style: secondary
+      start: 16
+      end: 50
+    - source: 'let webview13 = UIWebView(frame: self.view.bounds)'
+      style: secondary
+      start: 0
+      end: 50
+    - source: |
+        let webview13 = UIWebView(frame: self.view.bounds)
+        let mixedContent = "<html><body><img src='image.jpg' /></body></html>"
+        let dataMixed = mixedContent.data(using: .utf8)!
+        webview13.load(dataMixed, mimetype: "text/html", textEncodingName: "UTF-8", baseURL: nil)
+        self.view.addSubview(webview13)
+      style: secondary
+      start: 0
+      end: 293
+  ? |
+    let webview3 = UIWebView(...)
+    webview3.load(data, mimetype: "application/json", textEncodingName: "UTF8", baseURL: nil)
+  : labels:
+    - source: 'webview3.load(data, mimetype: "application/json", textEncodingName: "UTF8", baseURL: nil)'
+      style: primary
+      start: 30
+      end: 119
+    - source: webview3
+      style: secondary
+      start: 30
+      end: 38
+    - source: load
+      style: secondary
+      start: 39
+      end: 43
+    - source: .load
+      style: secondary
+      start: 38
+      end: 43
+    - source: webview3.load
+      style: secondary
+      start: 30
+      end: 43
+    - source: baseURL
+      style: secondary
+      start: 106
+      end: 113
+    - source: nil
+      style: secondary
+      start: 115
+      end: 118
+    - source: 'baseURL: nil'
+      style: secondary
+      start: 106
+      end: 118
+    - source: '(data, mimetype: "application/json", textEncodingName: "UTF8", baseURL: nil)'
+      style: secondary
+      start: 43
+      end: 119
+    - source: webview3
+      style: secondary
+      start: 4
+      end: 12
+    - source: webview3
+      style: secondary
+      start: 4
+      end: 12
+    - source: UIWebView
+      style: secondary
+      start: 15
+      end: 24
+    - source: (...)
+      style: secondary
+      start: 24
+      end: 29
+    - source: UIWebView(...)
+      style: secondary
+      start: 15
+      end: 29
+    - source: let webview3 = UIWebView(...)
+      style: secondary
+      start: 0
+      end: 29
+    - source: |
+        let webview3 = UIWebView(...)
+        webview3.load(data, mimetype: "application/json", textEncodingName: "UTF8", baseURL: nil)
+      style: secondary
+      start: 0
+      end: 120
+  ? |-
+    let webview7 = UIWebView(frame: self.view.bounds)
+    webview7.load(data, mimetype: "application/json", textEncodingName: "UTF-8", baseURL: nil)
+    self.view.addSubview(webview7)
+  : labels:
+    - source: 'webview7.load(data, mimetype: "application/json", textEncodingName: "UTF-8", baseURL: nil)'
+      style: primary
+      start: 50
+      end: 140
+    - source: webview7
+      style: secondary
+      start: 50
+      end: 58
+    - source: load
+      style: secondary
+      start: 59
+      end: 63
+    - source: .load
+      style: secondary
+      start: 58
+      end: 63
+    - source: webview7.load
+      style: secondary
+      start: 50
+      end: 63
+    - source: baseURL
+      style: secondary
+      start: 127
+      end: 134
+    - source: nil
+      style: secondary
+      start: 136
+      end: 139
+    - source: 'baseURL: nil'
+      style: secondary
+      start: 127
+      end: 139
+    - source: '(data, mimetype: "application/json", textEncodingName: "UTF-8", baseURL: nil)'
+      style: secondary
+      start: 63
+      end: 140
+    - source: webview7
+      style: secondary
+      start: 4
+      end: 12
+    - source: webview7
+      style: secondary
+      start: 4
+      end: 12
+    - source: UIWebView
+      style: secondary
+      start: 15
+      end: 24
+    - source: '(frame: self.view.bounds)'
+      style: secondary
+      start: 24
+      end: 49
+    - source: 'UIWebView(frame: self.view.bounds)'
+      style: secondary
+      start: 15
+      end: 49
+    - source: 'let webview7 = UIWebView(frame: self.view.bounds)'
+      style: secondary
+      start: 0
+      end: 49
+    - source: |-
+        let webview7 = UIWebView(frame: self.view.bounds)
+        webview7.load(data, mimetype: "application/json", textEncodingName: "UTF-8", baseURL: nil)
+        self.view.addSubview(webview7)
+      style: secondary
+      start: 0
+      end: 171
+  ? |
+    let webview9 = UIWebView(frame: self.view.bounds)
+    let dynamicHtml = "<html><body><h2>Dynamic Content</h2></body></html>"
+    webview9.loadHTMLString(dynamicHtml, baseURL: nil)
+    self.view.addSubview(webview9)
+  : labels:
+    - source: 'webview9.loadHTMLString(dynamicHtml, baseURL: nil)'
+      style: primary
+      start: 121
+      end: 171
+    - source: webview9
+      style: secondary
+      start: 121
+      end: 129
+    - source: loadHTMLString
+      style: secondary
+      start: 130
+      end: 144
+    - source: .loadHTMLString
+      style: secondary
+      start: 129
+      end: 144
+    - source: webview9.loadHTMLString
+      style: secondary
+      start: 121
+      end: 144
+    - source: baseURL
+      style: secondary
+      start: 158
+      end: 165
+    - source: nil
+      style: secondary
+      start: 167
+      end: 170
+    - source: 'baseURL: nil'
+      style: secondary
+      start: 158
+      end: 170
+    - source: '(dynamicHtml, baseURL: nil)'
+      style: secondary
+      start: 144
+      end: 171
+    - source: webview9
+      style: secondary
+      start: 4
+      end: 12
+    - source: webview9
+      style: secondary
+      start: 4
+      end: 12
+    - source: UIWebView
+      style: secondary
+      start: 15
+      end: 24
+    - source: '(frame: self.view.bounds)'
+      style: secondary
+      start: 24
+      end: 49
+    - source: 'UIWebView(frame: self.view.bounds)'
+      style: secondary
+      start: 15
+      end: 49
+    - source: 'let webview9 = UIWebView(frame: self.view.bounds)'
+      style: secondary
+      start: 0
+      end: 49
+    - source: |
+        let webview9 = UIWebView(frame: self.view.bounds)
+        let dynamicHtml = "<html><body><h2>Dynamic Content</h2></body></html>"
+        webview9.loadHTMLString(dynamicHtml, baseURL: nil)
+        self.view.addSubview(webview9)
+      style: secondary
+      start: 0
+      end: 203
