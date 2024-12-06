@@ -1,0 +1,30 @@
+id: sizeof-this-c
+language: c
+severity: warning
+message: >-
+    Do not use `sizeof(this)` to get the number of bytes of the object in
+    memory. It returns the size of the pointer, not the size of the object.
+note: >-
+  [CWE-467]: Use of sizeof() on a Pointer Type
+  [REFERENCES]
+      - https://wiki.sei.cmu.edu/confluence/display/c/ARR01-C.+Do+not+apply+the+sizeof+operator+to+a+pointer+when+taking+the+size+of+an+array
+utils:
+      match_sizeof_this:
+            kind: function_declarator
+            all:
+                  - has:
+                          stopBy: end
+                          kind: field_identifier
+                          regex: '^sizeof$'
+                  - has:
+                          has:
+                                stopBy: end
+                                kind: parameter_declaration
+                                has:
+                                      stopBy: end
+                                      kind: type_identifier
+                                      regex: '^this$'
+rule:
+      any:
+      - matches: match_sizeof_this
+
