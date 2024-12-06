@@ -1,0 +1,141 @@
+id: swift-webview-config-allows-js-open-windows-swift
+language: swift
+severity: warning
+message: >-
+  Webviews were observed that explictly allow JavaScript in an WKWebview
+  to open windows automatically. Consider disabling this functionality if
+  not required, following the principle of least privelege.
+note: >-
+  [CWE-272]: Least Privilege Violation
+  [REFERENCES]
+       https://mas.owasp.org/MASVS/controls/MASVS-PLATFORM-2/
+       https://developer.apple.com/documentation/webkit/wkpreferences/1536573-javascriptcanopenwindowsautomati
+utils:
+  match_JavaScriptCanOpenWindowsAutomatically:
+    kind: assignment
+    all:
+      - has:
+          stopBy: end
+          kind: navigation_expression
+          has:
+            stopBy: end
+            kind: simple_identifier
+            pattern: $R
+      - has:
+          stopBy: end
+          kind: navigation_suffix
+          has:
+            stopBy: end
+            kind: simple_identifier
+            regex: "^JavaScriptCanOpenWindowsAutomatically$"
+      - has:
+          kind: boolean_literal
+          regex: "^true$"
+      - follows:
+          stopBy: end
+          kind: property_declaration
+          all:
+            - has:
+                stopBy: end
+                kind: pattern
+                field: name
+                has:
+                  kind: simple_identifier
+                  pattern: $R
+            - has:
+                stopBy: end
+                kind: call_expression
+                field: value
+                all:
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^WKPreferences$"
+                  - has:
+                      stopBy: end
+                      kind: call_suffix
+                      has:
+                        stopBy: end
+                        kind: value_arguments
+      - not:
+          precedes:
+            stopBy: neighbor
+            kind: assignment
+            has:
+              stopBy: end
+              kind: boolean_literal
+              regex: "^true$|false"
+      - not:
+          follows:
+            stopBy: neighbor
+            kind: assignment
+            has:
+              stopBy: end
+              kind: boolean_literal
+              regex: "^true$"
+  match_non_boolean:
+    kind: assignment
+    all:
+      - has:
+          stopBy: end
+          kind: navigation_expression
+          has:
+            stopBy: end
+            kind: simple_identifier
+            pattern: $R
+      - has:
+          stopBy: end
+          kind: navigation_suffix
+          has:
+            stopBy: end
+            kind: simple_identifier
+            regex: "^JavaScriptCanOpenWindowsAutomatically$"
+      - has:
+          kind: simple_identifier
+      - follows:
+          stopBy: end
+          kind: property_declaration
+          all:
+            - has:
+                stopBy: end
+                kind: pattern
+                field: name
+                has:
+                  kind: simple_identifier
+                  pattern: $R
+            - has:
+                stopBy: end
+                kind: call_expression
+                field: value
+                all:
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^WKPreferences$"
+                  - has:
+                      stopBy: end
+                      kind: call_suffix
+                      has:
+                        stopBy: end
+                        kind: value_arguments
+      - not:
+          precedes:
+            stopBy: neighbor
+            kind: assignment
+            has:
+              stopBy: end
+              kind: boolean_literal
+              regex: "^true$|false"
+      - not:
+          follows:
+            stopBy: neighbor
+            kind: assignment
+            has:
+              stopBy: end
+              kind: boolean_literal
+              regex: "^true$"
+
+rule:
+  any:
+    - matches: match_JavaScriptCanOpenWindowsAutomatically
+    - matches: match_non_boolean
