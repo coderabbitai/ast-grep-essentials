@@ -1,0 +1,1439 @@
+id: jwt-decode-without-verify-csharp
+severity: warning
+language: csharp
+message: >-
+  Detected the decoding of a JWT token without a verify step. JWT tokens
+  must be verified before use, otherwise the token's integrity is unknown.
+  This means a malicious actor could forge a JWT token with any claims.
+  Validate the token before using it.
+note: >-
+  [CWE-345] Insufficient Verification of Data Authenticity.
+  [REFERENCES]
+      - https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures
+utils:
+  IJwtDecoder&JwtDecoder_Decode_verify-false:
+   kind: invocation_expression
+   all:
+     - has:
+         stopBy: neighbor
+         kind: member_access_expression
+         all:
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               pattern: $J
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               regex: '^Decode$'
+     - has:
+         stopBy: neighbor
+         kind: argument_list
+         has:
+           stopBy: neighbor
+           kind: argument
+           nthChild: 2
+           all:
+             - has:
+                 stopBy: neighbor
+                 kind: identifier
+                 regex: '^verify$'
+             - has:
+                 stopBy: neighbor
+                 kind: boolean_literal
+                 regex: '^false$'
+     - inside:
+         stopBy: end
+         kind: local_declaration_statement
+         follows:
+           stopBy: end
+           kind: local_declaration_statement
+           has:
+             stopBy: neighbor
+             kind: variable_declaration
+             all:
+               - has:
+                   stopBy: neighbor
+                   kind: identifier
+                   regex: '^IJwtDecoder|JwtDecoder$'
+               - has:
+                   stopBy: neighbor
+                   kind: variable_declarator
+                   all:
+                     - has:
+                         stopBy: neighbor
+                         kind: identifier
+                         pattern: $J
+                     - has:
+                         stopBy: neighbor
+                         kind: object_creation_expression
+     - inside:
+         stopBy: end
+         kind: compilation_unit
+         any:
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+           - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+  IJwtDecoder&JwtDecoder_Decode_nth3-false:
+   kind: invocation_expression
+   all:
+     - has:
+         stopBy: neighbor
+         kind: member_access_expression
+         all:
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               pattern: $J
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               regex: '^Decode$'
+     - has:
+         stopBy: neighbor
+         kind: argument_list
+         has:
+           stopBy: neighbor
+           kind: argument
+           nthChild: 3
+           has:
+                 stopBy: neighbor
+                 kind: boolean_literal
+                 regex: '^false$'
+     - inside:
+         stopBy: end
+         kind: local_declaration_statement
+         follows:
+           stopBy: end
+           kind: local_declaration_statement
+           has:
+             stopBy: neighbor
+             kind: variable_declaration
+             all:
+               - has:
+                   stopBy: neighbor
+                   kind: identifier
+                   regex: '^IJwtDecoder|JwtDecoder$'
+               - has:
+                   stopBy: neighbor
+                   kind: variable_declarator
+                   all:
+                     - has:
+                         stopBy: neighbor
+                         kind: identifier
+                         pattern: $J
+                     - has:
+                         stopBy: neighbor
+                         kind: object_creation_expression
+     - inside:
+         stopBy: end
+         kind: compilation_unit
+         any:
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+           - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+  IJwtDecoder&JwtDecoder_Decode_nth2-false:
+   kind: invocation_expression
+   all:
+     - has:
+         stopBy: neighbor
+         kind: member_access_expression
+         all:
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               pattern: $J
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               regex: '^Decode$'
+     - has:
+         stopBy: neighbor
+         kind: argument_list
+         has:
+           stopBy: neighbor
+           kind: argument
+           nthChild: 2
+           has:
+                 stopBy: neighbor
+                 kind: boolean_literal
+                 regex: '^false$'
+     - inside:
+         stopBy: end
+         kind: local_declaration_statement
+         follows:
+           stopBy: end
+           kind: local_declaration_statement
+           has:
+             stopBy: neighbor
+             kind: variable_declaration
+             all:
+               - has:
+                   stopBy: neighbor
+                   kind: identifier
+                   regex: '^IJwtDecoder|JwtDecoder$'
+               - has:
+                   stopBy: neighbor
+                   kind: variable_declarator
+                   all:
+                     - has:
+                         stopBy: neighbor
+                         kind: identifier
+                         pattern: $J
+                     - has:
+                         stopBy: neighbor
+                         kind: object_creation_expression
+     - inside:
+         stopBy: end
+         kind: compilation_unit
+         any:
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+           - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+  var $D = new JwtDecoder_Decode_verify-false:
+   kind: invocation_expression
+   all:
+     - has:
+         stopBy: neighbor
+         kind: member_access_expression
+         all:
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               pattern: $J
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               regex: '^Decode$'
+     - has:
+         stopBy: neighbor
+         kind: argument_list
+         has:
+           stopBy: neighbor
+           kind: argument
+           nthChild: 2
+           all:
+             - has:
+                 stopBy: neighbor
+                 kind: identifier
+                 regex: '^verify$'
+             - has:
+                 stopBy: neighbor
+                 kind: boolean_literal
+                 regex: '^false$'
+     - inside:
+        stopBy: end
+        kind: local_declaration_statement
+        any:
+        - follows:
+           stopBy: end
+           kind: expression_statement
+           has:
+             stopBy: neighbor
+             kind: assignment_expression
+             all:
+               - has:
+                   stopBy: neighbor
+                   kind: identifier
+                   pattern: $J
+               - has:
+                   stopBy: neighbor
+                   regex: ^=$
+               - has:
+                   stopBy: neighbor
+                   kind: object_creation_expression
+                   all:
+                     - has:
+                         stopBy: neighbor
+                         kind: identifier
+                         regex: '^JwtDecoder$'
+        - follows:
+            stopBy: end
+            kind: local_declaration_statement
+            has:
+              stopBy: neighbor
+              kind: variable_declaration
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: implicit_type
+                    regex: '^var$'
+                - has:
+                    stopBy: neighbor
+                    kind: variable_declarator
+                    all:
+                      - has:
+                          stopBy: neighbor
+                          kind: identifier
+                          pattern: $J
+                      - has:
+                          stopBy: neighbor
+                          kind: object_creation_expression
+                          has:
+                            stopBy: neighbor
+                            kind: identifier
+                            regex: '^JwtDecoder$'
+     - inside:
+         stopBy: end
+         kind: compilation_unit
+         any:
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+           - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+  var $D = new JwtDecoder_Decode_nth2-false:
+   kind: invocation_expression
+   all:
+     - has:
+         stopBy: neighbor
+         kind: member_access_expression
+         all:
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               pattern: $J
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               regex: '^Decode$'
+     - has:
+         stopBy: neighbor
+         kind: argument_list
+         has:
+           stopBy: neighbor
+           kind: argument
+           nthChild: 2
+           has:
+                 stopBy: neighbor
+                 kind: boolean_literal
+                 regex: '^false$'
+     - inside:
+        stopBy: end
+        kind: local_declaration_statement
+        any:
+        - follows:
+           stopBy: end
+           kind: expression_statement
+           has:
+             stopBy: neighbor
+             kind: assignment_expression
+             all:
+               - has:
+                   stopBy: neighbor
+                   kind: identifier
+                   pattern: $J
+               - has:
+                   stopBy: neighbor
+                   regex: ^=$
+               - has:
+                   stopBy: neighbor
+                   kind: object_creation_expression
+                   all:
+                     - has:
+                         stopBy: neighbor
+                         kind: identifier
+                         regex: '^JwtDecoder$'
+        - follows:
+            stopBy: end
+            kind: local_declaration_statement
+            has:
+              stopBy: neighbor
+              kind: variable_declaration
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: implicit_type
+                    regex: '^var$'
+                - has:
+                    stopBy: neighbor
+                    kind: variable_declarator
+                    all:
+                      - has:
+                          stopBy: neighbor
+                          kind: identifier
+                          pattern: $J
+                      - has:
+                          stopBy: neighbor
+                          kind: object_creation_expression
+                          has:
+                            stopBy: neighbor
+                            kind: identifier
+                            regex: '^JwtDecoder$'
+     - inside:
+         stopBy: end
+         kind: compilation_unit
+         any:
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+           - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+  var $D = new JwtDecoder_Decode_nth3-false:
+   kind: invocation_expression
+   all:
+     - has:
+         stopBy: neighbor
+         kind: member_access_expression
+         all:
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               pattern: $J
+           - has:
+               stopBy: neighbor
+               kind: identifier
+               regex: '^Decode$'
+     - has:
+         stopBy: neighbor
+         kind: argument_list
+         has:
+           stopBy: neighbor
+           kind: argument
+           nthChild: 3
+           has:
+                 stopBy: neighbor
+                 kind: boolean_literal
+                 regex: '^false$'
+     - inside:
+        stopBy: end
+        kind: local_declaration_statement
+        any:
+        - follows:
+           stopBy: end
+           kind: expression_statement
+           has:
+             stopBy: neighbor
+             kind: assignment_expression
+             all:
+               - has:
+                   stopBy: neighbor
+                   kind: identifier
+                   pattern: $J
+               - has:
+                   stopBy: neighbor
+                   regex: ^=$
+               - has:
+                   stopBy: neighbor
+                   kind: object_creation_expression
+                   all:
+                     - has:
+                         stopBy: neighbor
+                         kind: identifier
+                         regex: '^JwtDecoder$'
+        - follows:
+            stopBy: end
+            kind: local_declaration_statement
+            has:
+              stopBy: neighbor
+              kind: variable_declaration
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: implicit_type
+                    regex: '^var$'
+                - has:
+                    stopBy: neighbor
+                    kind: variable_declarator
+                    all:
+                      - has:
+                          stopBy: neighbor
+                          kind: identifier
+                          pattern: $J
+                      - has:
+                          stopBy: neighbor
+                          kind: object_creation_expression
+                          has:
+                            stopBy: neighbor
+                            kind: identifier
+                            regex: '^JwtDecoder$'
+     - inside:
+         stopBy: end
+         kind: compilation_unit
+         any:
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+           - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+  JwtBuilder_Decode:
+    kind: invocation_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_access_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: invocation_expression
+                has:
+                  stopBy: end
+                  kind: identifier
+                  regex: '^JwtBuilder$'
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                regex: '^Decode$'
+      - has:
+          stopBy: neighbor
+          kind: argument_list
+          has:
+            stopBy: neighbor
+            kind: argument
+            has:
+              stopBy: neighbor
+              pattern: $$$
+      - not:
+          has:
+            stopBy: end
+            kind: identifier
+            regex: '^MustVerifySignature$'
+      - inside:
+         stopBy: end
+         kind: compilation_unit
+         any:
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+           - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+  var $B = JwtBuilder.Create()_Decode:
+    kind: invocation_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_access_expression
+          all:
+          - has:
+             stopBy: end
+             kind: identifier
+             pattern: $B
+          - has:
+              stopBy: neighbor
+              kind: identifier
+              regex: '^Decode$'
+      - has:
+          stopBy: neighbor
+          kind: argument_list
+          has:
+            stopBy: neighbor
+            kind: argument
+            has:
+              stopBy: neighbor
+              pattern: $$$
+      - not:
+          has:
+            stopBy: end
+            kind: identifier
+            regex: '^MustVerifySignature$'
+      - inside:
+          stopBy: end
+          kind: local_declaration_statement
+          any:
+            - follows:
+                stopBy: end
+                kind: local_declaration_statement
+                has:
+                  stopBy: neighbor
+                  kind: variable_declaration
+                  all:
+                    - has:
+                        stopBy: neighbor
+                        kind: implicit_type
+                        regex: '^var$'
+                    - has:
+                        stopBy: neighbor
+                        kind: variable_declarator
+                        all:
+                          - has:
+                              stopBy: neighbor
+                              kind: identifier
+                              pattern: $B
+                          - has:
+                              stopBy: end
+                              kind: invocation_expression
+                              pattern: JwtBuilder.Create()
+            - follows:
+                stopBy: end
+                kind: expression_statement
+                has:
+                  stopBy: neighbor
+                  kind: assignment_expression
+                  all:
+                    - has:
+                        stopBy: neighbor
+                        kind: identifier
+                        pattern: $B
+                    - has:
+                        stopBy: neighbor
+                        regex: ^=$
+                    - has:
+                        stopBy: neighbor
+                        kind: invocation_expression
+                        pattern: JwtBuilder.Create()
+      - inside:
+         stopBy: end
+         kind: compilation_unit
+         any:
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+           - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+      - inside:
+          stopBy: end
+          kind: method_declaration
+          not:
+            has:
+                stopBy: end
+                kind: identifier
+                regex: ^MustVerifySignature$
+  new ValidationParameters(){ValidateSignature-false}:
+    kind: object_creation_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          regex: '^ValidationParameters$'
+      - has:
+          stopBy: neighbor
+          kind: initializer_expression
+          has:
+            stopBy: end
+            kind: assignment_expression
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^ValidateSignature$'
+              - has:
+                  stopBy: neighbor
+                  regex: ^=$
+              - has:
+                  stopBy: neighbor
+                  kind: boolean_literal
+                  regex: '^false$'
+      - inside:
+         stopBy: end
+         kind: compilation_unit
+         any:
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+           - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+           - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+  $V.ValidateSignature = false:
+   kind: expression_statement
+   all:
+   - has:
+      stopBy: neighbor
+      kind: assignment_expression
+      all:
+        - has:
+            stopBy: neighbor
+            kind: member_access_expression
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  pattern: $V
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^VerifySignature|ValidateIssuerSigningKey$'
+        - has:
+            stopBy: neighbor
+            regex: ^=$
+        - has:
+            stopBy: neighbor
+            kind: boolean_literal
+            regex: ^false$
+   - any:
+         - follows:
+             stopBy: end
+             kind: local_declaration_statement
+             has:
+              stopBy: end
+              kind: variable_declaration
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: implicit_type
+                    regex: ^var$
+                - has:
+                    stopBy: neighbor
+                    kind: variable_declarator
+                    all:
+                      - has:
+                          stopBy: neighbor
+                          kind: identifier
+                          pattern: $V
+                      - has:
+                          stopBy: neighbor
+                          kind: object_creation_expression
+                          pattern: new ValidationParameters($$$)
+         - follows:
+             stopBy: end
+             kind: expression_statement
+             has:
+               stopBy: neighbor
+               kind: assignment_expression
+               all:
+                 - has:
+                     stopBy: neighbor
+                     kind: identifier
+                     pattern: $V
+                 - has:
+                     stopBy: neighbor
+                     regex: ^=$
+                 - has:
+                     stopBy: neighbor
+                     kind: object_creation_expression
+                     pattern: new ValidationParameters($$$)
+         - follows:
+             stopBy: end
+             kind: local_declaration_statement
+             has:
+               stopBy: neighbor
+               kind: variable_declaration
+               all:
+                 - has:
+                     stopBy: neighbor
+                     kind: identifier
+                 - has:
+                     stopBy: neighbor
+                     kind: variable_declarator
+                     all:
+                       - has:
+                           stopBy: neighbor
+                           kind: identifier
+                           pattern: $V
+                       - has:
+                           stopBy: neighbor
+                           kind: object_creation_expression
+                           pattern: new ValidationParameters($$$)
+         - inside:
+             stopBy: end
+             kind: invocation_expression
+             all:
+             - has:
+                stopBy: end
+                kind: identifier
+                regex: '^AddJwt$'
+             - has:
+                stopBy: neighbor
+                pattern: $SERVICE
+   - inside:
+            stopBy: end
+            kind: compilation_unit
+            any:
+            - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+            - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+            - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+  new TokenValidationParameters(){ValidateIssuerSigningKey = false}:
+    kind: assignment_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          regex: ^ValidateIssuerSigningKey|VerifySignature$
+      - has:
+          stopBy: neighbor
+          regex: ^=$
+      - has:
+          stopBy: neighbor
+          kind: boolean_literal
+          regex: ^false$
+      - inside:
+          stopBy: end
+          kind: object_creation_expression
+          has:
+            stopBy: neighbor
+            kind: identifier
+            regex: ^TokenValidationParameters|JwtAuthenticationOptions$
+      - inside:
+            stopBy: end
+            kind: compilation_unit
+            any:
+            - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+            - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+            - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+  JwtAuthenticationOptions().$D.VerifySignature:
+    kind: expression_statement
+    all:
+      - has:
+          stopBy: end
+          kind: member_access_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                pattern: $O
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                regex: '^VerifySignature$'
+      - has:
+          stopBy: neighbor
+          regex: =
+      - has:
+          stopBy: end
+          kind: boolean_literal
+          regex: '^false$'
+      - any:
+        - follows:
+           stopBy: end
+           kind: local_declaration_statement
+           has:
+             stopBy: neighbor
+             kind: variable_declaration
+             all:
+               - any:
+                 - has:
+                    stopBy: neighbor
+                    kind: implicit_type
+                    regex: '^var$'
+                 - has:
+                     stopBy: neighbor
+                     kind: identifier
+               - has:
+                   stopBy: neighbor
+                   kind: variable_declarator
+                   all:
+                     - has:
+                         stopBy: neighbor
+                         kind: identifier
+                         pattern: $O
+                     - has:
+                         stopBy: neighbor
+                         kind: object_creation_expression
+                         pattern: new JwtAuthenticationOptions()
+        - follows:
+            stopBy: end
+            kind: expression_statement
+            all:
+              - has:
+                  stopBy: end
+                  kind: identifier
+                  pattern: $O
+              - has:
+                  stopBy: end
+                  regex: ^=$
+              - has:
+                  stopBy: end
+                  kind: object_creation_expression
+                  pattern: new JwtAuthenticationOptions()
+      - inside:
+            stopBy: end
+            kind: compilation_unit
+            any:
+            - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+            - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+            - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+  JwtDecoder.Decode():
+    kind: invocation_expression
+    all:
+      - has:
+          stopBy: end
+          kind: identifier
+          regex: '^JwtDecoder$'
+      - has:
+          stopBy: end
+          kind: identifier
+          regex: '^Decode$'
+      - has:
+          stopBy: neighbor
+          kind: argument_list
+          any:
+            - has:
+                stopBy: end
+                kind: argument
+                nthChild: 2
+                has:
+                  stopBy: neighbor
+                  kind: boolean_literal
+                  regex: '^false$'
+            - has:
+                stopBy: end
+                kind: argument
+                nthChild: 3
+                has:
+                  stopBy: neighbor
+                  kind: boolean_literal
+                  regex: '^false$'
+            - has:
+                stopBy: end
+                kind: argument
+                all:
+                  - has:
+                      stopBy: neighbor
+                      kind: identifier
+                      regex: '^verify$'
+                  - has:
+                      stopBy: neighbor
+                      kind: boolean_literal
+                      regex: '^false$'
+      - inside:
+            stopBy: end
+            kind: compilation_unit
+            any:
+            - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: '^JWT$'
+            - has:
+               stopBy: end
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^JWT$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Builder$'
+            - has:
+               stopBy: neighbor
+               kind: using_directive
+               has:
+                 stopBy: neighbor
+                 kind: qualified_name
+                 all:
+                   - has:
+                       stopBy: neighbor
+                       kind: qualified_name
+                       all:
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^Microsoft$'
+                         - has:
+                             stopBy: neighbor
+                             kind: identifier
+                             regex: '^AspNetCore$'
+                   - has:
+                       stopBy: neighbor
+                       kind: identifier
+                       regex: '^Mvc$'
+rule:
+ any:
+ - kind: invocation_expression
+   any:
+     - matches: IJwtDecoder&JwtDecoder_Decode_verify-false
+     - matches: IJwtDecoder&JwtDecoder_Decode_nth3-false
+     - matches: IJwtDecoder&JwtDecoder_Decode_nth2-false
+     - matches: var $D = new JwtDecoder_Decode_verify-false
+     - matches: var $D = new JwtDecoder_Decode_nth2-false
+     - matches: var $D = new JwtDecoder_Decode_nth3-false
+     - matches: JwtBuilder_Decode
+     - matches: var $B = JwtBuilder.Create()_Decode
+     - matches: JwtDecoder.Decode()
+ - kind: object_creation_expression
+   any:
+      - matches: new ValidationParameters(){ValidateSignature-false}
+ - kind: expression_statement
+   any:
+     - matches: $V.ValidateSignature = false
+     - matches: JwtAuthenticationOptions().$D.VerifySignature
+ - kind: assignment_expression
+   any:
+     - matches: new TokenValidationParameters(){ValidateIssuerSigningKey = false}
