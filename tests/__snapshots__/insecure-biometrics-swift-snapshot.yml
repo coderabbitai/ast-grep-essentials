@@ -1,0 +1,68 @@
+id: insecure-biometrics-swift
+snapshots:
+  ? |
+    let context = LAContext()
+    class Testing {
+      var name: LAContext
+
+      init(name: LAContext) {
+          self.name = name
+      }
+
+      func speak() {
+          // ruleid: insecure-biometrics
+          context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authenticate to the application") { success, evaluationError in
+          guard success else {
+              // do...
+          }
+      }
+    }
+  : labels:
+    - source: context.evaluatePolicy
+      style: primary
+      start: 179
+      end: 201
+    - source: context
+      style: secondary
+      start: 4
+      end: 11
+    - source: LAContext()
+      style: secondary
+      start: 14
+      end: 25
+    - source: let context = LAContext()
+      style: secondary
+      start: 0
+      end: 25
+    - source: let context = LAContext()
+      style: secondary
+      start: 0
+      end: 25
+  ? |
+    let context = LAContext()
+    context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Authenticate to the application") { success, evaluationError in
+        guard success else {
+            // do...
+        }
+    }
+  : labels:
+    - source: context.evaluatePolicy
+      style: primary
+      start: 26
+      end: 48
+    - source: context
+      style: secondary
+      start: 4
+      end: 11
+    - source: LAContext()
+      style: secondary
+      start: 14
+      end: 25
+    - source: let context = LAContext()
+      style: secondary
+      start: 0
+      end: 25
+    - source: let context = LAContext()
+      style: secondary
+      start: 0
+      end: 25
