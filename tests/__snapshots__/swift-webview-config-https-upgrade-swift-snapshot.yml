@@ -1,0 +1,204 @@
+id: swift-webview-config-https-upgrade-swift
+snapshots:
+  ? "let prefs2 = WKPreferences()\nlet config2 = WKWebViewConfiguration()\nconfig2.upgradeKnownHostsToHTTPS  = true\nconfig2.upgradeKnownHostsToHTTPS  = false\nconfig.defaultWebpagePreferences = prefs2 \nWKWebView(frame: .zero, configuration: config)\n"
+  : labels:
+    - source: config2.upgradeKnownHostsToHTTPS  = false
+      style: primary
+      start: 109
+      end: 150
+    - source: config2
+      style: secondary
+      start: 109
+      end: 116
+    - source: upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 117
+      end: 141
+    - source: .upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 116
+      end: 141
+    - source: config2.upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 109
+      end: 141
+    - source: =
+      style: secondary
+      start: 143
+      end: 144
+    - source: 'false'
+      style: secondary
+      start: 145
+      end: 150
+    - source: config2
+      style: secondary
+      start: 33
+      end: 40
+    - source: config2
+      style: secondary
+      start: 33
+      end: 40
+    - source: WKWebViewConfiguration()
+      style: secondary
+      start: 43
+      end: 67
+    - source: let config2 = WKWebViewConfiguration()
+      style: secondary
+      start: 29
+      end: 67
+  ? |
+    let prefs2 = WKPreferences()
+    let config2 = WKWebViewConfiguration()
+    config2.upgradeKnownHostsToHTTPS = false
+    config2.defaultWebpagePreferences = prefs2
+    let webView2 = WKWebView(frame: .zero, configuration: config2)
+    self.view.addSubview(webView2)
+  : labels:
+    - source: config2.upgradeKnownHostsToHTTPS = false
+      style: primary
+      start: 68
+      end: 108
+    - source: config2
+      style: secondary
+      start: 68
+      end: 75
+    - source: upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 76
+      end: 100
+    - source: .upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 75
+      end: 100
+    - source: config2.upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 68
+      end: 100
+    - source: =
+      style: secondary
+      start: 101
+      end: 102
+    - source: 'false'
+      style: secondary
+      start: 103
+      end: 108
+    - source: config2
+      style: secondary
+      start: 33
+      end: 40
+    - source: config2
+      style: secondary
+      start: 33
+      end: 40
+    - source: WKWebViewConfiguration()
+      style: secondary
+      start: 43
+      end: 67
+    - source: let config2 = WKWebViewConfiguration()
+      style: secondary
+      start: 29
+      end: 67
+  ? |
+    let prefs5 = WKPreferences()
+    let config5 = WKWebViewConfiguration()
+    config5.upgradeKnownHostsToHTTPS = false
+    config5.defaultWebpagePreferences = prefs5
+    let webView5 = WKWebView(frame: .zero, configuration: config5)
+    self.view.addSubview(webView5)
+  : labels:
+    - source: config5.upgradeKnownHostsToHTTPS = false
+      style: primary
+      start: 68
+      end: 108
+    - source: config5
+      style: secondary
+      start: 68
+      end: 75
+    - source: upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 76
+      end: 100
+    - source: .upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 75
+      end: 100
+    - source: config5.upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 68
+      end: 100
+    - source: =
+      style: secondary
+      start: 101
+      end: 102
+    - source: 'false'
+      style: secondary
+      start: 103
+      end: 108
+    - source: config5
+      style: secondary
+      start: 33
+      end: 40
+    - source: config5
+      style: secondary
+      start: 33
+      end: 40
+    - source: WKWebViewConfiguration()
+      style: secondary
+      start: 43
+      end: 67
+    - source: let config5 = WKWebViewConfiguration()
+      style: secondary
+      start: 29
+      end: 67
+  ? |
+    let prefs7 = WKPreferences()
+    let config7 = WKWebViewConfiguration()
+    config7.upgradeKnownHostsToHTTPS = false
+    config7.defaultWebpagePreferences = prefs7
+    let webView7 = WKWebView(frame: .zero, configuration: config7)
+    self.view.addSubview(webView7)
+  : labels:
+    - source: config7.upgradeKnownHostsToHTTPS = false
+      style: primary
+      start: 68
+      end: 108
+    - source: config7
+      style: secondary
+      start: 68
+      end: 75
+    - source: upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 76
+      end: 100
+    - source: .upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 75
+      end: 100
+    - source: config7.upgradeKnownHostsToHTTPS
+      style: secondary
+      start: 68
+      end: 100
+    - source: =
+      style: secondary
+      start: 101
+      end: 102
+    - source: 'false'
+      style: secondary
+      start: 103
+      end: 108
+    - source: config7
+      style: secondary
+      start: 33
+      end: 40
+    - source: config7
+      style: secondary
+      start: 33
+      end: 40
+    - source: WKWebViewConfiguration()
+      style: secondary
+      start: 43
+      end: 67
+    - source: let config7 = WKWebViewConfiguration()
+      style: secondary
+      start: 29
+      end: 67

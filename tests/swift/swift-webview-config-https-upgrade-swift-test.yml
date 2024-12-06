@@ -1,0 +1,37 @@
+id: swift-webview-config-https-upgrade-swift
+valid:
+  - |
+     let prefs = WKPreferences()
+     let config = WKWebViewConfiguration()
+     config.upgradeKnownHostsToHTTPS  = true
+     config.defaultWebpagePreferences = prefs 
+     WKWebView(frame: .zero, configuration: config)
+invalid:
+  - |
+     let prefs2 = WKPreferences()
+     let config2 = WKWebViewConfiguration()
+     config2.upgradeKnownHostsToHTTPS  = true
+     config2.upgradeKnownHostsToHTTPS  = false
+     config.defaultWebpagePreferences = prefs2 
+     WKWebView(frame: .zero, configuration: config)
+  - |
+     let prefs7 = WKPreferences()
+     let config7 = WKWebViewConfiguration()
+     config7.upgradeKnownHostsToHTTPS = false
+     config7.defaultWebpagePreferences = prefs7
+     let webView7 = WKWebView(frame: .zero, configuration: config7)
+     self.view.addSubview(webView7)
+  - |
+     let prefs5 = WKPreferences()
+     let config5 = WKWebViewConfiguration()
+     config5.upgradeKnownHostsToHTTPS = false
+     config5.defaultWebpagePreferences = prefs5
+     let webView5 = WKWebView(frame: .zero, configuration: config5)
+     self.view.addSubview(webView5)
+  - |
+     let prefs2 = WKPreferences()
+     let config2 = WKWebViewConfiguration()
+     config2.upgradeKnownHostsToHTTPS = false
+     config2.defaultWebpagePreferences = prefs2
+     let webView2 = WKWebView(frame: .zero, configuration: config2)
+     self.view.addSubview(webView2)

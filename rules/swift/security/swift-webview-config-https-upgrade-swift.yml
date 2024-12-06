@@ -1,0 +1,115 @@
+id: swift-webview-config-https-upgrade-swift
+severity: warning
+language: swift
+message: >-
+  Webviews were observed that do not enable the
+  `upgradeKnownHostsToHTTPS` feature. This feature will ensure accidental
+  HTTP connections are automatically upgraded to HTTPS, avoiding potential
+  data leakage over the network.
+note: >-
+  [CWE-272] Least Privilege Violation.
+  [REFERENCES]
+      - https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3752243-upgradeknownhoststohttps
+      - https://mas.owasp.org/MASVS/controls/MASVS-PLATFORM-2/
+utils:
+  match_pattern_upgradeKnownHostsToHTTPS:
+    kind: assignment
+    all:
+      - has:
+          stopBy: neighbor
+          kind: directly_assignable_expression
+          all:
+            - has:
+                stopBy: end
+                kind: simple_identifier
+                pattern: $F
+            - has:
+                stopBy: end
+                kind: navigation_suffix
+                has:
+                  stopBy: neighbor
+                  kind: simple_identifier
+                  regex: '^upgradeKnownHostsToHTTPS$'
+      - has:
+          stopBy: neighbor
+          regex: '^=$'
+      - has:
+          stopBy: neighbor
+          kind: boolean_literal
+          regex: '^false$'
+      - follows:
+          stopBy: end
+          kind: property_declaration
+          all:
+            - has:
+                stopBy: end
+                kind: pattern
+                has:
+                  stopBy: neighbor
+                  kind: simple_identifier
+                  pattern: $F
+            - has:
+                stopBy: neighbor
+                kind: call_expression
+                pattern: WKWebViewConfiguration()
+      - not:
+          follows:
+              stopBy: end
+              kind: assignment
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: directly_assignable_expression
+                    all:
+                     - has:
+                        stopBy: end
+                        kind: simple_identifier
+                        pattern: $F
+                     - has:
+                         stopBy: end
+                         kind: navigation_suffix
+                         has:
+                          stopBy: neighbor
+                          kind: simple_identifier
+                          regex: '^upgradeKnownHostsToHTTPS$'
+                - has:
+                    stopBy: neighbor
+                    regex: '^=$'
+                - has:
+                    stopBy: neighbor
+                    kind: boolean_literal
+                    regex: '^false$'
+                
+      - not:
+          precedes:
+            stopBy: neighbor
+            kind: assignment
+            all:
+              - all:
+                  - has:
+                      stopBy: end
+                      kind: directly_assignable_expression
+                      all:
+                        - has:
+                            stopBy: end
+                            kind: simple_identifier
+                            pattern: $F
+                        - has:
+                            stopBy: end
+                            kind: navigation_suffix
+                            has:
+                              stopBy: neighbor
+                              kind: simple_identifier
+                              regex: '^upgradeKnownHostsToHTTPS$'
+                  - has:
+                      stopBy: neighbor
+                      regex: '^=$'
+                  - has:
+                          stopBy: neighbor
+                          kind: boolean_literal
+
+rule:
+  kind: assignment
+  matches: match_pattern_upgradeKnownHostsToHTTPS
+
+
