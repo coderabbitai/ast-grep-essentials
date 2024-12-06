@@ -1,0 +1,15 @@
+id: swift-webview-config-allows-file-access-swift
+valid:
+  - |
+
+invalid:
+  - |
+    preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
+  - |
+    func enableFileAccessFromFileURLs() {
+    webView.configuration.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
+    print("allowFileAccessFromFileURLs has been set to true.")
+    }  
+  - |
+    webViewConfig.webView.configuration.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")  
+
