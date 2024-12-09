@@ -1,0 +1,445 @@
+id: python-elasticsearch-hardcoded-bearer-auth-python
+severity: warning
+language: python
+message: >-
+      A secret is hard-coded in the application. Secrets stored in source
+      code, such as credentials, identifiers, and other types of sensitive data,
+      can be leaked and used by internal or external malicious actors. Use
+      environment variables to securely provide credentials and other secrets or
+      retrieve them from a secure vault or Hardware Security Module (HSM).
+note: >-
+  [CWE-798] Use of Hard-coded Credentials.
+  [REFERENCES]
+      - https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html
+utils:
+  elasticsearch.Elasticsearch(..., bearer_auth="...",...):
+    # elasticsearch.Elasticsearch(..., bearer_auth="...",...)
+    kind: call
+    all:
+      - has:
+          stopBy: neighbor
+          kind: attribute
+          regex: ^elasticsearch.Elasticsearch$
+      - has:
+          stopBy: neighbor
+          kind: argument_list
+          has:
+            stopBy: end
+            kind: keyword_argument
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: ^bearer_auth$
+              - has:
+                  stopBy: neighbor
+                  kind: string
+                  has:
+                    stopBy: end
+                    kind: string_content
+  elasticsearch.Elasticsearch(..., bearer_auth=$VAR,...)_with_instance:
+    # elasticsearch.Elasticsearch(..., bearer_auth="...",...)
+    kind: call
+    all:
+      - has:
+          stopBy: neighbor
+          kind: attribute
+          regex: ^elasticsearch.Elasticsearch$
+      - has:
+          stopBy: neighbor
+          kind: argument_list
+          has:
+            stopBy: end
+            kind: keyword_argument
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: ^bearer_auth$
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  nthChild: 2
+                  pattern: $P
+      - inside:
+          stopBy: end
+          kind: expression_statement
+          follows:
+            stopBy: end
+            kind: expression_statement
+            has:
+              stopBy: neighbor
+              kind: assignment
+              all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  pattern: $P
+              - has:
+                  stopBy: neighbor
+                  kind: string
+                  has:
+                    stopBy: neighbor
+                    kind: string_content
+  Elasticsearch(..., bearer_auth="...",...):
+    # elasticsearch.Elasticsearch(..., bearer_auth="...",...)
+    kind: call
+    all:
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          regex: ^Elasticsearch$
+      - has:
+          stopBy: neighbor
+          kind: argument_list
+          has:
+            stopBy: end
+            kind: keyword_argument
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: ^bearer_auth$
+              - has:
+                  stopBy: neighbor
+                  kind: string
+                  has:
+                    stopBy: end
+                    kind: string_content
+      - inside:
+          stopBy: end
+          kind: module
+          has:
+            stopBy: end
+            kind: import_from_statement
+            pattern: from elasticsearch import Elasticsearch
+  Elasticsearch(..., bearer_auth=$VAR,...)_with_instance:
+    # elasticsearch.Elasticsearch(..., bearer_auth="...",...)
+    kind: call
+    all:
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          regex: ^Elasticsearch$
+      - has:
+          stopBy: neighbor
+          kind: argument_list
+          has:
+            stopBy: end
+            kind: keyword_argument
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  regex: ^bearer_auth$
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  nthChild: 2
+                  pattern: $P
+      - inside:
+          stopBy: end
+          kind: expression_statement
+          follows:
+            stopBy: end
+            kind: expression_statement
+            has:
+              stopBy: neighbor
+              kind: assignment
+              all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  pattern: $P
+              - has:
+                  stopBy: neighbor
+                  kind: string
+                  has:
+                    stopBy: neighbor
+                    kind: string_content
+      - inside:
+          stopBy: end
+          kind: module
+          has:
+            stopBy: end
+            kind: import_from_statement
+            pattern: from elasticsearch import Elasticsearch
+  $ES.options(..., bearer_auth="...",...):
+    # $ES.options(..., bearer_auth="...",...)
+    kind: call
+    all:
+      - has:
+          stopBy: neighbor
+          kind: attribute
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                pattern: $I
+                nthChild: 1
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                regex: ^options$
+      - has:
+                stopBy: neighbor
+                kind: argument_list
+                all:
+                  - has:
+                      stopBy: end
+                      kind: keyword_argument
+                      all:
+                        - has:
+                            stopBy: neighbor
+                            kind: identifier
+                            regex: ^bearer_auth$
+                        - has:
+                            stopBy: neighbor
+                            kind: string
+                            has:
+                              stopBy: neighbor
+                              kind: string_content
+      - inside:
+          stopBy: end
+          kind: expression_statement
+          follows:
+            stopBy: end
+            kind: expression_statement
+            has:
+              stopBy: neighbor
+              kind: assignment
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: identifier
+                    pattern: $I
+                - has:
+                    stopBy: neighbor
+                    kind: call
+                    pattern: elasticsearch.Elasticsearch()
+  $ES.options(..., bearer_auth=$VAR,...)_with_instance:
+    # $ES.options(..., bearer_auth="...",...)
+    kind: call
+    all:
+      - has:
+          stopBy: neighbor
+          kind: attribute
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                pattern: $I
+                nthChild: 1
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                regex: ^options$
+      - has:
+                stopBy: neighbor
+                kind: argument_list
+                all:
+                  - has:
+                      stopBy: end
+                      kind: keyword_argument
+                      all:
+                        - has:
+                            stopBy: neighbor
+                            kind: identifier
+                            regex: ^bearer_auth$
+                        - has:
+                            stopBy: neighbor
+                            kind: identifier
+                            pattern: $C
+                            nthChild: 2
+      - inside:
+          stopBy: end
+          kind: expression_statement
+          follows:
+            stopBy: end
+            kind: expression_statement
+            has:
+              stopBy: neighbor
+              kind: assignment
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: identifier
+                    pattern: $I
+                - has:
+                    stopBy: neighbor
+                    kind: call
+                    pattern: elasticsearch.Elasticsearch()
+      - inside:
+          stopBy: end
+          kind: expression_statement
+          follows:
+            stopBy: end
+            kind: expression_statement
+            has:
+              stopBy: end
+              kind: assignment
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: identifier
+                    pattern: $C
+                - has:
+                    stopBy: neighbor
+                    kind: string
+                    has:
+                      stopBy: neighbor
+                      kind: string_content
+  $ES.options(..., bearer_auth="...",...)_2:
+    kind: call
+    all:
+      - has:
+          stopBy: neighbor
+          kind: attribute
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                pattern: $J
+                nthChild: 1
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                regex: ^options$
+      - has:
+                stopBy: neighbor
+                kind: argument_list
+                all:
+                  - has:
+                      stopBy: end
+                      kind: keyword_argument
+                      all:
+                        - has:
+                            stopBy: neighbor
+                            kind: identifier
+                            regex: ^bearer_auth$
+                        - has:
+                            stopBy: neighbor
+                            kind: string
+                            has:
+                              stopBy: neighbor
+                              kind: string_content
+      - inside:
+          stopBy: end
+          kind: expression_statement
+          follows:
+            stopBy: end
+            kind: expression_statement
+            has:
+             stopBy: neighbor
+             kind: assignment
+             all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  pattern: $J
+              - has:
+                  stopBy: neighbor
+                  kind: call
+                  has:
+                    stopBy: neighbor
+                    kind: identifier
+                    regex: ^Elasticsearch$
+      - inside:
+          stopBy: end
+          kind: module
+          has:
+            stopBy: end
+            kind: import_from_statement
+            pattern: from elasticsearch import Elasticsearch
+  $ES.options(..., bearer_auth=$VAR,...)_with_instance_2:
+    kind: call
+    all:
+      - has:
+          stopBy: neighbor
+          kind: attribute
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                pattern: $J
+                nthChild: 1
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                regex: ^options$
+      - has:
+                stopBy: neighbor
+                kind: argument_list
+                all:
+                  - has:
+                      stopBy: end
+                      kind: keyword_argument
+                      all:
+                        - has:
+                            stopBy: neighbor
+                            kind: identifier
+                            regex: ^bearer_auth$
+                        - has:
+                            stopBy: neighbor
+                            kind: identifier
+                            pattern: $R
+                            nthChild: 2
+      - inside:
+          stopBy: end
+          kind: expression_statement
+          follows:
+            stopBy: end
+            kind: expression_statement
+            has:
+             stopBy: neighbor
+             kind: assignment
+             all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  pattern: $J
+              - has:
+                  stopBy: neighbor
+                  kind: call
+                  has:
+                    stopBy: neighbor
+                    kind: identifier
+                    regex: ^Elasticsearch$
+      - inside:
+          stopBy: end
+          kind: module
+          has:
+            stopBy: end
+            kind: import_from_statement
+            pattern: from elasticsearch import Elasticsearch
+      - inside:
+          stopBy: end
+          kind: expression_statement
+          follows:
+            stopBy: end
+            kind: expression_statement
+            has:
+              stopBy: neighbor
+              kind: assignment
+              all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  pattern: $R
+              - has:
+                  stopBy: neighbor
+                  kind: string
+                  has:
+                    stopBy: neighbor
+                    kind: string_content
+rule:
+  kind: call
+  any:
+    - matches: elasticsearch.Elasticsearch(..., bearer_auth="...",...)
+    - matches: elasticsearch.Elasticsearch(..., bearer_auth=$VAR,...)_with_instance
+    - matches: Elasticsearch(..., bearer_auth="...",...)
+    - matches: Elasticsearch(..., bearer_auth=$VAR,...)_with_instance
+    - matches: $ES.options(..., bearer_auth="...",...)
+    - matches: $ES.options(..., bearer_auth=$VAR,...)_with_instance
+    - matches: $ES.options(..., bearer_auth="...",...)_2
+    - matches: $ES.options(..., bearer_auth=$VAR,...)_with_instance_2

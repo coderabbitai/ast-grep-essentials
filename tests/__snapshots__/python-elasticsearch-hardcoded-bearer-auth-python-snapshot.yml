@@ -1,0 +1,298 @@
+id: python-elasticsearch-hardcoded-bearer-auth-python
+snapshots:
+  ? |
+    from elasticsearch import Elasticsearch
+    es = Elasticsearch(
+    "https://localhost:9200",
+    bearer_auth="token-value"
+    )
+  : labels:
+    - source: |-
+        Elasticsearch(
+        "https://localhost:9200",
+        bearer_auth="token-value"
+        )
+      style: primary
+      start: 45
+      end: 113
+    - source: Elasticsearch
+      style: secondary
+      start: 45
+      end: 58
+    - source: bearer_auth
+      style: secondary
+      start: 86
+      end: 97
+    - source: token-value
+      style: secondary
+      start: 99
+      end: 110
+    - source: '"token-value"'
+      style: secondary
+      start: 98
+      end: 111
+    - source: bearer_auth="token-value"
+      style: secondary
+      start: 86
+      end: 111
+    - source: |-
+        (
+        "https://localhost:9200",
+        bearer_auth="token-value"
+        )
+      style: secondary
+      start: 58
+      end: 113
+    - source: from elasticsearch import Elasticsearch
+      style: secondary
+      start: 0
+      end: 39
+    - source: |
+        from elasticsearch import Elasticsearch
+        es = Elasticsearch(
+        "https://localhost:9200",
+        bearer_auth="token-value"
+        )
+      style: secondary
+      start: 0
+      end: 114
+  ? |
+    from elasticsearch import Elasticsearch
+    pswd = "token-value"
+    es = Elasticsearch(
+    "https://localhost:9200",
+    bearer_auth=pswd
+    )
+  : labels:
+    - source: |-
+        Elasticsearch(
+        "https://localhost:9200",
+        bearer_auth=pswd
+        )
+      style: primary
+      start: 66
+      end: 125
+    - source: Elasticsearch
+      style: secondary
+      start: 66
+      end: 79
+    - source: bearer_auth
+      style: secondary
+      start: 107
+      end: 118
+    - source: pswd
+      style: secondary
+      start: 119
+      end: 123
+    - source: bearer_auth=pswd
+      style: secondary
+      start: 107
+      end: 123
+    - source: |-
+        (
+        "https://localhost:9200",
+        bearer_auth=pswd
+        )
+      style: secondary
+      start: 79
+      end: 125
+    - source: pswd
+      style: secondary
+      start: 40
+      end: 44
+    - source: token-value
+      style: secondary
+      start: 48
+      end: 59
+    - source: '"token-value"'
+      style: secondary
+      start: 47
+      end: 60
+    - source: pswd = "token-value"
+      style: secondary
+      start: 40
+      end: 60
+    - source: pswd = "token-value"
+      style: secondary
+      start: 40
+      end: 60
+    - source: |-
+        es = Elasticsearch(
+        "https://localhost:9200",
+        bearer_auth=pswd
+        )
+      style: secondary
+      start: 61
+      end: 125
+    - source: from elasticsearch import Elasticsearch
+      style: secondary
+      start: 0
+      end: 39
+    - source: |
+        from elasticsearch import Elasticsearch
+        pswd = "token-value"
+        es = Elasticsearch(
+        "https://localhost:9200",
+        bearer_auth=pswd
+        )
+      style: secondary
+      start: 0
+      end: 126
+  ? |
+    from elasticsearch import Elasticsearch
+    pswd = "token-value"
+    es = Elasticsearch(
+    "https://localhost:9200",
+    bearer_auth=pswd
+    )
+    es.options(
+    bearer_auth="password"
+    ).indices.get(index="*")
+  : labels:
+    - source: |-
+        Elasticsearch(
+        "https://localhost:9200",
+        bearer_auth=pswd
+        )
+      style: primary
+      start: 66
+      end: 125
+    - source: Elasticsearch
+      style: secondary
+      start: 66
+      end: 79
+    - source: bearer_auth
+      style: secondary
+      start: 107
+      end: 118
+    - source: pswd
+      style: secondary
+      start: 119
+      end: 123
+    - source: bearer_auth=pswd
+      style: secondary
+      start: 107
+      end: 123
+    - source: |-
+        (
+        "https://localhost:9200",
+        bearer_auth=pswd
+        )
+      style: secondary
+      start: 79
+      end: 125
+    - source: pswd
+      style: secondary
+      start: 40
+      end: 44
+    - source: token-value
+      style: secondary
+      start: 48
+      end: 59
+    - source: '"token-value"'
+      style: secondary
+      start: 47
+      end: 60
+    - source: pswd = "token-value"
+      style: secondary
+      start: 40
+      end: 60
+    - source: pswd = "token-value"
+      style: secondary
+      start: 40
+      end: 60
+    - source: |-
+        es = Elasticsearch(
+        "https://localhost:9200",
+        bearer_auth=pswd
+        )
+      style: secondary
+      start: 61
+      end: 125
+    - source: from elasticsearch import Elasticsearch
+      style: secondary
+      start: 0
+      end: 39
+    - source: |
+        from elasticsearch import Elasticsearch
+        pswd = "token-value"
+        es = Elasticsearch(
+        "https://localhost:9200",
+        bearer_auth=pswd
+        )
+        es.options(
+        bearer_auth="password"
+        ).indices.get(index="*")
+      style: secondary
+      start: 0
+      end: 186
+  ? "from elasticsearch import Elasticsearch\npswd = \"token-value\"\nes = Elasticsearch(\n\"https://localhost:9200\",\nbearer_auth=pswd\n)\npassword=\"bsdhsd\"\nes.options(\nbearer_auth=password\n).indices.get(index=\"*\") \n"
+  : labels:
+    - source: |-
+        Elasticsearch(
+        "https://localhost:9200",
+        bearer_auth=pswd
+        )
+      style: primary
+      start: 66
+      end: 125
+    - source: Elasticsearch
+      style: secondary
+      start: 66
+      end: 79
+    - source: bearer_auth
+      style: secondary
+      start: 107
+      end: 118
+    - source: pswd
+      style: secondary
+      start: 119
+      end: 123
+    - source: bearer_auth=pswd
+      style: secondary
+      start: 107
+      end: 123
+    - source: |-
+        (
+        "https://localhost:9200",
+        bearer_auth=pswd
+        )
+      style: secondary
+      start: 79
+      end: 125
+    - source: pswd
+      style: secondary
+      start: 40
+      end: 44
+    - source: token-value
+      style: secondary
+      start: 48
+      end: 59
+    - source: '"token-value"'
+      style: secondary
+      start: 47
+      end: 60
+    - source: pswd = "token-value"
+      style: secondary
+      start: 40
+      end: 60
+    - source: pswd = "token-value"
+      style: secondary
+      start: 40
+      end: 60
+    - source: |-
+        es = Elasticsearch(
+        "https://localhost:9200",
+        bearer_auth=pswd
+        )
+      style: secondary
+      start: 61
+      end: 125
+    - source: from elasticsearch import Elasticsearch
+      style: secondary
+      start: 0
+      end: 39
+    - source: "from elasticsearch import Elasticsearch\npswd = \"token-value\"\nes = Elasticsearch(\n\"https://localhost:9200\",\nbearer_auth=pswd\n)\npassword=\"bsdhsd\"\nes.options(\nbearer_auth=password\n).indices.get(index=\"*\") \n"
+      style: secondary
+      start: 0
+      end: 203

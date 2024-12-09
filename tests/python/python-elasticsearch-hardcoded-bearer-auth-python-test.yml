@@ -1,0 +1,42 @@
+id: python-elasticsearch-hardcoded-bearer-auth-python
+valid:
+  - |
+    es = Elasticsearch("https://localhost:9200");
+    
+invalid:
+  - |
+    from elasticsearch import Elasticsearch
+    es = Elasticsearch(
+    "https://localhost:9200",
+    bearer_auth="token-value"
+    )
+  - |
+    from elasticsearch import Elasticsearch
+    pswd = "token-value"
+    es = Elasticsearch(
+    "https://localhost:9200",
+    bearer_auth=pswd
+    )
+  - |
+    from elasticsearch import Elasticsearch
+    pswd = "token-value"
+    es = Elasticsearch(
+    "https://localhost:9200",
+    bearer_auth=pswd
+    )
+    es.options(
+    bearer_auth="password"
+    ).indices.get(index="*")
+  - |
+    from elasticsearch import Elasticsearch
+    pswd = "token-value"
+    es = Elasticsearch(
+    "https://localhost:9200",
+    bearer_auth=pswd
+    )
+    password="bsdhsd"
+    es.options(
+    bearer_auth=password
+    ).indices.get(index="*") 
+
+
