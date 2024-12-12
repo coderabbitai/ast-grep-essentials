@@ -1,0 +1,290 @@
+id: jwt-decode-without-verify-csharp
+valid:
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void OkJwtTest2()
+    {
+        var json = JwtBuilder.Create()
+            .WithAlgorithm(new HMACSHA256Algorithm())
+            .MustVerifySignature()
+            .WithSecret(key)
+            .Decode(token);
+        Console.WriteLine(json);
+    }
+    }}
+invalid:
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+     public void JwtTest7()
+        {
+            IJsonSerializer serializer = new JsonNetSerializer();
+            IDateTimeProvider provider = new UtcDateTimeProvider();
+            IJwtValidator validator = new JwtValidator(serializer, provider);
+            IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+            IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
+            IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+            var json = decoder.Decode(token, verify: false);
+            Console.WriteLine(json);
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest8()
+        {
+            var json = new JwtDecoder(new JsonNetSerializer(), new JwtValidator(new JsonNetSerializer(), new UtcDateTimeProvider()), new JwtBase64UrlEncoder(), new HMACSHA256Algorithm())
+                .Decode(verify: false);
+            Console.WriteLine(json);
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest9()
+        {
+            var decoder = new JwtDecoder(new JsonNetSerializer(), new JwtValidator(new JsonNetSerializer(), new UtcDateTimeProvider()), new JwtBase64UrlEncoder(), new HMACSHA256Algorithm());
+            var json = decoder.Decode(token, null, false); // decode with no signature verification
+            Console.WriteLine(json);
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest10()
+        {
+            var builder = JwtBuilder.Create();
+            var json = builder.WithAlgorithm(new HMACSHA256Algorithm())
+                              .WithSecret(key)
+                              .Decode(token);
+            Console.WriteLine(json);
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest11()
+        {
+            var builder = JwtBuilder.Create();
+            var json = builder.WithAlgorithm(new HMACSHA256Algorithm())
+                              .WithSecret(key)
+                              .Decode(token, verify: false);
+            Console.WriteLine(json);
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest13()
+        {
+            var validationParameters = new ValidationParameters
+            {
+                ValidateSignature = false,
+                ValidateExpirationTime = false,
+                ValidateIssuedTime = false,
+                TimeMargin = 100
+            };}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest15()
+        {
+            var builder = JwtBuilder.Create()
+                .WithAlgorithm(new HMACSHA256Algorithm())
+                .WithSecret(key);
+            var json = builder.Decode(token);
+            Console.WriteLine(json);
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest16()
+        {
+            set options = new JwtAuthenticationOptions();
+            options.VerifySignature = false;
+            Console.WriteLine("JWT Decode without verify enabled.");
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest17()
+        {
+            var options = new JwtAuthenticationOptions
+            {
+                VerifySignature = false
+            };
+            Console.WriteLine("JWT Authentication setup with signature verification disabled.");
+        }
+     }}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest18()
+        {
+            var validationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = false,
+                ValidateIssuer = true,
+                ValidateAudience = true
+            };
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var json = tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
+            Console.WriteLine(json);
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest19()
+        {
+            var validationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = false, 
+                ValidateIssuer = true,
+                ValidateAudience = true
+            };
+            Console.WriteLine("JWT decode with validation params where signature validation is disabled.");
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest19()
+        {
+            var validationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = false,
+                ValidateIssuer = true,
+                ValidateAudience = true
+            };
+            Console.WriteLine("JWT decode with validation params where signature validation is disabled.");
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest1()
+    {
+        IJsonSerializer serializer = new JsonNetSerializer();
+        IDateTimeProvider provider = new UtcDateTimeProvider();
+        IJwtValidator validator = new JwtValidator(serializer, provider);
+        IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+        IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
+        IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+        var json1 = decoder.Decode(token, verify: false);
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest1()
+    {
+        IJsonSerializer serializer = new JsonNetSerializer();
+        IDateTimeProvider provider = new UtcDateTimeProvider();
+        IJwtValidator validator = new JwtValidator(serializer, provider);
+        IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+        IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
+        IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+        var json2 = decoder.Decode(token, null, false);
+        Console.WriteLine(json);
+        }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+    public void JwtTest2()
+    {
+        var json = JwtBuilder.Create()
+            .WithAlgorithm(new HMACSHA256Algorithm())
+            .WithSecret(key)
+            .Decode(token);
+        Console.WriteLine(json);
+    }}}
+  - |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+    public class JwtTestPatterns
+    {
+       public void JwtTest3()
+    {
+        var builder = JwtBuilder.Create();
+        var json = builder
+            .WithAlgorithm(new HMACSHA256Algorithm())
+            .WithSecret(key)
+            .Decode(token);
+        Console.WriteLine(json);
+    }}}
