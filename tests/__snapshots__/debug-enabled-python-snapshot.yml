@@ -1,0 +1,47 @@
+id: debug-enabled-python
+snapshots:
+  ? |-
+    from flask import Flask
+    if __name__ == "__main__":
+    app.run("0.0.0.0", debug=True)
+  : labels:
+    - source: app.run("0.0.0.0", debug=True)
+      style: primary
+      start: 51
+      end: 81
+    - source: app
+      style: secondary
+      start: 51
+      end: 54
+    - source: run
+      style: secondary
+      start: 55
+      end: 58
+    - source: app.run
+      style: secondary
+      start: 51
+      end: 58
+    - source: debug=True
+      style: secondary
+      start: 70
+      end: 80
+    - source: ("0.0.0.0", debug=True)
+      style: secondary
+      start: 58
+      end: 81
+    - source: Flask
+      style: secondary
+      start: 18
+      end: 23
+    - source: Flask
+      style: secondary
+      start: 18
+      end: 23
+    - source: from flask import Flask
+      style: secondary
+      start: 0
+      end: 23
+    - source: app.run("0.0.0.0", debug=True)
+      style: secondary
+      start: 51
+      end: 81

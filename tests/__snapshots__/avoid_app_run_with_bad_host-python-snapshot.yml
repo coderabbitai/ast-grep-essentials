@@ -1,0 +1,42 @@
+id: avoid_app_run_with_bad_host-python
+snapshots:
+  ? |
+    app.run(host="0.0.0.0")
+    app.run("0.0.0.0")
+  : labels:
+    - source: app.run(host="0.0.0.0")
+      style: primary
+      start: 0
+      end: 23
+    - source: app
+      style: secondary
+      start: 0
+      end: 3
+    - source: run
+      style: secondary
+      start: 4
+      end: 7
+    - source: app.run
+      style: secondary
+      start: 0
+      end: 7
+    - source: host
+      style: secondary
+      start: 8
+      end: 12
+    - source: '"0.0.0.0"'
+      style: secondary
+      start: 13
+      end: 22
+    - source: =
+      style: secondary
+      start: 12
+      end: 13
+    - source: host="0.0.0.0"
+      style: secondary
+      start: 8
+      end: 22
+    - source: (host="0.0.0.0")
+      style: secondary
+      start: 7
+      end: 23
