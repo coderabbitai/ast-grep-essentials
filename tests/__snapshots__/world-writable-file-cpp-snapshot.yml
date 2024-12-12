@@ -1,0 +1,103 @@
+id: world-writable-file-cpp
+snapshots:
+  ? |
+    void test_octal_bad() {
+    mode_t mode = 0666;
+    chmod("/tmp/foo", mode);
+    int fd = open_log();
+    fchmod(fd, mode);
+    int dirfd = open_log_dir();
+    fchmodat(dirfd, "log", mode, AT_SYMLINK_NOFOLLOW);
+    open("log", O_CREAT, mode);
+    openat(fd, "log", O_CREAT, mode);
+    creat("log", mode);
+    }
+  : labels:
+    - source: mode
+      style: primary
+      start: 62
+      end: 66
+    - source: mode_t
+      style: secondary
+      start: 24
+      end: 30
+    - source: mode
+      style: secondary
+      start: 31
+      end: 35
+    - source: '0666'
+      style: secondary
+      start: 38
+      end: 42
+    - source: mode = 0666
+      style: secondary
+      start: 31
+      end: 42
+    - source: mode_t mode = 0666;
+      style: secondary
+      start: 24
+      end: 43
+    - source: chmod("/tmp/foo", mode);
+      style: secondary
+      start: 44
+      end: 68
+    - source: chmod
+      style: secondary
+      start: 44
+      end: 49
+    - source: chmod("/tmp/foo", mode)
+      style: secondary
+      start: 44
+      end: 67
+    - source: ("/tmp/foo", mode)
+      style: secondary
+      start: 49
+      end: 67
+    - source: /tmp/foo
+      style: secondary
+      start: 51
+      end: 59
+    - source: '"/tmp/foo"'
+      style: secondary
+      start: 50
+      end: 60
+  ? |
+    void test_symbol_direct_bad() {
+    chmod("/tmp/foo", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+    int fd = open_log();
+    fchmod(fd, S_IROTH | S_IWOTH | S_IRUSR | S_IWUSR);
+    int dirfd = open_log_dir();
+    fchmodat(dirfd, "log", S_IWOTH);
+    open("log", O_CREAT, S_IWUSR | S_IWOTH);
+    openat(fd, "log", O_CREAT, S_IWOTH | S_IUSR | S_IGRP);
+    creat("log", S_IWOTH);
+    }
+  : labels:
+    - source: S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH
+      style: primary
+      start: 50
+      end: 107
+    - source: S_IROTH
+      style: secondary
+      start: 90
+      end: 97
+    - source: S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH
+      style: secondary
+      start: 50
+      end: 97
+    - source: S_IWOTH
+      style: secondary
+      start: 100
+      end: 107
+    - source: chmod("/tmp/foo", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+      style: secondary
+      start: 32
+      end: 109
+    - source: chmod
+      style: secondary
+      start: 32
+      end: 37
+    - source: chmod("/tmp/foo", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH)
+      style: secondary
+      start: 32
+      end: 108
