@@ -1,0 +1,30 @@
+id: use-of-weak-rsa-key-kotlin
+snapshots:
+  ? |
+    fun rsaWeak(): Void {
+    val keyGen: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
+    keyGen.initialize(512)
+    }
+  : labels:
+    - source: |-
+        val keyGen: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
+        keyGen.initialize(512)
+      style: primary
+      start: 22
+      end: 111
+    - source: '512'
+      style: secondary
+      start: 107
+      end: 110
+    - source: '512'
+      style: secondary
+      start: 107
+      end: 110
+    - source: (512)
+      style: secondary
+      start: 106
+      end: 111
+    - source: (512)
+      style: secondary
+      start: 106
+      end: 111
