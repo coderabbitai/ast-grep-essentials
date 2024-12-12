@@ -1,0 +1,20 @@
+id: cookie-missing-samesite-java
+valid:
+  - |
+     @RequestMapping(value = "/cookie1", method = "GET")
+     public void setCookie(@RequestParam String value, HttpServletResponse response) {
+        response.setHeader("Set-Cookie", "key=value; HttpOnly; SameSite=strict");
+     }
+invalid:
+  - |
+     @RequestMapping(value = "/cookie3", method = "GET")
+     public void setSecureHttponlyCookie(@RequestParam String value, HttpServletResponse response) {
+        Cookie cookie = new Cookie("cookie", value);
+        cookie.setSecure(true);
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
+     }
+     @RequestMapping(value = "/cookie2", method = "GET")
+     public void setSecureCookie(@RequestParam String value, HttpServletResponse response) {
+        response.setHeader("Set-Cookie", "key=value; HttpOnly;");
+     }
