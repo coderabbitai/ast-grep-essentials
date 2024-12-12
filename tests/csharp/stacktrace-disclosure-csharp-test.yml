@@ -1,0 +1,39 @@
+id: stacktrace-disclosure-csharp
+valid:
+  - |
+    if (env.IsDevelopment())
+        {
+            app.UseExceptionHandler("/Error"); 
+        }
+invalid:
+  - |
+    if (env.IsProduction())  
+        {
+            app.UseDeveloperExceptionPage(); 
+        }
+  - |
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+    app.UseDeveloperExceptionPage();
+    }
+  - |
+    if (!env.IsDevelopment())  
+        {
+            app.UseDeveloperExceptionPage();  
+        }
+  - |
+    if (DateTime.Now.DayOfWeek == DayOfWeek.Monday)  
+        {
+            app.UseDeveloperExceptionPage();
+        }
+  - |
+    if (DateTime.Now.DayOfWeek == DayOfWeek.Monday) 
+        {
+            app.UseDeveloperExceptionPage(); 
+        }
+  - |
+    if (environment == "dev")  
+        {
+            app.UseDeveloperExceptionPage();  
+        }
+
