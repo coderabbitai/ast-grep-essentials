@@ -1,0 +1,125 @@
+id: use-of-default-aes-java
+snapshots:
+  ? "import javax;\nimport javax.crypto.*;\nimport javax.crypto.Cipher;\nclass AES{\npublic void useofAES() {\nCipher cipher = javax.crypto.Cipher.getInstance(\"AES\"); \n}\n"
+  : labels:
+    - source: javax.crypto.Cipher.getInstance("AES")
+      style: primary
+      start: 117
+      end: 155
+    - source: import javax.crypto.*;
+      style: secondary
+      start: 14
+      end: 36
+    - source: "class AES{\npublic void useofAES() {\nCipher cipher = javax.crypto.Cipher.getInstance(\"AES\"); \n}"
+      style: secondary
+      start: 65
+      end: 159
+  ? |
+    import javax;
+    import javax.crypto.*;
+    import javax.crypto.Cipher;
+    class AES{
+    public void useofAES() {
+    Cipher cipher2 = Cipher.getInstance("AES");
+    }
+  : labels:
+    - source: Cipher.getInstance("AES")
+      style: primary
+      start: 118
+      end: 143
+    - source: import javax.crypto.*;
+      style: secondary
+      start: 14
+      end: 36
+    - source: |-
+        class AES{
+        public void useofAES() {
+        Cipher cipher2 = Cipher.getInstance("AES");
+        }
+      style: secondary
+      start: 65
+      end: 146
+  ? |
+    import javax;
+    import javax.crypto.*;
+    import javax.crypto.Cipher;
+    class AES{
+    public void useofAES() {
+    Cipher.getInstance("AES");
+    }
+  : labels:
+    - source: Cipher.getInstance("AES")
+      style: primary
+      start: 101
+      end: 126
+    - source: import javax.crypto.*;
+      style: secondary
+      start: 14
+      end: 36
+    - source: |-
+        class AES{
+        public void useofAES() {
+        Cipher.getInstance("AES");
+        }
+      style: secondary
+      start: 65
+      end: 129
+  ? "import javax;\nimport javax.crypto.*;\nimport javax.crypto.Cipher;\nclass AES{\npublic void useofAES() {\nCipher.getInstance(\"AES\"); \n}\n"
+  : labels:
+    - source: Cipher.getInstance("AES")
+      style: primary
+      start: 101
+      end: 126
+    - source: import javax.crypto.*;
+      style: secondary
+      start: 14
+      end: 36
+    - source: "class AES{\npublic void useofAES() {\nCipher.getInstance(\"AES\"); \n}"
+      style: secondary
+      start: 65
+      end: 130
+  ? |
+    import javax;
+    import javax.crypto.*;
+    import javax.crypto.Cipher;
+    class AES{
+    public void useofAES() {
+    javax.crypto.Cipher.getInstance("AES");
+    }
+  : labels:
+    - source: javax.crypto.Cipher.getInstance("AES")
+      style: primary
+      start: 101
+      end: 139
+    - source: import javax.crypto.*;
+      style: secondary
+      start: 14
+      end: 36
+    - source: |-
+        class AES{
+        public void useofAES() {
+        javax.crypto.Cipher.getInstance("AES");
+        }
+      style: secondary
+      start: 65
+      end: 142
+  ? "import javax;\nimport javax.crypto;     \nimport javax.crypto.*;\nimport javax.crypto.Cipher;\nclass AES{\npublic void useofAES() {\nCipher.getInstance(\"AES\");\ncrypto.Cipher.getInstance(\"AES\");\njavax.crypto.Cipher.getInstance(\"AES\");\n}\n"
+  : labels:
+    - source: Cipher.getInstance("AES")
+      style: primary
+      start: 127
+      end: 152
+    - source: import javax.crypto.*;
+      style: secondary
+      start: 40
+      end: 62
+    - source: |-
+        class AES{
+        public void useofAES() {
+        Cipher.getInstance("AES");
+        crypto.Cipher.getInstance("AES");
+        javax.crypto.Cipher.getInstance("AES");
+        }
+      style: secondary
+      start: 91
+      end: 229
