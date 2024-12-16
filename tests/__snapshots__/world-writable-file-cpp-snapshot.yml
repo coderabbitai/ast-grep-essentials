@@ -77,6 +77,18 @@ snapshots:
       style: primary
       start: 50
       end: 107
+    - source: S_IWGRP
+      style: secondary
+      start: 80
+      end: 87
+    - source: S_IWGRP
+      style: secondary
+      start: 80
+      end: 87
+    - source: S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP
+      style: secondary
+      start: 50
+      end: 87
     - source: S_IROTH
       style: secondary
       start: 90
@@ -89,15 +101,3 @@ snapshots:
       style: secondary
       start: 100
       end: 107
-    - source: chmod("/tmp/foo", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
-      style: secondary
-      start: 32
-      end: 109
-    - source: chmod
-      style: secondary
-      start: 32
-      end: 37
-    - source: chmod("/tmp/foo", S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH)
-      style: secondary
-      start: 32
-      end: 108
