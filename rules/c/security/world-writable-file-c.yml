@@ -87,20 +87,20 @@ utils:
     all:
       - has:
           kind: binary_expression
-          has:
-            kind: identifier
-            regex: ^(S_IWOTH|S_IWUSR|S_IGRP|S_IROTH|S_IRUSR|S_IWOTH)$
+          all:
+            - has:
+                kind: binary_expression
+                all:
+                  - has:
+                      kind: identifier
+                  - has:
+                      kind: identifier
+            - has:
+                kind: identifier
+                regex: ^(S_IWOTH|S_IWUSR|S_IGRP|S_IROTH|S_IRUSR|S_IWOTH)$
       - has:
           kind: identifier
-          regex: ^(S_IWOTH|S_IWUSR|S_IGRP|S_IRUSR|S_IWOTH)$
-    inside:
-      stopBy: end
-      kind: call_expression
-      has:
-        kind: identifier
-        regex: (chmod|fchmod|fchmodat|open|openat)
-      inside:
-        kind: expression_statement
+          regex: ^(S_IWOTH|S_IWUSR|S_IGRP|S_IROTH|S_IRUSR|S_IWOTH)$
   match_binary_with_identifier:
     kind: identifier
     regex: "^S_IWOTH$"
@@ -158,7 +158,6 @@ utils:
           regex: ^(openat)$
         inside:
           kind: expression_statement
-
 rule:
   any:
     - matches: match_identifier_with_stringliteral_mode
