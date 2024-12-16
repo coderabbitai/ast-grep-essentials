@@ -1,0 +1,13 @@
+id: documentbuilderfactory-external-parameter-entities-true-java
+severity: warning
+language: java
+message: >-
+      External entities are allowed for $DBFACTORY. This is vulnerable to XML
+      external entity attacks. Disable this by setting the feature
+      "http://xml.org/sax/features/external-parameter-entities" to false.
+note: >-
+  [CWE-611] Improper Restriction of XML External Entity Reference.
+  [REFERENCES]
+      - https://blog.sonarsource.com/secure-xml-processor
+rule:
+  pattern: $DBFACTORY.setFeature("http://xml.org/sax/features/external-parameter-entities",true);
