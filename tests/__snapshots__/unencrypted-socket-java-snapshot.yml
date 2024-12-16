@@ -1,0 +1,58 @@
+id: unencrypted-socket-java
+snapshots:
+  ? |
+    ServerSocket ssoc = new ServerSocket(1234);
+  : labels:
+    - source: new ServerSocket(1234)
+      style: primary
+      start: 20
+      end: 42
+  ? |
+    ServerSocket ssoc1 = new ServerSocket();
+  : labels:
+    - source: new ServerSocket()
+      style: primary
+      start: 21
+      end: 39
+  ? |
+    ServerSocket ssoc2 = new ServerSocket(1234, 10);
+  : labels:
+    - source: new ServerSocket(1234, 10)
+      style: primary
+      start: 21
+      end: 47
+  ? |
+    ServerSocket ssoc3 = new ServerSocket(1234, 10, InetAddress.getByAddress(address));
+  : labels:
+    - source: new ServerSocket(1234, 10, InetAddress.getByAddress(address))
+      style: primary
+      start: 21
+      end: 82
+  ? |
+    Socket soc = new Socket("www.google.com", 80);
+  : labels:
+    - source: new Socket("www.google.com", 80)
+      style: primary
+      start: 13
+      end: 45
+  ? |
+    Socket soc1 = new Socket("www.google.com", 80, true);
+  : labels:
+    - source: new Socket("www.google.com", 80, true)
+      style: primary
+      start: 14
+      end: 52
+  ? |
+    Socket soc2 = new Socket("www.google.com", 80, InetAddress.getByAddress(address), 13337);
+  : labels:
+    - source: new Socket("www.google.com", 80, InetAddress.getByAddress(address), 13337)
+      style: primary
+      start: 14
+      end: 88
+  ? |
+    Socket soc3 = new Socket(InetAddress.getByAddress(remoteAddress), 80);
+  : labels:
+    - source: new Socket(InetAddress.getByAddress(remoteAddress), 80)
+      style: primary
+      start: 14
+      end: 69
