@@ -1,0 +1,7 @@
+id: use-of-md5-java
+valid:
+  - |
+    MessageDigest md5Digest = MessageDigest.getInstance("SHA-512");
+invalid:
+  - |
+    MessageDigest md5Digest = MessageDigest.getInstance("MD5");
