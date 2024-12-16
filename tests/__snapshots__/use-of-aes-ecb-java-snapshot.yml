@@ -1,0 +1,77 @@
+id: use-of-aes-ecb-java
+snapshots:
+  ? |
+    Cipher.getInstance("AES/ECB")
+  : labels:
+    - source: Cipher.getInstance("AES/ECB")
+      style: primary
+      start: 0
+      end: 29
+    - source: '"AES/ECB"'
+      style: secondary
+      start: 19
+      end: 28
+    - source: ("AES/ECB")
+      style: secondary
+      start: 18
+      end: 29
+  ? |
+    Cipher.getInstance("AES/ECB/ISO10126Padding")
+  : labels:
+    - source: Cipher.getInstance("AES/ECB/ISO10126Padding")
+      style: primary
+      start: 0
+      end: 45
+    - source: '"AES/ECB/ISO10126Padding"'
+      style: secondary
+      start: 19
+      end: 44
+    - source: ("AES/ECB/ISO10126Padding")
+      style: secondary
+      start: 18
+      end: 45
+  ? |
+    Cipher.getInstance("AES/ECB/NoPadding")
+  : labels:
+    - source: Cipher.getInstance("AES/ECB/NoPadding")
+      style: primary
+      start: 0
+      end: 39
+    - source: '"AES/ECB/NoPadding"'
+      style: secondary
+      start: 19
+      end: 38
+    - source: ("AES/ECB/NoPadding")
+      style: secondary
+      start: 18
+      end: 39
+  ? |
+    Cipher.getInstance("AES/ECB/PKCS5Padding")
+  : labels:
+    - source: Cipher.getInstance("AES/ECB/PKCS5Padding")
+      style: primary
+      start: 0
+      end: 42
+    - source: '"AES/ECB/PKCS5Padding"'
+      style: secondary
+      start: 19
+      end: 41
+    - source: ("AES/ECB/PKCS5Padding")
+      style: secondary
+      start: 18
+      end: 42
+  ? |
+    Cipher.getInstance("AES/ECB/PKCS7Padding")
+  : labels:
+    - source: Cipher.getInstance("AES/ECB/PKCS7Padding")
+      style: primary
+      start: 0
+      end: 42
+    - source: '"AES/ECB/PKCS7Padding"'
+      style: secondary
+      start: 19
+      end: 41
+    - source: ("AES/ECB/PKCS7Padding")
+      style: secondary
+      start: 18
+      end: 42
