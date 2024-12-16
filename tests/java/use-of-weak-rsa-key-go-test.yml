@@ -1,0 +1,13 @@
+id: use-of-weak-rsa-key-go
+valid:
+  - |
+    rsa.GenerateKey(rand.Reader, 2048)
+invalid:
+  - |
+    pvk, err := rsa.GenerateKey(rand.Reader, 1025)
+  - |
+    pvk, err := rsa.GenerateKey(rand.Reader, -1929)
+  - |
+    pvk, err := rsa.GenerateKey(rand.Reader, 102.5)
+  - |
+    pvk, err := rsa.GenerateKey(rand.Reader, 192)
