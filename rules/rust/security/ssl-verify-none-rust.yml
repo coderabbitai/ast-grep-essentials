@@ -6,8 +6,7 @@ message: >-
 note: >-
   [CWE-295]: Improper Certificate Validation
   [REFERENCES]
-    - https://docs.rs/openssl/latest/openssl/ssl/struct.SslContextBuilder.html#method.set_verify
-
+    - https://docs.rs/openssl/latest/openssl/ssl/struct.SslContextBuilder.html#method.set_verify    
 rule:
   kind: call_expression
   any:
@@ -21,13 +20,18 @@ rule:
             - pattern: use openssl;
             - pattern: use openssl::ssl;
             - pattern: use openssl::ssl::SSL_VERIFY_NONE;
-            - has:
-                stopBy: end
-                kind: use_list
-                has:
-                  stopBy: end
-                  kind: identifier
-                  pattern: SSL_VERIFY_NONE
+            - all:
+                - has:
+                    stopBy: end
+                    kind: use_list
+                    has:
+                      stopBy: end
+                      kind: identifier
+                      regex: ^SSL_VERIFY_NONE$
+                - has:
+                    stopBy: end
+                    kind: scoped_identifier
+                    regex: ^openssl::ssl$
     - pattern: $BUILDER.set_verify(ssl::SSL_VERIFY_NONE)
       inside:
         stopBy: end
@@ -37,13 +41,18 @@ rule:
           any:
             - pattern: use openssl::ssl;
             - pattern: use openssl::ssl::SSL_VERIFY_NONE;
-            - has:
-                stopBy: end
-                kind: use_list
-                has:
-                  stopBy: end
-                  kind: identifier
-                  pattern: SSL_VERIFY_NONE
+            - all:
+                - has:
+                    stopBy: end
+                    kind: use_list
+                    has:
+                      stopBy: end
+                      kind: identifier
+                      regex: ^SSL_VERIFY_NONE$
+                - has:
+                    stopBy: end
+                    kind: scoped_identifier
+                    regex: ^openssl::ssl$
     - pattern: $BUILDER.set_verify(SSL_VERIFY_NONE)
       inside:
         stopBy: end
@@ -54,13 +63,19 @@ rule:
             - pattern: use openssl;
             - pattern: use openssl::ssl;
             - pattern: use openssl::ssl::SSL_VERIFY_NONE;
-            - has:
-                stopBy: end
-                kind: use_list
-                has:
-                  stopBy: end
-                  kind: identifier
-                  pattern: SSL_VERIFY_NONE
+            - all:
+                - has:
+                    stopBy: end
+                    kind: use_list
+                    has:
+                      stopBy: end
+                      kind: identifier
+                      regex: ^SSL_VERIFY_NONE$
+                - has:
+                    stopBy: end
+                    kind: scoped_identifier
+                    regex: ^openssl::ssl$
+    
     - pattern: $BUILDER.set_verify($ALIAS)
       inside:
         stopBy: end
@@ -84,4 +99,6 @@ rule:
                         kind: identifier
                         field: alias
                         pattern: $ALIAS
+    
     - pattern: $BUILDER.set_verify(openssl::ssl::SSL_VERIFY_NONE);
+
