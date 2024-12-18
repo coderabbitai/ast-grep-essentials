@@ -14,6 +14,10 @@ snapshots:
       style: secondary
       start: 95
       end: 104
+    - source: secret
+      style: secondary
+      start: 109
+      end: 115
     - source: '"secret"'
       style: secondary
       start: 108
@@ -22,6 +26,14 @@ snapshots:
       style: secondary
       start: 50
       end: 78
+    - source: http_basic_authenticate_with :name => "dhh", :password => "secret", :except => :index
+      style: secondary
+      start: 50
+      end: 135
+    - source: :name => "dhh", :password => "secret", :except => :index
+      style: secondary
+      start: 79
+      end: 135
     - source: DangerousController
       style: secondary
       start: 6
@@ -42,20 +54,6 @@ snapshots:
       style: secondary
       start: 0
       end: 160
-    - source: |-
-        http_basic_authenticate_with :name => "dhh", :password => "secret", :except => :index
-        puts "do more stuff"
-      style: secondary
-      start: 50
-      end: 156
-    - source: http_basic_authenticate_with :name => "dhh", :password => "secret", :except => :index
-      style: secondary
-      start: 50
-      end: 135
-    - source: :name => "dhh", :password => "secret", :except => :index
-      style: secondary
-      start: 79
-      end: 135
     - source: :password => "secret"
       style: secondary
       start: 95
