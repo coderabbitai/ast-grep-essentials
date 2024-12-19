@@ -1,0 +1,66 @@
+id: xmlinputfactory-dtd-enabled-scala
+snapshots:
+  ? |
+    def run1(file: String) = {
+    val factory = XMLInputFactory.newInstance()
+    val fileReader = new FileReader(file)
+    val xmlReader = factory.createXMLStreamReader(fileReader)
+    doSmth(xmlReader)
+    }
+  : labels:
+    - source: XMLInputFactory.newInstance()
+      style: primary
+      start: 41
+      end: 70
+    - source: XMLInputFactory
+      style: secondary
+      start: 41
+      end: 56
+    - source: newInstance
+      style: secondary
+      start: 57
+      end: 68
+    - source: XMLInputFactory.newInstance
+      style: secondary
+      start: 41
+      end: 68
+    - source: ()
+      style: secondary
+      start: 68
+      end: 70
+    - source: val factory = XMLInputFactory.newInstance()
+      style: secondary
+      start: 27
+      end: 70
+  ? |-
+    def run2(file: String) = {
+    val factory = XMLInputFactory.newFactory()
+    val fileReader = new FileReader(file)
+    val xmlReader = factory.createXMLStreamReader(fileReader)
+    doSmth(xmlReader)
+    }
+  : labels:
+    - source: XMLInputFactory.newFactory()
+      style: primary
+      start: 41
+      end: 69
+    - source: XMLInputFactory
+      style: secondary
+      start: 41
+      end: 56
+    - source: newFactory
+      style: secondary
+      start: 57
+      end: 67
+    - source: XMLInputFactory.newFactory
+      style: secondary
+      start: 41
+      end: 67
+    - source: ()
+      style: secondary
+      start: 67
+      end: 69
+    - source: val factory = XMLInputFactory.newFactory()
+      style: secondary
+      start: 27
+      end: 69
