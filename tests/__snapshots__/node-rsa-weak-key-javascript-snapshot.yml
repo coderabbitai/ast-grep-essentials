@@ -1,0 +1,502 @@
+id: node-rsa-weak-key-javascript
+snapshots:
+  ? |
+    const NodeRSA = require('node-rsa');
+    const key = new NodeRSA({b: 204});
+  : labels:
+    - source: '204'
+      style: primary
+      start: 65
+      end: 68
+    - source: NodeRSA
+      style: secondary
+      start: 53
+      end: 60
+    - source: b
+      style: secondary
+      start: 62
+      end: 63
+    - source: '204'
+      style: secondary
+      start: 65
+      end: 68
+    - source: 'b: 204'
+      style: secondary
+      start: 62
+      end: 68
+    - source: '{b: 204}'
+      style: secondary
+      start: 61
+      end: 69
+    - source: '({b: 204})'
+      style: secondary
+      start: 60
+      end: 70
+    - source: 'new NodeRSA({b: 204})'
+      style: secondary
+      start: 49
+      end: 70
+    - source: 'key = new NodeRSA({b: 204})'
+      style: secondary
+      start: 43
+      end: 70
+    - source: NodeRSA
+      style: secondary
+      start: 6
+      end: 13
+    - source: require
+      style: secondary
+      start: 16
+      end: 23
+    - source: node-rsa
+      style: secondary
+      start: 25
+      end: 33
+    - source: '''node-rsa'''
+      style: secondary
+      start: 24
+      end: 34
+    - source: ('node-rsa')
+      style: secondary
+      start: 23
+      end: 35
+    - source: require('node-rsa')
+      style: secondary
+      start: 16
+      end: 35
+    - source: NodeRSA = require('node-rsa')
+      style: secondary
+      start: 6
+      end: 35
+    - source: const NodeRSA = require('node-rsa');
+      style: secondary
+      start: 0
+      end: 36
+    - source: 'const key = new NodeRSA({b: 204});'
+      style: secondary
+      start: 37
+      end: 71
+  ? |
+    const NodeRSA = require('node-rsa');
+    const key = new NodeRSA({b: 512});
+  : labels:
+    - source: '512'
+      style: primary
+      start: 65
+      end: 68
+    - source: NodeRSA
+      style: secondary
+      start: 53
+      end: 60
+    - source: b
+      style: secondary
+      start: 62
+      end: 63
+    - source: '512'
+      style: secondary
+      start: 65
+      end: 68
+    - source: 'b: 512'
+      style: secondary
+      start: 62
+      end: 68
+    - source: '{b: 512}'
+      style: secondary
+      start: 61
+      end: 69
+    - source: '({b: 512})'
+      style: secondary
+      start: 60
+      end: 70
+    - source: 'new NodeRSA({b: 512})'
+      style: secondary
+      start: 49
+      end: 70
+    - source: 'key = new NodeRSA({b: 512})'
+      style: secondary
+      start: 43
+      end: 70
+    - source: NodeRSA
+      style: secondary
+      start: 6
+      end: 13
+    - source: require
+      style: secondary
+      start: 16
+      end: 23
+    - source: node-rsa
+      style: secondary
+      start: 25
+      end: 33
+    - source: '''node-rsa'''
+      style: secondary
+      start: 24
+      end: 34
+    - source: ('node-rsa')
+      style: secondary
+      start: 23
+      end: 35
+    - source: require('node-rsa')
+      style: secondary
+      start: 16
+      end: 35
+    - source: NodeRSA = require('node-rsa')
+      style: secondary
+      start: 6
+      end: 35
+    - source: const NodeRSA = require('node-rsa');
+      style: secondary
+      start: 0
+      end: 36
+    - source: 'const key = new NodeRSA({b: 512});'
+      style: secondary
+      start: 37
+      end: 71
+  ? |
+    const crypto = require("crypto");
+    const keypair2 = await util.promisify(crypto.generateKeyPair)("rsa", {
+    modulusLength: 512,
+    });
+  : labels:
+    - source: '512'
+      style: primary
+      start: 120
+      end: 123
+    - source: promisify
+      style: secondary
+      start: 62
+      end: 71
+    - source: util.promisify
+      style: secondary
+      start: 57
+      end: 71
+    - source: crypto
+      style: secondary
+      start: 72
+      end: 78
+    - source: generateKeyPair
+      style: secondary
+      start: 79
+      end: 94
+    - source: crypto.generateKeyPair
+      style: secondary
+      start: 72
+      end: 94
+    - source: (crypto.generateKeyPair)
+      style: secondary
+      start: 71
+      end: 95
+    - source: util.promisify(crypto.generateKeyPair)
+      style: secondary
+      start: 57
+      end: 95
+    - source: rsa
+      style: secondary
+      start: 97
+      end: 100
+    - source: '"rsa"'
+      style: secondary
+      start: 96
+      end: 101
+    - source: modulusLength
+      style: secondary
+      start: 105
+      end: 118
+    - source: '512'
+      style: secondary
+      start: 120
+      end: 123
+    - source: 'modulusLength: 512'
+      style: secondary
+      start: 105
+      end: 123
+    - source: |-
+        {
+        modulusLength: 512,
+        }
+      style: secondary
+      start: 103
+      end: 126
+    - source: |-
+        ("rsa", {
+        modulusLength: 512,
+        })
+      style: secondary
+      start: 95
+      end: 127
+    - source: |-
+        util.promisify(crypto.generateKeyPair)("rsa", {
+        modulusLength: 512,
+        })
+      style: secondary
+      start: 57
+      end: 127
+    - source: crypto
+      style: secondary
+      start: 6
+      end: 12
+    - source: require
+      style: secondary
+      start: 15
+      end: 22
+    - source: crypto
+      style: secondary
+      start: 24
+      end: 30
+    - source: '"crypto"'
+      style: secondary
+      start: 23
+      end: 31
+    - source: ("crypto")
+      style: secondary
+      start: 22
+      end: 32
+    - source: require("crypto")
+      style: secondary
+      start: 15
+      end: 32
+    - source: crypto = require("crypto")
+      style: secondary
+      start: 6
+      end: 32
+    - source: const crypto = require("crypto");
+      style: secondary
+      start: 0
+      end: 33
+    - source: |-
+        const keypair2 = await util.promisify(crypto.generateKeyPair)("rsa", {
+        modulusLength: 512,
+        });
+      style: secondary
+      start: 34
+      end: 128
+  ? |
+    const crypto = require("crypto");
+    const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
+    a: 123,
+    modulusLength: 512,
+    });
+  : labels:
+    - source: '512'
+      style: primary
+      start: 127
+      end: 130
+    - source: crypto
+      style: secondary
+      start: 68
+      end: 74
+    - source: generateKeyPairSync
+      style: secondary
+      start: 75
+      end: 94
+    - source: crypto.generateKeyPairSync
+      style: secondary
+      start: 68
+      end: 94
+    - source: rsa
+      style: secondary
+      start: 96
+      end: 99
+    - source: '"rsa"'
+      style: secondary
+      start: 95
+      end: 100
+    - source: modulusLength
+      style: secondary
+      start: 112
+      end: 125
+    - source: '512'
+      style: secondary
+      start: 127
+      end: 130
+    - source: 'modulusLength: 512'
+      style: secondary
+      start: 112
+      end: 130
+    - source: |-
+        {
+        a: 123,
+        modulusLength: 512,
+        }
+      style: secondary
+      start: 102
+      end: 133
+    - source: |-
+        ("rsa", {
+        a: 123,
+        modulusLength: 512,
+        })
+      style: secondary
+      start: 94
+      end: 134
+    - source: |-
+        crypto.generateKeyPairSync("rsa", {
+        a: 123,
+        modulusLength: 512,
+        })
+      style: secondary
+      start: 68
+      end: 134
+    - source: |-
+        { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
+        a: 123,
+        modulusLength: 512,
+        })
+      style: secondary
+      start: 40
+      end: 134
+    - source: crypto
+      style: secondary
+      start: 6
+      end: 12
+    - source: require
+      style: secondary
+      start: 15
+      end: 22
+    - source: crypto
+      style: secondary
+      start: 24
+      end: 30
+    - source: '"crypto"'
+      style: secondary
+      start: 23
+      end: 31
+    - source: ("crypto")
+      style: secondary
+      start: 22
+      end: 32
+    - source: require("crypto")
+      style: secondary
+      start: 15
+      end: 32
+    - source: crypto = require("crypto")
+      style: secondary
+      start: 6
+      end: 32
+    - source: const crypto = require("crypto");
+      style: secondary
+      start: 0
+      end: 33
+    - source: |-
+        const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
+        a: 123,
+        modulusLength: 512,
+        });
+      style: secondary
+      start: 34
+      end: 135
+  ? |
+    const util = require('util');
+    const crypto = require("crypto");
+    const keypair2 = await util.promisify(crypto.generateKeyPair)("rsa", {
+    modulusLength: 512,
+    });
+  : labels:
+    - source: '512'
+      style: primary
+      start: 150
+      end: 153
+    - source: promisify
+      style: secondary
+      start: 92
+      end: 101
+    - source: util.promisify
+      style: secondary
+      start: 87
+      end: 101
+    - source: crypto
+      style: secondary
+      start: 102
+      end: 108
+    - source: generateKeyPair
+      style: secondary
+      start: 109
+      end: 124
+    - source: crypto.generateKeyPair
+      style: secondary
+      start: 102
+      end: 124
+    - source: (crypto.generateKeyPair)
+      style: secondary
+      start: 101
+      end: 125
+    - source: util.promisify(crypto.generateKeyPair)
+      style: secondary
+      start: 87
+      end: 125
+    - source: rsa
+      style: secondary
+      start: 127
+      end: 130
+    - source: '"rsa"'
+      style: secondary
+      start: 126
+      end: 131
+    - source: modulusLength
+      style: secondary
+      start: 135
+      end: 148
+    - source: 'modulusLength: 512'
+      style: secondary
+      start: 135
+      end: 153
+    - source: |-
+        {
+        modulusLength: 512,
+        }
+      style: secondary
+      start: 133
+      end: 156
+    - source: |-
+        ("rsa", {
+        modulusLength: 512,
+        })
+      style: secondary
+      start: 125
+      end: 157
+    - source: |-
+        util.promisify(crypto.generateKeyPair)("rsa", {
+        modulusLength: 512,
+        })
+      style: secondary
+      start: 87
+      end: 157
+    - source: crypto
+      style: secondary
+      start: 36
+      end: 42
+    - source: require
+      style: secondary
+      start: 45
+      end: 52
+    - source: crypto
+      style: secondary
+      start: 54
+      end: 60
+    - source: '"crypto"'
+      style: secondary
+      start: 53
+      end: 61
+    - source: ("crypto")
+      style: secondary
+      start: 52
+      end: 62
+    - source: require("crypto")
+      style: secondary
+      start: 45
+      end: 62
+    - source: crypto = require("crypto")
+      style: secondary
+      start: 36
+      end: 62
+    - source: const crypto = require("crypto");
+      style: secondary
+      start: 30
+      end: 63
+    - source: |-
+        const keypair2 = await util.promisify(crypto.generateKeyPair)("rsa", {
+        modulusLength: 512,
+        });
+      style: secondary
+      start: 64
+      end: 158
