@@ -1,0 +1,321 @@
+id: jwt-hardcode-kotlin
+language: kotlin
+severity: warning
+message: >-
+  A secret is hard-coded in the application. Secrets stored in source
+  code, such as credentials, identifiers, and other types of sensitive data,
+  can be leaked and used by internal or external malicious actors. It is
+  recommended to rotate the secret and retrieve them from a secure secret
+  vault or Hardware Security Module (HSM), alternatively environment
+  variables can be used if allowed by your company policy.
+note: >-
+  [CWE-798]: Use of Hard-coded Credentials
+  [OWASP A03:2021]: Identification and Authentication Failures
+  [REFERENCES]
+      - https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures
+utils:
+  match_call_expression_Algorithm:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: navigation_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: simple_identifier
+                regex: "^Algorithm$"
+            - has:
+                stopBy: end
+                kind: navigation_suffix
+                has:
+                  stopBy: end
+                  kind: simple_identifier
+                  regex: ^(HMAC256$|HMAC384)$
+      - has:
+          stopBy: end
+          kind: call_suffix
+          all:
+            - has:
+                stopBy: end
+                kind: value_arguments
+            - has:
+                stopBy: end
+                kind: value_argument
+                has:
+                  stopBy: end
+                  kind: string_literal
+    inside:
+      stopBy: end
+      kind: property_declaration
+      inside:
+        stopBy: end
+        kind: function_declaration
+        inside:
+          stopBy: end
+          kind: object_declaration
+          follows:
+            stopBy: end
+            kind: import_list
+            has:
+              stopBy: end
+              kind: import_header
+              has:
+                stopBy: end
+                kind: identifier
+                all:
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^com$"
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^auth0$"
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^jwt$"
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^algorithms$"
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^Algorithm$"
+  match_call_expression_Algorithm_without_string_literal:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: navigation_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: simple_identifier
+                regex: "^Algorithm$"
+            - has:
+                stopBy: end
+                kind: navigation_suffix
+                has:
+                  stopBy: end
+                  kind: simple_identifier
+                  regex: "^HMAC384$"
+      - has:
+          stopBy: end
+          kind: call_suffix
+          all:
+            - has:
+                stopBy: end
+                kind: value_arguments
+            - has:
+                stopBy: end
+                kind: value_argument
+                has:
+                  stopBy: end
+                  kind: simple_identifier
+                  pattern: $SECRET
+    inside:
+      stopBy: end
+      kind: property_declaration
+      inside:
+        stopBy: end
+        kind: function_declaration
+        inside:
+          stopBy: end
+          kind: object_declaration
+          has:
+            stopBy: end
+            kind: property_declaration
+            all:
+              - has:
+                  stopBy: end
+                  kind: modifiers
+              - has:
+                  stopBy: end
+                  kind: variable_declaration
+                  has:
+                    stopBy: end
+                    kind: simple_identifier
+                    pattern: $SECRET
+          follows:
+            stopBy: end
+            kind: import_list
+            any:
+              - has:
+                  stopBy: end
+                  kind: import_header
+                  has:
+                    stopBy: end
+                    kind: identifier
+                    all:
+                      - has:
+                          stopBy: end
+                          kind: simple_identifier
+                      - has:
+                          stopBy: end
+                          kind: simple_identifier
+                      - has:
+                          stopBy: end
+                          kind: simple_identifier
+                      - has:
+                          stopBy: end
+                          kind: simple_identifier
+                      - has:
+                          stopBy: end
+                          kind: simple_identifier
+              - has:
+                  stopBy: end
+                  kind: import_header
+                  has:
+                    stopBy: end
+                    kind: identifier
+                    all:
+                      - has:
+                          stopBy: end
+                          kind: simple_identifier
+                      - has:
+                          stopBy: end
+                          kind: simple_identifier
+                      - has:
+                          stopBy: end
+                          kind: simple_identifier
+                      - has:
+                          stopBy: end
+                          kind: simple_identifier
+                      - has:
+                          stopBy: end
+                          kind: simple_identifier
+                      - has:
+                          stopBy: end
+                          kind: simple_identifier
+  match_call_expression_depend_import:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: end
+          kind: simple_identifier
+          regex: "^HMAC512$"
+      - has:
+          stopBy: end
+          kind: call_suffix
+          all:
+            - has:
+                stopBy: end
+                kind: value_arguments
+            - has:
+                stopBy: end
+                kind: value_argument
+                has:
+                  stopBy: end
+                  kind: simple_identifier
+    inside:
+      stopBy: end
+      kind: property_declaration
+      inside:
+        stopBy: end
+        kind: function_declaration
+        inside:
+          stopBy: end
+          kind: object_declaration
+          follows:
+            stopBy: end
+            kind: import_list
+            has:
+              stopBy: end
+              kind: import_header
+              has:
+                stopBy: end
+                kind: identifier
+                all:
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^com$"
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^auth0$"
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^jwt$"
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^algorithms$"
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^Algorithm$"
+                  - has:
+                      stopBy: end
+                      kind: simple_identifier
+                      regex: "^HMAC512$"
+  match_call_expression_without_Algorithm:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: end
+          kind: simple_identifier
+          regex: "^HMAC512$"
+      - has:
+          stopBy: end
+          kind: call_suffix
+          all:
+            - has:
+                stopBy: end
+                kind: value_arguments
+            - has:
+                stopBy: end
+                kind: value_argument
+                has:
+                  stopBy: end
+                  kind: string_literal
+    inside:
+      stopBy: end
+      kind: property_declaration
+      inside:
+        stopBy: end
+        kind: object_declaration
+        follows:
+          stopBy: end
+          kind: import_list
+          has:
+            stopBy: end
+            kind: import_header
+            has:
+              stopBy: end
+              kind: identifier
+              all:
+                - has:
+                    stopBy: end
+                    kind: simple_identifier
+                    regex: "^com$"
+                - has:
+                    stopBy: end
+                    kind: simple_identifier
+                    regex: "^auth0$"
+                - has:
+                    stopBy: end
+                    kind: simple_identifier
+                    regex: "^jwt$"
+                - has:
+                    stopBy: end
+                    kind: simple_identifier
+                    regex: "^algorithms$"
+                - has:
+                    stopBy: end
+                    kind: simple_identifier
+                    regex: "^Algorithm$"
+                - has:
+                    stopBy: end
+                    kind: simple_identifier
+                    regex: "^HMAC512$"
+rule:
+  any:
+    - matches: match_call_expression_Algorithm
+    - matches: match_call_expression_Algorithm_without_string_literal
+    - matches: match_call_expression_depend_import
+    - matches: match_call_expression_without_Algorithm
