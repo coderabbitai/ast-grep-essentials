@@ -1,0 +1,13 @@
+id: use-of-weak-rsa-key-kotlin
+valid:
+  - |
+    fun rsaOK(): Void {
+    val keyGen = KeyPairGenerator.getInstance("RSA");
+    keyGen.initialize(2048);
+    }
+invalid:
+  - |
+    fun rsaWeak(): Void {
+    val keyGen: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
+    keyGen.initialize(512)
+    }
