@@ -1,0 +1,31 @@
+id: use-of-sha1-java
+snapshots:
+  ? |
+    MessageDigest sha1Digest = MessageDigest.getInstance("SHA1");
+  : labels:
+    - source: MessageDigest.getInstance("SHA1")
+      style: primary
+      start: 27
+      end: 60
+  ? |
+    MessageDigest sha1Digest = MessageDigest.getInstance("SHA1", "SUN");
+  : labels:
+    - source: MessageDigest.getInstance("SHA1", "SUN")
+      style: primary
+      start: 27
+      end: 67
+  ? |
+    byte[] hashValue = DigestUtils.getSha1Digest().digest(password.getBytes());
+  : labels:
+    - source: DigestUtils.getSha1Digest().digest(password.getBytes())
+      style: primary
+      start: 19
+      end: 74
+  ? |
+    java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA1", "SUN");
+    DigestUtils.getSha1Digest().digest(password.getBytes());
+  : labels:
+    - source: java.security.MessageDigest.getInstance("SHA1", "SUN")
+      style: primary
+      start: 33
+      end: 87

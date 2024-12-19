@@ -1,0 +1,75 @@
+id: weak-ssl-context-java
+language: java
+severity: warning
+message: >-
+  'An insecure SSL context was detected. TLS versions 1.0, 1.1, and all
+      SSL versions are considered weak encryption and are deprecated. Use
+      SSLContext.getInstance("TLSv1.2") for the best security.'
+note: >-
+  [CWE-326] Inadequate Encryption Strength
+  [REFERENCES]
+      - https://tools.ietf.org/html/rfc7568
+      - https://tools.ietf.org/id/draft-ietf-tls-oldversions-deprecate-02.html
+
+rule:
+  all:
+    - pattern: SSLContext.getInstance($CONTEXT)
+    - not:
+        pattern: SSLContext.getInstance("TLSv1.3")
+    - not:
+        pattern: SSLContext.getInstance("TLSv1.2")
+constraints:
+  CONTEXT:
+    any:
+      - kind: string_literal
+        pattern: $TLS
+        not:
+          regex: ^['"`](TLSv1.2|TLSv1.3)['"`]$
+      - kind: identifier
+        inside:
+          stopBy: end
+          follows:
+            stopBy: end
+            any:
+              - kind: local_variable_declaration
+              - kind: field_declaration
+            all:
+              - has:
+                  kind: type_identifier
+                  regex: ^String$
+              - has:
+                  stopBy: end
+                  kind: variable_declarator
+                  all:
+                    - has:
+                        kind: identifier
+                        stopBy: end
+                        pattern: $CONTEXT
+                    - has:
+                        kind: string_literal
+                        pattern: $TLS
+                        not:
+                          regex: ^['"`](TLSv1.2|TLSv1.3)['"`]$
+      - kind: identifier
+        follows:
+          stopBy: end
+          any:
+            - kind: local_variable_declaration
+            - kind: field_declaration
+          all:
+            - has:
+                kind: type_identifier
+                regex: ^String$
+            - has:
+                stopBy: end
+                kind: variable_declarator
+                all:
+                  - has:
+                      kind: identifier
+                      stopBy: end
+                      pattern: $CONTEXT
+                  - has:
+                      kind: string_literal
+                      pattern: $TLS
+                      not:
+                        regex: ^['"`](TLSv1.2|TLSv1.3)['"`]$
