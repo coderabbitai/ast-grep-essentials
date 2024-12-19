@@ -1,0 +1,9 @@
+id: use-of-md5-digest-utils-java
+valid:
+  - |
+    MessageDigest md5Digest = MessageDigest.getInstance("MD5");
+  - |
+    byte[] hashValue = DigestUtils.getSha512Digest().digest(password.getBytes());
+invalid:
+  - |
+    byte[] hashValue = DigestUtils.getMd5Digest().digest(password.getBytes());
