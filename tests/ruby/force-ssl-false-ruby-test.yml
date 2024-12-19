@@ -1,0 +1,11 @@
+id: force-ssl-false-ruby
+valid:
+  - |
+    def bad_ssl
+    config.force_ssl = true
+    end
+invalid:
+  - |
+    def bad_ssl
+    config.force_ssl = false
+    end
