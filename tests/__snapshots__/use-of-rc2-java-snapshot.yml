@@ -1,0 +1,70 @@
+id: use-of-rc2-java
+snapshots:
+  ? |
+    public void testRC2InMap() {
+    Map<String, Cipher> cipherMap = new HashMap<>();
+    cipherMap.put("RC2", Cipher.getInstance("RC2"));
+    }
+  : labels:
+    - source: Cipher.getInstance("RC2")
+      style: primary
+      start: 99
+      end: 124
+  ? |
+    public void testRC2InSwitch() {
+    String algorithm = "RC2";
+    switch (algorithm) {
+      case "RC2":
+        try {
+          Cipher.getInstance(algorithm);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+        break;
+    }
+    }
+  : labels:
+    - source: Cipher.getInstance(algorithm)
+      style: primary
+      start: 109
+      end: 138
+    - source: algorithm
+      style: secondary
+      start: 39
+      end: 48
+    - source: '"RC2"'
+      style: secondary
+      start: 51
+      end: 56
+    - source: algorithm = "RC2"
+      style: secondary
+      start: 39
+      end: 56
+    - source: String algorithm = "RC2";
+      style: secondary
+      start: 32
+      end: 57
+    - source: |
+        public void testRC2InSwitch() {
+        String algorithm = "RC2";
+        switch (algorithm) {
+          case "RC2":
+            try {
+              Cipher.getInstance(algorithm);
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
+            break;
+        }
+        }
+      style: secondary
+      start: 0
+      end: 216
+  ? |
+    useCipher(Cipher.getInstance("RC2"));
+    Cipher.getInstance("RC2");
+  : labels:
+    - source: Cipher.getInstance("RC2")
+      style: primary
+      start: 10
+      end: 35

@@ -1,0 +1,34 @@
+id: use-of-rc2-java
+language: java
+severity: warning
+message: >-
+  Use of RC2 was detected. RC2 is vulnerable to related-key attacks, and
+  is therefore considered non-compliant. Instead, use a strong, secure.
+note: >-
+  [CWE-327] Use of a Broken or Risky Cryptographic Algorithm.
+  [REFERENCES]
+      - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
+      - https://googleprojectzero.blogspot.com/2022/10/rc4-is-still-considered-harmful.html
+rule:
+  any:
+    - pattern: $CIPHER.getInstance("RC2")
+    - pattern: $CIPHER.getInstance($R)
+      inside:
+        stopBy: end
+        kind: program
+        has:
+          stopBy: end
+          kind: local_variable_declaration
+          has:
+            stopBy: end
+            kind: variable_declarator
+            all:
+              - has:
+                  stopBy: neighbor
+                  kind: identifier
+                  pattern: $R
+              - has:
+                  stopBy: neighbor
+                  kind: string_literal
+                  regex: ^"RC2"$
+
