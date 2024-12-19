@@ -6,25 +6,91 @@ snapshots:
     keyGen.initialize(512)
     }
   : labels:
-    - source: |-
-        val keyGen: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
-        keyGen.initialize(512)
+    - source: keyGen.initialize(512)
       style: primary
+      start: 89
+      end: 111
+    - source: keyGen
+      style: secondary
+      start: 89
+      end: 95
+    - source: initialize
+      style: secondary
+      start: 96
+      end: 106
+    - source: .initialize
+      style: secondary
+      start: 95
+      end: 106
+    - source: keyGen.initialize
+      style: secondary
+      start: 89
+      end: 106
+    - source: '512'
+      style: secondary
+      start: 107
+      end: 110
+    - source: '512'
+      style: secondary
+      start: 107
+      end: 110
+    - source: (512)
+      style: secondary
+      start: 106
+      end: 111
+    - source: (512)
+      style: secondary
+      start: 106
+      end: 111
+    - source: keyGen
+      style: secondary
+      start: 26
+      end: 32
+    - source: KeyPairGenerator
+      style: secondary
+      start: 34
+      end: 50
+    - source: KeyPairGenerator
+      style: secondary
+      start: 34
+      end: 50
+    - source: 'keyGen: KeyPairGenerator'
+      style: secondary
+      start: 26
+      end: 50
+    - source: KeyPairGenerator
+      style: secondary
+      start: 53
+      end: 69
+    - source: getInstance
+      style: secondary
+      start: 70
+      end: 81
+    - source: .getInstance
+      style: secondary
+      start: 69
+      end: 81
+    - source: KeyPairGenerator.getInstance
+      style: secondary
+      start: 53
+      end: 81
+    - source: '"RSA"'
+      style: secondary
+      start: 82
+      end: 87
+    - source: ("RSA")
+      style: secondary
+      start: 81
+      end: 88
+    - source: ("RSA")
+      style: secondary
+      start: 81
+      end: 88
+    - source: KeyPairGenerator.getInstance("RSA")
+      style: secondary
+      start: 53
+      end: 88
+    - source: 'val keyGen: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")'
+      style: secondary
       start: 22
-      end: 111
-    - source: '512'
-      style: secondary
-      start: 107
-      end: 110
-    - source: '512'
-      style: secondary
-      start: 107
-      end: 110
-    - source: (512)
-      style: secondary
-      start: 106
-      end: 111
-    - source: (512)
-      style: secondary
-      start: 106
-      end: 111
+      end: 88
