@@ -1,0 +1,95 @@
+id: use-of-default-aes-java
+language: java
+severity: warning
+message: >-
+  Use of AES with no settings detected. By default, java.crypto.Cipher
+  uses ECB mode. ECB doesn't  provide message confidentiality and is not
+  semantically secure so should not be used. Instead, use a strong, secure
+  cipher: java.crypto.Cipher.getInstance(\"AES/CBC/PKCS7PADDING\"). See
+  https://owasp.org/www-community/Using_the_Java_Cryptographic_Extensions
+  for more information.
+note: >-
+  [CWE-327] Use of a Broken or Risky Cryptographic Algorithm.
+  [REFERENCES]
+      - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
+      - https://googleprojectzero.blogspot.com/2022/10/rc4-is-still-considered-harmful.html
+rule:
+  any:
+    - pattern: Cipher.getInstance("AES")
+      inside:
+            stopBy: end
+            kind: class_declaration
+            follows:
+                     stopBy: end
+                     kind: import_declaration
+                     any:
+                           - pattern: import javax.*;
+                           - pattern: import javax;
+                           - pattern: import javax.crypto.*;
+    - pattern: crypto.Cipher.getInstance("AES")
+      inside:
+            stopBy: end
+            kind: class_declaration
+            follows:
+                     stopBy: end
+                     kind: import_declaration
+                     any:
+                           - pattern: import javax.*;
+                           - pattern: import javax;
+                           - pattern: import javax.crypto.*;
+    - pattern: javax.crypto.Cipher.getInstance("AES")
+      inside:
+            stopBy: end
+            kind: class_declaration
+            follows:
+                     stopBy: end
+                     kind: import_declaration
+                     any:
+                           - pattern: import javax.*;
+                           - pattern: import javax;
+                           - pattern: import javax.crypto.*;
+    - pattern: $D.getInstance("AES");
+      all:
+      - follows:
+            stopBy: end
+            pattern: Cipher $D = $$$
+      - inside:
+            stopBy: end
+            kind: class_declaration
+            follows:
+                     stopBy: end
+                     kind: import_declaration
+                     any:
+                           - pattern: import javax.*;
+                           - pattern: import javax;
+                           - pattern: import javax.crypto.*;
+    - pattern: $D.getInstance("AES");
+      all:
+      - follows:
+            stopBy: end
+            pattern: javax.crypto.Cipher $D = $$$
+      - inside:
+            stopBy: end
+            kind: class_declaration
+            follows:
+                     stopBy: end
+                     kind: import_declaration
+                     any:
+                           - pattern: import javax.*;
+                           - pattern: import javax;
+                           - pattern: import javax.crypto.*;
+    - pattern: $D.getInstance("AES");
+      all:
+      - follows:
+            stopBy: end
+            pattern: crypto.Cipher $D = $$$
+      - inside:
+            stopBy: end
+            kind: class_declaration
+            follows:
+                     stopBy: end
+                     kind: import_declaration
+                     any:
+                           - pattern: import javax.*;
+                           - pattern: import javax;
+                           - pattern: import javax.crypto.*;
