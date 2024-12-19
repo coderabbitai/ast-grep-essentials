@@ -1,0 +1,7 @@
+id: insufficient-rsa-key-size-ruby
+valid:
+  - |
+     key = OpenSSL::PKey::RSA.new(2048)
+invalid:
+  - |
+     key = OpenSSL::PKey::RSA.new(204)
