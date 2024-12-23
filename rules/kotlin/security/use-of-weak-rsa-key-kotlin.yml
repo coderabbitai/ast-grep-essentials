@@ -59,10 +59,6 @@ utils:
               - has:
                   kind: simple_identifier
                   pattern: $KEYGEN
-              - has:
-                  kind: user_type
-                  has:
-                    kind: type_identifier
          - has:
             kind: call_expression
             all:

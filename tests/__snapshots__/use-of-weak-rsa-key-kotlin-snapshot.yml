@@ -52,14 +52,6 @@ snapshots:
       style: secondary
       start: 26
       end: 32
-    - source: KeyPairGenerator
-      style: secondary
-      start: 34
-      end: 50
-    - source: KeyPairGenerator
-      style: secondary
-      start: 34
-      end: 50
     - source: 'keyGen: KeyPairGenerator'
       style: secondary
       start: 26
