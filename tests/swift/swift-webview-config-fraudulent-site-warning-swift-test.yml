@@ -1,0 +1,14 @@
+id: swift-webview-config-fraudulent-site-warning-swift
+valid:
+  - |
+    let prefs = WKPreferences()
+    prefs.isFraudulentWebsiteWarningEnabled  = true
+invalid:
+  - |
+    let prefs2 = WKPreferences()
+    prefs2.isFraudulentWebsiteWarningEnabled  = true
+    prefs2.isFraudulentWebsiteWarningEnabled  = false
+  - |
+    let prefs2 = WKPreferences()
+    prefs2.isFraudulentWebsiteWarningEnabled  = false  
+

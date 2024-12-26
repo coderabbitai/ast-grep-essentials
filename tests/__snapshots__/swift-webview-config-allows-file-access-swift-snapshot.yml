@@ -1,0 +1,117 @@
+id: swift-webview-config-allows-file-access-swift
+snapshots:
+  ? "func enableFileAccessFromFileURLs() {\nwebView.configuration.preferences.setValue(true, forKey: \"allowFileAccessFromFileURLs\")\nprint(\"allowFileAccessFromFileURLs has been set to true.\")\n}  \n"
+  : labels:
+    - source: 'webView.configuration.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")'
+      style: primary
+      start: 38
+      end: 125
+    - source: 'true'
+      style: secondary
+      start: 81
+      end: 85
+    - source: 'true'
+      style: secondary
+      start: 81
+      end: 85
+    - source: forKey
+      style: secondary
+      start: 87
+      end: 93
+    - source: allowFileAccessFromFileURLs
+      style: secondary
+      start: 96
+      end: 123
+    - source: '"allowFileAccessFromFileURLs"'
+      style: secondary
+      start: 95
+      end: 124
+    - source: 'forKey: "allowFileAccessFromFileURLs"'
+      style: secondary
+      start: 87
+      end: 124
+    - source: '(true, forKey: "allowFileAccessFromFileURLs")'
+      style: secondary
+      start: 80
+      end: 125
+    - source: '(true, forKey: "allowFileAccessFromFileURLs")'
+      style: secondary
+      start: 80
+      end: 125
+  ? |
+    preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
+  : labels:
+    - source: 'preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")'
+      style: primary
+      start: 0
+      end: 65
+    - source: 'true'
+      style: secondary
+      start: 21
+      end: 25
+    - source: 'true'
+      style: secondary
+      start: 21
+      end: 25
+    - source: forKey
+      style: secondary
+      start: 27
+      end: 33
+    - source: allowFileAccessFromFileURLs
+      style: secondary
+      start: 36
+      end: 63
+    - source: '"allowFileAccessFromFileURLs"'
+      style: secondary
+      start: 35
+      end: 64
+    - source: 'forKey: "allowFileAccessFromFileURLs"'
+      style: secondary
+      start: 27
+      end: 64
+    - source: '(true, forKey: "allowFileAccessFromFileURLs")'
+      style: secondary
+      start: 20
+      end: 65
+    - source: '(true, forKey: "allowFileAccessFromFileURLs")'
+      style: secondary
+      start: 20
+      end: 65
+  ? "webViewConfig.webView.configuration.preferences.setValue(true, forKey: \"allowFileAccessFromFileURLs\")  \n"
+  : labels:
+    - source: 'webViewConfig.webView.configuration.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")'
+      style: primary
+      start: 0
+      end: 101
+    - source: 'true'
+      style: secondary
+      start: 57
+      end: 61
+    - source: 'true'
+      style: secondary
+      start: 57
+      end: 61
+    - source: forKey
+      style: secondary
+      start: 63
+      end: 69
+    - source: allowFileAccessFromFileURLs
+      style: secondary
+      start: 72
+      end: 99
+    - source: '"allowFileAccessFromFileURLs"'
+      style: secondary
+      start: 71
+      end: 100
+    - source: 'forKey: "allowFileAccessFromFileURLs"'
+      style: secondary
+      start: 63
+      end: 100
+    - source: '(true, forKey: "allowFileAccessFromFileURLs")'
+      style: secondary
+      start: 56
+      end: 101
+    - source: '(true, forKey: "allowFileAccessFromFileURLs")'
+      style: secondary
+      start: 56
+      end: 101
