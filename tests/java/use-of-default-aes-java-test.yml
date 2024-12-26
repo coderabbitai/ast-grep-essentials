@@ -1,0 +1,65 @@
+id: use-of-default-aes-java
+valid:
+  - |
+    crypto.KeyGenerator.getInstance("AES");
+    javax.crypto.KeyGenerator.getInstance("AES");
+invalid:
+  - |
+    import javax;
+    import javax.crypto;     
+    import javax.crypto.*;
+    import javax.crypto.Cipher;
+    class AES{
+    public void useofAES() {
+    Cipher.getInstance("AES");
+    crypto.Cipher.getInstance("AES");
+    javax.crypto.Cipher.getInstance("AES");
+    }
+  - |
+    import javax;
+    import javax.crypto.*;
+    import javax.crypto.Cipher;
+    class AES{
+    public void useofAES() {
+    Cipher.getInstance("AES"); 
+    }
+  - |
+    import javax;
+    import javax.crypto.*;
+    import javax.crypto.Cipher;
+    class AES{
+    public void useofAES() {
+    javax.crypto.Cipher.getInstance("AES");
+    }
+  - |
+    import javax;
+    import javax.crypto.*;
+    import javax.crypto.Cipher;
+    class AES{
+    public void useofAES() {
+    Cipher cipher = javax.crypto.Cipher.getInstance("AES"); 
+    }
+  - |
+    import javax;
+    import javax.crypto.*;
+    import javax.crypto.Cipher;
+    class AES{
+    public void useofAES() {
+    Cipher cipher2 = Cipher.getInstance("AES");
+    }
+  - |
+    import javax;
+    import javax.crypto.*;
+    import javax.crypto.Cipher;
+    class AES{
+    public void useofAES() {
+    javax.crypto.Cipher.getInstance("AES");
+    }
+  - |
+    import javax;
+    import javax.crypto.*;
+    import javax.crypto.Cipher;
+    class AES{
+    public void useofAES() {
+    Cipher.getInstance("AES");
+    }
