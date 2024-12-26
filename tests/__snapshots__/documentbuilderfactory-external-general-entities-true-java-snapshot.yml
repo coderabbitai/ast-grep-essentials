@@ -1,0 +1,64 @@
+id: documentbuilderfactory-external-general-entities-true-java
+snapshots:
+  ? |
+    dbf.setFeature("http://xml.org/sax/features/external-general-entities" , true);
+  : labels:
+    - source: dbf.setFeature("http://xml.org/sax/features/external-general-entities" , true);
+      style: primary
+      start: 0
+      end: 79
+    - source: dbf
+      style: secondary
+      start: 0
+      end: 3
+    - source: setFeature
+      style: secondary
+      start: 4
+      end: 14
+    - source: '"http://xml.org/sax/features/external-general-entities"'
+      style: secondary
+      start: 15
+      end: 70
+    - source: 'true'
+      style: secondary
+      start: 73
+      end: 77
+    - source: ("http://xml.org/sax/features/external-general-entities" , true)
+      style: secondary
+      start: 14
+      end: 78
+    - source: dbf.setFeature("http://xml.org/sax/features/external-general-entities" , true)
+      style: secondary
+      start: 0
+      end: 78
+  ? |
+    spf.setFeature("http://xml.org/sax/features/external-general-entities" , true);
+  : labels:
+    - source: spf.setFeature("http://xml.org/sax/features/external-general-entities" , true);
+      style: primary
+      start: 0
+      end: 79
+    - source: spf
+      style: secondary
+      start: 0
+      end: 3
+    - source: setFeature
+      style: secondary
+      start: 4
+      end: 14
+    - source: '"http://xml.org/sax/features/external-general-entities"'
+      style: secondary
+      start: 15
+      end: 70
+    - source: 'true'
+      style: secondary
+      start: 73
+      end: 77
+    - source: ("http://xml.org/sax/features/external-general-entities" , true)
+      style: secondary
+      start: 14
+      end: 78
+    - source: spf.setFeature("http://xml.org/sax/features/external-general-entities" , true)
+      style: secondary
+      start: 0
+      end: 78
