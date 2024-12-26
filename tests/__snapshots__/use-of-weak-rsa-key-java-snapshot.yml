@@ -1,0 +1,98 @@
+id: use-of-weak-rsa-key-java
+snapshots:
+  ? |
+    KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+    keyGen.initialize(-512);
+  : labels:
+    - source: keyGen.initialize(-512);
+      style: primary
+      start: 63
+      end: 87
+    - source: keyGen
+      style: secondary
+      start: 63
+      end: 69
+    - source: initialize
+      style: secondary
+      start: 70
+      end: 80
+    - source: '-512'
+      style: secondary
+      start: 81
+      end: 85
+    - source: (-512)
+      style: secondary
+      start: 80
+      end: 86
+    - source: keyGen.initialize(-512)
+      style: secondary
+      start: 63
+      end: 86
+    - source: KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+      style: secondary
+      start: 0
+      end: 62
+  ? |
+    KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+    keyGen.initialize(51.2);
+  : labels:
+    - source: keyGen.initialize(51.2);
+      style: primary
+      start: 63
+      end: 87
+    - source: keyGen
+      style: secondary
+      start: 63
+      end: 69
+    - source: initialize
+      style: secondary
+      start: 70
+      end: 80
+    - source: '51.2'
+      style: secondary
+      start: 81
+      end: 85
+    - source: (51.2)
+      style: secondary
+      start: 80
+      end: 86
+    - source: keyGen.initialize(51.2)
+      style: secondary
+      start: 63
+      end: 86
+    - source: KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+      style: secondary
+      start: 0
+      end: 62
+  ? |
+    KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+    keyGen.initialize(512);
+  : labels:
+    - source: keyGen.initialize(512);
+      style: primary
+      start: 63
+      end: 86
+    - source: keyGen
+      style: secondary
+      start: 63
+      end: 69
+    - source: initialize
+      style: secondary
+      start: 70
+      end: 80
+    - source: '512'
+      style: secondary
+      start: 81
+      end: 84
+    - source: (512)
+      style: secondary
+      start: 80
+      end: 85
+    - source: keyGen.initialize(512)
+      style: secondary
+      start: 63
+      end: 85
+    - source: KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+      style: secondary
+      start: 0
+      end: 62

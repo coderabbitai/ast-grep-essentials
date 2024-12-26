@@ -1,0 +1,39 @@
+id: use-of-rc2-java
+valid:
+  - |
+    Cipher.getInstance("AES/CBC/PKCS7PADDING");
+invalid:
+  - |
+    useCipher(Cipher.getInstance("RC2"));
+    Cipher.getInstance("RC2");
+  - |
+    public void testRC2InSwitch() {
+    String algorithm = "RC2";
+    switch (algorithm) {
+      case "RC2":
+        try {
+          Cipher.getInstance(algorithm);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+        break;
+    }
+    }
+  - |
+    public void testRC2InMap() {
+    Map<String, Cipher> cipherMap = new HashMap<>();
+    cipherMap.put("RC2", Cipher.getInstance("RC2"));
+    }
+  - |
+    public void testRC2InSwitch() {
+    String algorithm = "RC2";
+    switch (algorithm) {
+      case "RC2":
+        try {
+          Cipher.getInstance(algorithm);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+        break;
+    }
+    }
