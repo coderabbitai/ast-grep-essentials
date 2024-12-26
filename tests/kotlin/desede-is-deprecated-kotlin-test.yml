@@ -1,0 +1,10 @@
+id: desede-is-deprecated-kotlin
+valid:
+  - |
+    Cipher c = Cipher.getInstance("AES/GCM/NoPadding");
+invalid:
+  - |
+     Cipher c = Cipher.getInstance("kDESede/ECB/PKCS5Padding");
+     c.init(Cipher.ENCRYPT_MODE, k, iv);
+  - |
+    javax.crypto.SecretKey key = javax.crypto.KeyGenerator.getInstance("DES").generateKey(); 
