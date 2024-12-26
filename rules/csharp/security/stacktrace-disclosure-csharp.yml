@@ -1,0 +1,27 @@
+id: stacktrace-disclosure-csharp
+severity: warning
+language: csharp
+message: >-
+  Stacktrace information is displayed in a non-Development environment.
+  Accidentally disclosing sensitive stack trace information in a production
+  environment aids an attacker in reconnaissance and information gathering.
+note: >-
+  [CWE-209] Generation of Error Message Containing Sensitive Information.
+  [REFERENCES]
+    - https://cwe.mitre.org/data/definitions/209.html
+    - https://owasp.org/Top10/A04_2021-Insecure_Design/
+utils:
+    $APP.UseDeveloperExceptionPage(...):
+     kind: expression_statement
+     pattern: $APP.UseDeveloperExceptionPage($$$);
+     inside:
+         stopBy: neighbor
+         kind: block
+         not:
+          follows:
+            stopBy: end
+            kind: invocation_expression
+            pattern: $ENV.IsDevelopment()
+rule:
+    kind: expression_statement
+    matches: $APP.UseDeveloperExceptionPage(...)

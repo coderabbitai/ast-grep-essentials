@@ -1,0 +1,23 @@
+id: jwt-hardcode-kotlin
+valid:
+  - |
+    System.setProperty("javax.net.ssl.trustStorePassword", config);
+    System.setProperty("javax.net.ssl.keyStorePassword", config);
+invalid:
+  - |
+    package com.foobar.org.configuration
+    import com.auth0.jwt.JWT
+    import com.auth0.jwt.algorithms.Algorithm
+    import com.auth0.jwt.algorithms.Algorithm.HMAC512
+    import com.auth0.jwt.exceptions.JWTCreationException
+    object App {
+    private fun bad1() {
+    try {
+    val algorithm = Algorithm.HMAC256("secret")
+    val token = JWT.create()
+    .withIssuer("auth0")
+    .sign(algorithm)
+    } catch (exception: JWTCreationException) {
+    }
+    }
+    }
