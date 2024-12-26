@@ -1,0 +1,29 @@
+id: insufficient-rsa-key-size-ruby
+snapshots:
+  ? |
+    key = OpenSSL::PKey::RSA.new(204)
+  : labels:
+    - source: OpenSSL::PKey::RSA.new(204)
+      style: primary
+      start: 6
+      end: 33
+    - source: OpenSSL::PKey::RSA
+      style: secondary
+      start: 6
+      end: 24
+    - source: .
+      style: secondary
+      start: 24
+      end: 25
+    - source: new
+      style: secondary
+      start: 25
+      end: 28
+    - source: '204'
+      style: secondary
+      start: 29
+      end: 32
+    - source: (204)
+      style: secondary
+      start: 28
+      end: 33
