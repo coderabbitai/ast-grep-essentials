@@ -10,6 +10,24 @@ note: >-
   [REFERENCES]
       - https://docs.angularjs.org/api/ng/service/$sce
       - https://owasp.org/www-chapter-london/assets/slides/OWASPLondon20170727_AngularJS.pdf
+utils:
+  $sceProvider.enabled(false):
+    kind: expression_statement
+    has:
+      stopBy: end
+      kind: call_expression 
+      all:
+        - has:
+            stopBy: neighbor
+            kind: member_expression
+            pattern: $sceProvider.enabled
+        - has:
+            stopBy: neighbor
+            kind: arguments
+            has:
+              stopBy: neighbor
+              regex: ^false$
+
 rule:
-  pattern: |
-      $sceProvider.enabled(false);
+ kind: expression_statement
+ matches: $sceProvider.enabled(false)

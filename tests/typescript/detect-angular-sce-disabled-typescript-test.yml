@@ -5,3 +5,7 @@ valid:
 invalid:
   - |
     $sceProvider.enabled(false);
+  - |
+    $sceProvider.enabled(false).someFunction(true).anything("anything");
+  - |
+    $sceProvider.enabled(false)(false);
