@@ -1,0 +1,23 @@
+id: use-of-sha1-java
+language: java
+severity: warning
+message: >-
+  Detected SHA1 hash algorithm which is considered insecure. SHA1 is not
+  collision resistant and is therefore not suitable as a cryptographic
+  signature. Instead, use PBKDF2 for password hashing or SHA256 or SHA512
+  for other hash function applications.
+note: >-
+  [CWE-328] Use of Weak Hash.
+  [REFERENCES]
+      - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
+rule:
+  any:
+  - pattern: $DU.getSha1Digest().digest($$$)
+  - pattern: MessageDigest.getInstance($ALGO)
+  - pattern: MessageDigest.getInstance($ALGO,$$$)
+  - pattern: java.security.MessageDigest.getInstance($ALGO,$$$)
+constraints:
+  ALGO:
+    regex: 'SHA1|SHA-1'
+
+

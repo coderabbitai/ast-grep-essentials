@@ -1,0 +1,18 @@
+id: use-of-sha1-java
+valid:
+  - |
+    java.io.File fileTarget = new java.io.File(
+    new java.io.File(org.owasp.benchmark.helpers.Utils.TESTFILES_DIR),
+    "passwordFile.txt");
+invalid:
+  - |
+    java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA1", "SUN");
+    DigestUtils.getSha1Digest().digest(password.getBytes());
+  - |
+    MessageDigest sha1Digest = MessageDigest.getInstance("SHA1", "SUN");
+  - |
+    byte[] hashValue = DigestUtils.getSha1Digest().digest(password.getBytes());
+  - |
+    MessageDigest sha1Digest = MessageDigest.getInstance("SHA1");
+  - |
+    byte[] hashValue = DigestUtils.getSha1Digest().digest(password.getBytes());

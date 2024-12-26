@@ -1,0 +1,9 @@
+id: use-of-md5-java
+snapshots:
+  ? |
+    MessageDigest md5Digest = MessageDigest.getInstance("MD5");
+  : labels:
+    - source: MessageDigest.getInstance("MD5")
+      style: primary
+      start: 26
+      end: 58
