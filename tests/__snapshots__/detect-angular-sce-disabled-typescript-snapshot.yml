@@ -1,0 +1,94 @@
+id: detect-angular-sce-disabled-typescript
+snapshots:
+  $sceProvider.enabled(false)(false);:
+    labels:
+    - source: $sceProvider.enabled(false)(false);
+      style: primary
+      start: 0
+      end: 35
+    - source: $sceProvider
+      style: secondary
+      start: 0
+      end: 12
+    - source: enabled
+      style: secondary
+      start: 13
+      end: 20
+    - source: 'false'
+      style: secondary
+      start: 21
+      end: 26
+    - source: (false)
+      style: secondary
+      start: 20
+      end: 27
+    - source: $sceProvider.enabled
+      style: secondary
+      start: 0
+      end: 20
+    - source: $sceProvider.enabled(false)
+      style: secondary
+      start: 0
+      end: 27
+  ? |
+    $sceProvider.enabled(false).someFunction(true).anything("anything");
+  : labels:
+    - source: $sceProvider.enabled(false).someFunction(true).anything("anything");
+      style: primary
+      start: 0
+      end: 68
+    - source: $sceProvider
+      style: secondary
+      start: 0
+      end: 12
+    - source: enabled
+      style: secondary
+      start: 13
+      end: 20
+    - source: 'false'
+      style: secondary
+      start: 21
+      end: 26
+    - source: (false)
+      style: secondary
+      start: 20
+      end: 27
+    - source: $sceProvider.enabled
+      style: secondary
+      start: 0
+      end: 20
+    - source: $sceProvider.enabled(false)
+      style: secondary
+      start: 0
+      end: 27
+  ? |
+    $sceProvider.enabled(false);
+  : labels:
+    - source: $sceProvider.enabled(false);
+      style: primary
+      start: 0
+      end: 28
+    - source: $sceProvider
+      style: secondary
+      start: 0
+      end: 12
+    - source: enabled
+      style: secondary
+      start: 13
+      end: 20
+    - source: 'false'
+      style: secondary
+      start: 21
+      end: 26
+    - source: (false)
+      style: secondary
+      start: 20
+      end: 27
+    - source: $sceProvider.enabled
+      style: secondary
+      start: 0
+      end: 20
+    - source: $sceProvider.enabled(false)
+      style: secondary
+      start: 0
+      end: 27
