@@ -1,0 +1,62 @@
+id: hardcoded-http-auth-in-controller-ruby
+snapshots:
+  ? |-
+    class DangerousController < ApplicationController
+    http_basic_authenticate_with :name => "dhh", :password => "secret", :except => :index
+    puts "do more stuff"
+    end
+  : labels:
+    - source: '"secret"'
+      style: primary
+      start: 108
+      end: 116
+    - source: :password
+      style: secondary
+      start: 95
+      end: 104
+    - source: '"secret"'
+      style: secondary
+      start: 108
+      end: 116
+    - source: http_basic_authenticate_with
+      style: secondary
+      start: 50
+      end: 78
+    - source: DangerousController
+      style: secondary
+      start: 6
+      end: 25
+    - source: ApplicationController
+      style: secondary
+      start: 28
+      end: 49
+    - source: < ApplicationController
+      style: secondary
+      start: 26
+      end: 49
+    - source: |-
+        class DangerousController < ApplicationController
+        http_basic_authenticate_with :name => "dhh", :password => "secret", :except => :index
+        puts "do more stuff"
+        end
+      style: secondary
+      start: 0
+      end: 160
+    - source: |-
+        http_basic_authenticate_with :name => "dhh", :password => "secret", :except => :index
+        puts "do more stuff"
+      style: secondary
+      start: 50
+      end: 156
+    - source: http_basic_authenticate_with :name => "dhh", :password => "secret", :except => :index
+      style: secondary
+      start: 50
+      end: 135
+    - source: :name => "dhh", :password => "secret", :except => :index
+      style: secondary
+      start: 79
+      end: 135
+    - source: :password => "secret"
+      style: secondary
+      start: 95
+      end: 116
