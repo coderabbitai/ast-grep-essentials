@@ -11,6 +11,6 @@ note: >-
       - https://www.nist.gov/news-events/news/2005/06/nist-withdraws-outdated-data-encryption-standard
 rule:
   pattern: $CIPHER.getInstance($SAS)
-constraints:
+constraints: 
   SAS:
-    regex: "DES"
+    regex: ^".*/DES/.*"|"DES"|"DES/.*"$
