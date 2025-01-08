@@ -36,10 +36,14 @@ snapshots:
       style: secondary
       start: 49
       end: 70
-    - source: 'key = new NodeRSA({b: 204})'
+    - source: '{b: 204}'
       style: secondary
-      start: 43
-      end: 70
+      start: 61
+      end: 69
+    - source: 'b: 204'
+      style: secondary
+      start: 62
+      end: 68
     - source: NodeRSA
       style: secondary
       start: 6
@@ -52,10 +56,6 @@ snapshots:
       style: secondary
       start: 25
       end: 33
-    - source: '''node-rsa'''
-      style: secondary
-      start: 24
-      end: 34
     - source: ('node-rsa')
       style: secondary
       start: 23
@@ -112,10 +112,14 @@ snapshots:
       style: secondary
       start: 49
       end: 70
-    - source: 'key = new NodeRSA({b: 512})'
+    - source: '{b: 512}'
       style: secondary
-      start: 43
-      end: 70
+      start: 61
+      end: 69
+    - source: 'b: 512'
+      style: secondary
+      start: 62
+      end: 68
     - source: NodeRSA
       style: secondary
       start: 6
@@ -128,10 +132,6 @@ snapshots:
       style: secondary
       start: 25
       end: 33
-    - source: '''node-rsa'''
-      style: secondary
-      start: 24
-      end: 34
     - source: ('node-rsa')
       style: secondary
       start: 23
@@ -162,6 +162,10 @@ snapshots:
       style: primary
       start: 120
       end: 123
+    - source: util
+      style: secondary
+      start: 57
+      end: 61
     - source: promisify
       style: secondary
       start: 62
@@ -190,10 +194,6 @@ snapshots:
       style: secondary
       start: 57
       end: 95
-    - source: rsa
-      style: secondary
-      start: 97
-      end: 100
     - source: '"rsa"'
       style: secondary
       start: 96
@@ -231,6 +231,10 @@ snapshots:
       style: secondary
       start: 57
       end: 127
+    - source: 'modulusLength: 512'
+      style: secondary
+      start: 105
+      end: 123
     - source: crypto
       style: secondary
       start: 6
@@ -243,10 +247,6 @@ snapshots:
       style: secondary
       start: 24
       end: 30
-    - source: '"crypto"'
-      style: secondary
-      start: 23
-      end: 31
     - source: ("crypto")
       style: secondary
       start: 22
@@ -293,10 +293,6 @@ snapshots:
       style: secondary
       start: 68
       end: 94
-    - source: rsa
-      style: secondary
-      start: 96
-      end: 99
     - source: '"rsa"'
       style: secondary
       start: 95
@@ -337,14 +333,10 @@ snapshots:
       style: secondary
       start: 68
       end: 134
-    - source: |-
-        { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
-        a: 123,
-        modulusLength: 512,
-        })
+    - source: 'modulusLength: 512'
       style: secondary
-      start: 40
-      end: 134
+      start: 112
+      end: 130
     - source: crypto
       style: secondary
       start: 6
@@ -357,10 +349,6 @@ snapshots:
       style: secondary
       start: 24
       end: 30
-    - source: '"crypto"'
-      style: secondary
-      start: 23
-      end: 31
     - source: ("crypto")
       style: secondary
       start: 22
