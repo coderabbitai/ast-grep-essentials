@@ -42,6 +42,10 @@ snapshots:
       style: secondary
       start: 18
       end: 67
+    - source: openssl::ssl
+      style: secondary
+      start: 4
+      end: 16
     - source: use openssl::ssl::{SslMethod, SslConnectorBuilder, SSL_VERIFY_NONE};
       style: secondary
       start: 0
