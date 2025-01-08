@@ -8,14 +8,22 @@ snapshots:
       style: primary
       start: 11
       end: 57
+    - source: Cipher
+      style: secondary
+      start: 11
+      end: 17
+    - source: getInstance
+      style: secondary
+      start: 18
+      end: 29
+    - source: .getInstance
+      style: secondary
+      start: 17
+      end: 29
     - source: Cipher.getInstance
       style: secondary
       start: 11
       end: 29
-    - source: ("kDESede/ECB/PKCS5Padding")
-      style: secondary
-      start: 29
-      end: 57
     - source: '"kDESede/ECB/PKCS5Padding"'
       style: secondary
       start: 30
@@ -28,13 +36,9 @@ snapshots:
       style: secondary
       start: 29
       end: 57
-    - source: c.init(Cipher.ENCRYPT_MODE, k, iv)
+    - source: ("kDESede/ECB/PKCS5Padding")
       style: secondary
-      start: 59
-      end: 93
-    - source: Cipher c = Cipher.getInstance("kDESede/ECB/PKCS5Padding")
-      style: secondary
-      start: 0
+      start: 29
       end: 57
   ? "javax.crypto.SecretKey key = javax.crypto.KeyGenerator.getInstance(\"DES\").generateKey(); \n"
   : labels:
@@ -42,10 +46,10 @@ snapshots:
       style: primary
       start: 29
       end: 73
-    - source: javax.crypto.KeyGenerator
+    - source: javax
       style: secondary
       start: 29
-      end: 54
+      end: 34
     - source: KeyGenerator
       style: secondary
       start: 42
@@ -54,22 +58,34 @@ snapshots:
       style: secondary
       start: 41
       end: 54
+    - source: javax.crypto.KeyGenerator
+      style: secondary
+      start: 29
+      end: 54
+    - source: getInstance
+      style: secondary
+      start: 55
+      end: 66
+    - source: .getInstance
+      style: secondary
+      start: 54
+      end: 66
     - source: javax.crypto.KeyGenerator.getInstance
       style: secondary
       start: 29
       end: 66
+    - source: '"DES"'
+      style: secondary
+      start: 67
+      end: 72
+    - source: '"DES"'
+      style: secondary
+      start: 67
+      end: 72
     - source: ("DES")
       style: secondary
       start: 66
       end: 73
-    - source: '"DES"'
-      style: secondary
-      start: 67
-      end: 72
-    - source: '"DES"'
-      style: secondary
-      start: 67
-      end: 72
     - source: ("DES")
       style: secondary
       start: 66
