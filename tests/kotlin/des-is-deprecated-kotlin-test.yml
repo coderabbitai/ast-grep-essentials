@@ -1,0 +1,7 @@
+id: des-is-deprecated-kotlin
+valid:
+  - |
+    Cipher c = Cipher.getInstance("AES/GCM/NoPadding");
+invalid:
+  - |
+    Cipher.getInstance("DES/ECB/PKCS5Padding");

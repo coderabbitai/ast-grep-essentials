@@ -1,0 +1,20 @@
+id: cookie-httponly-false-java
+valid:
+  - |
+    @RequestMapping(value = "/cookie3", method = "GET")
+    public void setSecureHttponlyCookie(@RequestParam String value, HttpServletResponse response) {
+        Cookie cookie = new Cookie("cookie", value);
+        cookie.setSecure(true);
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
+    }
+invalid:
+  - |
+    
+    @RequestMapping(value = "/cookie4", method = "GET")
+    public void explicitDisable(@RequestParam String value, HttpServletResponse response) {
+        Cookie cookie = new Cookie("cookie", value);
+        cookie.setSecure(false);
+        cookie.setHttpOnly(false);
+        response.addCookie(cookie);
+    }
