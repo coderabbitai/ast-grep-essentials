@@ -1,0 +1,168 @@
+id: use-of-rc2-java
+snapshots:
+  ? |
+    public void testRC2InMap() {
+    Map<String, Cipher> cipherMap = new HashMap<>();
+    cipherMap.put("RC2", Cipher.getInstance("RC2"));
+    }
+  : labels:
+    - source: Cipher.getInstance("RC2")
+      style: primary
+      start: 99
+      end: 124
+    - source: Cipher
+      style: secondary
+      start: 99
+      end: 105
+    - source: getInstance
+      style: secondary
+      start: 106
+      end: 117
+    - source: RC2
+      style: secondary
+      start: 119
+      end: 122
+    - source: ("RC2")
+      style: secondary
+      start: 117
+      end: 124
+  ? |-
+    public void testRC2InSwitch() {
+    String algorithm = "RC2";
+    switch (algorithm) {
+      case "RC2":
+        try {
+          Cipher.getInstance(algorithm);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+        break;
+    }
+    }
+  : labels:
+    - source: Cipher.getInstance(algorithm)
+      style: primary
+      start: 109
+      end: 138
+    - source: Cipher
+      style: secondary
+      start: 109
+      end: 115
+    - source: getInstance
+      style: secondary
+      start: 116
+      end: 127
+    - source: algorithm
+      style: secondary
+      start: 128
+      end: 137
+    - source: (algorithm)
+      style: secondary
+      start: 127
+      end: 138
+    - source: algorithm
+      style: secondary
+      start: 39
+      end: 48
+    - source: RC2
+      style: secondary
+      start: 52
+      end: 55
+    - source: '"RC2"'
+      style: secondary
+      start: 51
+      end: 56
+    - source: algorithm = "RC2"
+      style: secondary
+      start: 39
+      end: 56
+    - source: String algorithm = "RC2";
+      style: secondary
+      start: 32
+      end: 57
+    - source: String algorithm = "RC2";
+      style: secondary
+      start: 32
+      end: 57
+  ? |
+    public void testRC2InSwitch() {
+    String algorithm = "RC2";
+    switch (algorithm) {
+      case "RC2":
+        try {
+          Cipher.getInstance(algorithm);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+        break;
+    }
+    }
+  : labels:
+    - source: Cipher.getInstance(algorithm)
+      style: primary
+      start: 109
+      end: 138
+    - source: Cipher
+      style: secondary
+      start: 109
+      end: 115
+    - source: getInstance
+      style: secondary
+      start: 116
+      end: 127
+    - source: algorithm
+      style: secondary
+      start: 128
+      end: 137
+    - source: (algorithm)
+      style: secondary
+      start: 127
+      end: 138
+    - source: algorithm
+      style: secondary
+      start: 39
+      end: 48
+    - source: RC2
+      style: secondary
+      start: 52
+      end: 55
+    - source: '"RC2"'
+      style: secondary
+      start: 51
+      end: 56
+    - source: algorithm = "RC2"
+      style: secondary
+      start: 39
+      end: 56
+    - source: String algorithm = "RC2";
+      style: secondary
+      start: 32
+      end: 57
+    - source: String algorithm = "RC2";
+      style: secondary
+      start: 32
+      end: 57
+  ? |
+    useCipher(Cipher.getInstance("RC2"));
+    Cipher.getInstance("RC2");
+  : labels:
+    - source: Cipher.getInstance("RC2")
+      style: primary
+      start: 10
+      end: 35
+    - source: Cipher
+      style: secondary
+      start: 10
+      end: 16
+    - source: getInstance
+      style: secondary
+      start: 17
+      end: 28
+    - source: RC2
+      style: secondary
+      start: 30
+      end: 33
+    - source: ("RC2")
+      style: secondary
+      start: 28
+      end: 35

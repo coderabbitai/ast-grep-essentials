@@ -1,0 +1,24 @@
+id: use-of-rc4-java
+snapshots:
+  ? |
+    Cipher.getInstance("RC4");
+  : labels:
+    - source: Cipher.getInstance("RC4")
+      style: primary
+      start: 0
+      end: 25
+    - source: RC4
+      style: secondary
+      start: 20
+      end: 23
+  ? |
+    useCipher(Cipher.getInstance("RC4"));
+  : labels:
+    - source: Cipher.getInstance("RC4")
+      style: primary
+      start: 10
+      end: 35
+    - source: RC4
+      style: secondary
+      start: 30
+      end: 33
