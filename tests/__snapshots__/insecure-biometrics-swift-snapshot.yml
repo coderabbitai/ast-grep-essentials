@@ -1,0 +1,8 @@
+id: insecure-biometrics-swift
+snapshots:
+  abc.evaluatePolicy():
+    labels:
+    - source: abc.evaluatePolicy
+      style: primary
+      start: 0
+      end: 18

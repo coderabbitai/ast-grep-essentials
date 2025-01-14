@@ -1,0 +1,7 @@
+id: insecure-biometrics-swift
+valid:
+  - |
+    abc.anyFunc()
+invalid:
+  - |
+    abc.evaluatePolicy()

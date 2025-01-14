@@ -1,0 +1,19 @@
+id: insecure-biometrics-swift
+language: swift
+severity: info
+message: >-
+  The application was observed to leverage biometrics via Local
+      Authentication, which returns a simple boolean result for authentication.
+      This design is subject to bypass with runtime tampering tools such as
+      Frida, Substrate, and others. Although this is limited to rooted
+      (jailbroken) devices, consider implementing biometric authentication the
+      reliable way - via Keychain Services.
+note: >-
+  [CWE-305] Authentication Bypass by Primary Weakness
+  [REFERENCES]
+      - https://mobile-security.gitbook.io/mobile-security-testing-guide/ios-testing-guide/0x06f-testing-local-authentication
+      - https://shirazkhan030.medium.com/biometric-authentication-in-ios-6c53c54f17df
+
+rule:
+  kind: navigation_expression
+  pattern: $X.evaluatePolicy
