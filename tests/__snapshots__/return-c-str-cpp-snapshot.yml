@@ -1,0 +1,29 @@
+id: return-c-str-cpp
+snapshots:
+  ? |
+    char *return_basic_string_directly() {
+      return std::basic_string<char>("foo").c_str();
+    }
+  : labels:
+    - source: return std::basic_string<char>("foo").c_str();
+      style: primary
+      start: 41
+      end: 87
+  ? |
+    char *return_data_directly() {
+      return std::string("foo").data();
+    }
+  : labels:
+    - source: return std::string("foo").data();
+      style: primary
+      start: 33
+      end: 66
+  ? |
+    char *return_directly() {
+      return string("foo").c_str();
+    }
+  : labels:
+    - source: return string("foo").c_str();
+      style: primary
+      start: 28
+      end: 57
