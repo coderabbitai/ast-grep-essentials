@@ -1,2 +1,13 @@
 id: sizeof-this-cpp
-snapshots: {}
+snapshots:
+  ? |
+    return sizeof(this);
+  : labels:
+    - source: sizeof(this)
+      style: primary
+      start: 7
+      end: 19
+    - source: this
+      style: secondary
+      start: 14
+      end: 18
