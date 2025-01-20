@@ -1,0 +1,23 @@
+id: small-key-size-c
+snapshots:
+  ? |
+    void foo() {
+      DH_generate_parameters_ex(NULL, 1024);
+    }
+  : labels:
+    - source: DH_generate_parameters_ex(NULL, 1024)
+      style: primary
+      start: 15
+      end: 52
+    - source: DH_generate_parameters_ex
+      style: secondary
+      start: 15
+      end: 40
+    - source: '1024'
+      style: secondary
+      start: 47
+      end: 51
+    - source: (NULL, 1024)
+      style: secondary
+      start: 40
+      end: 52
