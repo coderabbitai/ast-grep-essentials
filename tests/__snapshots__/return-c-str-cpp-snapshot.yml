@@ -27,3 +27,12 @@ snapshots:
       style: primary
       start: 28
       end: 57
+  ? |
+    char *return_namespace_directly() {
+      return std::string("foo").c_str();
+    }
+  : labels:
+    - source: return std::string("foo").c_str();
+      style: primary
+      start: 38
+      end: 72
