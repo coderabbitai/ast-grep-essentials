@@ -1,0 +1,17 @@
+id: fix-format-security-error-cpp
+valid:
+  - |
+    fprintf(stderr, "%s", out);
+  - |
+    sprintf(&buffer[2], "%s", obj->Text, a);
+  - |    
+    sprintf(buf1, "%s", Text_String(TXT_WAITING_FOR_CONNECTIONS));
+invalid:
+  - |
+    fprintf(stderr, out);
+  - |
+    sprintf(&buffer[2], obj->Text);
+  - |    
+    sprintf(buf1, Text_String(TXT_WAITING_FOR_CONNECTIONS));
+
+
