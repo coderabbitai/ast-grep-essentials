@@ -1,0 +1,12 @@
+id: sizeof-this-c
+valid:
+  - |
+    sizeof(*this);
+invalid:
+  - |
+    struct Foo {
+      uint64_t a;
+      uint8_t b;
+      size_t get_size() const {
+      return sizeof(this);
+    }
