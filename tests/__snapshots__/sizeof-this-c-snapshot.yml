@@ -1,2 +1,26 @@
 id: sizeof-this-c
-snapshots: {}
+snapshots:
+  ? |
+    struct Foo {
+      uint64_t a;
+      uint8_t b;
+      size_t get_size() const {
+      return sizeof(this);
+    }
+  : labels:
+    - source: sizeof(this)
+      style: primary
+      start: 77
+      end: 89
+    - source: sizeof
+      style: secondary
+      start: 77
+      end: 83
+    - source: this
+      style: secondary
+      start: 84
+      end: 88
+    - source: (this)
+      style: secondary
+      start: 83
+      end: 89
