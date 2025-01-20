@@ -1,0 +1,23 @@
+id: unencrypted-socket-java
+valid:
+  - |
+    Socket soc = SSLSocketFactory.getDefault().createSocket("www.google.com", 443);
+  - |
+    ServerSocket ssoc = SSLServerSocketFactory.getDefault().createServerSocket(1234);
+invalid:
+  - |
+    Socket soc = new Socket("www.google.com", 80);
+  - |
+    Socket soc1 = new Socket("www.google.com", 80, true);
+  - |
+    Socket soc2 = new Socket("www.google.com", 80, InetAddress.getByAddress(address), 13337);
+  - |
+    Socket soc3 = new Socket(InetAddress.getByAddress(remoteAddress), 80);
+  - |
+    ServerSocket ssoc = new ServerSocket(1234);
+  - |
+    ServerSocket ssoc1 = new ServerSocket();
+  - |
+    ServerSocket ssoc2 = new ServerSocket(1234, 10);
+  - |
+    ServerSocket ssoc3 = new ServerSocket(1234, 10, InetAddress.getByAddress(address));
