@@ -1,0 +1,124 @@
+id: null-library-function-cpp
+snapshots:
+  ? |
+    void f() {
+       char buf[128];
+       strcpy(buf, getenv("FOO"));
+    }
+  : labels:
+    - source: strcpy(buf, getenv("FOO"))
+      style: primary
+      start: 32
+      end: 58
+    - source: strcpy
+      style: secondary
+      start: 32
+      end: 38
+    - source: getenv
+      style: secondary
+      start: 44
+      end: 50
+    - source: ("FOO")
+      style: secondary
+      start: 50
+      end: 57
+    - source: getenv("FOO")
+      style: secondary
+      start: 44
+      end: 57
+    - source: (buf, getenv("FOO"))
+      style: secondary
+      start: 38
+      end: 58
+  ? |-
+    void test_getc() {
+     int c = getc(fptr = fopen(file_name, "r"));
+    }
+  : labels:
+    - source: getc(fptr = fopen(file_name, "r"))
+      style: primary
+      start: 28
+      end: 62
+    - source: getc
+      style: secondary
+      start: 28
+      end: 32
+    - source: fptr
+      style: secondary
+      start: 33
+      end: 37
+    - source: fopen
+      style: secondary
+      start: 40
+      end: 45
+    - source: fopen(file_name, "r")
+      style: secondary
+      start: 40
+      end: 61
+    - source: fptr = fopen(file_name, "r")
+      style: secondary
+      start: 33
+      end: 61
+    - source: (fptr = fopen(file_name, "r"))
+      style: secondary
+      start: 32
+      end: 62
+  ? |
+    {
+     FILE *fptr;
+     fwrite("foo", 3, 1, fptr = fopen("foo.txt", "w"));
+    }
+  : labels:
+    - source: fwrite("foo", 3, 1, fptr = fopen("foo.txt", "w"))
+      style: primary
+      start: 16
+      end: 65
+    - source: fwrite
+      style: secondary
+      start: 16
+      end: 22
+    - source: fopen
+      style: secondary
+      start: 43
+      end: 48
+    - source: ("foo.txt", "w")
+      style: secondary
+      start: 48
+      end: 64
+    - source: fopen("foo.txt", "w")
+      style: secondary
+      start: 43
+      end: 64
+    - source: ("foo", 3, 1, fptr = fopen("foo.txt", "w"))
+      style: secondary
+      start: 22
+      end: 65
+  ? |
+    {
+     fwrite("foo", 3, 1, fopen("foo.txt", "w"));
+    }
+  : labels:
+    - source: fwrite("foo", 3, 1, fopen("foo.txt", "w"))
+      style: primary
+      start: 3
+      end: 45
+    - source: fwrite
+      style: secondary
+      start: 3
+      end: 9
+    - source: fopen
+      style: secondary
+      start: 23
+      end: 28
+    - source: ("foo.txt", "w")
+      style: secondary
+      start: 28
+      end: 44
+    - source: fopen("foo.txt", "w")
+      style: secondary
+      start: 23
+      end: 44
+    - source: ("foo", 3, 1, fopen("foo.txt", "w"))
+      style: secondary
+      start: 9
+      end: 45

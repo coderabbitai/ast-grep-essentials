@@ -1,0 +1,191 @@
+id: plaintext-http-link-html
+snapshots:
+  ? |
+    <a class="foo" href="http://astgrep.dev">Astgrep</a>
+  : labels:
+    - source: <a class="foo" href="http://astgrep.dev">Astgrep</a>
+      style: primary
+      start: 0
+      end: 52
+    - source: a
+      style: secondary
+      start: 1
+      end: 2
+    - source: href
+      style: secondary
+      start: 15
+      end: 19
+    - source: http://astgrep.dev
+      style: secondary
+      start: 21
+      end: 39
+    - source: href="http://astgrep.dev"
+      style: secondary
+      start: 15
+      end: 40
+    - source: <a class="foo" href="http://astgrep.dev">
+      style: secondary
+      start: 0
+      end: 41
+  ? |
+    <a class='foo' href='http://astgrep.dev'>Astgrep</a>
+  : labels:
+    - source: <a class='foo' href='http://astgrep.dev'>Astgrep</a>
+      style: primary
+      start: 0
+      end: 52
+    - source: a
+      style: secondary
+      start: 1
+      end: 2
+    - source: href
+      style: secondary
+      start: 15
+      end: 19
+    - source: http://astgrep.dev
+      style: secondary
+      start: 21
+      end: 39
+    - source: href='http://astgrep.dev'
+      style: secondary
+      start: 15
+      end: 40
+    - source: <a class='foo' href='http://astgrep.dev'>
+      style: secondary
+      start: 0
+      end: 41
+  ? |
+    <a class=foo href=http://astgrep.dev>Astgrep</a>
+  : labels:
+    - source: <a class=foo href=http://astgrep.dev>Astgrep</a>
+      style: primary
+      start: 0
+      end: 48
+    - source: a
+      style: secondary
+      start: 1
+      end: 2
+    - source: href
+      style: secondary
+      start: 13
+      end: 17
+    - source: http://astgrep.dev
+      style: secondary
+      start: 18
+      end: 36
+    - source: href=http://astgrep.dev
+      style: secondary
+      start: 13
+      end: 36
+    - source: <a class=foo href=http://astgrep.dev>
+      style: secondary
+      start: 0
+      end: 37
+  ? |
+    <a href="HTTP://ASTGREP.DEV">Astgrep</a>
+  : labels:
+    - source: <a href="HTTP://ASTGREP.DEV">Astgrep</a>
+      style: primary
+      start: 0
+      end: 40
+    - source: a
+      style: secondary
+      start: 1
+      end: 2
+    - source: href
+      style: secondary
+      start: 3
+      end: 7
+    - source: HTTP://ASTGREP.DEV
+      style: secondary
+      start: 9
+      end: 27
+    - source: href="HTTP://ASTGREP.DEV"
+      style: secondary
+      start: 3
+      end: 28
+    - source: <a href="HTTP://ASTGREP.DEV">
+      style: secondary
+      start: 0
+      end: 29
+  ? |
+    <a href="http://astgrep.dev">Astgrep</a>
+  : labels:
+    - source: <a href="http://astgrep.dev">Astgrep</a>
+      style: primary
+      start: 0
+      end: 40
+    - source: a
+      style: secondary
+      start: 1
+      end: 2
+    - source: href
+      style: secondary
+      start: 3
+      end: 7
+    - source: http://astgrep.dev
+      style: secondary
+      start: 9
+      end: 27
+    - source: href="http://astgrep.dev"
+      style: secondary
+      start: 3
+      end: 28
+    - source: <a href="http://astgrep.dev">
+      style: secondary
+      start: 0
+      end: 29
+  ? |
+    <a href='http://astgrep.dev'>Astgrep</a>
+  : labels:
+    - source: <a href='http://astgrep.dev'>Astgrep</a>
+      style: primary
+      start: 0
+      end: 40
+    - source: a
+      style: secondary
+      start: 1
+      end: 2
+    - source: href
+      style: secondary
+      start: 3
+      end: 7
+    - source: http://astgrep.dev
+      style: secondary
+      start: 9
+      end: 27
+    - source: href='http://astgrep.dev'
+      style: secondary
+      start: 3
+      end: 28
+    - source: <a href='http://astgrep.dev'>
+      style: secondary
+      start: 0
+      end: 29
+  ? |
+    <a href=http://astgrep.dev>Astgrep</a>
+  : labels:
+    - source: <a href=http://astgrep.dev>Astgrep</a>
+      style: primary
+      start: 0
+      end: 38
+    - source: a
+      style: secondary
+      start: 1
+      end: 2
+    - source: href
+      style: secondary
+      start: 3
+      end: 7
+    - source: http://astgrep.dev
+      style: secondary
+      start: 8
+      end: 26
+    - source: href=http://astgrep.dev
+      style: secondary
+      start: 3
+      end: 26
+    - source: <a href=http://astgrep.dev>
+      style: secondary
+      start: 0
+      end: 27

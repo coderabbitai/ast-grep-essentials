@@ -1,0 +1,29 @@
+id: fix-format-security-error-cpp
+snapshots:
+  ? |
+    fprintf(stderr, out);
+  : fixed: |
+      fprintf(stderr, "%s", out);
+    labels:
+    - source: fprintf(stderr, out)
+      style: primary
+      start: 0
+      end: 20
+  ? |
+    sprintf(&buffer[2], obj->Text);
+  : fixed: |
+      sprintf(&buffer[2], "%s", obj->Text);
+    labels:
+    - source: sprintf(&buffer[2], obj->Text)
+      style: primary
+      start: 0
+      end: 30
+  ? |
+    sprintf(buf1, Text_String(TXT_WAITING_FOR_CONNECTIONS));
+  : fixed: |
+      sprintf(buf1, "%s", Text_String(TXT_WAITING_FOR_CONNECTIONS));
+    labels:
+    - source: sprintf(buf1, Text_String(TXT_WAITING_FOR_CONNECTIONS))
+      style: primary
+      start: 0
+      end: 55

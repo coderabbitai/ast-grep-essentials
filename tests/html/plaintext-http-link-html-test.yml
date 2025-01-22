@@ -1,0 +1,23 @@
+id: plaintext-http-link-html
+valid:
+  - |
+    <a href="https://astgrep.dev">Astgrep</a>
+  - |
+    <a href="https://astgrep.dev/http://">Astgrep</a>
+  - |
+    <a href="javascript:alert(1)">Astgrep</a>
+invalid:
+  - |
+    <a href="http://astgrep.dev">Astgrep</a>
+  - |    
+    <a href='http://astgrep.dev'>Astgrep</a>
+  - |    
+    <a href=http://astgrep.dev>Astgrep</a>
+  - |    
+    <a class="foo" href="http://astgrep.dev">Astgrep</a>
+  - |    
+    <a class='foo' href='http://astgrep.dev'>Astgrep</a>
+  - |    
+    <a class=foo href=http://astgrep.dev>Astgrep</a>
+  - |    
+    <a href="HTTP://ASTGREP.DEV">Astgrep</a>
