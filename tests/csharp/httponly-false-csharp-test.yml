@@ -1,0 +1,9 @@
+id: httponly-false-csharp
+valid:
+  - |
+    myHttpOnlyCookie.HttpOnly = true;
+  - |
+    options.Cookie.HttpOnly = true;
+invalid:
+  - |
+    options.Cookie.HttpOnly = false;
