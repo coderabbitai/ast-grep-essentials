@@ -1,0 +1,29 @@
+id: use-of-md5-digest-utils-java
+snapshots:
+  ? |
+    byte[] hashValue = DigestUtils.getMd5Digest().digest(password.getBytes());
+  : labels:
+    - source: getMd5Digest
+      style: primary
+      start: 31
+      end: 43
+    - source: digest
+      style: secondary
+      start: 46
+      end: 52
+    - source: (password.getBytes())
+      style: secondary
+      start: 52
+      end: 73
+    - source: DigestUtils.getMd5Digest().digest(password.getBytes())
+      style: secondary
+      start: 19
+      end: 73
+    - source: DigestUtils.getMd5Digest()
+      style: secondary
+      start: 19
+      end: 45
+    - source: ()
+      style: secondary
+      start: 43
+      end: 45
