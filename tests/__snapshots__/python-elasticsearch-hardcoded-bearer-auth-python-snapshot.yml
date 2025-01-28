@@ -1,0 +1,44 @@
+id: python-elasticsearch-hardcoded-bearer-auth-python
+snapshots:
+  ? |
+    es = elasticsearch.Elasticsearch(
+      "https://localhost:9200",
+      bearer_auth="token-value"
+    )
+  : labels:
+    - source: |-
+        elasticsearch.Elasticsearch(
+          "https://localhost:9200",
+          bearer_auth="token-value"
+        )
+      style: primary
+      start: 5
+      end: 91
+    - source: elasticsearch.Elasticsearch
+      style: secondary
+      start: 5
+      end: 32
+    - source: bearer_auth
+      style: secondary
+      start: 64
+      end: 75
+    - source: token-value
+      style: secondary
+      start: 77
+      end: 88
+    - source: '"token-value"'
+      style: secondary
+      start: 76
+      end: 89
+    - source: bearer_auth="token-value"
+      style: secondary
+      start: 64
+      end: 89
+    - source: |-
+        (
+          "https://localhost:9200",
+          bearer_auth="token-value"
+        )
+      style: secondary
+      start: 32
+      end: 91
