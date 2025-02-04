@@ -1,0 +1,19 @@
+id: force-ssl-false-ruby
+snapshots:
+  ? |
+    def bad_ssl
+    config.force_ssl = false
+    end
+  : labels:
+    - source: config.force_ssl = false
+      style: primary
+      start: 12
+      end: 36
+    - source: config.force_ssl
+      style: secondary
+      start: 12
+      end: 28
+    - source: 'false'
+      style: secondary
+      start: 31
+      end: 36
