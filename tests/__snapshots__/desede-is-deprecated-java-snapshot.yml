@@ -1,0 +1,56 @@
+id: desede-is-deprecated-java
+snapshots:
+  ? |
+    Cipher c = Cipher.getInstance("kDESede/ECB/PKCS5Padding");
+    c.init(Cipher.ENCRYPT_MODE, k, iv);
+  : labels:
+    - source: Cipher.getInstance("kDESede/ECB/PKCS5Padding")
+      style: primary
+      start: 11
+      end: 57
+    - source: Cipher
+      style: secondary
+      start: 11
+      end: 17
+    - source: getInstance
+      style: secondary
+      start: 18
+      end: 29
+    - source: '"kDESede/ECB/PKCS5Padding"'
+      style: secondary
+      start: 30
+      end: 56
+    - source: ("kDESede/ECB/PKCS5Padding")
+      style: secondary
+      start: 29
+      end: 57
+  ? "javax.crypto.SecretKey key = javax.crypto.KeyGenerator.getInstance(\"DES\").generateKey();   \n"
+  : labels:
+    - source: javax.crypto.KeyGenerator.getInstance("DES")
+      style: primary
+      start: 29
+      end: 73
+    - source: KeyGenerator
+      style: secondary
+      start: 42
+      end: 54
+    - source: javax.crypto.KeyGenerator
+      style: secondary
+      start: 29
+      end: 54
+    - source: getInstance
+      style: secondary
+      start: 55
+      end: 66
+    - source: DES
+      style: secondary
+      start: 68
+      end: 71
+    - source: '"DES"'
+      style: secondary
+      start: 67
+      end: 72
+    - source: ("DES")
+      style: secondary
+      start: 66
+      end: 73
