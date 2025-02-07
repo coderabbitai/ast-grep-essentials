@@ -1,0 +1,15 @@
+id: use-of-aes-ecb-java
+valid:
+  - |
+    Cipher.getInstance("AES/CBC/PKCS7PADDING")
+invalid:
+  - |
+    Cipher.getInstance("AES/ECB/NoPadding")
+  - |  
+    Cipher.getInstance("AES/ECB/PKCS5Padding")
+  - |  
+    Cipher.getInstance("AES/ECB/ISO10126Padding")
+  - |  
+    Cipher.getInstance("AES/ECB/PKCS7Padding")
+  - |  
+    Cipher.getInstance("AES/ECB")

@@ -1,0 +1,14 @@
+id: no-null-cipher-java
+snapshots:
+  ? |
+    Cipher doNothingCihper = new NullCipher();
+    new javax.crypto.NullCipher();
+  : labels:
+    - source: Cipher doNothingCihper = new NullCipher();
+      style: primary
+      start: 0
+      end: 42
+    - source: new NullCipher()
+      style: secondary
+      start: 25
+      end: 41
