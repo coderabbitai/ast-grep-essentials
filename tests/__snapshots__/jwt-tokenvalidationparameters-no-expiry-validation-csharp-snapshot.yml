@@ -1,0 +1,169 @@
+id: jwt-tokenvalidationparameters-no-expiry-validation-csharp
+snapshots:
+  ? |
+    TokenValidationParameters parameters = new TokenValidationParameters
+    {
+    ValidateLifetime = false,
+    RequireExpirationTime = false,
+    ValidateIssuer = false,
+    ValidateAudience = false
+    };
+  : labels:
+    - source: 'false'
+      style: primary
+      start: 90
+      end: 95
+    - source: ValidateLifetime
+      style: secondary
+      start: 71
+      end: 87
+    - source: =
+      style: secondary
+      start: 88
+      end: 89
+    - source: 'false'
+      style: secondary
+      start: 90
+      end: 95
+    - source: TokenValidationParameters
+      style: secondary
+      start: 43
+      end: 68
+    - source: |-
+        new TokenValidationParameters
+        {
+        ValidateLifetime = false,
+        RequireExpirationTime = false,
+        ValidateIssuer = false,
+        ValidateAudience = false
+        }
+      style: secondary
+      start: 39
+      end: 178
+    - source: ValidateLifetime = false
+      style: secondary
+      start: 71
+      end: 95
+  ? "TokenValidationParameters parameters = new TokenValidationParameters\n{ \nValidateLifetime = false,\nRequireExpirationTime = false,\nValidateIssuer = false,\nValidateAudience = false\n};\n"
+  : labels:
+    - source: 'false'
+      style: primary
+      start: 91
+      end: 96
+    - source: ValidateLifetime
+      style: secondary
+      start: 72
+      end: 88
+    - source: =
+      style: secondary
+      start: 89
+      end: 90
+    - source: 'false'
+      style: secondary
+      start: 91
+      end: 96
+    - source: TokenValidationParameters
+      style: secondary
+      start: 43
+      end: 68
+    - source: "new TokenValidationParameters\n{ \nValidateLifetime = false,\nRequireExpirationTime = false,\nValidateIssuer = false,\nValidateAudience = false\n}"
+      style: secondary
+      start: 39
+      end: 179
+    - source: ValidateLifetime = false
+      style: secondary
+      start: 72
+      end: 96
+  ? |
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateLifetime = true,
+        RequireExpirationTime = false,
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+  : labels:
+    - source: 'false'
+      style: primary
+      start: 125
+      end: 130
+    - source: RequireExpirationTime
+      style: secondary
+      start: 101
+      end: 122
+    - source: =
+      style: secondary
+      start: 123
+      end: 124
+    - source: 'false'
+      style: secondary
+      start: 125
+      end: 130
+    - source: TokenValidationParameters
+      style: secondary
+      start: 40
+      end: 65
+    - source: |-
+        new TokenValidationParameters
+        {
+            ValidateLifetime = true,
+            RequireExpirationTime = false,
+            ValidateIssuer = false,
+            ValidateAudience = false
+        }
+      style: secondary
+      start: 36
+      end: 190
+    - source: RequireExpirationTime = false
+      style: secondary
+      start: 101
+      end: 130
+  ? |
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+    ValidateLifetime = false,
+    RequireSignedTokens = true,
+    ValidateIssuer = false,
+    ValidateAudience = false,
+    RequireExpirationTime = false
+    };
+    TokenValidationParameters parameters = new TokenValidationParameters();
+    parameters.RequireExpirationTime = false;
+    parameters.ValidateLifetime = false;
+  : labels:
+    - source: 'false'
+      style: primary
+      start: 87
+      end: 92
+    - source: ValidateLifetime
+      style: secondary
+      start: 68
+      end: 84
+    - source: =
+      style: secondary
+      start: 85
+      end: 86
+    - source: 'false'
+      style: secondary
+      start: 87
+      end: 92
+    - source: TokenValidationParameters
+      style: secondary
+      start: 40
+      end: 65
+    - source: |-
+        new TokenValidationParameters
+        {
+        ValidateLifetime = false,
+        RequireSignedTokens = true,
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        RequireExpirationTime = false
+        }
+      style: secondary
+      start: 36
+      end: 203
+    - source: ValidateLifetime = false
+      style: secondary
+      start: 68
+      end: 92
