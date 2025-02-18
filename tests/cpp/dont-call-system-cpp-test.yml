@@ -1,0 +1,34 @@
+id: dont-call-system-cpp
+valid:
+  - |
+   void test_003(const char *input)
+   {
+    storer->store_binary(Clocks->system());
+   }
+invalid:
+  - |
+    void test_002(const char *input)
+    {
+    char cmdbuf[BUFFERSIZE];
+    int len_wanted = snprintf(cmdbuf, BUFFERSIZE,
+                              "any_cmd '%s'", input);
+    system(cmdbuf);
+    }
+    void test_001(const char *input)
+    {
+    char cmdbuf[BUFFERSIZE];
+    int len_wanted = snprintf(cmdbuf, BUFFERSIZE,
+                              "any_cmd '%s'", input);
+    if (len_wanted >= BUFFERSIZE)
+    {
+        /* Handle error */
+    }
+    else if (len_wanted < 0)
+    {
+        /* Handle error */
+    }
+    else if (system(cmdbuf) == -1)
+    {
+        /* Handle error */
+    }
+    }
