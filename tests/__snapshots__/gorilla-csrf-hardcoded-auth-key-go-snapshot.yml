@@ -1,0 +1,128 @@
+id: gorilla-csrf-hardcoded-auth-key-go
+snapshots:
+  ? |-
+    import (
+    "github.com/gorilla/csrf"
+    )
+    func main() {
+     http.ListenAndServe(":8000",
+       csrf.Protect([]byte("32-byte-long-auth-key"))(r))
+       }
+  : labels:
+    - source: csrf.Protect([]byte("32-byte-long-auth-key"))
+      style: primary
+      start: 84
+      end: 129
+    - source: csrf
+      style: secondary
+      start: 84
+      end: 88
+    - source: Protect
+      style: secondary
+      start: 89
+      end: 96
+    - source: csrf.Protect
+      style: secondary
+      start: 84
+      end: 96
+    - source: byte
+      style: secondary
+      start: 99
+      end: 103
+    - source: '[]byte'
+      style: secondary
+      start: 97
+      end: 103
+    - source: '"32-byte-long-auth-key"'
+      style: secondary
+      start: 104
+      end: 127
+    - source: '[]byte("32-byte-long-auth-key")'
+      style: secondary
+      start: 97
+      end: 128
+    - source: ([]byte("32-byte-long-auth-key"))
+      style: secondary
+      start: 96
+      end: 129
+    - source: '"github.com/gorilla/csrf"'
+      style: secondary
+      start: 9
+      end: 34
+    - source: |-
+        import (
+        "github.com/gorilla/csrf"
+        )
+      style: secondary
+      start: 0
+      end: 36
+    - source: |-
+        import (
+        "github.com/gorilla/csrf"
+        )
+      style: secondary
+      start: 0
+      end: 36
+  ? |-
+    import (
+    "github.com/gorilla/csrf"
+    )
+    func main() {
+     http.ListenAndServe(":8000",
+       csrf.Protect([]byte("32-byte-long-auth-key"))(r))
+     }
+  : labels:
+    - source: csrf.Protect([]byte("32-byte-long-auth-key"))
+      style: primary
+      start: 84
+      end: 129
+    - source: csrf
+      style: secondary
+      start: 84
+      end: 88
+    - source: Protect
+      style: secondary
+      start: 89
+      end: 96
+    - source: csrf.Protect
+      style: secondary
+      start: 84
+      end: 96
+    - source: byte
+      style: secondary
+      start: 99
+      end: 103
+    - source: '[]byte'
+      style: secondary
+      start: 97
+      end: 103
+    - source: '"32-byte-long-auth-key"'
+      style: secondary
+      start: 104
+      end: 127
+    - source: '[]byte("32-byte-long-auth-key")'
+      style: secondary
+      start: 97
+      end: 128
+    - source: ([]byte("32-byte-long-auth-key"))
+      style: secondary
+      start: 96
+      end: 129
+    - source: '"github.com/gorilla/csrf"'
+      style: secondary
+      start: 9
+      end: 34
+    - source: |-
+        import (
+        "github.com/gorilla/csrf"
+        )
+      style: secondary
+      start: 0
+      end: 36
+    - source: |-
+        import (
+        "github.com/gorilla/csrf"
+        )
+      style: secondary
+      start: 0
+      end: 36
