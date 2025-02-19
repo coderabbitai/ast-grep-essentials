@@ -1,0 +1,36 @@
+id: ecb-cipher-java
+snapshots:
+  Cipher c = Cipher.getInstance("AES/ECB/NoPadding");:
+    labels:
+    - source: Cipher c = Cipher.getInstance("AES/ECB/NoPadding");
+      style: primary
+      start: 0
+      end: 51
+    - source: Cipher
+      style: secondary
+      start: 0
+      end: 6
+    - source: c
+      style: secondary
+      start: 7
+      end: 8
+    - source: getInstance
+      style: secondary
+      start: 18
+      end: 29
+    - source: '"AES/ECB/NoPadding"'
+      style: secondary
+      start: 30
+      end: 49
+    - source: ("AES/ECB/NoPadding")
+      style: secondary
+      start: 29
+      end: 50
+    - source: Cipher.getInstance("AES/ECB/NoPadding")
+      style: secondary
+      start: 11
+      end: 50
+    - source: c = Cipher.getInstance("AES/ECB/NoPadding")
+      style: secondary
+      start: 7
+      end: 50
