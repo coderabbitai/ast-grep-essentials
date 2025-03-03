@@ -1,0 +1,290 @@
+id: insecure-hash-c
+snapshots:
+  ? |
+    EVP_MD_fetch(NULL, "MD2", NULL);
+  : labels:
+    - source: EVP_MD_fetch(NULL, "MD2", NULL);
+      style: primary
+      start: 0
+      end: 32
+    - source: EVP_MD_fetch
+      style: secondary
+      start: 0
+      end: 12
+    - source: MD2
+      style: secondary
+      start: 20
+      end: 23
+    - source: '"MD2"'
+      style: secondary
+      start: 19
+      end: 24
+    - source: (NULL, "MD2", NULL)
+      style: secondary
+      start: 12
+      end: 31
+    - source: EVP_MD_fetch(NULL, "MD2", NULL)
+      style: secondary
+      start: 0
+      end: 31
+  ? |
+    EVP_MD_fetch(NULL, "MD4", NULL);
+  : labels:
+    - source: EVP_MD_fetch(NULL, "MD4", NULL);
+      style: primary
+      start: 0
+      end: 32
+    - source: EVP_MD_fetch
+      style: secondary
+      start: 0
+      end: 12
+    - source: MD4
+      style: secondary
+      start: 20
+      end: 23
+    - source: '"MD4"'
+      style: secondary
+      start: 19
+      end: 24
+    - source: (NULL, "MD4", NULL)
+      style: secondary
+      start: 12
+      end: 31
+    - source: EVP_MD_fetch(NULL, "MD4", NULL)
+      style: secondary
+      start: 0
+      end: 31
+  ? |
+    EVP_MD_fetch(NULL, "MD5", NULL);
+  : labels:
+    - source: EVP_MD_fetch(NULL, "MD5", NULL);
+      style: primary
+      start: 0
+      end: 32
+    - source: EVP_MD_fetch
+      style: secondary
+      start: 0
+      end: 12
+    - source: MD5
+      style: secondary
+      start: 20
+      end: 23
+    - source: '"MD5"'
+      style: secondary
+      start: 19
+      end: 24
+    - source: (NULL, "MD5", NULL)
+      style: secondary
+      start: 12
+      end: 31
+    - source: EVP_MD_fetch(NULL, "MD5", NULL)
+      style: secondary
+      start: 0
+      end: 31
+  ? |
+    EVP_get_digestbyname("MD2");
+  : labels:
+    - source: EVP_get_digestbyname("MD2");
+      style: primary
+      start: 0
+      end: 28
+    - source: EVP_get_digestbyname
+      style: secondary
+      start: 0
+      end: 20
+    - source: MD2
+      style: secondary
+      start: 22
+      end: 25
+    - source: '"MD2"'
+      style: secondary
+      start: 21
+      end: 26
+    - source: ("MD2")
+      style: secondary
+      start: 20
+      end: 27
+    - source: EVP_get_digestbyname("MD2")
+      style: secondary
+      start: 0
+      end: 27
+  ? |
+    EVP_get_digestbyname("MD4");
+  : labels:
+    - source: EVP_get_digestbyname("MD4");
+      style: primary
+      start: 0
+      end: 28
+    - source: EVP_get_digestbyname
+      style: secondary
+      start: 0
+      end: 20
+    - source: MD4
+      style: secondary
+      start: 22
+      end: 25
+    - source: '"MD4"'
+      style: secondary
+      start: 21
+      end: 26
+    - source: ("MD4")
+      style: secondary
+      start: 20
+      end: 27
+    - source: EVP_get_digestbyname("MD4")
+      style: secondary
+      start: 0
+      end: 27
+  ? |
+    EVP_get_digestbyname("MD5");
+  : labels:
+    - source: EVP_get_digestbyname("MD5");
+      style: primary
+      start: 0
+      end: 28
+    - source: EVP_get_digestbyname
+      style: secondary
+      start: 0
+      end: 20
+    - source: MD5
+      style: secondary
+      start: 22
+      end: 25
+    - source: '"MD5"'
+      style: secondary
+      start: 21
+      end: 26
+    - source: ("MD5")
+      style: secondary
+      start: 20
+      end: 27
+    - source: EVP_get_digestbyname("MD5")
+      style: secondary
+      start: 0
+      end: 27
+  ? |
+    MD2_Init(ctx);
+  : labels:
+    - source: MD2_Init(ctx);
+      style: primary
+      start: 0
+      end: 14
+    - source: MD2_Init
+      style: secondary
+      start: 0
+      end: 8
+    - source: (ctx)
+      style: secondary
+      start: 8
+      end: 13
+    - source: MD2_Init(ctx)
+      style: secondary
+      start: 0
+      end: 13
+  ? |
+    MD2_Update(ctx, data, size);
+  : labels:
+    - source: MD2_Update(ctx, data, size);
+      style: primary
+      start: 0
+      end: 28
+    - source: MD2_Update
+      style: secondary
+      start: 0
+      end: 10
+    - source: (ctx, data, size)
+      style: secondary
+      start: 10
+      end: 27
+    - source: MD2_Update(ctx, data, size)
+      style: secondary
+      start: 0
+      end: 27
+  ? |
+    MD5_Init(ctx);
+  : labels:
+    - source: MD5_Init(ctx);
+      style: primary
+      start: 0
+      end: 14
+    - source: MD5_Init
+      style: secondary
+      start: 0
+      end: 8
+    - source: (ctx)
+      style: secondary
+      start: 8
+      end: 13
+    - source: MD5_Init(ctx)
+      style: secondary
+      start: 0
+      end: 13
+  ? |
+    gcry_md_extract(handle, GCRY_MD_SHA1, output);
+  : labels:
+    - source: gcry_md_extract(handle, GCRY_MD_SHA1, output);
+      style: primary
+      start: 0
+      end: 46
+    - source: gcry_md_extract
+      style: secondary
+      start: 0
+      end: 15
+    - source: GCRY_MD_SHA1
+      style: secondary
+      start: 24
+      end: 36
+    - source: (handle, GCRY_MD_SHA1, output)
+      style: secondary
+      start: 15
+      end: 45
+    - source: gcry_md_extract(handle, GCRY_MD_SHA1, output)
+      style: secondary
+      start: 0
+      end: 45
+  ? |
+    gcry_md_hash_buffer(GCRY_MD_MD4, data, size);
+  : labels:
+    - source: gcry_md_hash_buffer(GCRY_MD_MD4, data, size);
+      style: primary
+      start: 0
+      end: 45
+    - source: gcry_md_hash_buffer
+      style: secondary
+      start: 0
+      end: 19
+    - source: GCRY_MD_MD4
+      style: secondary
+      start: 20
+      end: 31
+    - source: (GCRY_MD_MD4, data, size)
+      style: secondary
+      start: 19
+      end: 44
+    - source: gcry_md_hash_buffer(GCRY_MD_MD4, data, size)
+      style: secondary
+      start: 0
+      end: 44
+  ? |
+    gcry_md_open(handle, GCRY_MD_MD2, 0);
+  : labels:
+    - source: gcry_md_open(handle, GCRY_MD_MD2, 0);
+      style: primary
+      start: 0
+      end: 37
+    - source: gcry_md_open
+      style: secondary
+      start: 0
+      end: 12
+    - source: GCRY_MD_MD2
+      style: secondary
+      start: 21
+      end: 32
+    - source: (handle, GCRY_MD_MD2, 0)
+      style: secondary
+      start: 12
+      end: 36
+    - source: gcry_md_open(handle, GCRY_MD_MD2, 0)
+      style: secondary
+      start: 0
+      end: 36
