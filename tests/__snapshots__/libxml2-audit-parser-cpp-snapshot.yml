@@ -1,0 +1,323 @@
+id: libxml2-audit-parser-cpp
+snapshots:
+  ? |
+    doc = xmlCtxtReadMemory(ctxt, (char *)string, len, NULL, NULL, 0);
+  : labels:
+    - source: xmlCtxtReadMemory(ctxt, (char *)string, len, NULL, NULL, 0)
+      style: primary
+      start: 6
+      end: 65
+    - source: xmlCtxtReadMemory
+      style: secondary
+      start: 6
+      end: 23
+    - source: ctxt
+      style: secondary
+      start: 24
+      end: 28
+    - source: (char *)string
+      style: secondary
+      start: 30
+      end: 44
+    - source: len
+      style: secondary
+      start: 46
+      end: 49
+    - source: 'NULL'
+      style: secondary
+      start: 51
+      end: 55
+    - source: 'NULL'
+      style: secondary
+      start: 57
+      end: 61
+    - source: '0'
+      style: secondary
+      start: 63
+      end: 64
+    - source: (ctxt, (char *)string, len, NULL, NULL, 0)
+      style: secondary
+      start: 23
+      end: 65
+  ? |
+    doc = xmlReadFile(xmlFilename.c_str(), NULL, 0);
+  : labels:
+    - source: xmlReadFile(xmlFilename.c_str(), NULL, 0)
+      style: primary
+      start: 6
+      end: 47
+    - source: xmlReadFile
+      style: secondary
+      start: 6
+      end: 17
+    - source: xmlFilename.c_str()
+      style: secondary
+      start: 18
+      end: 37
+    - source: 'NULL'
+      style: secondary
+      start: 39
+      end: 43
+    - source: '0'
+      style: secondary
+      start: 45
+      end: 46
+    - source: (xmlFilename.c_str(), NULL, 0)
+      style: secondary
+      start: 17
+      end: 47
+  ? |
+    mPimpl->mXmlDocPtr = xmlCtxtReadDoc(context, reinterpret_cast<const xmlChar *>(input.c_str()), "/", nullptr, 0);
+  : labels:
+    - source: xmlCtxtReadDoc(context, reinterpret_cast<const xmlChar *>(input.c_str()), "/", nullptr, 0)
+      style: primary
+      start: 21
+      end: 111
+    - source: xmlCtxtReadDoc
+      style: secondary
+      start: 21
+      end: 35
+    - source: context
+      style: secondary
+      start: 36
+      end: 43
+    - source: reinterpret_cast<const xmlChar *>(input.c_str())
+      style: secondary
+      start: 45
+      end: 93
+    - source: '"/"'
+      style: secondary
+      start: 95
+      end: 98
+    - source: nullptr
+      style: secondary
+      start: 100
+      end: 107
+    - source: '0'
+      style: secondary
+      start: 109
+      end: 110
+    - source: (context, reinterpret_cast<const xmlChar *>(input.c_str()), "/", nullptr, 0)
+      style: secondary
+      start: 35
+      end: 111
+  ? |
+    xmlDocPtr const pDoc = xmlCtxtReadIO(pContext.get(), xmlIO_read_func, xmlIO_close_func, &c, nullptr, nullptr, 0);
+  : labels:
+    - source: xmlCtxtReadIO(pContext.get(), xmlIO_read_func, xmlIO_close_func, &c, nullptr, nullptr, 0)
+      style: primary
+      start: 23
+      end: 112
+    - source: xmlCtxtReadIO
+      style: secondary
+      start: 23
+      end: 36
+    - source: pContext.get()
+      style: secondary
+      start: 37
+      end: 51
+    - source: xmlIO_read_func
+      style: secondary
+      start: 53
+      end: 68
+    - source: xmlIO_close_func
+      style: secondary
+      start: 70
+      end: 86
+    - source: '&c'
+      style: secondary
+      start: 88
+      end: 90
+    - source: nullptr
+      style: secondary
+      start: 92
+      end: 99
+    - source: nullptr
+      style: secondary
+      start: 101
+      end: 108
+    - source: '0'
+      style: secondary
+      start: 110
+      end: 111
+    - source: (pContext.get(), xmlIO_read_func, xmlIO_close_func, &c, nullptr, nullptr, 0)
+      style: secondary
+      start: 36
+      end: 112
+  ? |
+    xmlDocPtr doc = xmlCtxtReadFd(ctx_, fd, url_, encoding_, options_);
+    load(doc, node);
+  : labels:
+    - source: xmlCtxtReadFd(ctx_, fd, url_, encoding_, options_)
+      style: primary
+      start: 16
+      end: 66
+    - source: xmlCtxtReadFd
+      style: secondary
+      start: 16
+      end: 29
+    - source: ctx_
+      style: secondary
+      start: 30
+      end: 34
+    - source: fd
+      style: secondary
+      start: 36
+      end: 38
+    - source: url_
+      style: secondary
+      start: 40
+      end: 44
+    - source: encoding_
+      style: secondary
+      start: 46
+      end: 55
+    - source: options_
+      style: secondary
+      start: 57
+      end: 65
+    - source: (ctx_, fd, url_, encoding_, options_)
+      style: secondary
+      start: 29
+      end: 66
+  ? |
+    xmlDocPtr xml = xmlReadIO(readStream, closeStream, static_cast<void *>(&stream), fileName.c_str(), 0, options);
+  : labels:
+    - source: xmlReadIO(readStream, closeStream, static_cast<void *>(&stream), fileName.c_str(), 0, options)
+      style: primary
+      start: 16
+      end: 110
+    - source: xmlReadIO
+      style: secondary
+      start: 16
+      end: 25
+    - source: readStream
+      style: secondary
+      start: 26
+      end: 36
+    - source: closeStream
+      style: secondary
+      start: 38
+      end: 49
+    - source: static_cast<void *>(&stream)
+      style: secondary
+      start: 51
+      end: 79
+    - source: fileName.c_str()
+      style: secondary
+      start: 81
+      end: 97
+    - source: '0'
+      style: secondary
+      start: 99
+      end: 100
+    - source: options
+      style: secondary
+      start: 102
+      end: 109
+    - source: (readStream, closeStream, static_cast<void *>(&stream), fileName.c_str(), 0, options)
+      style: secondary
+      start: 25
+      end: 110
+  ? |
+    xmlParseInNodeContext(cur_node->parent, xml_filtered.c_str(),
+    (int)xml_filtered.length(), 0, &pNewNode);
+  : labels:
+    - source: |-
+        xmlParseInNodeContext(cur_node->parent, xml_filtered.c_str(),
+        (int)xml_filtered.length(), 0, &pNewNode)
+      style: primary
+      start: 0
+      end: 103
+    - source: xmlParseInNodeContext
+      style: secondary
+      start: 0
+      end: 21
+    - source: cur_node->parent
+      style: secondary
+      start: 22
+      end: 38
+    - source: xml_filtered.c_str()
+      style: secondary
+      start: 40
+      end: 60
+    - source: (int)xml_filtered.length()
+      style: secondary
+      start: 62
+      end: 88
+    - source: '0'
+      style: secondary
+      start: 90
+      end: 91
+    - source: '&pNewNode'
+      style: secondary
+      start: 93
+      end: 102
+    - source: |-
+        (cur_node->parent, xml_filtered.c_str(),
+        (int)xml_filtered.length(), 0, &pNewNode)
+      style: secondary
+      start: 21
+      end: 103
+  ? |
+    xmlReadDoc((xmlChar *)ptr, "", NULL, 0);
+  : labels:
+    - source: xmlReadDoc((xmlChar *)ptr, "", NULL, 0)
+      style: primary
+      start: 0
+      end: 39
+    - source: xmlReadDoc
+      style: secondary
+      start: 0
+      end: 10
+    - source: (xmlChar *)ptr
+      style: secondary
+      start: 11
+      end: 25
+    - source: '""'
+      style: secondary
+      start: 27
+      end: 29
+    - source: 'NULL'
+      style: secondary
+      start: 31
+      end: 35
+    - source: '0'
+      style: secondary
+      start: 37
+      end: 38
+    - source: ((xmlChar *)ptr, "", NULL, 0)
+      style: secondary
+      start: 10
+      end: 39
+  ? |
+    xmlReadFd(f, NULL, NULL, XML_PARSE_NOBLANKS);
+  : labels:
+    - source: xmlReadFd(f, NULL, NULL, XML_PARSE_NOBLANKS)
+      style: primary
+      start: 0
+      end: 44
+    - source: xmlReadFd
+      style: secondary
+      start: 0
+      end: 9
+    - source: f
+      style: secondary
+      start: 10
+      end: 11
+    - source: 'NULL'
+      style: secondary
+      start: 13
+      end: 17
+    - source: 'NULL'
+      style: secondary
+      start: 19
+      end: 23
+    - source: XML_PARSE_NOBLANKS
+      style: secondary
+      start: 25
+      end: 43
+    - source: (f, NULL, NULL, XML_PARSE_NOBLANKS)
+      style: secondary
+      start: 9
+      end: 44
