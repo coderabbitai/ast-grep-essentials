@@ -1,0 +1,223 @@
+id: gorilla-cookie-store-hardcoded-session-key-go
+snapshots:
+  ? |
+    import (
+     "crypto/rand"
+     "fmt"
+     "github.com/gorilla/sessions"
+    )
+    var storeHardcoded = sessions.NewCookieStore([]byte("hardcoded-session-key"))
+  : labels:
+    - source: sessions.NewCookieStore([]byte("hardcoded-session-key"))
+      style: primary
+      start: 85
+      end: 141
+    - source: sessions
+      style: secondary
+      start: 85
+      end: 93
+    - source: NewCookieStore
+      style: secondary
+      start: 94
+      end: 108
+    - source: sessions.NewCookieStore
+      style: secondary
+      start: 85
+      end: 108
+    - source: byte
+      style: secondary
+      start: 111
+      end: 115
+    - source: '[]byte'
+      style: secondary
+      start: 109
+      end: 115
+    - source: '"hardcoded-session-key"'
+      style: secondary
+      start: 116
+      end: 139
+    - source: '[]byte("hardcoded-session-key")'
+      style: secondary
+      start: 109
+      end: 140
+    - source: ([]byte("hardcoded-session-key"))
+      style: secondary
+      start: 108
+      end: 141
+    - source: '"github.com/gorilla/sessions"'
+      style: secondary
+      start: 32
+      end: 61
+    - source: '"github.com/gorilla/sessions"'
+      style: secondary
+      start: 32
+      end: 61
+    - source: |-
+        import (
+         "crypto/rand"
+         "fmt"
+         "github.com/gorilla/sessions"
+        )
+      style: secondary
+      start: 0
+      end: 63
+    - source: |-
+        import (
+         "crypto/rand"
+         "fmt"
+         "github.com/gorilla/sessions"
+        )
+      style: secondary
+      start: 0
+      end: 63
+  ? |-
+    import (
+     "crypto/rand"
+     "fmt"
+     "github.com/gorilla/sessions"
+    )
+    var storeMultipleHardcoded = sessions.NewCookieStore(
+     []byte("old-authentication-key"),
+     []byte("old-encryption-key"),
+    )
+  : labels:
+    - source: |-
+        sessions.NewCookieStore(
+         []byte("old-authentication-key"),
+         []byte("old-encryption-key"),
+        )
+      style: primary
+      start: 93
+      end: 185
+    - source: sessions
+      style: secondary
+      start: 93
+      end: 101
+    - source: NewCookieStore
+      style: secondary
+      start: 102
+      end: 116
+    - source: sessions.NewCookieStore
+      style: secondary
+      start: 93
+      end: 116
+    - source: byte
+      style: secondary
+      start: 121
+      end: 125
+    - source: '[]byte'
+      style: secondary
+      start: 119
+      end: 125
+    - source: '"old-authentication-key"'
+      style: secondary
+      start: 126
+      end: 150
+    - source: '[]byte("old-authentication-key")'
+      style: secondary
+      start: 119
+      end: 151
+    - source: |-
+        (
+         []byte("old-authentication-key"),
+         []byte("old-encryption-key"),
+        )
+      style: secondary
+      start: 116
+      end: 185
+    - source: '"github.com/gorilla/sessions"'
+      style: secondary
+      start: 32
+      end: 61
+    - source: '"github.com/gorilla/sessions"'
+      style: secondary
+      start: 32
+      end: 61
+    - source: |-
+        import (
+         "crypto/rand"
+         "fmt"
+         "github.com/gorilla/sessions"
+        )
+      style: secondary
+      start: 0
+      end: 63
+    - source: |-
+        import (
+         "crypto/rand"
+         "fmt"
+         "github.com/gorilla/sessions"
+        )
+      style: secondary
+      start: 0
+      end: 63
+  ? |
+    import (
+    "github.com/gorilla/sessions"
+    )
+    var store = sessions.NewCookieStore([]byte("hardcoded-session-key-here"))
+    var store = sessions.NewCookieStore(
+     []byte("new-authentication-key"),
+     []byte("new-encryption-key"),
+     []byte("old-authentication-key"),
+     []byte("old-encryption-key"),
+    )
+  : labels:
+    - source: sessions.NewCookieStore([]byte("hardcoded-session-key-here"))
+      style: primary
+      start: 53
+      end: 114
+    - source: sessions
+      style: secondary
+      start: 53
+      end: 61
+    - source: NewCookieStore
+      style: secondary
+      start: 62
+      end: 76
+    - source: sessions.NewCookieStore
+      style: secondary
+      start: 53
+      end: 76
+    - source: byte
+      style: secondary
+      start: 79
+      end: 83
+    - source: '[]byte'
+      style: secondary
+      start: 77
+      end: 83
+    - source: '"hardcoded-session-key-here"'
+      style: secondary
+      start: 84
+      end: 112
+    - source: '[]byte("hardcoded-session-key-here")'
+      style: secondary
+      start: 77
+      end: 113
+    - source: ([]byte("hardcoded-session-key-here"))
+      style: secondary
+      start: 76
+      end: 114
+    - source: '"github.com/gorilla/sessions"'
+      style: secondary
+      start: 9
+      end: 38
+    - source: '"github.com/gorilla/sessions"'
+      style: secondary
+      start: 9
+      end: 38
+    - source: |-
+        import (
+        "github.com/gorilla/sessions"
+        )
+      style: secondary
+      start: 0
+      end: 40
+    - source: |-
+        import (
+        "github.com/gorilla/sessions"
+        )
+      style: secondary
+      start: 0
+      end: 40

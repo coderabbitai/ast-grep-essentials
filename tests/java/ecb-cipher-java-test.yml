@@ -1,0 +1,7 @@
+id: ecb-cipher-java
+valid:
+  - |
+    Cipher c = Cipher.getInstance("AES/GCM/NoPadding");
+invalid:
+  - |
+    Cipher c = Cipher.getInstance("AES/ECB/NoPadding");

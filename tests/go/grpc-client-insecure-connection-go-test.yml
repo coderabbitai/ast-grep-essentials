@@ -1,0 +1,7 @@
+id: grpc-client-insecure-connection-go
+valid:
+  - |
+    conn, err := grpc.Dial(address)
+invalid:
+  - |
+    conn, err := grpc.Dial(address, grpc.WithInsecure())

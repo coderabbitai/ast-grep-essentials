@@ -1,0 +1,33 @@
+id: gorilla-cookie-store-hardcoded-session-key-go
+valid:
+  - |
+    var store = sessions.NewCookieStore([]byte(os.Getenv("SESSION_KEY")))
+invalid:
+  - |
+     import (
+     "github.com/gorilla/sessions"
+     )
+     var store = sessions.NewCookieStore([]byte("hardcoded-session-key-here"))
+     var store = sessions.NewCookieStore(
+      []byte("new-authentication-key"),
+      []byte("new-encryption-key"),
+      []byte("old-authentication-key"),
+      []byte("old-encryption-key"),
+     )
+  - |
+     import (
+      "crypto/rand"
+      "fmt"
+      "github.com/gorilla/sessions"
+     )
+     var storeHardcoded = sessions.NewCookieStore([]byte("hardcoded-session-key"))
+  - |
+     import (
+      "crypto/rand"
+      "fmt"
+      "github.com/gorilla/sessions"
+     )
+     var storeMultipleHardcoded = sessions.NewCookieStore(
+      []byte("old-authentication-key"),
+      []byte("old-encryption-key"),
+     )

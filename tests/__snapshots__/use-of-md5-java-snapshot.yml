@@ -1,0 +1,51 @@
+id: use-of-md5-java
+snapshots:
+  ? |
+    import java.security.MessageDigest;
+
+    public class Bad{
+      public byte[] bad1(String password) {
+        MessageDigest md5Digest = MessageDigest.getInstance("MD5");
+      }
+    }
+  : labels:
+    - source: '"MD5"'
+      style: primary
+      start: 151
+      end: 156
+    - source: MessageDigest
+      style: secondary
+      start: 125
+      end: 138
+    - source: getInstance
+      style: secondary
+      start: 139
+      end: 150
+    - source: '"MD5"'
+      style: secondary
+      start: 151
+      end: 156
+    - source: ("MD5")
+      style: secondary
+      start: 150
+      end: 157
+    - source: import java.security.MessageDigest;
+      style: secondary
+      start: 0
+      end: 35
+    - source: import java.security.MessageDigest;
+      style: secondary
+      start: 0
+      end: 35
+    - source: md5Digest = MessageDigest.getInstance("MD5")
+      style: secondary
+      start: 113
+      end: 157
+    - source: MessageDigest.getInstance("MD5")
+      style: secondary
+      start: 125
+      end: 157
+    - source: MD5
+      style: secondary
+      start: 152
+      end: 155
