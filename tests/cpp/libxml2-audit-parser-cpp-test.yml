@@ -1,0 +1,25 @@
+id: libxml2-audit-parser-cpp
+valid:
+  - |
+    xmlCtxtReadMemory();
+invalid:
+  - |
+    xmlParseInNodeContext(cur_node->parent, xml_filtered.c_str(),
+    (int)xml_filtered.length(), 0, &pNewNode);
+  - |
+    xmlReadDoc((xmlChar *)ptr, "", NULL, 0);
+  - |
+    xmlReadFd(f, NULL, NULL, XML_PARSE_NOBLANKS);
+  - |
+    doc = xmlReadFile(xmlFilename.c_str(), NULL, 0);
+  - |
+    xmlDocPtr xml = xmlReadIO(readStream, closeStream, static_cast<void *>(&stream), fileName.c_str(), 0, options);
+  - |
+    mPimpl->mXmlDocPtr = xmlCtxtReadDoc(context, reinterpret_cast<const xmlChar *>(input.c_str()), "/", nullptr, 0);
+  - |
+    xmlDocPtr doc = xmlCtxtReadFd(ctx_, fd, url_, encoding_, options_);
+    load(doc, node);
+  - |
+    doc = xmlCtxtReadMemory(ctxt, (char *)string, len, NULL, NULL, 0);
+  - |
+    xmlDocPtr const pDoc = xmlCtxtReadIO(pContext.get(), xmlIO_read_func, xmlIO_close_func, &c, nullptr, nullptr, 0);

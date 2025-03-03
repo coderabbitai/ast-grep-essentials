@@ -1,5 +1,35 @@
 id: null-library-function-c
 snapshots:
+  ? |
+    void f() {
+       char buf[128];
+       strcpy(buf, getenv("FOO"));
+    }
+  : labels:
+    - source: strcpy(buf, getenv("FOO"))
+      style: primary
+      start: 32
+      end: 58
+    - source: strcpy
+      style: secondary
+      start: 32
+      end: 38
+    - source: getenv
+      style: secondary
+      start: 44
+      end: 50
+    - source: ("FOO")
+      style: secondary
+      start: 50
+      end: 57
+    - source: getenv("FOO")
+      style: secondary
+      start: 44
+      end: 57
+    - source: (buf, getenv("FOO"))
+      style: secondary
+      start: 38
+      end: 58
   ? |-
     void test_getc() {
      int c = getc(fptr = fopen(file_name, "r"));
