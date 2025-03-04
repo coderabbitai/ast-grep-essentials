@@ -1,0 +1,29 @@
+id: insecure-hash-cpp
+valid:
+  - |
+    MD5Final(digest,ctx);
+invalid:
+  - |
+    EVP_MD_fetch(NULL, "MD2", NULL);
+  - |
+    EVP_get_digestbyname("MD2");
+  - |
+    EVP_MD_fetch(NULL, "MD4", NULL);
+  - |
+    EVP_get_digestbyname("MD4");
+  - |
+    EVP_MD_fetch(NULL, "MD5", NULL);
+  - |
+    EVP_get_digestbyname("MD5");
+  - |
+    MD2_Init(ctx);
+  - |
+    MD5_Init(ctx);
+  - |
+    MD2_Update(ctx, data, size);
+  - |
+    gcry_md_open(handle, GCRY_MD_MD2, 0);
+  - |
+    gcry_md_extract(handle, GCRY_MD_SHA1, output);
+  - |
+    gcry_md_hash_buffer(GCRY_MD_MD4, data, size);
