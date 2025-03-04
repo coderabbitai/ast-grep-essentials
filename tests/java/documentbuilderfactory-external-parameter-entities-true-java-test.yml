@@ -1,0 +1,8 @@
+id: documentbuilderfactory-external-parameter-entities-true-java
+valid:
+  - |
+    dbf.setFeature("http://xml.org/sax/features/external-parameter-entities" , false);
+invalid:
+  - |
+    dbf.setFeature("http://xml.org/sax/features/external-parameter-entities" , true);
+    spf.setFeature("http://xml.org/sax/features/external-parameter-entities" , true);
