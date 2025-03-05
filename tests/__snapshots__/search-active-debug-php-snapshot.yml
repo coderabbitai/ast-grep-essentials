@@ -1,0 +1,226 @@
+id: search-active-debug-php
+snapshots:
+  ? |
+    <?php
+    define("WP_DEBUG",true);
+  : labels:
+    - source: define("WP_DEBUG",true)
+      style: primary
+      start: 6
+      end: 29
+    - source: define
+      style: secondary
+      start: 6
+      end: 12
+    - source: WP_DEBUG
+      style: secondary
+      start: 14
+      end: 22
+    - source: '"WP_DEBUG"'
+      style: secondary
+      start: 13
+      end: 23
+    - source: '"WP_DEBUG"'
+      style: secondary
+      start: 13
+      end: 23
+    - source: 'true'
+      style: secondary
+      start: 24
+      end: 28
+    - source: 'true'
+      style: secondary
+      start: 24
+      end: 28
+    - source: ("WP_DEBUG",true)
+      style: secondary
+      start: 12
+      end: 29
+  ? |
+    <?php
+    ini_set("display_errors","ON");
+  : labels:
+    - source: ini_set("display_errors","ON")
+      style: primary
+      start: 6
+      end: 36
+    - source: ini_set
+      style: secondary
+      start: 6
+      end: 13
+    - source: display_errors
+      style: secondary
+      start: 15
+      end: 29
+    - source: '"display_errors"'
+      style: secondary
+      start: 14
+      end: 30
+    - source: '"display_errors"'
+      style: secondary
+      start: 14
+      end: 30
+    - source: ON
+      style: secondary
+      start: 32
+      end: 34
+    - source: '"ON"'
+      style: secondary
+      start: 31
+      end: 35
+    - source: '"ON"'
+      style: secondary
+      start: 31
+      end: 35
+    - source: ("display_errors","ON")
+      style: secondary
+      start: 13
+      end: 36
+  ? |
+    <?php
+    ini_set("display_errors","on");
+  : labels:
+    - source: ini_set("display_errors","on")
+      style: primary
+      start: 6
+      end: 36
+    - source: ini_set
+      style: secondary
+      start: 6
+      end: 13
+    - source: display_errors
+      style: secondary
+      start: 15
+      end: 29
+    - source: '"display_errors"'
+      style: secondary
+      start: 14
+      end: 30
+    - source: '"display_errors"'
+      style: secondary
+      start: 14
+      end: 30
+    - source: on
+      style: secondary
+      start: 32
+      end: 34
+    - source: '"on"'
+      style: secondary
+      start: 31
+      end: 35
+    - source: '"on"'
+      style: secondary
+      start: 31
+      end: 35
+    - source: ("display_errors","on")
+      style: secondary
+      start: 13
+      end: 36
+  ? |
+    <?php
+    ini_set("display_errors",1);
+  : labels:
+    - source: ini_set("display_errors",1)
+      style: primary
+      start: 6
+      end: 33
+    - source: ini_set
+      style: secondary
+      start: 6
+      end: 13
+    - source: display_errors
+      style: secondary
+      start: 15
+      end: 29
+    - source: '"display_errors"'
+      style: secondary
+      start: 14
+      end: 30
+    - source: '"display_errors"'
+      style: secondary
+      start: 14
+      end: 30
+    - source: '1'
+      style: secondary
+      start: 31
+      end: 32
+    - source: '1'
+      style: secondary
+      start: 31
+      end: 32
+    - source: ("display_errors",1)
+      style: secondary
+      start: 13
+      end: 33
+  ? |
+    <?php
+    ini_set("display_errors",TRUE);
+  : labels:
+    - source: ini_set("display_errors",TRUE)
+      style: primary
+      start: 6
+      end: 36
+    - source: ini_set
+      style: secondary
+      start: 6
+      end: 13
+    - source: display_errors
+      style: secondary
+      start: 15
+      end: 29
+    - source: '"display_errors"'
+      style: secondary
+      start: 14
+      end: 30
+    - source: '"display_errors"'
+      style: secondary
+      start: 14
+      end: 30
+    - source: 'TRUE'
+      style: secondary
+      start: 31
+      end: 35
+    - source: 'TRUE'
+      style: secondary
+      start: 31
+      end: 35
+    - source: ("display_errors",TRUE)
+      style: secondary
+      start: 13
+      end: 36
+  ? |
+    <?php
+    ini_set("display_errors",true);
+  : labels:
+    - source: ini_set("display_errors",true)
+      style: primary
+      start: 6
+      end: 36
+    - source: ini_set
+      style: secondary
+      start: 6
+      end: 13
+    - source: display_errors
+      style: secondary
+      start: 15
+      end: 29
+    - source: '"display_errors"'
+      style: secondary
+      start: 14
+      end: 30
+    - source: '"display_errors"'
+      style: secondary
+      start: 14
+      end: 30
+    - source: 'true'
+      style: secondary
+      start: 31
+      end: 35
+    - source: 'true'
+      style: secondary
+      start: 31
+      end: 35
+    - source: ("display_errors",true)
+      style: secondary
+      start: 13
+      end: 36
