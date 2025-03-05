@@ -1,0 +1,15 @@
+id: python-elasticsearch-hardcoded-bearer-auth-python
+valid:
+  - |
+    es = elasticsearch.Elasticsearch(
+      "https://localhost:9200",
+      bearer_auth=os.env["token-value"]
+    )
+    
+invalid:
+  - |
+    es = elasticsearch.Elasticsearch(
+      "https://localhost:9200",
+      bearer_auth="token-value"
+    )
+
