@@ -1,0 +1,30 @@
+id: documentbuilderfactory-external-parameter-entities-true-java
+snapshots:
+  ? |
+    dbf.setFeature("http://xml.org/sax/features/external-parameter-entities" , true);
+    spf.setFeature("http://xml.org/sax/features/external-parameter-entities" , true);
+  : labels:
+    - source: dbf.setFeature("http://xml.org/sax/features/external-parameter-entities" , true)
+      style: primary
+      start: 0
+      end: 80
+    - source: dbf
+      style: secondary
+      start: 0
+      end: 3
+    - source: setFeature
+      style: secondary
+      start: 4
+      end: 14
+    - source: '"http://xml.org/sax/features/external-parameter-entities"'
+      style: secondary
+      start: 15
+      end: 72
+    - source: 'true'
+      style: secondary
+      start: 75
+      end: 79
+    - source: ("http://xml.org/sax/features/external-parameter-entities" , true)
+      style: secondary
+      start: 14
+      end: 80
