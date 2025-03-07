@@ -1,0 +1,63 @@
+id: openssl-cbc-static-iv-php
+valid:
+  - |
+    <?php
+    function encrypt($plaintext, $password) {
+    $method = "AES-256-CBC";
+    $key = hash('sha256', $password, true);
+    $iv = openssl_random_pseudo_bytes(16);
+    $ciphertext = openssl_encrypt($plaintext, $method, $key, OPENSSL_RAW_DATA, $iv);
+    $hash = hash_hmac('sha256', $ciphertext . $iv, $key, true);
+    return $iv . $hash . $ciphertext;
+    }
+invalid:
+  - |
+    <?php
+    function encryptBad($plaintext, $password) {
+    $method = "AES-256-CBC";
+    $key = hash('sha256', $password, true);
+    $iv = "4c25ecc95c8816db753cba44a3b56aca";
+    $ciphertext = openssl_encrypt($plaintext, $method, $key, OPENSSL_RAW_DATA, $iv);
+    $hash = hash_hmac('sha256', $ciphertext . $iv, $key, true);
+    return $iv . $hash . $ciphertext;
+    }
+  - |
+     <?php
+     function decryptBad4($ivHashCiphertext, $password) {
+     $iv = "abcdef1234567890"; // Static IV
+     $hash = substr($ivHashCiphertext, 16, 32);
+     $ciphertext = substr($ivHashCiphertext, 48);
+     $key = hash('sha256', $password, true);
+     if (!hash_equals(hash_hmac('sha256', $ciphertext . $iv, $key, true), $hash)) return null;
+     return openssl_decrypt($ciphertext, "AES-256-CBC", $key, OPENSSL_RAW_DATA, $iv);
+     }
+  - |
+     <?php
+     function encryptBad4($plaintext, $password) {
+     $key = hash('sha256', $password, true);
+     $iv = "abcdef1234567890"; // Another static IV
+     $ciphertext = openssl_encrypt($plaintext, "AES-256-CBC", $key, OPENSSL_RAW_DATA, $iv);
+     $hash = hash_hmac('sha256', $ciphertext . $iv, $key, true);
+     return $iv . $hash . $ciphertext;
+     }
+  - |
+     <?php
+     function decryptBad3($ivHashCiphertext, $password) {
+     $method = "AES-256-CBC";
+     $iv = "1234567890abcdef"; // Static IV
+     $hash = substr($ivHashCiphertext, 16, 32);
+     $ciphertext = substr($ivHashCiphertext, 48);
+     $key = hash('sha256', $password, true);
+     if (!hash_equals(hash_hmac('sha256', $ciphertext . $iv, $key, true), $hash)) return null;
+     return openssl_decrypt($ciphertext, $method, $key, OPENSSL_RAW_DATA, $iv);
+     }
+  - |
+     <?php
+     function encryptBad3($plaintext, $password) {
+     $method = "AES-256-CBC";
+     $key = hash('sha256', $password, true);
+     $iv = "1234567890abcdef"; // Static IV
+     $ciphertext = openssl_encrypt($plaintext, $method, $key, OPENSSL_RAW_DATA, $iv);
+     $hash = hash_hmac('sha256', $ciphertext . $iv, $key, true);
+     return $iv . $hash . $ciphertext;
+     }
