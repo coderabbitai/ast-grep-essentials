@@ -1,0 +1,27 @@
+id: search-active-debug-php
+valid:
+  - |
+    <?php
+    ini_set("display_errors",0);
+  - |
+    <?php
+    ini_set("display_errors","off");
+invalid:
+  - |
+    <?php
+    ini_set("display_errors",1);
+  - |
+    <?php
+    define("WP_DEBUG",true);
+  - |
+    <?php
+    ini_set("display_errors",true);
+  - |
+    <?php
+    ini_set("display_errors","on");
+  - |
+    <?php
+    ini_set("display_errors",TRUE);
+  - |
+    <?php
+    ini_set("display_errors","ON");
