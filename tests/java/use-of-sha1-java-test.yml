@@ -1,0 +1,22 @@
+id: use-of-sha1-java
+valid:
+  - |
+    Cipher.getInstance("AES/GCM/NoPadding");
+invalid:
+  - |
+     public byte[] bad2(String password) {
+     byte[] hashValue = DigestUtils.getSha1Digest().digest(password.getBytes());
+     return hashValue;
+     }
+  - |
+     public void bad3() {
+     java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA1", "SUN");
+     }
+  - |
+     import java.security.MessageDigest;
+     public byte[] bad1(String password) {
+     MessageDigest sha1Digest = MessageDigest.getInstance("SHA-1");
+     sha1Digest.update(password.getBytes());
+     byte[] hashValue = sha1Digest.digest();
+     return hashValue;
+     }
