@@ -1,0 +1,82 @@
+id: use-of-sha1-java
+snapshots:
+  ? |-
+    import java.security.MessageDigest;
+    public byte[] bad1(String password) {
+    MessageDigest sha1Digest = MessageDigest.getInstance("SHA-1");
+    sha1Digest.update(password.getBytes());
+    byte[] hashValue = sha1Digest.digest();
+    return hashValue;
+    }
+  : labels:
+    - source: MessageDigest.getInstance("SHA-1")
+      style: primary
+      start: 101
+      end: 135
+    - source: MessageDigest
+      style: secondary
+      start: 101
+      end: 114
+    - source: getInstance
+      style: secondary
+      start: 115
+      end: 126
+    - source: SHA-1
+      style: secondary
+      start: 128
+      end: 133
+    - source: '"SHA-1"'
+      style: secondary
+      start: 127
+      end: 134
+    - source: ("SHA-1")
+      style: secondary
+      start: 126
+      end: 135
+    - source: import java.security.MessageDigest;
+      style: secondary
+      start: 0
+      end: 35
+    - source: import java.security.MessageDigest;
+      style: secondary
+      start: 0
+      end: 35
+  ? |
+    public byte[] bad2(String password) {
+    byte[] hashValue = DigestUtils.getSha1Digest().digest(password.getBytes());
+    return hashValue;
+    }
+  : labels:
+    - source: DigestUtils.getSha1Digest().digest(password.getBytes())
+      style: primary
+      start: 57
+      end: 112
+  ? |
+    public void bad3() {
+    java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA1", "SUN");
+    }
+  : labels:
+    - source: java.security.MessageDigest.getInstance("SHA1", "SUN")
+      style: primary
+      start: 54
+      end: 108
+    - source: java.security.MessageDigest
+      style: secondary
+      start: 54
+      end: 81
+    - source: getInstance
+      style: secondary
+      start: 82
+      end: 93
+    - source: SHA1
+      style: secondary
+      start: 95
+      end: 99
+    - source: '"SHA1"'
+      style: secondary
+      start: 94
+      end: 100
+    - source: ("SHA1", "SUN")
+      style: secondary
+      start: 93
+      end: 108

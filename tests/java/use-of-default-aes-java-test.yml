@@ -1,0 +1,15 @@
+id: use-of-default-aes-java
+valid:
+  - |
+    crypto.Cipher.getInstance("AES");
+invalid:
+  - |
+    import javax.*;
+    {
+    crypto.Cipher.getInstance("AES");
+    }
+  - |
+     import javax.crypto.*;
+     {
+     useCipher(Cipher.getInstance("AES"));
+     }

@@ -1,0 +1,78 @@
+id: use-of-default-aes-java
+snapshots:
+  ? |
+    import javax.*;
+    {
+    crypto.Cipher.getInstance("AES");
+    }
+  : labels:
+    - source: crypto.Cipher.getInstance("AES")
+      style: primary
+      start: 18
+      end: 50
+    - source: crypto.Cipher
+      style: secondary
+      start: 18
+      end: 31
+    - source: getInstance
+      style: secondary
+      start: 32
+      end: 43
+    - source: '"AES"'
+      style: secondary
+      start: 44
+      end: 49
+    - source: ("AES")
+      style: secondary
+      start: 43
+      end: 50
+    - source: import javax.*;
+      style: secondary
+      start: 0
+      end: 15
+    - source: import javax.*;
+      style: secondary
+      start: 0
+      end: 15
+    - source: AES
+      style: secondary
+      start: 45
+      end: 48
+  ? |-
+    import javax.crypto.*;
+    {
+    useCipher(Cipher.getInstance("AES"));
+    }
+  : labels:
+    - source: Cipher.getInstance("AES")
+      style: primary
+      start: 35
+      end: 60
+    - source: Cipher
+      style: secondary
+      start: 35
+      end: 41
+    - source: getInstance
+      style: secondary
+      start: 42
+      end: 53
+    - source: '"AES"'
+      style: secondary
+      start: 54
+      end: 59
+    - source: ("AES")
+      style: secondary
+      start: 53
+      end: 60
+    - source: import javax.crypto.*;
+      style: secondary
+      start: 0
+      end: 22
+    - source: import javax.crypto.*;
+      style: secondary
+      start: 0
+      end: 22
+    - source: AES
+      style: secondary
+      start: 55
+      end: 58
