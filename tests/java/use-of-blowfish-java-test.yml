@@ -1,0 +1,13 @@
+id: use-of-blowfish-java
+valid:
+  - |
+    crypto.Cipher.getInstance("AES");
+invalid:
+  - |
+     public void useofBlowfish2() {
+     useCipher(Cipher.getInstance("Blowfish"));
+     }
+  - |
+     public void useofBlowfish2() {
+     Cipher.getInstance("Blowfish");
+     }
