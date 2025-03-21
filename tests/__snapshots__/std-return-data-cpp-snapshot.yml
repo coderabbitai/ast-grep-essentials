@@ -1,0 +1,48 @@
+id: std-return-data-cpp
+snapshots:
+  ? |
+    int *return_vector_data() {
+     std::vector<int> v;
+     return v.data();
+    }
+  : labels:
+    - source: return v.data();
+      style: primary
+      start: 50
+      end: 66
+    - source: int
+      style: secondary
+      start: 0
+      end: 3
+    - source: '*return_vector_data()'
+      style: secondary
+      start: 4
+      end: 25
+    - source: |-
+        int *return_vector_data() {
+         std::vector<int> v;
+         return v.data();
+        }
+      style: secondary
+      start: 0
+      end: 68
+    - source: std::vector<int>
+      style: secondary
+      start: 29
+      end: 45
+    - source: v
+      style: secondary
+      start: 46
+      end: 47
+    - source: |-
+        {
+         std::vector<int> v;
+         return v.data();
+        }
+      style: secondary
+      start: 26
+      end: 68
+    - source: std::vector<int> v;
+      style: secondary
+      start: 29
+      end: 48
