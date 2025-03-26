@@ -1,0 +1,157 @@
+id: weak-ssl-context-java
+snapshots:
+  ? |
+    SSLContext ctx = SSLContext.getInstance("SSL");
+  : labels:
+    - source: SSLContext.getInstance("SSL")
+      style: primary
+      start: 17
+      end: 46
+    - source: SSLContext
+      style: secondary
+      start: 17
+      end: 27
+    - source: getInstance
+      style: secondary
+      start: 28
+      end: 39
+    - source: SSL
+      style: secondary
+      start: 41
+      end: 44
+    - source: SSL
+      style: secondary
+      start: 41
+      end: 44
+    - source: '"SSL"'
+      style: secondary
+      start: 40
+      end: 45
+    - source: ("SSL")
+      style: secondary
+      start: 39
+      end: 46
+  ? |
+    SSLContext ctx = SSLContext.getInstance("SSLv3");
+  : labels:
+    - source: SSLContext.getInstance("SSLv3")
+      style: primary
+      start: 17
+      end: 48
+    - source: SSLContext
+      style: secondary
+      start: 17
+      end: 27
+    - source: getInstance
+      style: secondary
+      start: 28
+      end: 39
+    - source: SSLv3
+      style: secondary
+      start: 41
+      end: 46
+    - source: SSLv3
+      style: secondary
+      start: 41
+      end: 46
+    - source: '"SSLv3"'
+      style: secondary
+      start: 40
+      end: 47
+    - source: ("SSLv3")
+      style: secondary
+      start: 39
+      end: 48
+  ? |
+    SSLContext ctx = SSLContext.getInstance("TLS");
+  : labels:
+    - source: SSLContext.getInstance("TLS")
+      style: primary
+      start: 17
+      end: 46
+    - source: SSLContext
+      style: secondary
+      start: 17
+      end: 27
+    - source: getInstance
+      style: secondary
+      start: 28
+      end: 39
+    - source: TLS
+      style: secondary
+      start: 41
+      end: 44
+    - source: TLS
+      style: secondary
+      start: 41
+      end: 44
+    - source: '"TLS"'
+      style: secondary
+      start: 40
+      end: 45
+    - source: ("TLS")
+      style: secondary
+      start: 39
+      end: 46
+  ? |
+    SSLContext ctx = SSLContext.getInstance("TLSv1");
+  : labels:
+    - source: SSLContext.getInstance("TLSv1")
+      style: primary
+      start: 17
+      end: 48
+    - source: SSLContext
+      style: secondary
+      start: 17
+      end: 27
+    - source: getInstance
+      style: secondary
+      start: 28
+      end: 39
+    - source: TLSv1
+      style: secondary
+      start: 41
+      end: 46
+    - source: TLSv1
+      style: secondary
+      start: 41
+      end: 46
+    - source: '"TLSv1"'
+      style: secondary
+      start: 40
+      end: 47
+    - source: ("TLSv1")
+      style: secondary
+      start: 39
+      end: 48
+  ? |
+    SSLContext ctx = SSLContext.getInstance("TLSv1.1");
+  : labels:
+    - source: SSLContext.getInstance("TLSv1.1")
+      style: primary
+      start: 17
+      end: 50
+    - source: SSLContext
+      style: secondary
+      start: 17
+      end: 27
+    - source: getInstance
+      style: secondary
+      start: 28
+      end: 39
+    - source: TLSv1.1
+      style: secondary
+      start: 41
+      end: 48
+    - source: TLSv1.1
+      style: secondary
+      start: 41
+      end: 48
+    - source: '"TLSv1.1"'
+      style: secondary
+      start: 40
+      end: 49
+    - source: ("TLSv1.1")
+      style: secondary
+      start: 39
+      end: 50
