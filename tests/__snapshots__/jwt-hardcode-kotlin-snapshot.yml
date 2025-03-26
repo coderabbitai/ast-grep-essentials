@@ -1,0 +1,60 @@
+id: jwt-hardcode-kotlin
+snapshots:
+  ? "package com.foobar.org.configuration\nimport com.auth0.jwt.JWT\nimport com.auth0.jwt.algorithms.Algorithm\nimport com.auth0.jwt.algorithms.Algorithm.HMAC512\nimport com.auth0.jwt.exceptions.JWTCreationException\nobject App {\n  private fun bad1() {\n    try {\n      val algorithm = Algorithm.HMAC256(\"secret\")\n      val token = JWT.create()\n      .withIssuer(\"auth0\")\n      .sign(algorithm)\n    } \n    catch (exception: JWTCreationException) {}\n  }\n}\n"
+  : labels:
+    - source: Algorithm.HMAC256("secret")
+      style: primary
+      start: 275
+      end: 302
+    - source: Algorithm
+      style: secondary
+      start: 275
+      end: 284
+    - source: HMAC256
+      style: secondary
+      start: 285
+      end: 292
+    - source: .HMAC256
+      style: secondary
+      start: 284
+      end: 292
+    - source: Algorithm.HMAC256
+      style: secondary
+      start: 275
+      end: 292
+    - source: '"secret"'
+      style: secondary
+      start: 293
+      end: 301
+    - source: '"secret"'
+      style: secondary
+      start: 293
+      end: 301
+    - source: ("secret")
+      style: secondary
+      start: 292
+      end: 302
+    - source: ("secret")
+      style: secondary
+      start: 292
+      end: 302
+    - source: import com.auth0.jwt.algorithms.Algorithm
+      style: secondary
+      start: 62
+      end: 103
+    - source: |-
+        import com.auth0.jwt.JWT
+        import com.auth0.jwt.algorithms.Algorithm
+        import com.auth0.jwt.algorithms.Algorithm.HMAC512
+        import com.auth0.jwt.exceptions.JWTCreationException
+      style: secondary
+      start: 37
+      end: 206
+    - source: |-
+        import com.auth0.jwt.JWT
+        import com.auth0.jwt.algorithms.Algorithm
+        import com.auth0.jwt.algorithms.Algorithm.HMAC512
+        import com.auth0.jwt.exceptions.JWTCreationException
+      style: secondary
+      start: 37
+      end: 206

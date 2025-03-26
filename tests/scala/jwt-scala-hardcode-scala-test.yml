@@ -1,0 +1,93 @@
+id: jwt-scala-hardcode-scala
+valid:
+  - |
+    class Test7 {
+      val secretKey = "secretKey"
+      def run(token: String) = {
+        val algo = JwtAlgorithm.HS256
+        val decoded = JwtJson.decodeJson(token, secretKey, Seq(algo))
+        println(decoded)
+      }
+    }
+invalid:
+  - |
+    import pdi.jwt.{JwtJson, JwtAlgorithm, JwtArgonaut}
+    object Test1 {
+      val secretKey = "secretKey" 
+      def run() = {
+        val claim = Json.obj(("user", 1), ("nbf", 1431520421))
+        val algo = JwtAlgorithm.HS256
+        val token = JwtJson.encode(claim, secretKey, algo)
+        println(token)
+      }
+    }
+  - |
+    import pdi.jwt.{JwtJson, JwtAlgorithm, JwtArgonaut}
+    object Test2 {
+      val secretKey = "secretKey"
+      def run(token: String) = {
+        val algo = JwtAlgorithm.HS256
+        val decoded = JwtJson.decodeJson(token, secretKey, Seq(algo))
+        println(decoded)
+      }
+    }
+  - |
+    import pdi.jwt.{JwtJson, JwtAlgorithm, JwtArgonaut}
+    object Test3 {
+      val secretKey = "secretKey"
+      def run(token: String) = {
+        val algo = JwtAlgorithm.HS256
+        val decodedJson = JwtJson.decodeJson(token, secretKey, Seq(algo))
+        println(decodedJson)
+      }
+    }
+  - |
+    import pdi.jwt.{JwtJson, JwtAlgorithm, JwtArgonaut}
+    object Test5 {
+      def run(token: String) = {
+        val algo = JwtAlgorithm.HS256
+        val decodedAll = JwtJson.decodeAll(token, "secretKey", Seq(algo))
+        println(decodedAll)
+      }
+    }
+  - |
+    import pdi.jwt.{JwtJson, JwtAlgorithm, JwtArgonaut}
+    class Test6 {
+      val secretKey = "secretKey"
+      def run() = {
+        val claim = Json.obj(("user", 1), ("nbf", 1431520421))
+        val algo = JwtAlgorithm.HS256
+        val token = JwtJson.encode(claim, secretKey, algo)
+        println(token)
+      }
+    }
+  - |
+    import pdi.jwt.{JwtJson, JwtAlgorithm, JwtArgonaut}
+    class Test7 {
+      val secretKey = "secretKey"
+      def run(token: String) = {
+        val algo = JwtAlgorithm.HS256
+        val decoded = JwtJson.decodeJson(token, secretKey, Seq(algo))
+        println(decoded)
+      }
+    }
+  - |
+    import pdi.jwt.{JwtJson, JwtAlgorithm, JwtArgonaut}
+    class Test9 {
+      val secretKey = "secretKey"
+      def run(token: String) = {
+        val algo = JwtAlgorithm.HS256
+        val decodedRaw = JwtJson.decodeRaw(token, secretKey, Seq(algo))
+        println(decodedRaw)
+      }
+    }
+  - |
+    import pdi.jwt.{JwtJson, JwtAlgorithm, JwtArgonaut}
+    object Test15 {
+      val secretKey = "secretKey"
+      def run(token: String) = {
+        val algo = JwtAlgorithm.HS256
+        val decodedAll = JwtJson.decodeAll(token, this.secretKey, Seq(algo))
+        println(decodedAll)
+      }
+    }
