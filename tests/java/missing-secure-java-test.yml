@@ -1,0 +1,90 @@
+id: missing-secure-java
+valid:
+  - |
+    package com.example;
+
+    import io.micronaut.http.*;
+    import io.micronaut.http.cookie.Cookie;
+    import io.micronaut.http.netty.cookies.NettyCookie;
+    import io.micronaut.http.simple.cookies.SimpleCookie;
+    import java.io.*;
+
+    @Controller("/hello")
+    public class HelloController {
+
+      @Post("/test1")
+      public MutableHttpMessage<Object> postTest1() throws FileNotFoundException {
+        SimpleCookie s = new SimpleCookie("foo", "bar").secure();
+      }
+    }
+invalid:
+  - |
+    package com.example;
+
+    import io.micronaut.http.*;
+    import io.micronaut.http.cookie.Cookie;
+    import io.micronaut.http.netty.cookies.NettyCookie;
+    import io.micronaut.http.simple.cookies.SimpleCookie;
+    import java.io.*;
+
+    @Controller("/hello")
+    public class HelloController {
+
+      @Post("/test1")
+      public MutableHttpMessage<Object> postTest1() throws FileNotFoundException {
+        SimpleCookie s = new SimpleCookie("foo", "bar");
+      }
+    }
+  - |
+    package com.example;
+
+    import io.micronaut.http.*;
+    import io.micronaut.http.cookie.Cookie;
+    import io.micronaut.http.netty.cookies.NettyCookie;
+    import io.micronaut.http.simple.cookies.SimpleCookie;
+    import java.io.*;
+
+    @Controller("/hello")
+    public class HelloController {
+
+      @Post("/test1")
+      public MutableHttpMessage<Object> postTest1() throws FileNotFoundException {
+        Cookie cookie = request.getCookies()
+                .findCookie( "foobar" )
+                .orElse( new NettyCookie( "foo", "bar" ) );
+      }
+    }
+  - |
+    package com.example;
+
+    import io.micronaut.http.*;
+    import io.micronaut.http.cookie.Cookie;
+    import io.micronaut.http.netty.cookies.NettyCookie;
+    import io.micronaut.http.simple.cookies.SimpleCookie;
+    import java.io.*;
+
+    @Controller("/hello")
+    public class HelloController {
+
+      @Post("/test1")
+      public MutableHttpMessage<Object> postTest1() throws FileNotFoundException {
+        Cookie z = new NettyCookie("foo", "bar");
+      }
+    }
+  - |
+    package com.example;
+
+    import io.micronaut.http.*;
+    import io.micronaut.http.cookie.Cookie;
+    import io.micronaut.http.netty.cookies.NettyCookie;
+    import io.micronaut.http.simple.cookies.SimpleCookie;
+    import java.io.*;
+
+    @Controller("/hello")
+    public class HelloController {
+
+      @Post("/test1")
+      public MutableHttpMessage<Object> postTest1() throws FileNotFoundException {
+        return HttpResponse.ok().cookie(Cookie.of("zzz", "ddd"));
+      }
+    }
