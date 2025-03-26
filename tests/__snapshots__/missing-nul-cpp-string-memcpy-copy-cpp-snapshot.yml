@@ -1,0 +1,173 @@
+id: missing-nul-cpp-string-memcpy-copy-cpp
+snapshots:
+  ? |
+    void test_001()
+    {
+        string from = "hello";
+        char to[20];
+        size_t len_001 = strlen(from.c_str());
+        memcpy(to, from.c_str(), len_001);
+    }
+  : labels:
+    - source: memcpy
+      style: primary
+      start: 109
+      end: 115
+    - source: memcpy
+      style: secondary
+      start: 109
+      end: 115
+    - source: to
+      style: secondary
+      start: 116
+      end: 118
+    - source: from.c_str()
+      style: secondary
+      start: 120
+      end: 132
+    - source: len_001
+      style: secondary
+      start: 134
+      end: 141
+    - source: (to, from.c_str(), len_001)
+      style: secondary
+      start: 115
+      end: 142
+    - source: size_t len_001 = strlen(from.c_str());
+      style: secondary
+      start: 66
+      end: 104
+    - source: size_t len_001 = strlen(from.c_str());
+      style: secondary
+      start: 66
+      end: 104
+    - source: char to[20];
+      style: secondary
+      start: 49
+      end: 61
+    - source: char to[20];
+      style: secondary
+      start: 49
+      end: 61
+    - source: memcpy(to, from.c_str(), len_001)
+      style: secondary
+      start: 109
+      end: 142
+  ? |
+    void test_002()
+    {
+        string from = "hello";
+        char to[20];
+        size_t len_002 = from.size();
+        memcpy(to, from.c_str(), len_002);
+    }
+  : labels:
+    - source: memcpy
+      style: primary
+      start: 100
+      end: 106
+    - source: memcpy
+      style: secondary
+      start: 100
+      end: 106
+    - source: to
+      style: secondary
+      start: 107
+      end: 109
+    - source: from.c_str()
+      style: secondary
+      start: 111
+      end: 123
+    - source: len_002
+      style: secondary
+      start: 125
+      end: 132
+    - source: (to, from.c_str(), len_002)
+      style: secondary
+      start: 106
+      end: 133
+    - source: len_002
+      style: secondary
+      start: 73
+      end: 80
+    - source: from.size()
+      style: secondary
+      start: 83
+      end: 94
+    - source: len_002 = from.size()
+      style: secondary
+      start: 73
+      end: 94
+    - source: size_t len_002 = from.size();
+      style: secondary
+      start: 66
+      end: 95
+    - source: size_t len_002 = from.size();
+      style: secondary
+      start: 66
+      end: 95
+    - source: char to[20];
+      style: secondary
+      start: 49
+      end: 61
+    - source: char to[20];
+      style: secondary
+      start: 49
+      end: 61
+    - source: memcpy(to, from.c_str(), len_002)
+      style: secondary
+      start: 100
+      end: 133
+  ? |
+    void test_003()
+    {
+        string from = "hello";
+        char to[20];
+        size_t len_003 = from.length();
+        memcpy(to, from.c_str(), len_003);
+    }
+  : labels:
+    - source: memcpy
+      style: primary
+      start: 102
+      end: 108
+    - source: memcpy
+      style: secondary
+      start: 102
+      end: 108
+    - source: to
+      style: secondary
+      start: 109
+      end: 111
+    - source: from.c_str()
+      style: secondary
+      start: 113
+      end: 125
+    - source: len_003
+      style: secondary
+      start: 127
+      end: 134
+    - source: (to, from.c_str(), len_003)
+      style: secondary
+      start: 108
+      end: 135
+    - source: size_t len_003 = from.length();
+      style: secondary
+      start: 66
+      end: 97
+    - source: size_t len_003 = from.length();
+      style: secondary
+      start: 66
+      end: 97
+    - source: char to[20];
+      style: secondary
+      start: 49
+      end: 61
+    - source: char to[20];
+      style: secondary
+      start: 49
+      end: 61
+    - source: memcpy(to, from.c_str(), len_003)
+      style: secondary
+      start: 102
+      end: 135
