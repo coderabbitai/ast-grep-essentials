@@ -1,0 +1,326 @@
+id: string-view-temporary-string-cpp
+snapshots:
+  ? |
+    extern std::string returns_std_string();
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = returns_std_string() + "bar";
+    }
+  : labels:
+    - source: view = returns_std_string() + "bar";
+      style: primary
+      start: 115
+      end: 151
+    - source: view
+      style: secondary
+      start: 115
+      end: 119
+    - source: returns_std_string
+      style: secondary
+      start: 122
+      end: 140
+    - source: returns_std_string() + "bar"
+      style: secondary
+      start: 122
+      end: 150
+    - source: view = returns_std_string() + "bar"
+      style: secondary
+      start: 115
+      end: 150
+    - source: std::string
+      style: secondary
+      start: 7
+      end: 18
+    - source: returns_std_string
+      style: secondary
+      start: 19
+      end: 37
+    - source: extern std::string returns_std_string();
+      style: secondary
+      start: 0
+      end: 40
+    - source: extern std::string returns_std_string();
+      style: secondary
+      start: 0
+      end: 40
+    - source: std::string_view
+      style: secondary
+      start: 91
+      end: 107
+    - source: view
+      style: secondary
+      start: 108
+      end: 112
+    - source: std::string_view view;
+      style: secondary
+      start: 91
+      end: 113
+  ? |
+    extern std::string returns_std_string();
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = returns_std_string() + foo;
+    }
+  : labels:
+    - source: view = returns_std_string() + foo;
+      style: primary
+      start: 115
+      end: 149
+    - source: view
+      style: secondary
+      start: 115
+      end: 119
+    - source: returns_std_string
+      style: secondary
+      start: 122
+      end: 140
+    - source: returns_std_string() + foo
+      style: secondary
+      start: 122
+      end: 148
+    - source: view = returns_std_string() + foo
+      style: secondary
+      start: 115
+      end: 148
+    - source: std::string
+      style: secondary
+      start: 7
+      end: 18
+    - source: returns_std_string
+      style: secondary
+      start: 19
+      end: 37
+    - source: extern std::string returns_std_string();
+      style: secondary
+      start: 0
+      end: 40
+    - source: extern std::string returns_std_string();
+      style: secondary
+      start: 0
+      end: 40
+    - source: std::string_view
+      style: secondary
+      start: 91
+      end: 107
+    - source: view
+      style: secondary
+      start: 108
+      end: 112
+    - source: std::string_view view;
+      style: secondary
+      start: 91
+      end: 113
+  ? |
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = "bar" + foo;
+    }
+  : labels:
+    - source: view = "bar" + foo;
+      style: primary
+      start: 74
+      end: 93
+    - source: view
+      style: secondary
+      start: 74
+      end: 78
+    - source: '"bar"'
+      style: secondary
+      start: 81
+      end: 86
+    - source: foo
+      style: secondary
+      start: 89
+      end: 92
+    - source: '"bar" + foo'
+      style: secondary
+      start: 81
+      end: 92
+    - source: view = "bar" + foo
+      style: secondary
+      start: 74
+      end: 92
+    - source: std::string
+      style: secondary
+      start: 24
+      end: 35
+    - source: foo
+      style: secondary
+      start: 36
+      end: 39
+    - source: std::string foo = "foo";
+      style: secondary
+      start: 24
+      end: 48
+    - source: std::string_view
+      style: secondary
+      start: 50
+      end: 66
+    - source: view
+      style: secondary
+      start: 67
+      end: 71
+    - source: std::string_view view;
+      style: secondary
+      start: 50
+      end: 72
+  ? |
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = foo + "bar";
+    }
+  : labels:
+    - source: view = foo + "bar";
+      style: primary
+      start: 74
+      end: 93
+    - source: view
+      style: secondary
+      start: 74
+      end: 78
+    - source: '"bar"'
+      style: secondary
+      start: 87
+      end: 92
+    - source: foo
+      style: secondary
+      start: 81
+      end: 84
+    - source: foo + "bar"
+      style: secondary
+      start: 81
+      end: 92
+    - source: view = foo + "bar"
+      style: secondary
+      start: 74
+      end: 92
+    - source: std::string
+      style: secondary
+      start: 24
+      end: 35
+    - source: foo
+      style: secondary
+      start: 36
+      end: 39
+    - source: std::string foo = "foo";
+      style: secondary
+      start: 24
+      end: 48
+    - source: std::string_view
+      style: secondary
+      start: 50
+      end: 66
+    - source: view
+      style: secondary
+      start: 67
+      end: 71
+    - source: std::string_view view;
+      style: secondary
+      start: 50
+      end: 72
+  ? |
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = foo + "foo" + bar;
+    }
+  : labels:
+    - source: view = foo + "foo" + bar;
+      style: primary
+      start: 74
+      end: 99
+    - source: view
+      style: secondary
+      start: 74
+      end: 78
+    - source: foo
+      style: secondary
+      start: 81
+      end: 84
+    - source: foo + "foo" + bar
+      style: secondary
+      start: 81
+      end: 98
+    - source: view = foo + "foo" + bar
+      style: secondary
+      start: 74
+      end: 98
+    - source: std::string
+      style: secondary
+      start: 24
+      end: 35
+    - source: foo
+      style: secondary
+      start: 36
+      end: 39
+    - source: std::string foo = "foo";
+      style: secondary
+      start: 24
+      end: 48
+    - source: std::string_view
+      style: secondary
+      start: 50
+      end: 66
+    - source: view
+      style: secondary
+      start: 67
+      end: 71
+    - source: std::string_view view;
+      style: secondary
+      start: 50
+      end: 72
+  ? |
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = foo + foo + "bar";
+    }
+  : labels:
+    - source: view = foo + foo + "bar";
+      style: primary
+      start: 74
+      end: 99
+    - source: view
+      style: secondary
+      start: 74
+      end: 78
+    - source: foo
+      style: secondary
+      start: 81
+      end: 84
+    - source: foo + foo + "bar"
+      style: secondary
+      start: 81
+      end: 98
+    - source: view = foo + foo + "bar"
+      style: secondary
+      start: 74
+      end: 98
+    - source: std::string
+      style: secondary
+      start: 24
+      end: 35
+    - source: foo
+      style: secondary
+      start: 36
+      end: 39
+    - source: std::string foo = "foo";
+      style: secondary
+      start: 24
+      end: 48
+    - source: std::string_view
+      style: secondary
+      start: 50
+      end: 66
+    - source: view
+      style: secondary
+      start: 67
+      end: 71
+    - source: std::string_view view;
+      style: secondary
+      start: 50
+      end: 72
