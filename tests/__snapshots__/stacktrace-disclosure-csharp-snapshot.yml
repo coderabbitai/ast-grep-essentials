@@ -2,41 +2,41 @@ id: stacktrace-disclosure-csharp
 snapshots:
   ? "if (!env.IsDevelopment())  \n    {\n        app.UseDeveloperExceptionPage();  \n    }\n"
   : labels:
-    - source: app.UseDeveloperExceptionPage()
+    - source: app.UseDeveloperExceptionPage();
       style: primary
       start: 42
-      end: 73
+      end: 74
   ? "if (DateTime.Now.DayOfWeek == DayOfWeek.Monday) \n    {\n        app.UseDeveloperExceptionPage(); \n    }\n"
   : labels:
-    - source: app.UseDeveloperExceptionPage()
+    - source: app.UseDeveloperExceptionPage();
       style: primary
       start: 63
-      end: 94
+      end: 95
   ? "if (DateTime.Now.DayOfWeek == DayOfWeek.Monday)  \n    {\n        app.UseDeveloperExceptionPage();\n    }\n"
   : labels:
-    - source: app.UseDeveloperExceptionPage()
+    - source: app.UseDeveloperExceptionPage();
       style: primary
       start: 64
-      end: 95
+      end: 96
   ? "if (env.IsProduction())  \n    {\n        app.UseDeveloperExceptionPage(); \n    }\n"
   : labels:
-    - source: app.UseDeveloperExceptionPage()
+    - source: app.UseDeveloperExceptionPage();
       style: primary
       start: 40
-      end: 71
+      end: 72
   ? "if (environment == \"dev\")  \n    {\n        app.UseDeveloperExceptionPage();  \n    }\n"
   : labels:
-    - source: app.UseDeveloperExceptionPage()
+    - source: app.UseDeveloperExceptionPage();
       style: primary
       start: 42
-      end: 73
+      end: 74
   ? |
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
     app.UseDeveloperExceptionPage();
     }
   : labels:
-    - source: app.UseDeveloperExceptionPage()
+    - source: app.UseDeveloperExceptionPage();
       style: primary
       start: 74
-      end: 105
+      end: 106

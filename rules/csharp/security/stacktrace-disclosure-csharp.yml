@@ -14,32 +14,40 @@ note: >-
 ast-grep-essentials: true
 
 utils:
-  $APP.UseDeveloperExceptionPage(...):
+  kind_invocation_expression:
     kind: invocation_expression
-    pattern: $APP.UseDeveloperExceptionPage($$$)
     all:
-      - not:
-          inside:
-            stopBy: end
-            any:
-              - kind: postfix_unary_expression
-              - kind: member_access_expression
-                inside:
-                  kind: invocation_expression
-      - not:
-          inside:
-            stopBy: neighbor
-            kind: block
-            follows:
-              stopBy: end
-              any:
-                - kind: invocation_expression
-                  pattern: $ENV.IsDevelopment()
-                - kind: parenthesized_expression
-                  has:
-                    kind: invocation_expression
-                    pattern: $ENV.IsDevelopment()
-              inside:
-                kind: if_statement
+      - has:
+          nthChild: 1
+          kind: member_access_expression
+          pattern: $ENV.IsDevelopment
+      - has:
+          nthChild: 2
+          kind: argument_list
+
+  $APP.UseDeveloperExceptionPage(...):
+    kind: expression_statement
+    pattern: $APP.UseDeveloperExceptionPage($$$);
+    not:
+      inside:
+        stopBy: end
+        kind: if_statement
+        has:
+          nthChild: 1
+          any:
+            - matches: kind_invocation_expression
+            - kind: parenthesized_expression
+              has:
+                matches: kind_invocation_expression
 rule:
+  kind: expression_statement
   matches: $APP.UseDeveloperExceptionPage(...)
+  all:
+    - not:
+        has:
+          stopBy: end
+          kind: ERROR
+    - not:
+        inside:
+          stopBy: end
+          kind: ERROR
