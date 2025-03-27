@@ -1,0 +1,208 @@
+id: missing-httponly-java
+snapshots:
+  ? |
+    package com.example;
+
+    import io.micronaut.http.*;
+    import io.micronaut.http.cookie.Cookie;
+    import io.micronaut.http.netty.cookies.NettyCookie;
+    import io.micronaut.http.simple.cookies.SimpleCookie;
+    import java.io.*;
+
+    @Controller("/hello")
+    public class HelloController {
+
+      @Post("/test1")
+      public MutableHttpMessage<Object> postTest1() throws FileNotFoundException {
+        Cookie cookie = request.getCookies()
+                .findCookie( "foobar" )
+                .orElse( new NettyCookie( "foo", "bar" ) );
+      }
+    }
+  : labels:
+    - source: new NettyCookie( "foo", "bar" )
+      style: primary
+      start: 464
+      end: 495
+    - source: NettyCookie
+      style: secondary
+      start: 468
+      end: 479
+    - source: ( "foo", "bar" )
+      style: secondary
+      start: 479
+      end: 495
+    - source: io.micronaut.http.netty.cookies.NettyCookie
+      style: secondary
+      start: 97
+      end: 140
+    - source: import io.micronaut.http.netty.cookies.NettyCookie;
+      style: secondary
+      start: 90
+      end: 141
+    - source: import io.micronaut.http.netty.cookies.NettyCookie;
+      style: secondary
+      start: 90
+      end: 141
+  ? |
+    package com.example;
+
+    import io.micronaut.http.*;
+    import io.micronaut.http.cookie.Cookie;
+    import io.micronaut.http.netty.cookies.NettyCookie;
+    import io.micronaut.http.simple.cookies.SimpleCookie;
+    import java.io.*;
+
+    @Controller("/hello")
+    public class HelloController {
+
+      @Post("/test1")
+      public MutableHttpMessage<Object> postTest1() throws FileNotFoundException {
+        Cookie z = new NettyCookie("foo", "bar");
+      }
+    }
+  : labels:
+    - source: z
+      style: primary
+      start: 377
+      end: 378
+    - source: Cookie
+      style: secondary
+      start: 370
+      end: 376
+    - source: io.micronaut.http.cookie.Cookie
+      style: secondary
+      start: 57
+      end: 88
+    - source: import io.micronaut.http.cookie.Cookie;
+      style: secondary
+      start: 50
+      end: 89
+    - source: import io.micronaut.http.cookie.Cookie;
+      style: secondary
+      start: 50
+      end: 89
+    - source: Cookie z = new NettyCookie("foo", "bar");
+      style: secondary
+      start: 370
+      end: 411
+    - source: NettyCookie
+      style: secondary
+      start: 385
+      end: 396
+    - source: ("foo", "bar")
+      style: secondary
+      start: 396
+      end: 410
+    - source: new NettyCookie("foo", "bar")
+      style: secondary
+      start: 381
+      end: 410
+    - source: z = new NettyCookie("foo", "bar")
+      style: secondary
+      start: 377
+      end: 410
+  ? |
+    package com.example;
+
+    import io.micronaut.http.*;
+    import io.micronaut.http.cookie.Cookie;
+    import io.micronaut.http.netty.cookies.NettyCookie;
+    import io.micronaut.http.simple.cookies.SimpleCookie;
+    import java.io.*;
+
+    @Controller("/hello")
+    public class HelloController {
+
+      @Post("/test1")
+      public MutableHttpMessage<Object> postTest1() throws FileNotFoundException {
+        SimpleCookie s = new SimpleCookie("foo", "bar");
+      }
+    }
+  : labels:
+    - source: s
+      style: primary
+      start: 383
+      end: 384
+    - source: SimpleCookie
+      style: secondary
+      start: 370
+      end: 382
+    - source: io.micronaut.http.simple.cookies.SimpleCookie
+      style: secondary
+      start: 149
+      end: 194
+    - source: import io.micronaut.http.simple.cookies.SimpleCookie;
+      style: secondary
+      start: 142
+      end: 195
+    - source: import io.micronaut.http.simple.cookies.SimpleCookie;
+      style: secondary
+      start: 142
+      end: 195
+    - source: SimpleCookie s = new SimpleCookie("foo", "bar");
+      style: secondary
+      start: 370
+      end: 418
+    - source: SimpleCookie
+      style: secondary
+      start: 391
+      end: 403
+    - source: ("foo", "bar")
+      style: secondary
+      start: 403
+      end: 417
+    - source: new SimpleCookie("foo", "bar")
+      style: secondary
+      start: 387
+      end: 417
+    - source: s = new SimpleCookie("foo", "bar")
+      style: secondary
+      start: 383
+      end: 417
+  ? |
+    package com.example;
+
+    import io.micronaut.http.*;
+    import io.micronaut.http.cookie.Cookie;
+    import io.micronaut.http.netty.cookies.NettyCookie;
+    import io.micronaut.http.simple.cookies.SimpleCookie;
+    import java.io.*;
+
+    @Controller("/hello")
+    public class HelloController {
+
+      @Post("/test1")
+      public MutableHttpMessage<Object> postTest1() throws FileNotFoundException {
+        return HttpResponse.ok().cookie(Cookie.of("zzz", "ddd"));
+      }
+    }
+  : labels:
+    - source: Cookie.of("zzz", "ddd")
+      style: primary
+      start: 402
+      end: 425
+    - source: Cookie
+      style: secondary
+      start: 402
+      end: 408
+    - source: of
+      style: secondary
+      start: 409
+      end: 411
+    - source: ("zzz", "ddd")
+      style: secondary
+      start: 411
+      end: 425
+    - source: io.micronaut.http.cookie.Cookie
+      style: secondary
+      start: 57
+      end: 88
+    - source: import io.micronaut.http.cookie.Cookie;
+      style: secondary
+      start: 50
+      end: 89
+    - source: import io.micronaut.http.cookie.Cookie;
+      style: secondary
+      start: 50
+      end: 89
