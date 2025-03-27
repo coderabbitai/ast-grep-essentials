@@ -1,0 +1,47 @@
+id: string-view-temporary-string-cpp
+valid:
+  - |
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     std::string other = foo + "bar";
+    }
+invalid:
+  - |
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = foo + "bar";
+    }
+  - |
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = "bar" + foo;
+    }
+  - |
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = foo + foo + "bar";
+    }
+  - |
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = foo + "foo" + bar;
+    }
+  - |
+    extern std::string returns_std_string();
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = returns_std_string() + foo;
+    }
+  - |
+    extern std::string returns_std_string();
+    void operator_plus() {
+     std::string foo = "foo";
+     std::string_view view;
+     view = returns_std_string() + "bar";
+    }
