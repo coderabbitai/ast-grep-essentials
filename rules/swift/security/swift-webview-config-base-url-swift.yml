@@ -1,0 +1,99 @@
+id: swift-webview-config-base-url-swift
+severity: warning
+language: swift
+message: >-
+  UIWebView instances were observed where the baseURL is misconfigured as
+  nil, which allows for origin abuse within the webview. In order to remove
+  the effective origin, the application should explicitly set the baseURL to
+  `about:blank` or similar.
+note: >-
+  [CWE-272] Least Privilege Violation.
+  [REFERENCES]
+      - https://mas.owasp.org/MASVS/controls/MASVS-PLATFORM-2/
+
+ast-grep-essentials: true
+
+utils:
+  matches_patttern_loadHTMLString_&_load:
+    kind: call_expression
+    all:
+      - has:
+          kind: navigation_expression
+          all:
+            - has:
+                kind: simple_identifier
+                pattern: $W
+            - has:
+                kind: navigation_suffix
+                has:
+                  kind: simple_identifier
+                  regex: ^(loadHTMLString|load)$
+      - has:
+          kind: call_suffix
+          has:
+            stopBy: end
+            kind: value_argument
+            all:
+              - has:
+                  kind: simple_identifier
+                  regex: "^baseURL$"
+              - has:
+                  regex: "^nil$"
+      - any:
+          - follows:
+              stopBy: end
+              kind: property_declaration
+              all:
+                - has:
+                    stopBy: end
+                    kind: pattern
+                    has:
+                      stopBy: neighbor
+                      kind: simple_identifier
+                      pattern: $W
+                - has:
+                    stopBy: neighbor
+                    kind: call_expression
+                    all:
+                      - has:
+                          stopBy: neighbor
+                          kind: simple_identifier
+                          regex: "^UIWebView$"
+                      - has:
+                          stopBy: neighbor
+                          kind: call_suffix
+          - inside:
+              stopBy: end
+              follows:
+                stopBy: end
+                kind: property_declaration
+                all:
+                  - has:
+                      stopBy: end
+                      kind: pattern
+                      has:
+                        stopBy: neighbor
+                        kind: simple_identifier
+                        pattern: $W
+                  - has:
+                      stopBy: neighbor
+                      kind: call_expression
+                      all:
+                        - has:
+                            stopBy: neighbor
+                            kind: simple_identifier
+                            regex: "^UIWebView$"
+                        - has:
+                            stopBy: neighbor
+                            kind: call_suffix
+rule:
+  kind: call_expression
+  matches: matches_patttern_loadHTMLString_&_load
+  not:
+    all:
+      - has:
+          stopBy: end
+          kind: ERROR
+      - inside:
+          stopBy: end
+          kind: ERROR
