@@ -1,0 +1,38 @@
+id: swift-webview-config-base-url-swift
+valid:
+  - |
+    let webview2 = WKWebView(...)
+    webview2.loadHTMLString(someHtmlString, baseURL: nil)
+invalid:
+  - |
+    let webview = UIWebView(...)
+    webview.loadHTMLString(someHtmlString, baseURL: nil)
+  - |
+    let webview3 = UIWebView(...)
+    webview3.load(data, mimetype: "application/json", textEncodingName: "UTF8", baseURL: nil)
+  - |
+    let webview13 = UIWebView(frame: self.view.bounds)
+    let mixedContent = "<html><body><img src='image.jpg' /></body></html>"
+    let dataMixed = mixedContent.data(using: .utf8)!
+    webview13.load(dataMixed, mimetype: "text/html", textEncodingName: "UTF-8", baseURL: nil)
+    self.view.addSubview(webview13)
+  - |
+    let webview12 = UIWebView(frame: self.view.bounds)
+    let externalHtml = "<html><body><iframe src='https://www.example.com'></iframe></body></html>"
+    webview12.loadHTMLString(externalHtml, baseURL: nil)
+    self.view.addSubview(webview12)
+  - |
+    let webview10 = UIWebView(frame: self.view.bounds)
+    let text = "This is a test."
+    let data = text.data(using: .utf8)!
+    webview10.load(data, mimetype: "text/plain", textEncodingName: "UTF-8", baseURL: nil)
+    self.view.addSubview(webview10)
+  - |
+    let webview9 = UIWebView(frame: self.view.bounds)
+    let dynamicHtml = "<html><body><h2>Dynamic Content</h2></body></html>"
+    webview9.loadHTMLString(dynamicHtml, baseURL: nil)
+    self.view.addSubview(webview9)
+  - |
+    let webview7 = UIWebView(frame: self.view.bounds)
+    webview7.load(data, mimetype: "application/json", textEncodingName: "UTF-8", baseURL: nil)
+    self.view.addSubview(webview7)
