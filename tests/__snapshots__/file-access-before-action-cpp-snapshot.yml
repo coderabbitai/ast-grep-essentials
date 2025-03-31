@@ -1,0 +1,189 @@
+id: file-access-before-action-cpp
+snapshots:
+  ? |
+    {
+      const char *original_key = "path/to/file/filename";
+      const char *mirror_key = "path/to/another/file/filename";
+
+      if ((access(original_key, F_OK) == 0) && (access(mirror_key, F_OK) == 0)){
+          copy_file("/bin/cp %s %s", original_key, mirror_key);
+          unlink(original_key);
+      }
+
+      void test_002(){
+        const char *original_key = "path/to/file/filename";
+        if (access(original_key, W_OK) == 0){
+            FILe *fp = fopen(original_key, "wb");
+        }
+      }
+    }
+  : labels:
+    - source: unlink
+      style: primary
+      start: 260
+      end: 266
+    - source: original_key
+      style: secondary
+      start: 267
+      end: 279
+    - source: (original_key)
+      style: secondary
+      start: 266
+      end: 280
+    - source: original_key
+      style: secondary
+      start: 131
+      end: 143
+    - source: F_OK
+      style: secondary
+      start: 145
+      end: 149
+    - source: (original_key, F_OK)
+      style: secondary
+      start: 130
+      end: 150
+    - source: access
+      style: secondary
+      start: 124
+      end: 130
+    - source: access(original_key, F_OK)
+      style: secondary
+      start: 124
+      end: 150
+    - source: ==
+      style: secondary
+      start: 151
+      end: 153
+    - source: '0'
+      style: secondary
+      start: 154
+      end: 155
+    - source: access(original_key, F_OK) == 0
+      style: secondary
+      start: 124
+      end: 155
+    - source: (access(original_key, F_OK) == 0)
+      style: secondary
+      start: 123
+      end: 156
+    - source: (access(original_key, F_OK) == 0) && (access(mirror_key, F_OK) == 0)
+      style: secondary
+      start: 123
+      end: 191
+    - source: ((access(original_key, F_OK) == 0) && (access(mirror_key, F_OK) == 0))
+      style: secondary
+      start: 122
+      end: 192
+    - source: |-
+        if ((access(original_key, F_OK) == 0) && (access(mirror_key, F_OK) == 0)){
+              copy_file("/bin/cp %s %s", original_key, mirror_key);
+              unlink(original_key);
+          }
+      style: secondary
+      start: 119
+      end: 285
+    - source: |-
+        {
+              copy_file("/bin/cp %s %s", original_key, mirror_key);
+              unlink(original_key);
+          }
+      style: secondary
+      start: 192
+      end: 285
+    - source: unlink(original_key)
+      style: secondary
+      start: 260
+      end: 280
+  ? |
+    {
+    const char *original_key = "path/to/file/filename";
+    const char *mirror_key = "path/to/another/file/filename";
+
+    if ((access(original_key, F_OK) == 0) && (access(mirror_key, F_OK) == 0)){
+        copy_file("/bin/cp %s %s", original_key, mirror_key);
+        unlink(original_key);
+    }
+
+    void test_002(){
+      const char *original_key = "path/to/file/filename";
+      if (access(original_key, W_OK) == 0){
+          FILe *fp = fopen(original_key, "wb");
+      }
+    }
+  : labels:
+    - source: unlink
+      style: primary
+      start: 250
+      end: 256
+    - source: original_key
+      style: secondary
+      start: 257
+      end: 269
+    - source: (original_key)
+      style: secondary
+      start: 256
+      end: 270
+    - source: original_key
+      style: secondary
+      start: 125
+      end: 137
+    - source: F_OK
+      style: secondary
+      start: 139
+      end: 143
+    - source: (original_key, F_OK)
+      style: secondary
+      start: 124
+      end: 144
+    - source: access
+      style: secondary
+      start: 118
+      end: 124
+    - source: access(original_key, F_OK)
+      style: secondary
+      start: 118
+      end: 144
+    - source: ==
+      style: secondary
+      start: 145
+      end: 147
+    - source: '0'
+      style: secondary
+      start: 148
+      end: 149
+    - source: access(original_key, F_OK) == 0
+      style: secondary
+      start: 118
+      end: 149
+    - source: (access(original_key, F_OK) == 0)
+      style: secondary
+      start: 117
+      end: 150
+    - source: (access(original_key, F_OK) == 0) && (access(mirror_key, F_OK) == 0)
+      style: secondary
+      start: 117
+      end: 185
+    - source: ((access(original_key, F_OK) == 0) && (access(mirror_key, F_OK) == 0))
+      style: secondary
+      start: 116
+      end: 186
+    - source: |-
+        if ((access(original_key, F_OK) == 0) && (access(mirror_key, F_OK) == 0)){
+            copy_file("/bin/cp %s %s", original_key, mirror_key);
+            unlink(original_key);
+        }
+      style: secondary
+      start: 113
+      end: 273
+    - source: |-
+        {
+            copy_file("/bin/cp %s %s", original_key, mirror_key);
+            unlink(original_key);
+        }
+      style: secondary
+      start: 186
+      end: 273
+    - source: unlink(original_key)
+      style: secondary
+      start: 250
+      end: 270
