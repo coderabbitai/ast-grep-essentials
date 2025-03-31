@@ -15,7 +15,7 @@ note: >-
       - https://cwe.mitre.org/data/definitions/287
       - https://cwe.mitre.org/data/definitions/345
       - https://cwe.mitre.org/data/definitions/347
-
+ast-grep-essentials: true
 rule:
   pattern: $JWT.decode($TOKEN, $SECRET, $NOVERIFY $$$)
   inside:
@@ -61,7 +61,7 @@ rule:
                                     stopBy: end
                                     any:
                                       - kind: object
-                                      - kind: array 
+                                      - kind: array
                                       - kind: pair
 
         - kind: expression_statement
@@ -97,13 +97,13 @@ constraints:
           - any:
               - regex: ^true$
               - kind: string
-              - kind: template_string 
+              - kind: template_string
           - has:
               stopBy: end
               any:
                 - regex: ^true$
                 - kind: string
-                - kind: template_string 
+                - kind: template_string
               not:
                 any:
                   - kind: property_identifier
@@ -112,7 +112,5 @@ constraints:
                       - kind: string
                       - kind: template_string
                     nthChild: 1
-                inside: 
+                inside:
                   kind: pair
-
-

@@ -10,50 +10,50 @@ note: >-
   [CWE-798] Use of Hard-coded Credentials.
   [REFERENCES]
       - https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html
+ast-grep-essentials: true
 utils:
   MATCH_PASSWORD_STRING:
-   kind: string
-   inside:
-     stopBy: end
-     kind: pair
-     all:
-      - has:
-          stopBy: neighbor
-          kind: simple_symbol
-          regex: '^:password$'
-      - has:
-          stopBy: neighbor
-          kind: string
-      - inside:
-          stopBy: neighbor
-          kind: argument_list
-          inside:
-            stopBy: end
-            kind: call
-            all:
-              - has:
-                  stopBy: neighbor
-                  kind: identifier
-                  regex: '^http_basic_authenticate_with$'
-              - inside:
-                  stopBy: neighbor
-                  kind: body_statement
-                  inside:
-                    stopBy: end
-                    kind: class
-                    all:
-                      - has:
-                          stopBy: neighbor
-                          kind: constant
-                      - has:
-                          stopBy: end
-                          kind: superclass
-                          has:
+    kind: string
+    inside:
+      stopBy: end
+      kind: pair
+      all:
+        - has:
+            stopBy: neighbor
+            kind: simple_symbol
+            regex: "^:password$"
+        - has:
+            stopBy: neighbor
+            kind: string
+        - inside:
+            stopBy: neighbor
+            kind: argument_list
+            inside:
+              stopBy: end
+              kind: call
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: identifier
+                    regex: "^http_basic_authenticate_with$"
+                - inside:
+                    stopBy: neighbor
+                    kind: body_statement
+                    inside:
+                      stopBy: end
+                      kind: class
+                      all:
+                        - has:
                             stopBy: neighbor
                             kind: constant
-                            regex: '^ApplicationController$'
+                        - has:
+                            stopBy: end
+                            kind: superclass
+                            has:
+                              stopBy: neighbor
+                              kind: constant
+                              regex: "^ApplicationController$"
 
 rule:
   kind: string
   matches: MATCH_PASSWORD_STRING
-

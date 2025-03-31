@@ -6,7 +6,6 @@ invalid:
   - |
     if (stat(file.c_str(), &buf) == 0){
       // Open the file for reading
-      // ruleid: file-stat-before-action
       fp = fopen(file.c_str(), "r");
       if (fp == NULL)
       {

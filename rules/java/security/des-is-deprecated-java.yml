@@ -9,8 +9,9 @@ note: >-
   [CWE-326] Inadequate Encryption Strength.
   [REFERENCES]
       - https://www.nist.gov/news-events/news/2005/06/nist-withdraws-outdated-data-encryption-standard
+ast-grep-essentials: true
 rule:
   pattern: $CIPHER.getInstance($SAS)
-constraints: 
+constraints:
   SAS:
     regex: ^".*/DES/.*"|"DES"|"DES/.*"$

@@ -3,7 +3,6 @@ snapshots:
   ? |
     if (stat(file.c_str(), &buf) == 0){
       // Open the file for reading
-      // ruleid: file-stat-before-action
       fp = fopen(file.c_str(), "r");
       if (fp == NULL)
       {
@@ -39,16 +38,16 @@ snapshots:
   : labels:
     - source: fopen
       style: primary
-      start: 111
-      end: 116
+      start: 74
+      end: 79
     - source: file.c_str()
       style: secondary
-      start: 117
-      end: 129
+      start: 80
+      end: 92
     - source: (file.c_str(), "r")
       style: secondary
-      start: 116
-      end: 135
+      start: 79
+      end: 98
     - source: stat
       style: secondary
       start: 4
@@ -84,7 +83,6 @@ snapshots:
     - source: |-
         if (stat(file.c_str(), &buf) == 0){
           // Open the file for reading
-          // ruleid: file-stat-before-action
           fp = fopen(file.c_str(), "r");
           if (fp == NULL)
           {
@@ -119,11 +117,10 @@ snapshots:
         }
       style: secondary
       start: 0
-      end: 830
+      end: 793
     - source: |-
         {
           // Open the file for reading
-          // ruleid: file-stat-before-action
           fp = fopen(file.c_str(), "r");
           if (fp == NULL)
           {
@@ -158,8 +155,8 @@ snapshots:
         }
       style: secondary
       start: 34
-      end: 830
+      end: 793
     - source: fopen(file.c_str(), "r")
       style: secondary
-      start: 111
-      end: 135
+      start: 74
+      end: 98

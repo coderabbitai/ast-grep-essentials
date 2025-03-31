@@ -14,34 +14,36 @@ note: >-
       - https://mobile-security.gitbook.io/mobile-security-testing-guide/ios-testing-guide/0x06f-testing-local-authentication
       - https://shirazkhan030.medium.com/biometric-authentication-in-ios-6c53c54f17df
 
+ast-grep-essentials: true
+
 rule:
   any:
-   -  kind: navigation_expression
+    - kind: navigation_expression
       pattern: $X.evaluatePolicy
       not:
-         has:
-            stopBy: end
-            kind: tuple_expression
-            has:
-               nthChild: 2
+        has:
+          stopBy: end
+          kind: tuple_expression
+          has:
+            nthChild: 2
 
-   -  kind: navigation_expression
+    - kind: navigation_expression
       has:
-         kind: navigation_suffix
-         regex: \.evaluatePolicy$
-         nthChild: 
-            position: 1
-            reverse: true
+        kind: navigation_suffix
+        regex: \.evaluatePolicy$
+        nthChild:
+          position: 1
+          reverse: true
       not:
-         has:
-            stopBy: end
-            kind: tuple_expression
-            has:
-               nthChild: 2
+        has:
+          stopBy: end
+          kind: tuple_expression
+          has:
+            nthChild: 2
 
-   -  pattern: '.evaluatePolicy'
-   
+    - pattern: ".evaluatePolicy"
+
   not:
-   has:
+    has:
       stopBy: end
       kind: ERROR

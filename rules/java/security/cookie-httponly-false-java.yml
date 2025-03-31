@@ -9,5 +9,6 @@ note: >-
   [CWE-1004] Sensitive Cookie Without 'HttpOnly' Flag.
   [REFERENCES]
   - https://capec.mitre.org/data/definitions/463.html
+ast-grep-essentials: true
 rule:
   pattern: $COOKIE.setHttpOnly(false);
