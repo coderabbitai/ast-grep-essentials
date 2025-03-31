@@ -7,8 +7,9 @@ note: >-
   [CWE-326] Inadequate Encryption Strength
   [REFERENCES]
       - https://rdist.root.org/2009/10/06/why-rsa-encryption-padding-is-critical/
+ast-grep-essentials: true
 rule:
   pattern: $YST.getInstance($MODE)
 constraints:
   MODE:
-    regex: 'RSA/[Nn][Oo][Nn][Ee]/NoPadding'
+    regex: "RSA/[Nn][Oo][Nn][Ee]/NoPadding"

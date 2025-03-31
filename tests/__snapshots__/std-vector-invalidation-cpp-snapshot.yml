@@ -1,11 +1,11 @@
 id: std-vector-invalidation-cpp
 snapshots:
-  ? "void loop_variant_5(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {\n    if (should_erase(*it)) {\n      // ruleid: std-vector-invalidation\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_6(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {\n    if (should_erase(*it)) {\n      // ruleid: std-vector-invalidation\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_7(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.rbegin(); it != vec.rend(); ++it) {\n    if (should_erase(*it)) {\n      // ruleid: std-vector-invalidation\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_8(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.rbegin(); it != vec.rend(); it++) {\n    if (should_erase(*it)) {\n      // ruleid: std-vector-invalidation\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_9(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.begin(), end = vec.end(); it != end; ++it) {\n    if (should_erase(*it)) {\n      // ruleid: std-vector-invalidation\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_10(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.begin(), end = vec.end(); it != end; it++) {\n    if (should_erase(*it)) {\n      // ruleid: std-vector-invalidation\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_11(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.rbegin(), end = vec.rend(); it != end; ++it) {\n    if (should_erase(*it)) {\n      // ruleid: std-vector-invalidation\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_12(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.rbegin(), end = vec.rend(); it != end; it++) {\n    if (should_erase(*it)) {\n      // ruleid: std-vector-invalidation\n      vec.erase(it);\n    }\n  }\n}  \nvoid f(std::vector<int> &vec, std::vector<int> &other_vec) {\n  for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {\n    if (foo()) {\n      // ruleid: std-vector-invalidation\n      vec.push_back(0);\n\n      // Modifying a different container is OK\n      // ok: std-vector-invalidation\n      other_vec.push_back(0);\n    }\n  }\n}\n"
+  ? "void loop_variant_5(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {\n    if (should_erase(*it)) {\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_6(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {\n    if (should_erase(*it)) {\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_7(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.rbegin(); it != vec.rend(); ++it) {\n    if (should_erase(*it)) {\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_8(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.rbegin(); it != vec.rend(); it++) {\n    if (should_erase(*it)) {\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_9(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.begin(), end = vec.end(); it != end; ++it) {\n    if (should_erase(*it)) {\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_10(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.begin(), end = vec.end(); it != end; it++) {\n    if (should_erase(*it)) {\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_11(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.rbegin(), end = vec.rend(); it != end; ++it) {\n    if (should_erase(*it)) {\n      vec.erase(it);\n    }\n  }\n}\nvoid loop_variant_12(std::vector<int> &vec) {\n  for(std::vector<int>::iterator it = vec.rbegin(), end = vec.rend(); it != end; it++) {\n    if (should_erase(*it)) {\n      vec.erase(it);\n    }\n  }\n}  \nvoid f(std::vector<int> &vec, std::vector<int> &other_vec) {\n  for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); it++) {\n    if (foo()) {\n      vec.push_back(0);\n      // Modifying a different container is OK\n      other_vec.push_back(0);\n    }\n  }\n}\n"
   : labels:
     - source: vec.erase(it)
       style: primary
-      start: 197
-      end: 210
+      start: 156
+      end: 169
     - source: std::vector<int>::iterator it = vec.begin();
       style: secondary
       start: 51
@@ -21,10 +21,9 @@ snapshots:
     - source: |-
         for(std::vector<int>::iterator it = vec.begin(); it != vec.end(); ++it) {
             if (should_erase(*it)) {
-              // ruleid: std-vector-invalidation
               vec.erase(it);
             }
           }
       style: secondary
       start: 47
-      end: 221
+      end: 180

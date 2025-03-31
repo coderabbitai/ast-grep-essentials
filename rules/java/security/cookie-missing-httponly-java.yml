@@ -10,6 +10,7 @@ note: >-
   [CWE-1004] Sensitive Cookie Without 'HttpOnly' Flag.
   [REFERENCES]
       - https://owasp.org/www-community/HttpOnly
+ast-grep-essentials: true
 rule:
   pattern: $RESPONSE.addCookie($COOKIE);
   all:

@@ -1,11 +1,11 @@
 id: jwt-simple-noverify-javascript
 snapshots:
-  ? "const jwt = require('jwt-simple'); \n\napp.get('/protectedRoute1', (req, res) => {\n  const token = req.headers.authorization;\n\n  if (!token) {\n    return res.status(401).json({ error: 'Unauthorized. Token missing.' });\n  }\n\n  try {\n    // ruleid: jwt-simple-noverify  \n    const decoded = jwt.decode(token, secretKey, 'HS256', 12);\n    res.json({ message: `Hello ${decoded.username}` });\n  } catch (error) {\n    res.status(401).json({ error: 'Unauthorized. Invalid token.' });\n  }\n});\n"
+  ? "const jwt = require('jwt-simple'); \n\napp.get('/protectedRoute1', (req, res) => {\n  const token = req.headers.authorization;\n\n  if (!token) {\n    return res.status(401).json({ error: 'Unauthorized. Token missing.' });\n  }\n\n  try {\n    const decoded = jwt.decode(token, secretKey, 'HS256', 12);\n    res.json({ message: `Hello ${decoded.username}` });\n  } catch (error) {\n    res.status(401).json({ error: 'Unauthorized. Invalid token.' });\n  }\n});\n"
   : labels:
     - source: jwt.decode(token, secretKey, 'HS256', 12)
       style: primary
-      start: 287
-      end: 328
+      start: 250
+      end: 291
     - source: jwt
       style: secondary
       start: 6
@@ -22,12 +22,12 @@ snapshots:
       style: secondary
       start: 0
       end: 34
-  ? "const jwt = require('jwt-simple');  \n\napp.get('/protectedRoute2', (req, res) => {\n  const token = req.headers.authorization;\n\n  if (!token) {\n    return res.status(401).json({ error: 'Unauthorized. Token missing.' });\n  }\n\n  try {\n    // ruleid: jwt-simple-noverify   \n    const decoded = jwt.decode(token, secretKey, true);\n    res.json({ message: `Hello ${decoded.username}` });\n  } catch (error) {\n    res.status(401).json({ error: 'Unauthorized. Invalid token.' });\n  }\n});\n"
+  ? "const jwt = require('jwt-simple');  \n\napp.get('/protectedRoute2', (req, res) => {\n  const token = req.headers.authorization;\n\n  if (!token) {\n    return res.status(401).json({ error: 'Unauthorized. Token missing.' });\n  }\n\n  try {\n    const decoded = jwt.decode(token, secretKey, true);\n    res.json({ message: `Hello ${decoded.username}` });\n  } catch (error) {\n    res.status(401).json({ error: 'Unauthorized. Invalid token.' });\n  }\n});\n"
   : labels:
     - source: jwt.decode(token, secretKey, true)
       style: primary
-      start: 289
-      end: 323
+      start: 251
+      end: 285
     - source: jwt
       style: secondary
       start: 6
@@ -44,12 +44,12 @@ snapshots:
       style: secondary
       start: 0
       end: 34
-  ? "const jwt = require('jwt-simple');  \n\napp.get('/protectedRoute3', (req, res) => {\n  const token = req.headers.authorization;\n\n  if (!token) {\n    return res.status(401).json({ error: 'Unauthorized. Token missing.' });\n  }\n\n  try {\n    // ruleid: jwt-simple-noverify    \n    const decoded = jwt.decode(token, secretKey, 'false');\n    res.json({ message: `Hello ${decoded.username}` });\n  } catch (error) {\n    res.status(401).json({ error: 'Unauthorized. Invalid token.' });\n  }\n});\n"
+  ? "const jwt = require('jwt-simple');  \n\napp.get('/protectedRoute3', (req, res) => {\n  const token = req.headers.authorization;\n\n  if (!token) {\n    return res.status(401).json({ error: 'Unauthorized. Token missing.' });\n  }\n\n  try {\n    const decoded = jwt.decode(token, secretKey, 'false');\n    res.json({ message: `Hello ${decoded.username}` });\n  } catch (error) {\n    res.status(401).json({ error: 'Unauthorized. Invalid token.' });\n  }\n});\n"
   : labels:
     - source: jwt.decode(token, secretKey, 'false')
       style: primary
-      start: 290
-      end: 327
+      start: 251
+      end: 288
     - source: jwt
       style: secondary
       start: 6

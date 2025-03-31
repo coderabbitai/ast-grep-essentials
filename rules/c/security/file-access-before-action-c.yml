@@ -25,15 +25,10 @@ utils:
             inside:
               stopBy: end
               kind: parenthesized_expression
-              nthChild: 1
-              inside:
-                stopBy: end
-                kind: if_statement
           inside:
             stopBy: end
             kind: compound_statement
             inside:
-              stopBy: end
               kind: if_statement
               has:
                 kind: parenthesized_expression
@@ -119,14 +114,10 @@ utils:
             inside:
               stopBy: end
               kind: parenthesized_expression
-              inside:
-                stopBy: end
-                kind: if_statement
           inside:
             stopBy: end
             kind: compound_statement
             inside:
-              stopBy: end
               kind: if_statement
               has:
                 kind: parenthesized_expression

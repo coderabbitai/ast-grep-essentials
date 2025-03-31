@@ -6,7 +6,8 @@ message: >-
 note: >-
   [CWE-295]: Improper Certificate Validation
   [REFERENCES]
-    - https://docs.rs/openssl/latest/openssl/ssl/struct.SslContextBuilder.html#method.set_verify    
+    - https://docs.rs/openssl/latest/openssl/ssl/struct.SslContextBuilder.html#method.set_verify
+ast-grep-essentials: true
 rule:
   kind: call_expression
   any:
@@ -54,7 +55,7 @@ rule:
                     stopBy: end
                     kind: scoped_identifier
                     regex: ^openssl::ssl$
-    
+
     - pattern: $BUILDER.set_verify(SSL_VERIFY_NONE)
       inside:
         stopBy: end

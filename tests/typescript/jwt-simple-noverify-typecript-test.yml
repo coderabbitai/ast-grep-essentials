@@ -10,7 +10,6 @@ valid:
       }
 
       try {
-        // ok: jwt-simple-noverify   
         const decoded = jwt.decode(token, secretKey);
         res.json({ message: `Hello ${decoded.username}` });
       } catch (error) {
@@ -26,8 +25,7 @@ valid:
         return res.status(401).json({ error: 'Unauthorized. Token missing.' });
       }
 
-      try {
-        // ok: jwt-simple-noverify    
+      try { 
         const decoded = jwt.decode(token, secretKey, false);
         res.json({ message: `Hello ${decoded.username}` });
       } catch (error) {
@@ -46,7 +44,6 @@ invalid:
       }
 
       try {
-        // ruleid: jwt-simple-noverify  
         const decoded = jwt.decode(token, secretKey, 'HS256', 12);
         res.json({ message: `Hello ${decoded.username}` });
       } catch (error) {
@@ -64,7 +61,6 @@ invalid:
       }
 
       try {
-        // ruleid: jwt-simple-noverify   
         const decoded = jwt.decode(token, secretKey, true);
         res.json({ message: `Hello ${decoded.username}` });
       } catch (error) {
@@ -82,7 +78,6 @@ invalid:
       }
 
       try {
-        // ruleid: jwt-simple-noverify    
         const decoded = jwt.decode(token, secretKey, 'false');
         res.json({ message: `Hello ${decoded.username}` });
       } catch (error) {

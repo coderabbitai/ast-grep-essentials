@@ -12,7 +12,7 @@ note: >-
   [REFERENCES]
       - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
       - https://googleprojectzero.blogspot.com/2022/10/rc4-is-still-considered-harmful.html
-
+ast-grep-essentials: true
 rule:
   pattern: $CIPHER.getInstance($ARGUMENT)
 
@@ -29,14 +29,13 @@ constraints:
         has:
           kind: string_fragment
           regex: ^RC4$
-    
+
     all:
       - not:
-          has: 
+          has:
             nthChild: 2
       - not:
           has:
             stopBy: end
             any:
               - kind: array_access
-

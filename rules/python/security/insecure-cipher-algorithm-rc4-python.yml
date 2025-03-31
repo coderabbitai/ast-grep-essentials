@@ -2,17 +2,18 @@ id: insecure-cipher-algorithm-rc4-python
 severity: warning
 language: python
 message: >-
-      Detected ARC4 cipher algorithm which is considered insecure. This
-      algorithm is not cryptographically secure and can be reversed easily. Use
-      secure stream ciphers such as ChaCha20, XChaCha20 and Salsa20, or a block
-      cipher such as AES with a block size of 128 bits. When using a block
-      cipher, use a modern mode of operation that also provides authentication,
-      such as GCM.
+  Detected ARC4 cipher algorithm which is considered insecure. This
+  algorithm is not cryptographically secure and can be reversed easily. Use
+  secure stream ciphers such as ChaCha20, XChaCha20 and Salsa20, or a block
+  cipher such as AES with a block size of 128 bits. When using a block
+  cipher, use a modern mode of operation that also provides authentication,
+  such as GCM.
 note: >-
   [CWE-327] Use of a Broken or Risky Cryptographic Algorithm.
   [REFERENCES]
       - https://cwe.mitre.org/data/definitions/326.html
       - https://www.pycryptodome.org/src/cipher/cipher
+ast-grep-essentials: true
 utils:
   MATCH_PATTERN_arc4.new:
     kind: call
@@ -28,7 +29,7 @@ utils:
             - has:
                 stopBy: neighbor
                 kind: identifier
-                regex: '^new$'
+                regex: "^new$"
       - has:
           stopBy: neighbor
           kind: argument_list
@@ -49,11 +50,11 @@ utils:
                     - has:
                         stopBy: neighbor
                         kind: identifier
-                        regex: '^Crypto$|^Cryptodome$'
+                        regex: "^Crypto$|^Cryptodome$"
                     - has:
                         stopBy: neighbor
                         kind: identifier
-                        regex: '^Cipher$'
+                        regex: "^Cipher$"
               - has:
                   stopBy: neighbor
                   kind: aliased_import
@@ -64,7 +65,7 @@ utils:
                         has:
                           stopBy: neighbor
                           kind: identifier
-                          regex: '^ARC4$'
+                          regex: "^ARC4$"
                     - has:
                         stopBy: neighbor
                         kind: identifier
@@ -76,10 +77,3 @@ rule:
     - matches: MATCH_PATTERN_arc4.new
     - pattern: Cryptodome.Cipher.ARC4.new($$$)
     - pattern: Crypto.Cipher.ARC4.new($$$)
-
-
-
-
-
-
-    
