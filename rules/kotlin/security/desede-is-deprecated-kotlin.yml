@@ -2,7 +2,7 @@ id: desede-is-deprecated-kotlin
 language: kotlin
 severity: warning
 message: >-
-    Triple DES (3DES or DESede) is considered deprecated. AES is the recommended cipher. Upgrade to use AES.
+  Triple DES (3DES or DESede) is considered deprecated. AES is the recommended cipher. Upgrade to use AES.
 note: >-
   [CWE-326]: Inadequate Encryption Strength
   [OWASP A03:2017]: Sensitive Data Exposure
@@ -10,6 +10,8 @@ note: >-
   [REFERENCES]
       - https://find-sec-bugs.github.io/bugs.htm#TDES_USAGE
       - https://csrc.nist.gov/News/2017/Update-to-Current-Use-and-Deprecation-of-TDEA
+
+ast-grep-essentials: true
 
 utils:
   match_call_expression:

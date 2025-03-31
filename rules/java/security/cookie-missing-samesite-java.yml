@@ -18,13 +18,14 @@ note: >-
   [CWE-352] Cross-Site Request Forgery (CSRF).
   [REFERENCES]
       - https://stackoverflow.com/questions/42717210/samesite-cookie-in-java-application
+ast-grep-essentials: true
 rule:
   any:
     - pattern: $RESP.setHeader("Set-Cookie", $T);
       inside:
         stopBy: end
-        kind: block 
-        follows: 
+        kind: block
+        follows:
           stopBy: end
           kind: formal_parameters
           has:
@@ -34,7 +35,7 @@ rule:
               - has:
                   stopBy: end
                   kind: type_identifier
-                  regex: '^HttpServletResponse$'
+                  regex: "^HttpServletResponse$"
               - has:
                   stopBy: neighbor
                   kind: identifier
@@ -45,22 +46,22 @@ rule:
           kind: expression_statement
           pattern: $RESP.setHeader("Set-Cookie", $T);
           inside:
-           stopBy: end
-           kind: block   
-           follows: 
-             stopBy: end
-             kind: formal_parameters
-             has:
+            stopBy: end
+            kind: block
+            follows:
               stopBy: end
-              kind: formal_parameter
-              all:
-              - has:
-                  stopBy: end
-                  kind: type_identifier
-                  regex: '^HttpServletResponse$'
-              - has:
-                  stopBy: neighbor
-                  kind: identifier     
+              kind: formal_parameters
+              has:
+                stopBy: end
+                kind: formal_parameter
+                all:
+                  - has:
+                      stopBy: end
+                      kind: type_identifier
+                      regex: "^HttpServletResponse$"
+                  - has:
+                      stopBy: neighbor
+                      kind: identifier
     - pattern: $RESP.setHeader("Set-Cookie");
 constraints:
   T:

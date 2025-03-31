@@ -9,77 +9,76 @@ note: >-
   [REFERENCES]
       - https://owasp.org/Top10/A02_2021-Cryptographic_Failures
       - https://googleprojectzero.blogspot.com/2022/10/rc4-is-still-considered-harmful.html
-
+ast-grep-essentials: true
 utils:
-   $CIPHER.getInstance("RC2"):
+  $CIPHER.getInstance("RC2"):
     kind: method_invocation
     all:
-    - has:
-       stopBy: neighbor
-       kind: identifier
-       nthchild: 1
-    - has:
-       stopBy: neighbor
-       kind: identifier
-       nthchild: 2
-       regex: ^getInstance$
-    - has:
-       stopBy: neighbor
-       kind: argument_list
-       all:
-       - has:
-          stopBy: end
-          kind: string_fragment
-          regex: ^RC2$
-       - not:
-          has:
-            stopBy: end
-            kind: array_access
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          nthchild: 1
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          nthchild: 2
+          regex: ^getInstance$
+      - has:
+          stopBy: neighbor
+          kind: argument_list
+          all:
+            - has:
+                stopBy: end
+                kind: string_fragment
+                regex: ^RC2$
+            - not:
+                has:
+                  stopBy: end
+                  kind: array_access
 
-   $CIPHER.getInstance("RC2")_with_instance:
+  $CIPHER.getInstance("RC2")_with_instance:
     kind: method_invocation
     all:
-    - has:
-       stopBy: neighbor
-       kind: identifier
-       nthchild: 1
-    - has:
-       stopBy: neighbor
-       kind: identifier
-       nthchild: 2
-       regex: ^getInstance$
-    - has:
-       stopBy: neighbor
-       kind: argument_list
-       has:
-        stopBy: end
-        kind: identifier
-        pattern: $RC2
-        not:
-          inside:
-            stopBy: end
-            kind: array_access
-    - inside:
-         stopBy: end
-         follows:
-          stopBy: end
-          kind: local_variable_declaration
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          nthchild: 1
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          nthchild: 2
+          regex: ^getInstance$
+      - has:
+          stopBy: neighbor
+          kind: argument_list
           has:
             stopBy: end
-            kind: variable_declarator
-            all:
-              - has:
-                   stopBy: neighbor
-                   kind: identifier
-                   pattern: $RC2
-              - has:
-                   stopBy: neighbor
-                   kind: string_literal
-                   has: 
+            kind: identifier
+            pattern: $RC2
+            not:
+              inside:
+                stopBy: end
+                kind: array_access
+      - inside:
+          stopBy: end
+          follows:
+            stopBy: end
+            kind: local_variable_declaration
+            has:
+              stopBy: end
+              kind: variable_declarator
+              all:
+                - has:
                     stopBy: neighbor
-                    kind: string_fragment
-                    regex: ^RC2$
-   
+                    kind: identifier
+                    pattern: $RC2
+                - has:
+                    stopBy: neighbor
+                    kind: string_literal
+                    has:
+                      stopBy: neighbor
+                      kind: string_fragment
+                      regex: ^RC2$
 
 rule:
   kind: method_invocation

@@ -2,13 +2,13 @@ id: sizeof-this-c
 language: c
 severity: warning
 message: >-
-    Do not use `sizeof(this)` to get the number of bytes of the object in
-    memory. It returns the size of the pointer, not the size of the object.
+  Do not use `sizeof(this)` to get the number of bytes of the object in
+  memory. It returns the size of the pointer, not the size of the object.
 note: >-
   [CWE-467]: Use of sizeof() on a Pointer Type
   [REFERENCES]
       - https://wiki.sei.cmu.edu/confluence/display/c/ARR01-C.+Do+not+apply+the+sizeof+operator+to+a+pointer+when+taking+the+size+of+an+array
-
+ast-grep-essentials: true
 rule:
   not:
     has:
@@ -40,7 +40,7 @@ rule:
             has:
               kind: function_declarator
               nthChild: 1
-    
+
     - kind: function_declarator
       all:
         - has:
@@ -65,7 +65,7 @@ rule:
         # - not:
         #     inside:
         #       has:
-        #         nthChild: 1              
+        #         nthChild: 1
 
     - kind: parameter_declaration
       all:
@@ -87,25 +87,25 @@ rule:
             - has:
                 kind: abstract_parenthesized_declarator
                 not:
-                    has:
-                      stopBy: end
-                      nthChild: 2
+                  has:
+                    stopBy: end
+                    nthChild: 2
                 has:
                   stopBy: end
                   kind: parameter_list
                   has:
                     kind: parameter_declaration
-                    pattern: $THIS                    
+                    pattern: $THIS
 
     - kind: sizeof_expression
       not:
-        has: 
+        has:
           any:
             - nthChild: 2
             - kind: parameter_declaration
       has:
         stopBy: end
-        kind:  identifier
+        kind: identifier
         pattern: $THIS
 
     - kind: type_descriptor
@@ -121,7 +121,7 @@ rule:
               not:
                 has:
                   stopBy: end
-                  nthChild: 2    
+                  nthChild: 2
               has:
                 kind: parameter_declaration
                 pattern: $THIS
