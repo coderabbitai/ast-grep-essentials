@@ -1,4 +1,4 @@
-id: file-access-before-action-c
+id: file-access-before-action-cpp
 valid:
   - |
 
@@ -15,8 +15,7 @@ invalid:
 
     void test_002(){
       const char *original_key = "path/to/file/filename";
-
       if (access(original_key, W_OK) == 0){
-          File *fp = fopen(original_key, "wb");
+          FILe *fp = fopen(original_key, "wb");
       }
     }
