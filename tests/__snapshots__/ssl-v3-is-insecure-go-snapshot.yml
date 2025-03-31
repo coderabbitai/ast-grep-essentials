@@ -3,7 +3,6 @@ snapshots:
   ? |
     client := &http.Client{
      Transport: &http.Transport{
-       // ruleid: ssl-v3-is-insecure
        TLSClientConfig: &tls.Config{
          KeyLogWriter:       w,
          MinVersion:         tls.VersionSSL30,
@@ -21,36 +20,36 @@ snapshots:
              InsecureSkipVerify: true,         // test server certificate is not trusted.
            }
       style: primary
-      start: 107
-      end: 358
+      start: 74
+      end: 325
     - source: tls.Config
       style: secondary
-      start: 107
-      end: 117
+      start: 74
+      end: 84
     - source: MinVersion
       style: secondary
-      start: 152
-      end: 162
+      start: 119
+      end: 129
     - source: tls
       style: secondary
-      start: 172
-      end: 175
+      start: 139
+      end: 142
     - source: VersionSSL30
       style: secondary
-      start: 176
-      end: 188
+      start: 143
+      end: 155
     - source: tls.VersionSSL30
       style: secondary
-      start: 172
-      end: 188
+      start: 139
+      end: 155
     - source: tls.VersionSSL30
       style: secondary
-      start: 172
-      end: 188
+      start: 139
+      end: 155
     - source: 'MinVersion:         tls.VersionSSL30'
       style: secondary
-      start: 152
-      end: 188
+      start: 119
+      end: 155
     - source: |-
         {
              KeyLogWriter:       w,
@@ -59,5 +58,5 @@ snapshots:
              InsecureSkipVerify: true,         // test server certificate is not trusted.
            }
       style: secondary
-      start: 117
-      end: 358
+      start: 84
+      end: 325

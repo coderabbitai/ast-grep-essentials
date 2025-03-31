@@ -109,7 +109,6 @@ snapshots:
       const char *original_key = "path/to/file/filename";
 
       if (access(original_key, W_OK) == 0){
-          // ruleid: file-access-before-action
           File *fp = fopen(original_key, "wb");
       }
     }

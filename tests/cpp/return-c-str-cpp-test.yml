@@ -2,7 +2,6 @@ id: return-c-str-cpp
 valid:
   - |
     std::string return_directly() {
-      // ok: return-c-str
       return std::string("foo");
     }
 invalid:
