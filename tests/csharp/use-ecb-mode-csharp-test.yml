@@ -1,0 +1,42 @@
+id: use-ecb-mode-csharp
+valid:
+  - |
+    Aes key = Aes.Create();
+    key.Mode = CipherMode.CBC;
+  - |
+    Aes key = Aes.Create();
+    var cipherText = key.EncryptCbc(msg, iv, PaddingMode.PKCS7);
+  - |
+    Aes key = Aes.Create();
+    key.Mode = CipherMode.CBC;
+  - |
+    Aes key = Aes.Create();
+    var msgText = key.DecryptCbc(cipherText, iv, PaddingMode.PKCS7);
+invalid:
+  - |
+    Aes key = Aes.Create();
+    key.Mode = CipherMode.ECB;
+  - |
+    Aes key = Aes.Create();
+    byte[] msg = new byte[32];
+    var cipherText = key.EncryptEcb(msg, PaddingMode.PKCS7);
+  - |
+    Aes key = Aes.Create();
+    key.Mode = CipherMode.ECB;
+  - |
+    Aes key = Aes.Create();
+    var msgText = key.DecryptEcb(cipherText, PaddingMode.PKCS7);
+  - |
+    TripleDES key = TripleDES.Create();
+    key.Mode = CipherMode.ECB;
+  - |
+    TripleDES key = TripleDES.Create();
+    byte[] msg = new byte[32];
+    var cipherText = key.EncryptEcb(msg, PaddingMode.PKCS7);
+  - |
+    TripleDES key = TripleDES.Create();
+    key.Mode = CipherMode.ECB
+  - |
+    Aes key = Aes.Create();
+    TripleDES key = TripleDES.Create();
+    var msgText = key.DecryptEcb(cipherText, PaddingMode.PKCS7);

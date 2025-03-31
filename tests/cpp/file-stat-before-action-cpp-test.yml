@@ -1,0 +1,41 @@
+id: file-stat-before-action-cpp
+valid:
+  - |
+
+invalid:
+  - |
+    if (stat(file.c_str(), &buf) == 0){
+      // Open the file for reading
+      // ruleid: file-stat-before-action
+      fp = fopen(file.c_str(), "r");
+      if (fp == NULL)
+      {
+        char message[2560];
+        sprintf(message, "File '%s' Cound Not be Opened", file.c_str());
+        // DISPLAY_MSG_ERROR( this, message, "GetFileContents", "System" );
+        throw message;
+      }
+
+      // Read the file
+      MvString s, ss;
+      while (fgets(data, sizeof(data), fp) != (char *)0)
+      {
+        s = data;
+        s.trimBoth();
+        if (s.compare(0, 5, "GROUP") == 0)
+        {
+          // size_t t = s.find_last_of( ":" );
+          size_t t = s.find(":");
+          if (t != string::npos)
+          {
+            ss = s.substr(t + 1).c_str();
+            ss.trimBoth();
+            ss = ss.substr(1, ss.length() - 3).c_str();
+            group_list.push_back(ss);
+          }
+        }
+      }
+
+      // Close the file
+      fclose(fp);
+    }

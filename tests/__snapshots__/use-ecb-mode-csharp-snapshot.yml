@@ -1,0 +1,405 @@
+id: use-ecb-mode-csharp
+snapshots:
+  ? |
+    Aes key = Aes.Create();
+    TripleDES key = TripleDES.Create();
+    var msgText = key.DecryptEcb(cipherText, PaddingMode.PKCS7);
+  : labels:
+    - source: key.DecryptEcb(cipherText, PaddingMode.PKCS7)
+      style: primary
+      start: 74
+      end: 119
+    - source: key
+      style: secondary
+      start: 74
+      end: 77
+    - source: DecryptEcb
+      style: secondary
+      start: 78
+      end: 88
+    - source: key.DecryptEcb
+      style: secondary
+      start: 74
+      end: 88
+    - source: (cipherText, PaddingMode.PKCS7)
+      style: secondary
+      start: 88
+      end: 119
+    - source: TripleDES
+      style: secondary
+      start: 24
+      end: 33
+    - source: key
+      style: secondary
+      start: 34
+      end: 37
+    - source: key = TripleDES.Create()
+      style: secondary
+      start: 34
+      end: 58
+    - source: TripleDES key = TripleDES.Create()
+      style: secondary
+      start: 24
+      end: 58
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 24
+      end: 59
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 24
+      end: 59
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 24
+      end: 59
+  ? |
+    Aes key = Aes.Create();
+    byte[] msg = new byte[32];
+    var cipherText = key.EncryptEcb(msg, PaddingMode.PKCS7);
+  : labels:
+    - source: key.EncryptEcb(msg, PaddingMode.PKCS7)
+      style: primary
+      start: 68
+      end: 106
+    - source: key
+      style: secondary
+      start: 68
+      end: 71
+    - source: EncryptEcb
+      style: secondary
+      start: 72
+      end: 82
+    - source: key.EncryptEcb
+      style: secondary
+      start: 68
+      end: 82
+    - source: (msg, PaddingMode.PKCS7)
+      style: secondary
+      start: 82
+      end: 106
+    - source: Aes
+      style: secondary
+      start: 0
+      end: 3
+    - source: key
+      style: secondary
+      start: 4
+      end: 7
+    - source: key = Aes.Create()
+      style: secondary
+      start: 4
+      end: 22
+    - source: Aes key = Aes.Create()
+      style: secondary
+      start: 0
+      end: 22
+    - source: Aes key = Aes.Create();
+      style: secondary
+      start: 0
+      end: 23
+    - source: Aes key = Aes.Create();
+      style: secondary
+      start: 0
+      end: 23
+    - source: Aes key = Aes.Create();
+      style: secondary
+      start: 0
+      end: 23
+  ? |
+    Aes key = Aes.Create();
+    key.Mode = CipherMode.ECB;
+  : labels:
+    - source: key.Mode = CipherMode.ECB;
+      style: primary
+      start: 24
+      end: 50
+    - source: key
+      style: secondary
+      start: 24
+      end: 27
+    - source: Mode
+      style: secondary
+      start: 28
+      end: 32
+    - source: key.Mode
+      style: secondary
+      start: 24
+      end: 32
+    - source: CipherMode
+      style: secondary
+      start: 35
+      end: 45
+    - source: ECB
+      style: secondary
+      start: 46
+      end: 49
+    - source: CipherMode.ECB
+      style: secondary
+      start: 35
+      end: 49
+    - source: key.Mode = CipherMode.ECB
+      style: secondary
+      start: 24
+      end: 49
+    - source: Aes
+      style: secondary
+      start: 0
+      end: 3
+    - source: key
+      style: secondary
+      start: 4
+      end: 7
+    - source: key = Aes.Create()
+      style: secondary
+      start: 4
+      end: 22
+    - source: Aes key = Aes.Create()
+      style: secondary
+      start: 0
+      end: 22
+    - source: Aes key = Aes.Create();
+      style: secondary
+      start: 0
+      end: 23
+    - source: Aes key = Aes.Create();
+      style: secondary
+      start: 0
+      end: 23
+    - source: Aes key = Aes.Create();
+      style: secondary
+      start: 0
+      end: 23
+  ? |
+    Aes key = Aes.Create();
+    var msgText = key.DecryptEcb(cipherText, PaddingMode.PKCS7);
+  : labels:
+    - source: key.DecryptEcb(cipherText, PaddingMode.PKCS7)
+      style: primary
+      start: 38
+      end: 83
+    - source: key
+      style: secondary
+      start: 38
+      end: 41
+    - source: DecryptEcb
+      style: secondary
+      start: 42
+      end: 52
+    - source: key.DecryptEcb
+      style: secondary
+      start: 38
+      end: 52
+    - source: (cipherText, PaddingMode.PKCS7)
+      style: secondary
+      start: 52
+      end: 83
+    - source: Aes
+      style: secondary
+      start: 0
+      end: 3
+    - source: key
+      style: secondary
+      start: 4
+      end: 7
+    - source: key = Aes.Create()
+      style: secondary
+      start: 4
+      end: 22
+    - source: Aes key = Aes.Create()
+      style: secondary
+      start: 0
+      end: 22
+    - source: Aes key = Aes.Create();
+      style: secondary
+      start: 0
+      end: 23
+    - source: Aes key = Aes.Create();
+      style: secondary
+      start: 0
+      end: 23
+    - source: Aes key = Aes.Create();
+      style: secondary
+      start: 0
+      end: 23
+  ? |
+    TripleDES key = TripleDES.Create();
+    byte[] msg = new byte[32];
+    var cipherText = key.EncryptEcb(msg, PaddingMode.PKCS7);
+  : labels:
+    - source: key.EncryptEcb(msg, PaddingMode.PKCS7)
+      style: primary
+      start: 80
+      end: 118
+    - source: key
+      style: secondary
+      start: 80
+      end: 83
+    - source: EncryptEcb
+      style: secondary
+      start: 84
+      end: 94
+    - source: key.EncryptEcb
+      style: secondary
+      start: 80
+      end: 94
+    - source: (msg, PaddingMode.PKCS7)
+      style: secondary
+      start: 94
+      end: 118
+    - source: TripleDES
+      style: secondary
+      start: 0
+      end: 9
+    - source: key
+      style: secondary
+      start: 10
+      end: 13
+    - source: key = TripleDES.Create()
+      style: secondary
+      start: 10
+      end: 34
+    - source: TripleDES key = TripleDES.Create()
+      style: secondary
+      start: 0
+      end: 34
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 0
+      end: 35
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 0
+      end: 35
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 0
+      end: 35
+  ? |
+    TripleDES key = TripleDES.Create();
+    key.Mode = CipherMode.ECB
+  : labels:
+    - source: key.Mode = CipherMode.ECB
+      style: primary
+      start: 36
+      end: 61
+    - source: key
+      style: secondary
+      start: 36
+      end: 39
+    - source: Mode
+      style: secondary
+      start: 40
+      end: 44
+    - source: key.Mode
+      style: secondary
+      start: 36
+      end: 44
+    - source: CipherMode
+      style: secondary
+      start: 47
+      end: 57
+    - source: ECB
+      style: secondary
+      start: 58
+      end: 61
+    - source: CipherMode.ECB
+      style: secondary
+      start: 47
+      end: 61
+    - source: key.Mode = CipherMode.ECB
+      style: secondary
+      start: 36
+      end: 61
+    - source: TripleDES
+      style: secondary
+      start: 0
+      end: 9
+    - source: key
+      style: secondary
+      start: 10
+      end: 13
+    - source: key = TripleDES.Create()
+      style: secondary
+      start: 10
+      end: 34
+    - source: TripleDES key = TripleDES.Create()
+      style: secondary
+      start: 0
+      end: 34
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 0
+      end: 35
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 0
+      end: 35
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 0
+      end: 35
+  ? |
+    TripleDES key = TripleDES.Create();
+    key.Mode = CipherMode.ECB;
+  : labels:
+    - source: key.Mode = CipherMode.ECB;
+      style: primary
+      start: 36
+      end: 62
+    - source: key
+      style: secondary
+      start: 36
+      end: 39
+    - source: Mode
+      style: secondary
+      start: 40
+      end: 44
+    - source: key.Mode
+      style: secondary
+      start: 36
+      end: 44
+    - source: CipherMode
+      style: secondary
+      start: 47
+      end: 57
+    - source: ECB
+      style: secondary
+      start: 58
+      end: 61
+    - source: CipherMode.ECB
+      style: secondary
+      start: 47
+      end: 61
+    - source: key.Mode = CipherMode.ECB
+      style: secondary
+      start: 36
+      end: 61
+    - source: TripleDES
+      style: secondary
+      start: 0
+      end: 9
+    - source: key
+      style: secondary
+      start: 10
+      end: 13
+    - source: key = TripleDES.Create()
+      style: secondary
+      start: 10
+      end: 34
+    - source: TripleDES key = TripleDES.Create()
+      style: secondary
+      start: 0
+      end: 34
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 0
+      end: 35
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 0
+      end: 35
+    - source: TripleDES key = TripleDES.Create();
+      style: secondary
+      start: 0
+      end: 35
