@@ -1,0 +1,23 @@
+id: file-access-before-action-c
+valid:
+  - |
+
+invalid:
+  - |
+    {
+    const char *original_key = "path/to/file/filename";
+    const char *mirror_key = "path/to/another/file/filename";
+
+    if ((access(original_key, F_OK) == 0) && (access(mirror_key, F_OK) == 0)){
+        copy_file("/bin/cp %s %s", original_key, mirror_key);
+        unlink(original_key);
+    }
+
+    void test_002(){
+      const char *original_key = "path/to/file/filename";
+
+      if (access(original_key, W_OK) == 0){
+          // ruleid: file-access-before-action
+          File *fp = fopen(original_key, "wb");
+      }
+    }
