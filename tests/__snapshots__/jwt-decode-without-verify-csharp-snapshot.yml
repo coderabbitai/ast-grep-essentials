@@ -1,0 +1,907 @@
+id: jwt-decode-without-verify-csharp
+snapshots:
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest1(){
+          IJsonSerializer serializer = new JsonNetSerializer();
+          IDateTimeProvider provider = new UtcDateTimeProvider();
+          IJwtValidator validator = new JwtValidator(serializer, provider);
+          IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+          IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
+          IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+          var json1 = decoder.Decode(token, verify: false);
+        }
+      }
+    }
+  : labels:
+    - source: 'decoder.Decode(token, verify: false)'
+      style: primary
+      start: 580
+      end: 616
+    - source: decoder
+      style: secondary
+      start: 580
+      end: 587
+    - source: Decode
+      style: secondary
+      start: 588
+      end: 594
+    - source: decoder.Decode
+      style: secondary
+      start: 580
+      end: 594
+    - source: verify
+      style: secondary
+      start: 602
+      end: 608
+    - source: 'false'
+      style: secondary
+      start: 610
+      end: 615
+    - source: 'verify: false'
+      style: secondary
+      start: 602
+      end: 615
+    - source: '(token, verify: false)'
+      style: secondary
+      start: 594
+      end: 616
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: IJwtDecoder
+      style: secondary
+      start: 478
+      end: 489
+    - source: decoder
+      style: secondary
+      start: 490
+      end: 497
+    - source: decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm)
+      style: secondary
+      start: 490
+      end: 560
+    - source: IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm)
+      style: secondary
+      start: 478
+      end: 560
+    - source: IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+      style: secondary
+      start: 478
+      end: 561
+    - source: IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+      style: secondary
+      start: 478
+      end: 561
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest1(){
+          IJsonSerializer serializer = new JsonNetSerializer();
+          IDateTimeProvider provider = new UtcDateTimeProvider();
+          IJwtValidator validator = new JwtValidator(serializer, provider);
+          IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+          IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
+          IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+          var json2 = decoder.Decode(token, null, false);
+          Console.WriteLine(json);
+        }
+      }
+    }
+  : labels:
+    - source: decoder.Decode(token, null, false)
+      style: primary
+      start: 580
+      end: 614
+    - source: decoder
+      style: secondary
+      start: 580
+      end: 587
+    - source: Decode
+      style: secondary
+      start: 588
+      end: 594
+    - source: decoder.Decode
+      style: secondary
+      start: 580
+      end: 594
+    - source: 'false'
+      style: secondary
+      start: 608
+      end: 613
+    - source: 'false'
+      style: secondary
+      start: 608
+      end: 613
+    - source: (token, null, false)
+      style: secondary
+      start: 594
+      end: 614
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: IJwtDecoder
+      style: secondary
+      start: 478
+      end: 489
+    - source: decoder
+      style: secondary
+      start: 490
+      end: 497
+    - source: decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm)
+      style: secondary
+      start: 490
+      end: 560
+    - source: IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm)
+      style: secondary
+      start: 478
+      end: 560
+    - source: IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+      style: secondary
+      start: 478
+      end: 561
+    - source: IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+      style: secondary
+      start: 478
+      end: 561
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest10(){
+          var builder = JwtBuilder.Create();
+          var json = builder.WithAlgorithm(new HMACSHA256Algorithm())
+                            .WithSecret(key)
+                            .Decode(token);
+          Console.WriteLine(json);
+        }
+      }
+    }
+  : labels:
+    - source: |-
+        builder.WithAlgorithm(new HMACSHA256Algorithm())
+                                .WithSecret(key)
+                                .Decode(token)
+      style: primary
+      start: 214
+      end: 342
+    - source: builder
+      style: secondary
+      start: 214
+      end: 221
+    - source: Decode
+      style: secondary
+      start: 329
+      end: 335
+    - source: |-
+        builder.WithAlgorithm(new HMACSHA256Algorithm())
+                                .WithSecret(key)
+                                .Decode
+      style: secondary
+      start: 214
+      end: 335
+    - source: (token)
+      style: secondary
+      start: 335
+      end: 342
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: builder
+      style: secondary
+      start: 166
+      end: 173
+    - source: JwtBuilder.Create()
+      style: secondary
+      start: 176
+      end: 195
+    - source: builder = JwtBuilder.Create()
+      style: secondary
+      start: 166
+      end: 195
+    - source: var builder = JwtBuilder.Create();
+      style: secondary
+      start: 162
+      end: 196
+    - source: var builder = JwtBuilder.Create();
+      style: secondary
+      start: 162
+      end: 196
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest11(){
+          var builder = JwtBuilder.Create();
+          var json = builder.WithAlgorithm(new HMACSHA256Algorithm())
+                            .WithSecret(key)
+                            .Decode(token, verify: false);
+          Console.WriteLine(json);
+        }
+      }
+    }
+  : labels:
+    - source: |-
+        builder.WithAlgorithm(new HMACSHA256Algorithm())
+                                .WithSecret(key)
+                                .Decode(token, verify: false)
+      style: primary
+      start: 214
+      end: 357
+    - source: builder
+      style: secondary
+      start: 214
+      end: 221
+    - source: Decode
+      style: secondary
+      start: 329
+      end: 335
+    - source: |-
+        builder.WithAlgorithm(new HMACSHA256Algorithm())
+                                .WithSecret(key)
+                                .Decode
+      style: secondary
+      start: 214
+      end: 335
+    - source: '(token, verify: false)'
+      style: secondary
+      start: 335
+      end: 357
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: builder
+      style: secondary
+      start: 166
+      end: 173
+    - source: JwtBuilder.Create()
+      style: secondary
+      start: 176
+      end: 195
+    - source: builder = JwtBuilder.Create()
+      style: secondary
+      start: 166
+      end: 195
+    - source: var builder = JwtBuilder.Create();
+      style: secondary
+      start: 162
+      end: 196
+    - source: var builder = JwtBuilder.Create();
+      style: secondary
+      start: 162
+      end: 196
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest13(){
+          var validationParameters = new ValidationParameters
+          {
+              ValidateSignature = false,
+              ValidateExpirationTime = false,
+              ValidateIssuedTime = false,
+              TimeMargin = 100
+          };
+        }
+      }
+    }
+  : labels:
+    - source: |-
+        new ValidationParameters
+              {
+                  ValidateSignature = false,
+                  ValidateExpirationTime = false,
+                  ValidateIssuedTime = false,
+                  TimeMargin = 100
+              }
+      style: primary
+      start: 189
+      end: 373
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: ValidationParameters
+      style: secondary
+      start: 193
+      end: 213
+    - source: ValidateSignature = false
+      style: secondary
+      start: 232
+      end: 257
+    - source: |-
+        {
+                  ValidateSignature = false,
+                  ValidateExpirationTime = false,
+                  ValidateIssuedTime = false,
+                  TimeMargin = 100
+              }
+      style: secondary
+      start: 220
+      end: 373
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest15(){
+          var builder = JwtBuilder.Create()
+              .WithAlgorithm(new HMACSHA256Algorithm())
+              .WithSecret(key);
+          var json = builder.Decode(token);
+          Console.WriteLine(json);
+        }
+      }
+    }
+  : labels:
+    - source: builder.Decode(token)
+      style: primary
+      start: 293
+      end: 314
+    - source: builder
+      style: secondary
+      start: 293
+      end: 300
+    - source: Decode
+      style: secondary
+      start: 301
+      end: 307
+    - source: builder.Decode
+      style: secondary
+      start: 293
+      end: 307
+    - source: (token)
+      style: secondary
+      start: 307
+      end: 314
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: builder
+      style: secondary
+      start: 166
+      end: 173
+    - source: JwtBuilder.Create()
+      style: secondary
+      start: 176
+      end: 195
+    - source: |-
+        builder = JwtBuilder.Create()
+                  .WithAlgorithm(new HMACSHA256Algorithm())
+                  .WithSecret(key)
+      style: secondary
+      start: 166
+      end: 274
+    - source: |-
+        var builder = JwtBuilder.Create()
+                  .WithAlgorithm(new HMACSHA256Algorithm())
+                  .WithSecret(key);
+      style: secondary
+      start: 162
+      end: 275
+    - source: |-
+        var builder = JwtBuilder.Create()
+                  .WithAlgorithm(new HMACSHA256Algorithm())
+                  .WithSecret(key);
+      style: secondary
+      start: 162
+      end: 275
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest17(){
+          var options = new JwtAuthenticationOptions
+          {
+              VerifySignature = false
+          };
+          Console.WriteLine("JWT Authentication setup with signature verification disabled.");
+        }
+      }
+    }
+  : labels:
+    - source: |-
+        new JwtAuthenticationOptions
+              {
+                  VerifySignature = false
+              }
+      style: primary
+      start: 176
+      end: 254
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: JwtAuthenticationOptions
+      style: secondary
+      start: 180
+      end: 204
+    - source: VerifySignature = false
+      style: secondary
+      start: 223
+      end: 246
+    - source: |-
+        {
+                  VerifySignature = false
+              }
+      style: secondary
+      start: 211
+      end: 254
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest18(){
+          var validationParameters = new TokenValidationParameters
+          {
+              ValidateIssuerSigningKey = false,
+              ValidateIssuer = true,
+              ValidateAudience = true
+          };
+          var tokenHandler = new JwtSecurityTokenHandler();
+          var json = tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
+          Console.WriteLine(json);
+        }
+      }
+    }
+  : labels:
+    - source: |-
+        new TokenValidationParameters
+              {
+                  ValidateIssuerSigningKey = false,
+                  ValidateIssuer = true,
+                  ValidateAudience = true
+              }
+      style: primary
+      start: 189
+      end: 345
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: TokenValidationParameters
+      style: secondary
+      start: 193
+      end: 218
+    - source: ValidateIssuerSigningKey = false
+      style: secondary
+      start: 237
+      end: 269
+    - source: |-
+        {
+                  ValidateIssuerSigningKey = false,
+                  ValidateIssuer = true,
+                  ValidateAudience = true
+              }
+      style: secondary
+      start: 225
+      end: 345
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest19(){
+          var validationParameters = new TokenValidationParameters
+          {
+              ValidateIssuerSigningKey = false,
+              ValidateIssuer = true,
+              ValidateAudience = true
+          };
+          Console.WriteLine("JWT decode with validation params where signature validation is disabled.");
+        }
+      }
+    }
+  : labels:
+    - source: |-
+        new TokenValidationParameters
+              {
+                  ValidateIssuerSigningKey = false,
+                  ValidateIssuer = true,
+                  ValidateAudience = true
+              }
+      style: primary
+      start: 189
+      end: 345
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: TokenValidationParameters
+      style: secondary
+      start: 193
+      end: 218
+    - source: ValidateIssuerSigningKey = false
+      style: secondary
+      start: 237
+      end: 269
+    - source: |-
+        {
+                  ValidateIssuerSigningKey = false,
+                  ValidateIssuer = true,
+                  ValidateAudience = true
+              }
+      style: secondary
+      start: 225
+      end: 345
+  ? "using JWT;\nusing JWT.Builder;\nusing Microsoft.IdentityModel.Tokens;\nnamespace Example.Foobar\n{\n  public class JwtTestPatterns{\n    public void JwtTest19(){\n      var validationParameters = new TokenValidationParameters\n      {\n          ValidateIssuerSigningKey = false, \n          ValidateIssuer = true,\n          ValidateAudience = true\n      };\n      Console.WriteLine(\"JWT decode with validation params where signature validation is disabled.\");\n    }\n  }\n}\n"
+  : labels:
+    - source: "new TokenValidationParameters\n      {\n          ValidateIssuerSigningKey = false, \n          ValidateIssuer = true,\n          ValidateAudience = true\n      }"
+      style: primary
+      start: 189
+      end: 346
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: TokenValidationParameters
+      style: secondary
+      start: 193
+      end: 218
+    - source: ValidateIssuerSigningKey = false
+      style: secondary
+      start: 237
+      end: 269
+    - source: "{\n          ValidateIssuerSigningKey = false, \n          ValidateIssuer = true,\n          ValidateAudience = true\n      }"
+      style: secondary
+      start: 225
+      end: 346
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest2(){
+            var json = JwtBuilder.Create()
+                .WithAlgorithm(new HMACSHA256Algorithm())
+                .WithSecret(key)
+                .Decode(token);
+            Console.WriteLine(json);
+        }
+      }
+    }
+  : labels:
+    - source: |-
+        JwtBuilder.Create()
+                    .WithAlgorithm(new HMACSHA256Algorithm())
+                    .WithSecret(key)
+                    .Decode(token)
+      style: primary
+      start: 174
+      end: 303
+    - source: JwtBuilder
+      style: secondary
+      start: 174
+      end: 184
+    - source: Decode
+      style: secondary
+      start: 290
+      end: 296
+    - source: |-
+        JwtBuilder.Create()
+                    .WithAlgorithm(new HMACSHA256Algorithm())
+                    .WithSecret(key)
+                    .Decode
+      style: secondary
+      start: 174
+      end: 296
+    - source: (token)
+      style: secondary
+      start: 296
+      end: 303
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest3(){
+          var builder = JwtBuilder.Create();
+          var json = builder
+              .WithAlgorithm(new HMACSHA256Algorithm())
+              .WithSecret(key)
+              .Decode(token);
+          Console.WriteLine(json);
+        }
+      }
+    }
+  : labels:
+    - source: |-
+        builder
+                  .WithAlgorithm(new HMACSHA256Algorithm())
+                  .WithSecret(key)
+                  .Decode(token)
+      style: primary
+      start: 213
+      end: 324
+    - source: builder
+      style: secondary
+      start: 213
+      end: 220
+    - source: Decode
+      style: secondary
+      start: 311
+      end: 317
+    - source: |-
+        builder
+                  .WithAlgorithm(new HMACSHA256Algorithm())
+                  .WithSecret(key)
+                  .Decode
+      style: secondary
+      start: 213
+      end: 317
+    - source: (token)
+      style: secondary
+      start: 317
+      end: 324
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: builder
+      style: secondary
+      start: 165
+      end: 172
+    - source: JwtBuilder.Create()
+      style: secondary
+      start: 175
+      end: 194
+    - source: builder = JwtBuilder.Create()
+      style: secondary
+      start: 165
+      end: 194
+    - source: var builder = JwtBuilder.Create();
+      style: secondary
+      start: 161
+      end: 195
+    - source: var builder = JwtBuilder.Create();
+      style: secondary
+      start: 161
+      end: 195
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest7(){
+          IJsonSerializer serializer = new JsonNetSerializer();
+          IDateTimeProvider provider = new UtcDateTimeProvider();
+          IJwtValidator validator = new JwtValidator(serializer, provider);
+          IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+          IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
+          IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+          var json = decoder.Decode(token, verify: false);
+          Console.WriteLine(json);
+        }
+      }
+    }
+  : labels:
+    - source: 'decoder.Decode(token, verify: false)'
+      style: primary
+      start: 579
+      end: 615
+    - source: decoder
+      style: secondary
+      start: 579
+      end: 586
+    - source: Decode
+      style: secondary
+      start: 587
+      end: 593
+    - source: decoder.Decode
+      style: secondary
+      start: 579
+      end: 593
+    - source: verify
+      style: secondary
+      start: 601
+      end: 607
+    - source: 'false'
+      style: secondary
+      start: 609
+      end: 614
+    - source: 'verify: false'
+      style: secondary
+      start: 601
+      end: 614
+    - source: '(token, verify: false)'
+      style: secondary
+      start: 593
+      end: 615
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: IJwtDecoder
+      style: secondary
+      start: 478
+      end: 489
+    - source: decoder
+      style: secondary
+      start: 490
+      end: 497
+    - source: decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm)
+      style: secondary
+      start: 490
+      end: 560
+    - source: IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm)
+      style: secondary
+      start: 478
+      end: 560
+    - source: IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+      style: secondary
+      start: 478
+      end: 561
+    - source: IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, algorithm);
+      style: secondary
+      start: 478
+      end: 561
+  ? |
+    using JWT;
+    using JWT.Builder;
+    using Microsoft.IdentityModel.Tokens;
+    namespace Example.Foobar
+    {
+      public class JwtTestPatterns{
+        public void JwtTest9(){
+          var decoder = new JwtDecoder(new JsonNetSerializer(), new JwtValidator(new JsonNetSerializer(), new UtcDateTimeProvider()), new JwtBase64UrlEncoder(), new HMACSHA256Algorithm());
+          var json = decoder.Decode(token, null, false); // decode with no signature verification
+          Console.WriteLine(json);
+        }
+      }
+    }
+  : labels:
+    - source: decoder.Decode(token, null, false)
+      style: primary
+      start: 357
+      end: 391
+    - source: decoder
+      style: secondary
+      start: 357
+      end: 364
+    - source: Decode
+      style: secondary
+      start: 365
+      end: 371
+    - source: decoder.Decode
+      style: secondary
+      start: 357
+      end: 371
+    - source: 'false'
+      style: secondary
+      start: 385
+      end: 390
+    - source: 'false'
+      style: secondary
+      start: 385
+      end: 390
+    - source: (token, null, false)
+      style: secondary
+      start: 371
+      end: 391
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: using Microsoft.IdentityModel.Tokens;
+      style: secondary
+      start: 30
+      end: 67
+    - source: decoder
+      style: secondary
+      start: 165
+      end: 172
+    - source: JwtDecoder
+      style: secondary
+      start: 179
+      end: 189
+    - source: new JwtDecoder(new JsonNetSerializer(), new JwtValidator(new JsonNetSerializer(), new UtcDateTimeProvider()), new JwtBase64UrlEncoder(), new HMACSHA256Algorithm())
+      style: secondary
+      start: 175
+      end: 338
+    - source: decoder = new JwtDecoder(new JsonNetSerializer(), new JwtValidator(new JsonNetSerializer(), new UtcDateTimeProvider()), new JwtBase64UrlEncoder(), new HMACSHA256Algorithm())
+      style: secondary
+      start: 165
+      end: 338
+    - source: var decoder = new JwtDecoder(new JsonNetSerializer(), new JwtValidator(new JsonNetSerializer(), new UtcDateTimeProvider()), new JwtBase64UrlEncoder(), new HMACSHA256Algorithm());
+      style: secondary
+      start: 161
+      end: 339
+    - source: var decoder = new JwtDecoder(new JsonNetSerializer(), new JwtValidator(new JsonNetSerializer(), new UtcDateTimeProvider()), new JwtBase64UrlEncoder(), new HMACSHA256Algorithm());
+      style: secondary
+      start: 161
+      end: 339
