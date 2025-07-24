@@ -1,0 +1,94 @@
+id: insecure-hash-typescript
+snapshots:
+  ? |-
+    crypto.createHash("md5")
+    crypto.createHash("sha1")
+  : labels:
+    - source: crypto.createHash("md5")
+      style: primary
+      start: 0
+      end: 24
+    - source: crypto
+      style: secondary
+      start: 0
+      end: 6
+    - source: createHash
+      style: secondary
+      start: 7
+      end: 17
+    - source: crypto.createHash
+      style: secondary
+      start: 0
+      end: 17
+    - source: md5
+      style: secondary
+      start: 19
+      end: 22
+    - source: '"md5"'
+      style: secondary
+      start: 18
+      end: 23
+    - source: ("md5")
+      style: secondary
+      start: 17
+      end: 24
+    - source: crypto.createHash("sha1")
+      style: primary
+      start: 25
+      end: 50
+    - source: crypto
+      style: secondary
+      start: 25
+      end: 31
+    - source: createHash
+      style: secondary
+      start: 32
+      end: 42
+    - source: crypto.createHash
+      style: secondary
+      start: 25
+      end: 42
+    - source: sha1
+      style: secondary
+      start: 44
+      end: 48
+    - source: '"sha1"'
+      style: secondary
+      start: 43
+      end: 49
+    - source: ("sha1")
+      style: secondary
+      start: 42
+      end: 50
+  ? |
+    crypto.createHash("md5")
+    crypto.createHash("sha1")
+  : labels:
+    - source: crypto.createHash("md5")
+      style: primary
+      start: 0
+      end: 24
+    - source: crypto
+      style: secondary
+      start: 0
+      end: 6
+    - source: createHash
+      style: secondary
+      start: 7
+      end: 17
+    - source: crypto.createHash
+      style: secondary
+      start: 0
+      end: 17
+    - source: md5
+      style: secondary
+      start: 19
+      end: 22
+    - source: '"md5"'
+      style: secondary
+      start: 18
+      end: 23
+    - source: ("md5")
+      style: secondary
+      start: 17
+      end: 24

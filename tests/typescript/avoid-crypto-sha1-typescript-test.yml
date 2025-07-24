@@ -1,0 +1,8 @@
+id: avoid-crypto-sha1-typescript
+valid:
+  - |
+    const hash = CryptoJS.HmacSHA256("Message", "Secret Passphrase");
+    const hash = CryptoJS.SHA256("Message");
+invalid:
+  - |
+    const hash = CryptoJS.HmacSHA1("Message", "Secret Passphrase");

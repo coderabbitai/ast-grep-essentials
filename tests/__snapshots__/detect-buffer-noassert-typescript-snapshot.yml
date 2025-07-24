@@ -1,0 +1,74 @@
+id: detect-buffer-noassert-typescript
+snapshots:
+  ? |-
+    a.readUInt8(0, true)
+    a.readUInt16LE(0, true)
+    a.writeUInt8(0, 0, true)
+    a.writeInt16LE(0, 0, true)
+    a.readFloatLE(0, true)
+    a.writeDoubleLE(0, 0, true)
+  : labels:
+    - source: a.readUInt8(0, true)
+      style: primary
+      start: 0
+      end: 20
+    - source: readUInt8
+      style: secondary
+      start: 2
+      end: 11
+    - source: a.readUInt8
+      style: secondary
+      start: 0
+      end: 11
+    - source: '0'
+      style: secondary
+      start: 12
+      end: 13
+    - source: 'true'
+      style: secondary
+      start: 15
+      end: 19
+    - source: 'true'
+      style: secondary
+      start: 15
+      end: 19
+    - source: (0, true)
+      style: secondary
+      start: 11
+      end: 20
+  ? |
+    a.readUInt8(0, true)
+    a.readUInt16LE(0, true)
+    a.writeUInt8(0, 0, true)
+    a.writeInt16LE(0, 0, true)
+    a.readFloatLE(0, true)
+    a.writeDoubleLE(0, 0, true)
+  : labels:
+    - source: a.readUInt8(0, true)
+      style: primary
+      start: 0
+      end: 20
+    - source: readUInt8
+      style: secondary
+      start: 2
+      end: 11
+    - source: a.readUInt8
+      style: secondary
+      start: 0
+      end: 11
+    - source: '0'
+      style: secondary
+      start: 12
+      end: 13
+    - source: 'true'
+      style: secondary
+      start: 15
+      end: 19
+    - source: 'true'
+      style: secondary
+      start: 15
+      end: 19
+    - source: (0, true)
+      style: secondary
+      start: 11
+      end: 20

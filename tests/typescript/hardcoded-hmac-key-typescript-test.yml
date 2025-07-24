@@ -1,0 +1,19 @@
+id: hardcoded-hmac-key-typescript
+valid:
+  - |
+    import crypto from "crypto";
+    import config from "./config";
+    
+    const safely_stored_key = config.get('AWS_KEY')
+    const safe_hmac = crypto.createHmac('sha256', safely_stored_key)
+    
+    crypto.createHmac('sha256', process.env.KEY);
+invalid:
+  - |
+    import crypto from "crypto";
+    
+    crypto.createHmac('sha256', 'pa4qacea4VK9t9nGv7yZtwmj').update(data).digest('hex');
+    
+    const key = 'private';
+    const secret = key;
+    const fail = crypto.createHmac('sha256', secret);

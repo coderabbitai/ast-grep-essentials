@@ -1,0 +1,34 @@
+id: avoid-crypto-sha1-typescript
+severity: warning
+language: typescript
+message: >-
+  Avoid SHA1 security protocol. Use of insecure encryption or hashing protocols 
+  expose your application to vulnerabilities. Use stronger hashing algorithms like SHA-256.
+note: >-
+  [CWE-328] Use of Weak Hash.
+  [REFERENCES]
+      - https://cryptojs.gitbook.io/docs/#hmac
+ast-grep-essentials: true
+utils:
+  MATCH_SHA1_USAGE:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                regex: "^CryptoJS$"
+            - has:
+                stopBy: neighbor
+                kind: property_identifier
+                regex: "^HmacSHA1$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_SHA1_USAGE

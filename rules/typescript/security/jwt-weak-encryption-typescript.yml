@@ -1,0 +1,54 @@
+id: jwt-weak-encryption-typescript
+severity: warning
+language: typescript
+message: >-
+  Use default encryption from the JWT library. Do not use `none` as a validation 
+  algorithm for a JWT token. The none algorithm assumes that the token has been 
+  verified, which would allow attacker to create a token that would be automatically validated.
+note: >-
+  [CWE-327] Use of a Broken or Risky Cryptographic Algorithm.
+ast-grep-essentials: true
+utils:
+  MATCH_JWT_WEAK_ENCRYPTION:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                regex: "^jwt$"
+            - has:
+                stopBy: neighbor
+                kind: property_identifier
+                regex: "^verify$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          has:
+            stopBy: neighbor
+            kind: object
+            has:
+              stopBy: neighbor
+              kind: pair
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: property_identifier
+                    regex: "^algorithms$"
+                - has:
+                    stopBy: neighbor
+                    kind: array
+                    has:
+                      stopBy: neighbor
+                      kind: string
+                      has:
+                        stopBy: neighbor
+                        kind: string_fragment
+                        regex: "^none$"
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_JWT_WEAK_ENCRYPTION

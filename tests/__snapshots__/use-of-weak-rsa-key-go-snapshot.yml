@@ -107,3 +107,30 @@ snapshots:
       style: secondary
       start: 27
       end: 45
+  ? |
+    pvk, err := rsa.GenerateKey(rand.Reader, 192)
+  : labels:
+    - source: '192'
+      style: primary
+      start: 41
+      end: 44
+    - source: rsa.GenerateKey
+      style: secondary
+      start: 12
+      end: 27
+    - source: '192'
+      style: secondary
+      start: 41
+      end: 44
+    - source: (rand.Reader, 192)
+      style: secondary
+      start: 27
+      end: 45
+    - source: rsa.GenerateKey(rand.Reader, 192)
+      style: secondary
+      start: 12
+      end: 45
+    - source: (rand.Reader, 192)
+      style: secondary
+      start: 27
+      end: 45

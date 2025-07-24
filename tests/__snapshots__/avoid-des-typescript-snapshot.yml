@@ -1,0 +1,62 @@
+id: avoid-des-typescript
+snapshots:
+  ? |-
+    const encrypted = CryptoJS.DES.encrypt("Message", "Secret Passphrase");
+    const decrypted = CryptoJS.DES.decrypt(encrypted, "Secret Passphrase");
+    const encrypted = CryptoJS.TripleDES.encrypt("Message", "Secret Passphrase");
+    const decrypted = CryptoJS.TripleDES.decrypt(encrypted, "Secret Passphrase");
+  : labels:
+    - source: CryptoJS.DES.encrypt("Message", "Secret Passphrase")
+      style: primary
+      start: 18
+      end: 70
+    - source: CryptoJS
+      style: secondary
+      start: 18
+      end: 26
+    - source: DES
+      style: secondary
+      start: 27
+      end: 30
+    - source: CryptoJS.DES
+      style: secondary
+      start: 18
+      end: 30
+    - source: encrypt
+      style: secondary
+      start: 31
+      end: 38
+    - source: CryptoJS.DES.encrypt
+      style: secondary
+      start: 18
+      end: 38
+  ? |
+    const encrypted = CryptoJS.DES.encrypt("Message", "Secret Passphrase");
+    const decrypted = CryptoJS.DES.decrypt(encrypted, "Secret Passphrase");
+    const encrypted = CryptoJS.TripleDES.encrypt("Message", "Secret Passphrase");
+    const decrypted = CryptoJS.TripleDES.decrypt(encrypted, "Secret Passphrase");
+  : labels:
+    - source: CryptoJS.DES.encrypt("Message", "Secret Passphrase")
+      style: primary
+      start: 18
+      end: 70
+    - source: CryptoJS
+      style: secondary
+      start: 18
+      end: 26
+    - source: DES
+      style: secondary
+      start: 27
+      end: 30
+    - source: CryptoJS.DES
+      style: secondary
+      start: 18
+      end: 30
+    - source: encrypt
+      style: secondary
+      start: 31
+      end: 38
+    - source: CryptoJS.DES.encrypt
+      style: secondary
+      start: 18
+      end: 38

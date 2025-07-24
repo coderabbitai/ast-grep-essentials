@@ -28,6 +28,13 @@ snapshots:
       start: 0
       end: 33
   ? |
+    Cryptodome.Cipher.ARC4.new(asdsd)
+  : labels:
+    - source: Cryptodome.Cipher.ARC4.new(asdsd)
+      style: primary
+      start: 0
+      end: 33
+  ? |
     from Crypto.Cipher import ARC4 as pycrypto_arc4
     cipher = pycrypto_arc4.new(tempkey)
   : labels:

@@ -1,0 +1,8 @@
+id: jwt-weak-encryption-typescript
+valid:
+  - |
+    jwt.verify(token, secret, { algorithms: ['RS256', 'HS256'] }, func);
+invalid:
+  - |
+    jwt.verify(token, secret, { algorithms: ['RS256', 'none'] }, func);
+    jwt.verify(token, secret, { algorithms: ['none', 'RS256'] }, func);

@@ -1,0 +1,17 @@
+id: detect-buffer-noassert-typescript
+valid:
+  - |
+    a.readUInt8(0)
+    a.readUInt16LE(0)
+    a.writeUInt8(0, 0)
+    a.writeInt16LE(0, 0)
+    a.readUInt8(0, false)
+    a.writeUInt8(0, 0, false)
+invalid:
+  - |
+    a.readUInt8(0, true)
+    a.readUInt16LE(0, true)
+    a.writeUInt8(0, 0, true)
+    a.writeInt16LE(0, 0, true)
+    a.readFloatLE(0, true)
+    a.writeDoubleLE(0, 0, true)

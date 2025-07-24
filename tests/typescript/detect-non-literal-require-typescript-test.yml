@@ -1,0 +1,9 @@
+id: detect-non-literal-require-typescript
+valid:
+  - |
+    var a = require('b');
+    var a = require(`b`);
+invalid:
+  - |
+    const a = require(c);
+    const a = require(`${c}`);

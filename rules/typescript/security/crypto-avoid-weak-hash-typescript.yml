@@ -1,0 +1,38 @@
+id: crypto-avoid-weak-hash-typescript
+severity: warning
+language: typescript
+message: >-
+  Avoid weak hash algorithm from CryptoJS. Use of insecure hash functions like 
+  MD5 or SHA1 can expose your application to vulnerabilities. Use stronger hash 
+  algorithms like SHA-256 or SHA-512.
+note: >-
+  [CWE-328] Use of Weak Hash.
+  [REFERENCES]
+      - https://cryptojs.gitbook.io/docs/#hashing
+ast-grep-essentials: true
+utils:
+  MATCH_WEAK_HASH:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                regex: "^CryptoJS$"
+            - has:
+                stopBy: neighbor
+                kind: property_identifier
+                any:
+                  - regex: "^MD5$"
+                  - regex: "^SHA1$"
+                  - regex: "^HmacMD5$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_WEAK_HASH

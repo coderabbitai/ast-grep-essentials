@@ -1,0 +1,9 @@
+id: avoid-crypto-rc4-typescript
+valid:
+  - |
+    const encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase");
+    const decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+invalid:
+  - |
+    const encrypted = CryptoJS.RC4.encrypt("Message", "Secret Passphrase");
+    const decrypted = CryptoJS.RC4.decrypt(encrypted, "Secret Passphrase");

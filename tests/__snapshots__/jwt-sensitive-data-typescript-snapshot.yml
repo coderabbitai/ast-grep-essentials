@@ -1,0 +1,158 @@
+id: jwt-sensitive-data-typescript
+snapshots:
+  ? |-
+    jwt.sign(
+        { user: { email: 'foo@bar.com' }}
+    )
+
+    jwt.sign(
+        { user: { lastname: 'babar' }}
+    )
+  : labels:
+    - source: |-
+        jwt.sign(
+            { user: { email: 'foo@bar.com' }}
+        )
+      style: primary
+      start: 0
+      end: 49
+    - source: jwt
+      style: secondary
+      start: 0
+      end: 3
+    - source: sign
+      style: secondary
+      start: 4
+      end: 8
+    - source: jwt.sign
+      style: secondary
+      start: 0
+      end: 8
+    - source: email
+      style: secondary
+      start: 24
+      end: 29
+    - source: 'email: ''foo@bar.com'''
+      style: secondary
+      start: 24
+      end: 44
+    - source: '{ email: ''foo@bar.com'' }'
+      style: secondary
+      start: 22
+      end: 46
+    - source: 'user: { email: ''foo@bar.com'' }'
+      style: secondary
+      start: 16
+      end: 46
+    - source: '{ user: { email: ''foo@bar.com'' }}'
+      style: secondary
+      start: 14
+      end: 47
+    - source: |-
+        (
+            { user: { email: 'foo@bar.com' }}
+        )
+      style: secondary
+      start: 8
+      end: 49
+    - source: |-
+        jwt.sign(
+            { user: { lastname: 'babar' }}
+        )
+      style: primary
+      start: 51
+      end: 95
+    - source: jwt
+      style: secondary
+      start: 51
+      end: 54
+    - source: sign
+      style: secondary
+      start: 55
+      end: 59
+    - source: jwt.sign
+      style: secondary
+      start: 51
+      end: 59
+    - source: lastname
+      style: secondary
+      start: 73
+      end: 81
+    - source: 'lastname: ''babar'''
+      style: secondary
+      start: 73
+      end: 87
+    - source: '{ lastname: ''babar'' }'
+      style: secondary
+      start: 71
+      end: 89
+    - source: 'user: { lastname: ''babar'' }'
+      style: secondary
+      start: 65
+      end: 89
+    - source: '{ user: { lastname: ''babar'' }}'
+      style: secondary
+      start: 63
+      end: 90
+    - source: |-
+        (
+            { user: { lastname: 'babar' }}
+        )
+      style: secondary
+      start: 59
+      end: 95
+  ? |
+    jwt.sign(
+        { user: { email: 'foo@bar.com' }}
+    )
+
+    jwt.sign(
+        { user: { lastname: 'babar' }}
+    )
+  : labels:
+    - source: |-
+        jwt.sign(
+            { user: { email: 'foo@bar.com' }}
+        )
+      style: primary
+      start: 0
+      end: 49
+    - source: jwt
+      style: secondary
+      start: 0
+      end: 3
+    - source: sign
+      style: secondary
+      start: 4
+      end: 8
+    - source: jwt.sign
+      style: secondary
+      start: 0
+      end: 8
+    - source: email
+      style: secondary
+      start: 24
+      end: 29
+    - source: 'email: ''foo@bar.com'''
+      style: secondary
+      start: 24
+      end: 44
+    - source: '{ email: ''foo@bar.com'' }'
+      style: secondary
+      start: 22
+      end: 46
+    - source: 'user: { email: ''foo@bar.com'' }'
+      style: secondary
+      start: 16
+      end: 46
+    - source: '{ user: { email: ''foo@bar.com'' }}'
+      style: secondary
+      start: 14
+      end: 47
+    - source: |-
+        (
+            { user: { email: 'foo@bar.com' }}
+        )
+      style: secondary
+      start: 8
+      end: 49

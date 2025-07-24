@@ -46,3 +46,50 @@ snapshots:
       style: secondary
       start: 22
       end: 52
+  ? |
+    conn, err := grpc.Dial(address, grpc.WithInsecure())
+  : labels:
+    - source: grpc.Dial(address, grpc.WithInsecure())
+      style: primary
+      start: 13
+      end: 52
+    - source: grpc
+      style: secondary
+      start: 13
+      end: 17
+    - source: Dial
+      style: secondary
+      start: 18
+      end: 22
+    - source: grpc.Dial
+      style: secondary
+      start: 13
+      end: 22
+    - source: address
+      style: secondary
+      start: 23
+      end: 30
+    - source: grpc
+      style: secondary
+      start: 32
+      end: 36
+    - source: WithInsecure
+      style: secondary
+      start: 37
+      end: 49
+    - source: grpc.WithInsecure
+      style: secondary
+      start: 32
+      end: 49
+    - source: ()
+      style: secondary
+      start: 49
+      end: 51
+    - source: grpc.WithInsecure()
+      style: secondary
+      start: 32
+      end: 51
+    - source: (address, grpc.WithInsecure())
+      style: secondary
+      start: 22
+      end: 52

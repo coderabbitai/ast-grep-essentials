@@ -1,0 +1,148 @@
+id: hardcoded-hmac-key-typescript
+snapshots:
+  ? |-
+    import crypto from "crypto";
+
+    crypto.createHmac('sha256', 'pa4qacea4VK9t9nGv7yZtwmj').update(data).digest('hex');
+
+    const key = 'private';
+    const secret = key;
+    const fail = crypto.createHmac('sha256', secret);
+  : labels:
+    - source: crypto.createHmac('sha256', 'pa4qacea4VK9t9nGv7yZtwmj')
+      style: primary
+      start: 30
+      end: 85
+    - source: crypto
+      style: secondary
+      start: 30
+      end: 36
+    - source: createHmac
+      style: secondary
+      start: 37
+      end: 47
+    - source: crypto.createHmac
+      style: secondary
+      start: 30
+      end: 47
+    - source: '''sha256'''
+      style: secondary
+      start: 48
+      end: 56
+    - source: '''pa4qacea4VK9t9nGv7yZtwmj'''
+      style: secondary
+      start: 58
+      end: 84
+    - source: sha256
+      style: secondary
+      start: 49
+      end: 55
+    - source: pa4qacea4VK9t9nGv7yZtwmj
+      style: secondary
+      start: 59
+      end: 83
+    - source: sha256
+      style: secondary
+      start: 49
+      end: 55
+    - source: pa4qacea4VK9t9nGv7yZtwmj
+      style: secondary
+      start: 59
+      end: 83
+    - source: sha256
+      style: secondary
+      start: 49
+      end: 55
+    - source: pa4qacea4VK9t9nGv7yZtwmj
+      style: secondary
+      start: 59
+      end: 83
+    - source: sha256
+      style: secondary
+      start: 49
+      end: 55
+    - source: pa4qacea4VK9t9nGv7yZtwmj
+      style: secondary
+      start: 59
+      end: 83
+    - source: '''pa4qacea4VK9t9nGv7yZtwmj'''
+      style: secondary
+      start: 58
+      end: 84
+    - source: ('sha256', 'pa4qacea4VK9t9nGv7yZtwmj')
+      style: secondary
+      start: 47
+      end: 85
+  ? |
+    import crypto from "crypto";
+
+    crypto.createHmac('sha256', 'pa4qacea4VK9t9nGv7yZtwmj').update(data).digest('hex');
+
+    const key = 'private';
+    const secret = key;
+    const fail = crypto.createHmac('sha256', secret);
+  : labels:
+    - source: crypto.createHmac('sha256', 'pa4qacea4VK9t9nGv7yZtwmj')
+      style: primary
+      start: 30
+      end: 85
+    - source: crypto
+      style: secondary
+      start: 30
+      end: 36
+    - source: createHmac
+      style: secondary
+      start: 37
+      end: 47
+    - source: crypto.createHmac
+      style: secondary
+      start: 30
+      end: 47
+    - source: '''sha256'''
+      style: secondary
+      start: 48
+      end: 56
+    - source: '''pa4qacea4VK9t9nGv7yZtwmj'''
+      style: secondary
+      start: 58
+      end: 84
+    - source: sha256
+      style: secondary
+      start: 49
+      end: 55
+    - source: pa4qacea4VK9t9nGv7yZtwmj
+      style: secondary
+      start: 59
+      end: 83
+    - source: sha256
+      style: secondary
+      start: 49
+      end: 55
+    - source: pa4qacea4VK9t9nGv7yZtwmj
+      style: secondary
+      start: 59
+      end: 83
+    - source: sha256
+      style: secondary
+      start: 49
+      end: 55
+    - source: pa4qacea4VK9t9nGv7yZtwmj
+      style: secondary
+      start: 59
+      end: 83
+    - source: sha256
+      style: secondary
+      start: 49
+      end: 55
+    - source: pa4qacea4VK9t9nGv7yZtwmj
+      style: secondary
+      start: 59
+      end: 83
+    - source: '''pa4qacea4VK9t9nGv7yZtwmj'''
+      style: secondary
+      start: 58
+      end: 84
+    - source: ('sha256', 'pa4qacea4VK9t9nGv7yZtwmj')
+      style: secondary
+      start: 47
+      end: 85

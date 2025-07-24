@@ -1,0 +1,56 @@
+id: chmod-permissions-typescript
+snapshots:
+  ? |-
+    const fs = require('fs');
+    const fsPromises = fs.promises;
+
+    fs.chmodSync("/tmp/myfile", 0o777);
+    fsPromises.chmod("/tmp/fsPromises", 0o777);
+  : labels:
+    - source: fs.chmodSync("/tmp/myfile", 0o777)
+      style: primary
+      start: 59
+      end: 93
+    - source: chmodSync
+      style: secondary
+      start: 62
+      end: 71
+    - source: fs.chmodSync
+      style: secondary
+      start: 59
+      end: 71
+    - source: '0o777'
+      style: secondary
+      start: 87
+      end: 92
+    - source: ("/tmp/myfile", 0o777)
+      style: secondary
+      start: 71
+      end: 93
+  ? |
+    const fs = require('fs');
+    const fsPromises = fs.promises;
+
+    fs.chmodSync("/tmp/myfile", 0o777);
+    fsPromises.chmod("/tmp/fsPromises", 0o777);
+  : labels:
+    - source: fs.chmodSync("/tmp/myfile", 0o777)
+      style: primary
+      start: 59
+      end: 93
+    - source: chmodSync
+      style: secondary
+      start: 62
+      end: 71
+    - source: fs.chmodSync
+      style: secondary
+      start: 59
+      end: 71
+    - source: '0o777'
+      style: secondary
+      start: 87
+      end: 92
+    - source: ("/tmp/myfile", 0o777)
+      style: secondary
+      start: 71
+      end: 93

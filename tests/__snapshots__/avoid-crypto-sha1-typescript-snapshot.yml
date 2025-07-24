@@ -1,0 +1,47 @@
+id: avoid-crypto-sha1-typescript
+snapshots:
+  const hash = CryptoJS.HmacSHA1("Message", "Secret Passphrase");:
+    labels:
+    - source: CryptoJS.HmacSHA1("Message", "Secret Passphrase")
+      style: primary
+      start: 13
+      end: 62
+    - source: CryptoJS
+      style: secondary
+      start: 13
+      end: 21
+    - source: HmacSHA1
+      style: secondary
+      start: 22
+      end: 30
+    - source: CryptoJS.HmacSHA1
+      style: secondary
+      start: 13
+      end: 30
+    - source: ("Message", "Secret Passphrase")
+      style: secondary
+      start: 30
+      end: 62
+  ? |
+    const hash = CryptoJS.HmacSHA1("Message", "Secret Passphrase");
+  : labels:
+    - source: CryptoJS.HmacSHA1("Message", "Secret Passphrase")
+      style: primary
+      start: 13
+      end: 62
+    - source: CryptoJS
+      style: secondary
+      start: 13
+      end: 21
+    - source: HmacSHA1
+      style: secondary
+      start: 22
+      end: 30
+    - source: CryptoJS.HmacSHA1
+      style: secondary
+      start: 13
+      end: 30
+    - source: ("Message", "Secret Passphrase")
+      style: secondary
+      start: 30
+      end: 62

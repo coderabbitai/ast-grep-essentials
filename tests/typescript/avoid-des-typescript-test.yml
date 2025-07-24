@@ -1,0 +1,11 @@
+id: avoid-des-typescript
+valid:
+  - |
+    const encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase");
+    const decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+invalid:
+  - |
+    const encrypted = CryptoJS.DES.encrypt("Message", "Secret Passphrase");
+    const decrypted = CryptoJS.DES.decrypt(encrypted, "Secret Passphrase");
+    const encrypted = CryptoJS.TripleDES.encrypt("Message", "Secret Passphrase");
+    const decrypted = CryptoJS.TripleDES.decrypt(encrypted, "Secret Passphrase");

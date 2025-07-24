@@ -1,0 +1,36 @@
+id: detect-non-literal-regexp-typescript
+severity: warning
+language: typescript
+message: >-
+  Detects non-literal values in regular expressions. Creating a regular expression 
+  with user input is a security vulnerability as it could lead to a Regular 
+  Expression Denial of Service attack.
+note: >-
+  [CWE-1333] Inefficient Regular Expression Complexity.
+ast-grep-essentials: true
+utils:
+  MATCH_NON_LITERAL_REGEXP:
+    kind: new_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          regex: "^RegExp$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          has:
+            stopBy: neighbor
+            any:
+              - all:
+                  - kind: identifier
+                  - not:
+                      regex: "^[A-Z_][A-Z0-9_]*$"
+              - kind: binary_expression
+              - kind: call_expression
+              - kind: member_expression
+              - kind: template_string
+rule:
+  kind: new_expression
+  any:
+    - matches: MATCH_NON_LITERAL_REGEXP

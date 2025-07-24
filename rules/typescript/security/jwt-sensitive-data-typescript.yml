@@ -1,0 +1,60 @@
+id: jwt-sensitive-data-typescript
+severity: warning
+language: typescript
+message: >-
+  Do not put sensitive data in objects. Never include sensitive information in a JWT. 
+  Instead, only use non-personal information to identify the end-user.
+note: >-
+  [CWE-312] Cleartext Storage of Sensitive Information.
+ast-grep-essentials: true
+utils:
+  MATCH_JWT_SENSITIVE_DATA:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                regex: "^jwt$"
+            - has:
+                stopBy: neighbor
+                kind: property_identifier
+                regex: "^sign$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          has:
+            stopBy: neighbor
+            kind: object
+            has:
+              stopBy: neighbor
+              kind: pair
+              any:
+                - has:
+                    stopBy: neighbor
+                    kind: property_identifier
+                    any:
+                      - regex: "^email$"
+                      - regex: "^mail$"
+                      - regex: "^firstname$"
+                      - regex: "^lastname$"
+                - has:
+                    kind: object
+                    has:
+                      stopBy: neighbor
+                      kind: pair
+                      has:
+                        stopBy: neighbor
+                        kind: property_identifier
+                        any:
+                          - regex: "^email$"
+                          - regex: "^mail$"
+                          - regex: "^firstname$"
+                          - regex: "^lastname$"
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_JWT_SENSITIVE_DATA

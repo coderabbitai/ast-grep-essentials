@@ -1,0 +1,98 @@
+id: jwt-weak-encryption-typescript
+snapshots:
+  ? |-
+    jwt.verify(token, secret, { algorithms: ['RS256', 'none'] }, func);
+    jwt.verify(token, secret, { algorithms: ['none', 'RS256'] }, func);
+  : labels:
+    - source: 'jwt.verify(token, secret, { algorithms: [''RS256'', ''none''] }, func)'
+      style: primary
+      start: 0
+      end: 66
+    - source: jwt
+      style: secondary
+      start: 0
+      end: 3
+    - source: verify
+      style: secondary
+      start: 4
+      end: 10
+    - source: jwt.verify
+      style: secondary
+      start: 0
+      end: 10
+    - source: algorithms
+      style: secondary
+      start: 28
+      end: 38
+    - source: none
+      style: secondary
+      start: 51
+      end: 55
+    - source: '''none'''
+      style: secondary
+      start: 50
+      end: 56
+    - source: '[''RS256'', ''none'']'
+      style: secondary
+      start: 40
+      end: 57
+    - source: 'algorithms: [''RS256'', ''none'']'
+      style: secondary
+      start: 28
+      end: 57
+    - source: '{ algorithms: [''RS256'', ''none''] }'
+      style: secondary
+      start: 26
+      end: 59
+    - source: '(token, secret, { algorithms: [''RS256'', ''none''] }, func)'
+      style: secondary
+      start: 10
+      end: 66
+  ? |
+    jwt.verify(token, secret, { algorithms: ['RS256', 'none'] }, func);
+    jwt.verify(token, secret, { algorithms: ['none', 'RS256'] }, func);
+  : labels:
+    - source: 'jwt.verify(token, secret, { algorithms: [''RS256'', ''none''] }, func)'
+      style: primary
+      start: 0
+      end: 66
+    - source: jwt
+      style: secondary
+      start: 0
+      end: 3
+    - source: verify
+      style: secondary
+      start: 4
+      end: 10
+    - source: jwt.verify
+      style: secondary
+      start: 0
+      end: 10
+    - source: algorithms
+      style: secondary
+      start: 28
+      end: 38
+    - source: none
+      style: secondary
+      start: 51
+      end: 55
+    - source: '''none'''
+      style: secondary
+      start: 50
+      end: 56
+    - source: '[''RS256'', ''none'']'
+      style: secondary
+      start: 40
+      end: 57
+    - source: 'algorithms: [''RS256'', ''none'']'
+      style: secondary
+      start: 28
+      end: 57
+    - source: '{ algorithms: [''RS256'', ''none''] }'
+      style: secondary
+      start: 26
+      end: 59
+    - source: '(token, secret, { algorithms: [''RS256'', ''none''] }, func)'
+      style: secondary
+      start: 10
+      end: 66

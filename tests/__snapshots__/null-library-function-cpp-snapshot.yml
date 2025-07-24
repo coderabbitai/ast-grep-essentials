@@ -64,6 +64,39 @@ snapshots:
       start: 32
       end: 62
   ? |
+    void test_getc() {
+     int c = getc(fptr = fopen(file_name, "r"));
+    }
+  : labels:
+    - source: getc(fptr = fopen(file_name, "r"))
+      style: primary
+      start: 28
+      end: 62
+    - source: getc
+      style: secondary
+      start: 28
+      end: 32
+    - source: fptr
+      style: secondary
+      start: 33
+      end: 37
+    - source: fopen
+      style: secondary
+      start: 40
+      end: 45
+    - source: fopen(file_name, "r")
+      style: secondary
+      start: 40
+      end: 61
+    - source: fptr = fopen(file_name, "r")
+      style: secondary
+      start: 33
+      end: 61
+    - source: (fptr = fopen(file_name, "r"))
+      style: secondary
+      start: 32
+      end: 62
+  ? |
     {
      FILE *fptr;
      fwrite("foo", 3, 1, fptr = fopen("foo.txt", "w"));

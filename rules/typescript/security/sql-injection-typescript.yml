@@ -1,0 +1,45 @@
+id: sql-injection-typescript
+severity: error
+language: typescript
+message: >-
+  Avoid SQL injection. Check for variable declarations in a SQL statement where 
+  there is potential for SQL injections. Use parameterized queries instead.
+note: >-
+  [CWE-89] Improper Neutralization of Special Elements used in an SQL Command.
+ast-grep-essentials: true
+utils:
+  MATCH_SQL_STRING_CONCAT:
+    kind: binary_expression
+    pattern: "$SQL + $VAR"
+    has:
+      stopBy: neighbor
+      kind: string
+      has:
+        stopBy: neighbor
+        kind: string_fragment
+        regex: ".*(SELECT|INSERT|UPDATE|DELETE).*"
+  MATCH_SQL_TEMPLATE_STRING:
+    kind: template_string
+    all:
+      - has:
+          stopBy: neighbor
+          kind: template_substitution
+      - regex: ".*(SELECT|INSERT|UPDATE|DELETE).*"
+      - not:
+          inside:
+            kind: call_expression
+            has:
+              kind: member_expression
+              has:
+                field: property
+                regex: ".*queryRaw.*|.*query.*"
+      - not:
+          inside:
+            kind: call_expression
+            has:
+              kind: identifier
+              regex: "sql|query"
+rule:
+  any:
+    - matches: MATCH_SQL_STRING_CONCAT
+    - matches: MATCH_SQL_TEMPLATE_STRING

@@ -76,3 +76,41 @@ snapshots:
       style: secondary
       start: 55
       end: 58
+  ? |
+    import javax.crypto.*;
+    {
+    useCipher(Cipher.getInstance("AES"));
+    }
+  : labels:
+    - source: Cipher.getInstance("AES")
+      style: primary
+      start: 35
+      end: 60
+    - source: Cipher
+      style: secondary
+      start: 35
+      end: 41
+    - source: getInstance
+      style: secondary
+      start: 42
+      end: 53
+    - source: '"AES"'
+      style: secondary
+      start: 54
+      end: 59
+    - source: ("AES")
+      style: secondary
+      start: 53
+      end: 60
+    - source: import javax.crypto.*;
+      style: secondary
+      start: 0
+      end: 22
+    - source: import javax.crypto.*;
+      style: secondary
+      start: 0
+      end: 22
+    - source: AES
+      style: secondary
+      start: 55
+      end: 58

@@ -1,0 +1,27 @@
+id: detect-new-buffer-typescript
+severity: warning
+language: typescript
+message: >-
+  Avoid Buffer(argument) with non-literal values. Using Buffer constructor with 
+  variables can lead to security vulnerabilities like denial of service attacks.
+note: >-
+  [CWE-770] Allocation of Resources Without Limits or Throttling.
+ast-grep-essentials: true
+utils:
+  MATCH_NEW_BUFFER:
+    kind: new_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          regex: "^Buffer$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          has:
+            stopBy: neighbor
+            kind: identifier
+rule:
+  kind: new_expression
+  any:
+    - matches: MATCH_NEW_BUFFER

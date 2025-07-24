@@ -1,0 +1,92 @@
+id: crypto-avoid-weak-hash-typescript
+snapshots:
+  ? |-
+    const hash = CryptoJS.MD5("Message", "Secret Passphrase");
+    const hash = CryptoJS.SHA1("Message", "Secret Passphrase");
+    const hash = CryptoJS.HmacMD5("Message", "Secret Passphrase");
+  : labels:
+    - source: CryptoJS.MD5("Message", "Secret Passphrase")
+      style: primary
+      start: 13
+      end: 57
+    - source: CryptoJS
+      style: secondary
+      start: 13
+      end: 21
+    - source: MD5
+      style: secondary
+      start: 22
+      end: 25
+    - source: CryptoJS.MD5
+      style: secondary
+      start: 13
+      end: 25
+    - source: ("Message", "Secret Passphrase")
+      style: secondary
+      start: 25
+      end: 57
+    - source: CryptoJS.SHA1("Message", "Secret Passphrase")
+      style: primary
+      start: 71
+      end: 115
+    - source: CryptoJS
+      style: secondary
+      start: 71
+      end: 79
+    - source: SHA1
+      style: secondary
+      start: 80
+      end: 84
+    - source: CryptoJS.SHA1
+      style: secondary
+      start: 71
+      end: 84
+    - source: ("Message", "Secret Passphrase")
+      style: secondary
+      start: 84
+      end: 115
+    - source: CryptoJS.HmacMD5("Message", "Secret Passphrase")
+      style: primary
+      start: 129
+      end: 177
+    - source: CryptoJS
+      style: secondary
+      start: 129
+      end: 137
+    - source: HmacMD5
+      style: secondary
+      start: 138
+      end: 145
+    - source: CryptoJS.HmacMD5
+      style: secondary
+      start: 129
+      end: 145
+    - source: ("Message", "Secret Passphrase")
+      style: secondary
+      start: 145
+      end: 177
+  ? |
+    const hash = CryptoJS.MD5("Message", "Secret Passphrase");
+    const hash = CryptoJS.SHA1("Message", "Secret Passphrase");
+    const hash = CryptoJS.HmacMD5("Message", "Secret Passphrase");
+  : labels:
+    - source: CryptoJS.MD5("Message", "Secret Passphrase")
+      style: primary
+      start: 13
+      end: 57
+    - source: CryptoJS
+      style: secondary
+      start: 13
+      end: 21
+    - source: MD5
+      style: secondary
+      start: 22
+      end: 25
+    - source: CryptoJS.MD5
+      style: secondary
+      start: 13
+      end: 25
+    - source: ("Message", "Secret Passphrase")
+      style: secondary
+      start: 25
+      end: 57

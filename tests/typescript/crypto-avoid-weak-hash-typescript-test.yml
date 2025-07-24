@@ -1,0 +1,10 @@
+id: crypto-avoid-weak-hash-typescript
+valid:
+  - |
+    const hash = CryptoJS.SHA256("Message", "Secret Passphrase");
+    const hash = CryptoJS.SHA512("Message");
+invalid:
+  - |
+    const hash = CryptoJS.MD5("Message", "Secret Passphrase");
+    const hash = CryptoJS.SHA1("Message", "Secret Passphrase");
+    const hash = CryptoJS.HmacMD5("Message", "Secret Passphrase");

@@ -27,6 +27,31 @@ snapshots:
       end: 61
   ? |
     public void useofBlowfish2() {
+    Cipher.getInstance("Blowfish");
+    }
+  : labels:
+    - source: Cipher.getInstance("Blowfish")
+      style: primary
+      start: 31
+      end: 61
+    - source: getInstance
+      style: secondary
+      start: 38
+      end: 49
+    - source: Blowfish
+      style: secondary
+      start: 51
+      end: 59
+    - source: '"Blowfish"'
+      style: secondary
+      start: 50
+      end: 60
+    - source: ("Blowfish")
+      style: secondary
+      start: 49
+      end: 61
+  ? |
+    public void useofBlowfish2() {
     useCipher(Cipher.getInstance("Blowfish"));
     }
   : labels:

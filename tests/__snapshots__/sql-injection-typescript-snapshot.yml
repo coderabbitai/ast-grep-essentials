@@ -1,0 +1,45 @@
+id: sql-injection-typescript
+snapshots:
+  ? |
+    connection.query("SELECT * FROM users WHERE id=" + userId,(err, result) => {
+        res.json(result);
+    });
+  : labels:
+    - source: '"SELECT * FROM users WHERE id=" + userId'
+      style: primary
+      start: 17
+      end: 57
+    - source: SELECT * FROM users WHERE id=
+      style: secondary
+      start: 18
+      end: 47
+    - source: '"SELECT * FROM users WHERE id="'
+      style: secondary
+      start: 17
+      end: 48
+  ? |
+    models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`)
+  : labels:
+    - source: '`SELECT * FROM Products WHERE ((name LIKE ''%${criteria}%'' OR description LIKE ''%${criteria}%'') AND deletedAt IS NULL) ORDER BY name`'
+      style: primary
+      start: 23
+      end: 155
+    - source: ${criteria}
+      style: secondary
+      start: 67
+      end: 78
+  ? |
+    sequelize.query('SELECT * FROM Products WHERE name LIKE ' +  req.body.username);
+  : labels:
+    - source: '''SELECT * FROM Products WHERE name LIKE '' +  req.body.username'
+      style: primary
+      start: 16
+      end: 78
+    - source: 'SELECT * FROM Products WHERE name LIKE '
+      style: secondary
+      start: 17
+      end: 56
+    - source: '''SELECT * FROM Products WHERE name LIKE '''
+      style: secondary
+      start: 16
+      end: 57

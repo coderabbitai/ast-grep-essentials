@@ -1,0 +1,11 @@
+id: log-sensitive-data-typescript
+valid:
+  - |
+    console.log("email from user" + user.id);
+    console.log(`email from user ${user.uuid}`);
+invalid:
+  - |
+    console.log("email from user" + user.email);
+    console.log(`email from user ${user.email}`);
+    logger.info(`email from user ${user.email}`);
+    logger.warn(email);
