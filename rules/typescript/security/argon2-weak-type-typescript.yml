@@ -1,0 +1,59 @@
+id: argon2-weak-type-typescript
+severity: error
+language: typescript
+message: >-
+  Use secure encryption types when using `argon2`. Avoid using weak argon2 types
+  like argon2i or argon2d. Use argon2id instead for better security.
+note: >-
+  [CWE-327] Use of a Broken or Risky Cryptographic Algorithm.
+  [REFERENCES]
+      - https://github.com/ranisalt/node-argon2/wiki/Options#type
+ast-grep-essentials: true
+utils:
+  MATCH_ARGON2_WEAK_TYPE:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                regex: "^argon2$"
+            - has:
+                stopBy: neighbor
+                kind: property_identifier
+                regex: "^hash$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          has:
+            stopBy: neighbor
+            kind: object
+            has:
+              stopBy: neighbor
+              kind: pair
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: property_identifier
+                    regex: "^type$"
+                - has:
+                    stopBy: neighbor
+                    kind: member_expression
+                    all:
+                      - has:
+                          stopBy: neighbor
+                          kind: identifier
+                          regex: "^argon2$"
+                      - has:
+                          stopBy: neighbor
+                          kind: property_identifier
+                          any:
+                            - regex: "^argon2i$"
+                            - regex: "^argon2d$"
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_ARGON2_WEAK_TYPE
