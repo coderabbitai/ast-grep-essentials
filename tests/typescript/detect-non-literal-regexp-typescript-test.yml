@@ -1,0 +1,9 @@
+id: detect-non-literal-regexp-typescript
+valid:
+  - |
+    const REGEX = "regex"
+    const a = new RegExp('ab+c', 'i');
+    const b = new RegExp(REGEX, 'i');
+invalid:
+  - |
+    var a = new RegExp(c, 'i');

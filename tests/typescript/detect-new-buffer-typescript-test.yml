@@ -1,0 +1,8 @@
+id: detect-new-buffer-typescript
+valid:
+  - |
+    var a = new Buffer('test')
+    var b = Buffer.from('test')
+invalid:
+  - |
+    var a = new Buffer(c)

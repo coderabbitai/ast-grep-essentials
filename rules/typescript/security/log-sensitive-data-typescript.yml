@@ -1,0 +1,105 @@
+id: log-sensitive-data-typescript
+severity: warning
+language: typescript
+message: >-
+  Avoid logging sensitive data. Do not log sensitive data such as user id, email 
+  or other personal data (first name, last name, etc).
+note: >-
+  [CWE-532] Information Exposure Through Log Files.
+ast-grep-essentials: true
+utils:
+  MATCH_LOG_SENSITIVE_DATA:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+                any:
+                  - regex: "^console$"
+                  - regex: "^logger$"
+                  - regex: "^log$"
+            - has:
+                stopBy: neighbor
+                kind: property_identifier
+                any:
+                  - regex: "^warn$"
+                  - regex: "^info$"
+                  - regex: "^error$"
+                  - regex: "^fatal$"
+                  - regex: "^log$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          has:
+            stopBy: neighbor
+            any:
+              - kind: identifier
+                any:
+                  - regex: "^email$"
+                  - regex: "^firstname$"
+                  - regex: "^lastname$"
+                  - regex: "^address$"
+                  - regex: "^mail$"
+                  - regex: "^zipcode$"
+                  - regex: "^username$"
+              - kind: template_string
+                has:
+                  stopBy: neighbor
+                  kind: template_substitution
+                  has:
+                    stopBy: neighbor
+                    any:
+                      - kind: identifier
+                        any:
+                          - regex: "^email$"
+                          - regex: "^firstname$"
+                          - regex: "^lastname$"
+                          - regex: "^address$"
+                          - regex: "^mail$"
+                          - regex: "^zipcode$"
+                          - regex: "^username$"
+                      - kind: member_expression
+                        has:
+                          stopBy: neighbor
+                          kind: property_identifier
+                          any:
+                            - regex: "^email$"
+                            - regex: "^firstname$"
+                            - regex: "^lastname$"
+                            - regex: "^address$"
+                            - regex: "^mail$"
+                            - regex: "^zipcode$"
+                            - regex: "^username$"
+              - kind: binary_expression
+                has:
+                  stopBy: neighbor
+                  any:
+                    - kind: identifier
+                      any:
+                        - regex: "^email$"
+                        - regex: "^firstname$"
+                        - regex: "^lastname$"
+                        - regex: "^address$"
+                        - regex: "^mail$"
+                        - regex: "^zipcode$"
+                        - regex: "^username$"
+                    - kind: member_expression
+                      has:
+                        stopBy: neighbor
+                        kind: property_identifier
+                        any:
+                          - regex: "^email$"
+                          - regex: "^firstname$"
+                          - regex: "^lastname$"
+                          - regex: "^address$"
+                          - regex: "^mail$"
+                          - regex: "^zipcode$"
+                          - regex: "^username$"
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_LOG_SENSITIVE_DATA

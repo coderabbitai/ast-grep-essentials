@@ -1,0 +1,22 @@
+id: detected-jwt-token-typescript
+severity: error
+language: typescript
+message: >-
+  Detects hardcoded JWT tokens within the codebase. Potential JWT token detected. 
+  Avoid hardcoding JWT tokens in the code as it may lead to security vulnerabilities.
+note: >-
+  [CWE-798] Use of Hard-coded Credentials.
+ast-grep-essentials: true
+utils:
+  MATCH_JWT_TOKEN:
+    any:
+      - kind: string
+        has:
+          stopBy: neighbor
+          kind: string_fragment
+          regex: "eyJ[A-Za-z0-9-_=]{14,}\\.[A-Za-z0-9-_=]{13,}(\\.[A-Za-z0-9-_.+/=]*)?"
+      - kind: template_string
+        regex: "eyJ[A-Za-z0-9-_=]{14,}\\.[A-Za-z0-9-_=]{13,}(\\.[A-Za-z0-9-_.+/=]*)?"
+rule:
+  any:
+    - matches: MATCH_JWT_TOKEN

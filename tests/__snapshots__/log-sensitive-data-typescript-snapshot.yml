@@ -1,0 +1,40 @@
+id: log-sensitive-data-typescript
+snapshots:
+  ? |-
+    console.log("email from user" + user.email);
+    console.log(`email from user ${user.email}`);
+    logger.info(`email from user ${user.email}`);
+    logger.warn(email);
+  : labels:
+    - source: console.log("email from user" + user.email)
+      style: primary
+      start: 0
+      end: 43
+    - source: console
+      style: secondary
+      start: 0
+      end: 7
+    - source: log
+      style: secondary
+      start: 8
+      end: 11
+    - source: console.log
+      style: secondary
+      start: 0
+      end: 11
+    - source: email
+      style: secondary
+      start: 37
+      end: 42
+    - source: user.email
+      style: secondary
+      start: 32
+      end: 42
+    - source: '"email from user" + user.email'
+      style: secondary
+      start: 12
+      end: 42
+    - source: ("email from user" + user.email)
+      style: secondary
+      start: 11
+      end: 43

@@ -1,0 +1,24 @@
+id: detect-eval-with-expression-typescript
+snapshots:
+  ? |-
+    eval(a);
+    global.eval(a);
+    globalThis.eval(a);
+    const answer = eval(expression)
+  : labels:
+    - source: eval(a)
+      style: primary
+      start: 0
+      end: 7
+    - source: eval
+      style: secondary
+      start: 0
+      end: 4
+    - source: a
+      style: secondary
+      start: 5
+      end: 6
+    - source: (a)
+      style: secondary
+      start: 4
+      end: 7

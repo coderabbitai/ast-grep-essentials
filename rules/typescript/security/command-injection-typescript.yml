@@ -1,0 +1,35 @@
+id: command-injection-typescript
+severity: warning
+language: typescript
+message: >-
+  Avoid command injection. When executing a command, never use unchecked variables. 
+  Make sure that each variable of the command has been checked.
+note: >-
+  [CWE-78] OS Command Injection.
+ast-grep-essentials: true
+utils:
+  MATCH_COMMAND_INJECTION:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_expression
+          has:
+            stopBy: neighbor
+            kind: property_identifier
+            regex: "^(exec|execSync|spawn|spawnSync)$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          has:
+            stopBy: neighbor
+            any:
+              - kind: template_string
+                has:
+                  stopBy: neighbor
+                  kind: template_substitution
+              - kind: binary_expression
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_COMMAND_INJECTION

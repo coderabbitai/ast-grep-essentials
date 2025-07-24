@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1><i class="fas fa-search"></i> SQL Query Interface</h1>
+        <p class="text-muted">Execute custom SQL queries against the rules database</p>
+    </div>
+</div>
+
+<!-- Query Input -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-code"></i> SQL Query</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <textarea class="form-control code-block" id="sqlQuery" rows="5" 
+                              placeholder="Enter your SQL query here...">SELECT language, COUNT(*) as count FROM rules GROUP BY language ORDER BY count DESC</textarea>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <button class="btn btn-primary" id="executeBtn">
+                            <i class="fas fa-play"></i> Execute Query
+                        </button>
+                        <button class="btn btn-secondary" id="clearBtn">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                    </div>
+                    <div>
+                        <select class="form-select" id="formatSelect" style="width: auto;">
+                            <option value="table">Table</option>
+                            <option value="json">JSON</option>
+                            <option value="csv">CSV</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sample Queries -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-lightbulb"></i> Sample Queries</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Basic Queries</h6>
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action sample-query" 
+                               data-query="SELECT * FROM rules LIMIT 10">
+                                Show first 10 rules
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action sample-query"
+                               data-query="SELECT language, COUNT(*) as count FROM rules GROUP BY language ORDER BY count DESC">
+                                Rules by language
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action sample-query"
+                               data-query="SELECT severity, COUNT(*) as count FROM rules GROUP BY severity">
+                                Rules by severity
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action sample-query"
+                               data-query="SELECT * FROM rules WHERE language = 'python' AND severity = 'warning'">
+                                Python warning rules
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Advanced Queries</h6>
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action sample-query"
+                               data-query="SELECT cwe_references, COUNT(*) as count FROM rules WHERE cwe_references != '' GROUP BY cwe_references ORDER BY count DESC LIMIT 10">
+                                Top CWE references
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action sample-query"
+                               data-query="SELECT * FROM rules WHERE message LIKE '%hardcoded%' OR note LIKE '%hardcoded%'">
+                                Find hardcoded issues
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action sample-query"
+                               data-query="SELECT language, AVG(LENGTH(message)) as avg_message_length FROM rules GROUP BY language ORDER BY avg_message_length DESC">
+                                Average message length by language
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action sample-query"
+                               data-query="SELECT id, language, message FROM rules WHERE message LIKE '%JWT%' OR note LIKE '%JWT%'">
+                                JWT-related rules
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Results -->
+<div class="row">
+    <div class="col-12">
+        <div class="card" id="resultsCard" style="display: none;">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5><i class="fas fa-table"></i> Query Results</h5>
+                <span id="resultsCount" class="badge bg-primary"></span>
+            </div>
+            <div class="card-body">
+                <div id="queryResults"></div>
+            </div>
+        </div>
+        
+        <div class="card" id="errorCard" style="display: none;">
+            <div class="card-header bg-danger text-white">
+                <h5><i class="fas fa-exclamation-triangle"></i> Query Error</h5>
+            </div>
+            <div class="card-body">
+                <div id="queryError"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Database Schema Reference -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-database"></i> Database Schema Reference</h5>
+            </div>
+            <div class="card-body">
+                <div class="code-block">
+                    <strong>Table: rules</strong><br>
+                    • id (TEXT) - Unique rule identifier<br>
+                    • language (TEXT) - Programming language<br>
+                    • severity (TEXT) - Rule severity level<br>
+                    • message (TEXT) - Rule description<br>
+                    • note (TEXT) - Detailed explanation<br>
+                    • category (TEXT) - Rule category<br>
+                    • file_path (TEXT) - Original file path<br>
+                    • cwe_references (TEXT) - CWE numbers (comma-separated)<br>
+                    • ast_grep_pattern (TEXT) - JSON serialized pattern<br>
+                    • utils_patterns (TEXT) - JSON serialized utilities<br>
+                    • created_at (TIMESTAMP) - Creation timestamp
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('executeBtn').addEventListener('click', executeQuery);
+document.getElementById('clearBtn').addEventListener('click', () => {
+    document.getElementById('sqlQuery').value = '';
+    hideResults();
+});
+
+// Sample query handlers
+document.querySelectorAll('.sample-query').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('sqlQuery').value = e.target.getAttribute('data-query');
+    });
+});
+
+// Enter key execution (Ctrl+Enter)
+document.getElementById('sqlQuery').addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 'Enter') {
+        executeQuery();
+    }
+});
+
+function executeQuery() {
+    const query = document.getElementById('sqlQuery').value.trim();
+    if (!query) {
+        alert('Please enter a SQL query');
+        return;
+    }
+
+    const executeBtn = document.getElementById('executeBtn');
+    executeBtn.disabled = true;
+    executeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Executing...';
+
+    hideResults();
+
+    fetch('/api/query', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ sql: query })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            displayResults(data.data, data.count);
+        } else {
+            displayError(data.error);
+        }
+    })
+    .catch(error => {
+        displayError('Network error: ' + error.message);
+    })
+    .finally(() => {
+        executeBtn.disabled = false;
+        executeBtn.innerHTML = '<i class="fas fa-play"></i> Execute Query';
+    });
+}
+
+function displayResults(data, count) {
+    const resultsCard = document.getElementById('resultsCard');
+    const resultsCount = document.getElementById('resultsCount');
+    const queryResults = document.getElementById('queryResults');
+    const format = document.getElementById('formatSelect').value;
+
+    resultsCount.textContent = `${count} rows`;
+    
+    if (count === 0) {
+        queryResults.innerHTML = '<div class="alert alert-info">No results found</div>';
+    } else if (format === 'json') {
+        queryResults.innerHTML = `<pre class="code-block">${JSON.stringify(data, null, 2)}</pre>`;
+    } else if (format === 'csv') {
+        const csv = convertToCSV(data);
+        queryResults.innerHTML = `<pre class="code-block">${csv}</pre>`;
+    } else {
+        // Table format
+        queryResults.innerHTML = generateTable(data);
+    }
+
+    resultsCard.style.display = 'block';
+}
+
+function displayError(error) {
+    const errorCard = document.getElementById('errorCard');
+    const queryError = document.getElementById('queryError');
+    
+    queryError.innerHTML = `<pre>${error}</pre>`;
+    errorCard.style.display = 'block';
+}
+
+function hideResults() {
+    document.getElementById('resultsCard').style.display = 'none';
+    document.getElementById('errorCard').style.display = 'none';
+}
+
+function generateTable(data) {
+    if (!data.length) return '<div class="alert alert-info">No data to display</div>';
+
+    const headers = Object.keys(data[0]);
+    
+    let html = '<div class="table-responsive"><table class="table table-striped table-sm">';
+    html += '<thead class="table-dark"><tr>';
+    headers.forEach(header => {
+        html += `<th>${header}</th>`;
+    });
+    html += '</tr></thead><tbody>';
+
+    data.forEach(row => {
+        html += '<tr>';
+        headers.forEach(header => {
+            let value = row[header];
+            if (typeof value === 'string' && value.length > 100) {
+                value = value.substring(0, 100) + '...';
+            }
+            html += `<td>${value || ''}</td>`;
+        });
+        html += '</tr>';
+    });
+
+    html += '</tbody></table></div>';
+    return html;
+}
+
+function convertToCSV(data) {
+    if (!data.length) return '';
+
+    const headers = Object.keys(data[0]);
+    let csv = headers.join(',') + '\n';
+
+    data.forEach(row => {
+        const values = headers.map(header => {
+            let value = row[header] || '';
+            if (typeof value === 'string') {
+                value = value.replace(/"/g, '""');
+                if (value.includes(',') || value.includes('\n') || value.includes('"')) {
+                    value = `"${value}"`;
+                }
+            }
+            return value;
+        });
+        csv += values.join(',') + '\n';
+    });
+
+    return csv;
+}
+
+// Handle URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('sql')) {
+    document.getElementById('sqlQuery').value = urlParams.get('sql');
+    executeQuery();
+}
+</script>
+{% endblock %}

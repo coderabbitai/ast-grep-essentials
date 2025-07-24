@@ -1,0 +1,35 @@
+id: chmod-permissions-typescript
+severity: warning
+language: typescript
+message: >-
+  Do not give 777 permissions to a file. Always make sure you restrict the 
+  permissions of your application files. Applications should not allow write 
+  and execution for other users.
+note: >-
+  [CWE-732] Incorrect Permission Assignment for Critical Resource.
+ast-grep-essentials: true
+utils:
+  MATCH_CHMOD_777:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_expression
+          has:
+            stopBy: neighbor
+            kind: property_identifier
+            any:
+              - regex: "^chmod$"
+              - regex: "^chmodSync$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          all:
+            - has:
+                stopBy: neighbor
+                kind: number
+                regex: "^0o777$"
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_CHMOD_777

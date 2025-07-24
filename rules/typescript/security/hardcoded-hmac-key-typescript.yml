@@ -1,0 +1,93 @@
+id: hardcoded-hmac-key-typescript
+severity: warning
+language: typescript
+message: >-
+  Detects hardcoded HMAC keys. Detected hardcoded cryptographic key. Avoid using 
+  hardcoded secrets; consider storing them securely, such as in environment 
+  variables or a secure configuration file.
+note: >-
+  [CWE-798] Use of Hard-coded Credentials.
+ast-grep-essentials: true
+utils:
+  MATCH_CRYPTO_IMPORT:
+    kind: import_statement
+    all:
+      - has:
+          stopBy: neighbor
+          kind: import_clause
+          has:
+            stopBy: neighbor
+            kind: identifier
+      - has:
+          stopBy: neighbor
+          kind: string
+          has:
+            stopBy: neighbor
+            kind: string_fragment
+            regex: "^crypto$"
+  MATCH_HARDCODED_HMAC:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_expression
+          all:
+            - has:
+                stopBy: neighbor
+                kind: identifier
+            - has:
+                stopBy: neighbor
+                kind: property_identifier
+                regex: "^createHmac$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          all:
+            - has:
+                nthChild:
+                  position: 1
+                  ofRule:
+                    not:
+                      kind: comment
+            - has:
+                nthChild:
+                  position: 2
+                  ofRule:
+                    not:
+                      kind: comment
+            - not:
+                has:
+                  nthChild:
+                    position: 3
+                    ofRule:
+                      not:
+                        kind: comment
+            - has:
+                nthChild:
+                  position: 2
+                  ofRule:
+                    any:
+                      - kind: string
+                        has:
+                          kind: string_fragment
+                          regex: ".{3,}"
+                      - kind: identifier
+                        not:
+                          any:
+                            - regex: "^safely_stored_key$"
+                            - inside:
+                                kind: member_expression
+                                has:
+                                  field: object
+                                  any:
+                                    - regex: "^process$"
+                                    - regex: "^config$"
+                            - inside:
+                                kind: call_expression
+                                has:
+                                  field: function
+                                  kind: member_expression
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_HARDCODED_HMAC

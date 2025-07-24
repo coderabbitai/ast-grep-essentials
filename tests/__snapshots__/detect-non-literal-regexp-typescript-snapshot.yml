@@ -1,0 +1,20 @@
+id: detect-non-literal-regexp-typescript
+snapshots:
+  var a = new RegExp(c, 'i');:
+    labels:
+    - source: new RegExp(c, 'i')
+      style: primary
+      start: 8
+      end: 26
+    - source: RegExp
+      style: secondary
+      start: 12
+      end: 18
+    - source: c
+      style: secondary
+      start: 19
+      end: 20
+    - source: (c, 'i')
+      style: secondary
+      start: 18
+      end: 26

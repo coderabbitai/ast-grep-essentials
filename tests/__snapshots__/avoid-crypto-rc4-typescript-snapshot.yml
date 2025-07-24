@@ -1,0 +1,30 @@
+id: avoid-crypto-rc4-typescript
+snapshots:
+  ? |-
+    const encrypted = CryptoJS.RC4.encrypt("Message", "Secret Passphrase");
+    const decrypted = CryptoJS.RC4.decrypt(encrypted, "Secret Passphrase");
+  : labels:
+    - source: CryptoJS.RC4.encrypt("Message", "Secret Passphrase")
+      style: primary
+      start: 18
+      end: 70
+    - source: CryptoJS
+      style: secondary
+      start: 18
+      end: 26
+    - source: RC4
+      style: secondary
+      start: 27
+      end: 30
+    - source: CryptoJS.RC4
+      style: secondary
+      start: 18
+      end: 30
+    - source: encrypt
+      style: secondary
+      start: 31
+      end: 38
+    - source: CryptoJS.RC4.encrypt
+      style: secondary
+      start: 18
+      end: 38

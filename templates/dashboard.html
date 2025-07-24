@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1><i class="fas fa-tachometer-alt"></i> Rules Dashboard</h1>
+        <p class="text-muted">Overview of AST-Grep security rules across languages and categories</p>
+    </div>
+</div>
+
+<!-- Statistics Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card stat-card text-center">
+            <div class="card-body">
+                <h2>{{ stats.total_rules }}</h2>
+                <p class="mb-0">Total Rules</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card text-center">
+            <div class="card-body">
+                <h2>{{ stats.by_language|length }}</h2>
+                <p class="mb-0">Languages</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card text-center">
+            <div class="card-body">
+                <h2>{{ stats.by_severity|length }}</h2>
+                <p class="mb-0">Severity Levels</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card stat-card text-center">
+            <div class="card-body">
+                <h2>{{ stats.top_cwe|length }}</h2>
+                <p class="mb-0">CWE Categories</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Row -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-code"></i> Rules by Language</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="languageChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-exclamation-triangle"></i> Rules by Severity</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="severityChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Top Languages and CWE Tables -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-trophy"></i> Top Languages by Rules Count</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Language</th>
+                                <th>Rules</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for language, count in stats.by_language[:10] %}
+                            <tr>
+                                <td>
+                                    <span class="badge bg-primary">{{ language }}</span>
+                                </td>
+                                <td>{{ count }}</td>
+                                <td>
+                                    <div class="progress" style="height: 20px;">
+                                        <div class="progress-bar" role="progressbar" 
+                                             style="width: {{ (count / stats.total_rules * 100)|round(1) }}%">
+                                            {{ (count / stats.total_rules * 100)|round(1) }}%
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-bug"></i> Top CWE Categories</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>CWE</th>
+                                <th>Description</th>
+                                <th>Rules</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cwe, count in stats.top_cwe[:10] %}
+                            <tr>
+                                <td>
+                                    <span class="badge bg-danger">CWE-{{ cwe }}</span>
+                                </td>
+                                <td>
+                                    {% if cwe == '798' %}Hardcoded Credentials
+                                    {% elif cwe == '287' %}Authentication Issues
+                                    {% elif cwe == '327' %}Broken Cryptography
+                                    {% elif cwe == '326' %}Weak Encryption
+                                    {% elif cwe == '328' %}Weak Hash
+                                    {% else %}Security Weakness{% endif %}
+                                </td>
+                                <td>{{ count }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-rocket"></i> Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="/rules" class="btn btn-outline-primary w-100 mb-2">
+                            <i class="fas fa-list"></i> Browse All Rules
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/query?sql=SELECT language, COUNT(*) FROM rules GROUP BY language" class="btn btn-outline-success w-100 mb-2">
+                            <i class="fas fa-chart-bar"></i> Language Stats
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/rules?search=hardcoded" class="btn btn-outline-warning w-100 mb-2">
+                            <i class="fas fa-search"></i> Find Hardcoded Issues
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/coverage" class="btn btn-outline-info w-100 mb-2">
+                            <i class="fas fa-shield-alt"></i> Coverage Analysis
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Language Chart
+    const langCtx = document.getElementById('languageChart').getContext('2d');
+    const languageData = {{ stats.by_language | tojson }};
+    const langLabels = languageData.slice(0, 10).map(item => item[0]);
+    const langValues = languageData.slice(0, 10).map(item => item[1]);
+    
+    new Chart(langCtx, {
+        type: 'doughnut',
+        data: {
+            labels: langLabels,
+            datasets: [{
+                data: langValues,
+                backgroundColor: [
+                    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF',
+                    '#FF9F40', '#FF6384', '#C9CBCF', '#4BC0C0', '#FF6384'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+    // Severity Chart
+    const sevCtx = document.getElementById('severityChart').getContext('2d');
+    const severityData = {{ stats.by_severity | tojson }};
+    const sevLabels = severityData.map(item => item[0]);
+    const sevValues = severityData.map(item => item[1]);
+    
+    new Chart(sevCtx, {
+        type: 'bar',
+        data: {
+            labels: sevLabels,
+            datasets: [{
+                label: 'Rules Count',
+                data: sevValues,
+                backgroundColor: [
+                    '#FFC107', '#DC3545', '#17A2B8', '#28A745', '#6C757D'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

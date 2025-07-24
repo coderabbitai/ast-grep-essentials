@@ -1,0 +1,8 @@
+id: command-injection-typescript
+valid:
+  - |
+    childprocess.exec('mv /tmp/src /tmp/dst', (error, stdout, stderr) => {});
+invalid:
+  - |
+    childprocess.exec(`mv ${src} ${dst}`, (error, stdout, stderr) => {});
+    childprocess.exec('mv ' + src + " " + dst, (error, stdout, stderr) => {});

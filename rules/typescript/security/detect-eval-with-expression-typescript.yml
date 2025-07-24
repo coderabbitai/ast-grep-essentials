@@ -1,0 +1,40 @@
+id: detect-eval-with-expression-typescript
+severity: warning
+language: typescript
+message: >-
+  Avoid `eval` with expressions. The `eval` function could execute malicious code 
+  if used with non-literal values. Never use eval with variables or expressions.
+note: >-
+  [CWE-95] Improper Neutralization of Directives in Dynamically Evaluated Code.
+ast-grep-essentials: true
+utils:
+  MATCH_EVAL_WITH_EXPRESSION:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          any:
+            - kind: identifier
+              regex: "^eval$"
+            - kind: member_expression
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: identifier
+                    any:
+                      - regex: "^global$"
+                      - regex: "^globalThis$"
+                - has:
+                    stopBy: neighbor
+                    kind: property_identifier
+                    regex: "^eval$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          has:
+            stopBy: neighbor
+            kind: identifier
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_EVAL_WITH_EXPRESSION

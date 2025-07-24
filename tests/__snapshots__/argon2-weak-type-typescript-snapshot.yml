@@ -1,0 +1,50 @@
+id: argon2-weak-type-typescript
+snapshots:
+  ? |-
+    await argon2.hash('password', {type: argon2.argon2d})
+    await argon2.hash('password', {type: argon2.argon2i})
+  : labels:
+    - source: 'argon2.hash(''password'', {type: argon2.argon2d})'
+      style: primary
+      start: 6
+      end: 53
+    - source: argon2
+      style: secondary
+      start: 6
+      end: 12
+    - source: hash
+      style: secondary
+      start: 13
+      end: 17
+    - source: argon2.hash
+      style: secondary
+      start: 6
+      end: 17
+    - source: type
+      style: secondary
+      start: 31
+      end: 35
+    - source: argon2
+      style: secondary
+      start: 37
+      end: 43
+    - source: argon2d
+      style: secondary
+      start: 44
+      end: 51
+    - source: argon2.argon2d
+      style: secondary
+      start: 37
+      end: 51
+    - source: 'type: argon2.argon2d'
+      style: secondary
+      start: 31
+      end: 51
+    - source: '{type: argon2.argon2d}'
+      style: secondary
+      start: 30
+      end: 52
+    - source: '(''password'', {type: argon2.argon2d})'
+      style: secondary
+      start: 17
+      end: 53

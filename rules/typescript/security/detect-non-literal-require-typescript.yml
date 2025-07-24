@@ -1,0 +1,33 @@
+id: detect-non-literal-require-typescript
+severity: warning
+language: typescript
+message: >-
+  Avoid require with non-literal values. Importing packages from dynamic paths 
+  can be a security vulnerability. An attacker might provide an undesired path 
+  that leads to running arbitrary code.
+note: >-
+  [CWE-829] Inclusion of Functionality from Untrusted Control Sphere.
+ast-grep-essentials: true
+utils:
+  MATCH_NON_LITERAL_REQUIRE:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: identifier
+          regex: "^require$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          has:
+            stopBy: neighbor
+            any:
+              - kind: identifier
+              - kind: template_string
+                has:
+                  stopBy: neighbor
+                  kind: template_substitution
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_NON_LITERAL_REQUIRE

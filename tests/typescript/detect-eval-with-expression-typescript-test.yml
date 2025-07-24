@@ -1,0 +1,12 @@
+id: detect-eval-with-expression-typescript
+valid:
+  - |
+    eval('alert()')
+    global.eval('a');
+    globalThis.eval('a');
+invalid:
+  - |
+    eval(a);
+    global.eval(a);
+    globalThis.eval(a);
+    const answer = eval(expression)

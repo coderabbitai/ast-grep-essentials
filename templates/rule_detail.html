@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1><i class="fas fa-shield-alt"></i> {{ rule.id }}</h1>
+        <div class="d-flex gap-2 mb-3">
+            <span class="badge bg-primary">{{ rule.language }}</span>
+            <span class="badge bg-{{ 'danger' if rule.severity == 'error' else 'warning' if rule.severity == 'warning' else 'info' }}">
+                {{ rule.severity }}
+            </span>
+            {% if rule.cwe_references %}
+            <span class="badge bg-danger">CWE-{{ rule.cwe_references }}</span>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Rule Information -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-info-circle"></i> Rule Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Message:</strong>
+                        <p>{{ rule.message }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>File Path:</strong>
+                        <p><code>{{ rule.file_path }}</code></p>
+                    </div>
+                </div>
+                
+                {% if rule.note %}
+                <div class="mt-3">
+                    <strong>Detailed Note:</strong>
+                    <div class="alert alert-light">{{ rule.note | replace('\n', '<br>') | safe }}</div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AST-Grep Pattern -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-code"></i> AST-Grep Pattern</h5>
+            </div>
+            <div class="card-body">
+                <pre class="code-block">{{ rule.ast_grep_pattern | tojson(indent=2) }}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Utils Patterns -->
+{% if rule.utils_patterns and rule.utils_patterns != '{}' %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-tools"></i> Utility Patterns</h5>
+            </div>
+            <div class="card-body">
+                <pre class="code-block">{{ rule.utils_patterns | tojson(indent=2) }}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Related Rules -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-link"></i> Related Rules</h5>
+            </div>
+            <div class="card-body">
+                <div id="relatedRules">
+                    Loading related rules...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actions -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex gap-2">
+                    <a href="/rules?language={{ rule.language }}" class="btn btn-outline-primary">
+                        <i class="fas fa-filter"></i> View {{ rule.language }} Rules
+                    </a>
+                    {% if rule.cwe_references %}
+                    <a href="/rules?search=CWE-{{ rule.cwe_references }}" class="btn btn-outline-danger">
+                        <i class="fas fa-bug"></i> View CWE-{{ rule.cwe_references }} Rules
+                    </a>
+                    {% endif %}
+                    <a href="/query?sql=SELECT * FROM rules WHERE severity = '{{ rule.severity }}'" class="btn btn-outline-warning">
+                        <i class="fas fa-search"></i> View {{ rule.severity }} Rules
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Load related rules
+fetch('/api/query', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        sql: `SELECT id, message, severity FROM rules 
+              WHERE (language = '{{ rule.language }}' OR 
+                     cwe_references = '{{ rule.cwe_references }}' OR
+                     severity = '{{ rule.severity }}') 
+              AND id != '{{ rule.id }}'
+              LIMIT 10`
+    })
+})
+.then(response => response.json())
+.then(data => {
+    const relatedDiv = document.getElementById('relatedRules');
+    
+    if (data.success && data.data.length > 0) {
+        const rulesHTML = data.data.map(rule => `
+            <div class="mb-2">
+                <a href="/rule/${rule.id}" class="text-decoration-none">
+                    <strong>${rule.id}</strong>
+                </a>
+                <span class="badge bg-${getSeverityColor(rule.severity)} ms-2">${rule.severity}</span>
+                <div class="text-muted small">${rule.message.substring(0, 100)}...</div>
+            </div>
+        `).join('');
+        
+        relatedDiv.innerHTML = rulesHTML;
+    } else {
+        relatedDiv.innerHTML = '<div class="text-muted">No related rules found</div>';
+    }
+})
+.catch(error => {
+    document.getElementById('relatedRules').innerHTML = 
+        '<div class="text-danger">Error loading related rules</div>';
+});
+
+function getSeverityColor(severity) {
+    switch (severity) {
+        case 'error': return 'danger';
+        case 'warning': return 'warning';
+        case 'info': return 'info';
+        default: return 'secondary';
+    }
+}
+</script>
+{% endblock %}

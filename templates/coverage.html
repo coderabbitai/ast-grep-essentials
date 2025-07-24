@@ -1,0 +1,387 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1><i class="fas fa-chart-bar"></i> Coverage Analysis</h1>
+        <p class="text-muted">Analyze rule coverage across languages, security categories, and vulnerability types</p>
+    </div>
+</div>
+
+<!-- Coverage Charts -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-code"></i> Language Coverage</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="languageCoverageChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-bug"></i> CWE Coverage</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="cweCoverageChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Coverage Matrix -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-th"></i> Language vs CWE Coverage Matrix</h5>
+            </div>
+            <div class="card-body">
+                <div id="coverageMatrix" class="table-responsive">
+                    <!-- Matrix will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detailed Coverage Tables -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-language"></i> Language Coverage Details</h5>
+            </div>
+            <div class="card-body">
+                <div id="languageDetails" class="table-responsive">
+                    <!-- Language details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-shield-alt"></i> Security Category Coverage</h5>
+            </div>
+            <div class="card-body">
+                <div id="securityDetails" class="table-responsive">
+                    <!-- Security details will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Coverage Gaps -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-exclamation-triangle"></i> Coverage Gaps & Recommendations</h5>
+            </div>
+            <div class="card-body">
+                <div id="coverageGaps">
+                    <!-- Coverage gaps will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let coverageData = {};
+
+// Load coverage data
+fetch('/api/coverage')
+    .then(response => response.json())
+    .then(data => {
+        coverageData = data;
+        renderCharts();
+        renderTables();
+        renderCoverageMatrix();
+        analyzeCoverageGaps();
+    })
+    .catch(error => {
+        console.error('Error loading coverage data:', error);
+    });
+
+function renderCharts() {
+    // Language Coverage Chart
+    const langCtx = document.getElementById('languageCoverageChart').getContext('2d');
+    const langData = coverageData.language_coverage.slice(0, 10);
+    
+    new Chart(langCtx, {
+        type: 'horizontalBar',
+        data: {
+            labels: langData.map(item => item.language),
+            datasets: [{
+                label: 'Rules Count',
+                data: langData.map(item => item.rule_count),
+                backgroundColor: '#36A2EB'
+            }, {
+                label: 'CWE Categories',
+                data: langData.map(item => item.cwe_count),
+                backgroundColor: '#FF6384'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // CWE Coverage Chart
+    const cweCtx = document.getElementById('cweCoverageChart').getContext('2d');
+    const cweData = coverageData.cwe_coverage.slice(0, 10);
+    
+    new Chart(cweCtx, {
+        type: 'doughnut',
+        data: {
+            labels: cweData.map(item => `CWE-${item.cwe_references}`),
+            datasets: [{
+                data: cweData.map(item => item.count),
+                backgroundColor: [
+                    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF',
+                    '#FF9F40', '#FF6384', '#C9CBCF', '#4BC0C0', '#FF6384'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+}
+
+function renderTables() {
+    // Language details table
+    const langTable = coverageData.language_coverage.map(item => `
+        <tr>
+            <td><span class="badge bg-primary">${item.language}</span></td>
+            <td>${item.rule_count}</td>
+            <td>${item.cwe_count}</td>
+            <td>
+                <div class="progress" style="height: 20px;">
+                    <div class="progress-bar" style="width: ${(item.rule_count / coverageData.language_coverage[0].rule_count * 100)}%">
+                        ${Math.round(item.rule_count / coverageData.language_coverage[0].rule_count * 100)}%
+                    </div>
+                </div>
+            </td>
+        </tr>
+    `).join('');
+
+    document.getElementById('languageDetails').innerHTML = `
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Language</th>
+                    <th>Rules</th>
+                    <th>CWE Categories</th>
+                    <th>Relative Coverage</th>
+                </tr>
+            </thead>
+            <tbody>${langTable}</tbody>
+        </table>
+    `;
+
+    // Security details table
+    const secTable = coverageData.cwe_coverage.slice(0, 15).map(item => `
+        <tr>
+            <td><span class="badge bg-danger">CWE-${item.cwe_references}</span></td>
+            <td>${getCWEDescription(item.cwe_references)}</td>
+            <td>${item.count}</td>
+            <td>
+                <div class="progress" style="height: 20px;">
+                    <div class="progress-bar bg-danger" style="width: ${(item.count / coverageData.cwe_coverage[0].count * 100)}%">
+                        ${Math.round(item.count / coverageData.cwe_coverage[0].count * 100)}%
+                    </div>
+                </div>
+            </td>
+        </tr>
+    `).join('');
+
+    document.getElementById('securityDetails').innerHTML = `
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>CWE</th>
+                    <th>Description</th>
+                    <th>Rules</th>
+                    <th>Coverage</th>
+                </tr>
+            </thead>
+            <tbody>${secTable}</tbody>
+        </table>
+    `;
+}
+
+function renderCoverageMatrix() {
+    // Create a matrix showing language vs CWE coverage
+    fetch('/api/query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            sql: `SELECT language, cwe_references, COUNT(*) as count 
+                  FROM rules 
+                  WHERE cwe_references != '' 
+                  GROUP BY language, cwe_references 
+                  ORDER BY language, cwe_references`
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const matrix = createCoverageMatrix(data.data);
+            document.getElementById('coverageMatrix').innerHTML = matrix;
+        }
+    });
+}
+
+function createCoverageMatrix(data) {
+    // Get unique languages and CWEs
+    const languages = [...new Set(data.map(item => item.language))].sort();
+    const cwes = [...new Set(data.map(item => item.cwe_references))].sort();
+    
+    // Create lookup map
+    const lookup = {};
+    data.forEach(item => {
+        lookup[`${item.language}-${item.cwe_references}`] = item.count;
+    });
+
+    let html = '<table class="table table-sm table-bordered"><thead><tr><th>Language</th>';
+    cwes.slice(0, 10).forEach(cwe => {
+        html += `<th class="text-center">CWE-${cwe}</th>`;
+    });
+    html += '</tr></thead><tbody>';
+
+    languages.forEach(lang => {
+        html += `<tr><td><strong>${lang}</strong></td>`;
+        cwes.slice(0, 10).forEach(cwe => {
+            const count = lookup[`${lang}-${cwe}`] || 0;
+            const intensity = count > 0 ? Math.min(100, (count / 10) * 100) : 0;
+            const color = count > 0 ? `rgba(40, 167, 69, ${intensity / 100})` : 'transparent';
+            html += `<td class="text-center" style="background-color: ${color}">
+                ${count > 0 ? count : ''}
+            </td>`;
+        });
+        html += '</tr>';
+    });
+
+    html += '</tbody></table>';
+    return html;
+}
+
+function analyzeCoverageGaps() {
+    const gaps = [];
+    
+    // Languages with low rule counts
+    const lowCoverageLanguages = coverageData.language_coverage
+        .filter(item => item.rule_count < 5)
+        .map(item => item.language);
+    
+    if (lowCoverageLanguages.length > 0) {
+        gaps.push({
+            type: 'Low Language Coverage',
+            description: `Languages with fewer than 5 rules: ${lowCoverageLanguages.join(', ')}`,
+            recommendation: 'Consider adding more security rules for these languages',
+            severity: 'medium'
+        });
+    }
+
+    // CWE categories with low coverage
+    const lowCWECoverage = coverageData.cwe_coverage
+        .filter(item => item.count < 3)
+        .map(item => item.cwe_references);
+    
+    if (lowCWECoverage.length > 0) {
+        gaps.push({
+            type: 'Low CWE Coverage',
+            description: `CWE categories with fewer than 3 rules: ${lowCWECoverage.map(c => `CWE-${c}`).join(', ')}`,
+            recommendation: 'Consider expanding rules for these security categories',
+            severity: 'low'
+        });
+    }
+
+    // Missing critical CWEs
+    const criticalCWEs = ['79', '89', '94', '77', '22', '352', '434'];
+    const coveredCWEs = coverageData.cwe_coverage.map(item => item.cwe_references);
+    const missingCritical = criticalCWEs.filter(cwe => !coveredCWEs.includes(cwe));
+    
+    if (missingCritical.length > 0) {
+        gaps.push({
+            type: 'Missing Critical CWEs',
+            description: `Critical vulnerability types not covered: ${missingCritical.map(c => `CWE-${c}`).join(', ')}`,
+            recommendation: 'High priority: Add rules for these critical security issues',
+            severity: 'high'
+        });
+    }
+
+    renderCoverageGaps(gaps);
+}
+
+function renderCoverageGaps(gaps) {
+    if (gaps.length === 0) {
+        document.getElementById('coverageGaps').innerHTML = 
+            '<div class="alert alert-success"><i class="fas fa-check-circle"></i> No significant coverage gaps detected!</div>';
+        return;
+    }
+
+    const gapsHTML = gaps.map(gap => {
+        const alertClass = gap.severity === 'high' ? 'alert-danger' : 
+                          gap.severity === 'medium' ? 'alert-warning' : 'alert-info';
+        
+        return `
+            <div class="alert ${alertClass}">
+                <h6><i class="fas fa-exclamation-triangle"></i> ${gap.type}</h6>
+                <p class="mb-2">${gap.description}</p>
+                <small><strong>Recommendation:</strong> ${gap.recommendation}</small>
+            </div>
+        `;
+    }).join('');
+
+    document.getElementById('coverageGaps').innerHTML = gapsHTML;
+}
+
+function getCWEDescription(cwe) {
+    const descriptions = {
+        '798': 'Hardcoded Credentials',
+        '287': 'Authentication Issues',
+        '327': 'Broken Cryptography',
+        '326': 'Weak Encryption',
+        '328': 'Weak Hash',
+        '1004': 'Cookie Issues',
+        '367': 'TOCTOU Race Conditions',
+        '416': 'Use After Free',
+        '611': 'XML External Entities',
+        '78': 'Command Injection',
+        '79': 'Cross-site Scripting',
+        '89': 'SQL Injection',
+        '94': 'Code Injection',
+        '77': 'Command Injection',
+        '22': 'Path Traversal',
+        '352': 'CSRF',
+        '434': 'File Upload'
+    };
+    return descriptions[cwe] || 'Security Weakness';
+}
+</script>
+{% endblock %}

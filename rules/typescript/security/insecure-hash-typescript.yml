@@ -1,0 +1,43 @@
+id: insecure-hash-typescript
+severity: warning
+language: typescript
+message: >-
+  Do not use weak hash functions. Do not use weak hash algorithms such as MD5 
+  or SHA1. Use stronger algorithms like SHA-256 or SHA-512.
+note: >-
+  [CWE-328] Use of Weak Hash.
+ast-grep-essentials: true
+utils:
+  MATCH_INSECURE_HASH:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          any:
+            - kind: member_expression
+              all:
+                - has:
+                    stopBy: neighbor
+                    kind: identifier
+                - has:
+                    stopBy: neighbor
+                    kind: property_identifier
+                    regex: "^createHash$"
+            - kind: identifier
+              regex: "^createHash$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          has:
+            stopBy: neighbor
+            kind: string
+            has:
+              stopBy: neighbor
+              kind: string_fragment
+              any:
+                - regex: "^md5$"
+                - regex: "^sha1$"
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_INSECURE_HASH

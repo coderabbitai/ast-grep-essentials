@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1><i class="fas fa-list"></i> Rules Browser</h1>
+        <p class="text-muted">Browse and search through AST-Grep security rules</p>
+    </div>
+</div>
+
+<!-- Search and Filters -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search rules...">
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" id="languageFilter">
+                            <option value="">All Languages</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" id="severityFilter">
+                            <option value="">All Severities</option>
+                            <option value="error">Error</option>
+                            <option value="warning">Warning</option>
+                            <option value="info">Info</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary w-100" id="searchBtn">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Results Info -->
+<div class="row mb-3">
+    <div class="col-12">
+        <div id="resultsInfo" class="text-muted">
+            Loading rules...
+        </div>
+    </div>
+</div>
+
+<!-- Rules List -->
+<div id="rulesList" class="row">
+    <!-- Rules will be loaded here -->
+</div>
+
+<!-- Pagination -->
+<div class="row mt-4">
+    <div class="col-12">
+        <nav>
+            <ul class="pagination justify-content-center" id="pagination">
+                <!-- Pagination will be loaded here -->
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!-- Rule Detail Modal -->
+<div class="modal fade" id="ruleModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ruleModalTitle">Rule Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="ruleModalBody">
+                <!-- Rule details will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let currentPage = 1;
+let currentFilters = {
+    language: '',
+    severity: '',
+    search: ''
+};
+
+// Load languages for filter
+fetch('/api/stats')
+    .then(response => response.json())
+    .then(data => {
+        const languageFilter = document.getElementById('languageFilter');
+        const languages = data.by_language.map(item => item[0]).sort();
+        languages.forEach(lang => {
+            const option = document.createElement('option');
+            option.value = lang;
+            option.textContent = lang;
+            languageFilter.appendChild(option);
+        });
+    });
+
+// Search functionality
+document.getElementById('searchBtn').addEventListener('click', () => {
+    currentFilters.search = document.getElementById('searchInput').value;
+    currentFilters.language = document.getElementById('languageFilter').value;
+    currentFilters.severity = document.getElementById('severityFilter').value;
+    currentPage = 1;
+    loadRules();
+});
+
+// Enter key search
+document.getElementById('searchInput').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        document.getElementById('searchBtn').click();
+    }
+});
+
+function loadRules() {
+    const params = new URLSearchParams({
+        page: currentPage,
+        per_page: 20,
+        ...currentFilters
+    });
+
+    fetch(`/api/rules?${params}`)
+        .then(response => response.json())
+        .then(data => {
+            displayRules(data.rules);
+            displayPagination(data);
+            updateResultsInfo(data);
+        })
+        .catch(error => {
+            console.error('Error loading rules:', error);
+            document.getElementById('rulesList').innerHTML = 
+                '<div class="col-12"><div class="alert alert-danger">Error loading rules</div></div>';
+        });
+}
+
+function displayRules(rules) {
+    const rulesList = document.getElementById('rulesList');
+    
+    if (rules.length === 0) {
+        rulesList.innerHTML = '<div class="col-12"><div class="alert alert-info">No rules found</div></div>';
+        return;
+    }
+
+    rulesList.innerHTML = rules.map(rule => `
+        <div class="col-md-6 mb-3">
+            <div class="card rule-card severity-${rule.severity}">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h6 class="card-title mb-0">
+                            <a href="#" onclick="showRuleDetail('${rule.id}')" class="text-decoration-none">
+                                ${rule.id}
+                            </a>
+                        </h6>
+                        <div>
+                            <span class="badge bg-primary">${rule.language}</span>
+                            <span class="badge bg-${getSeverityColor(rule.severity)}">${rule.severity}</span>
+                        </div>
+                    </div>
+                    <p class="card-text small">${truncateText(rule.message, 150)}</p>
+                    ${rule.cwe_references ? `<div class="small text-muted">CWE: ${rule.cwe_references}</div>` : ''}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function displayPagination(data) {
+    const pagination = document.getElementById('pagination');
+    const totalPages = data.total_pages;
+    
+    if (totalPages <= 1) {
+        pagination.innerHTML = '';
+        return;
+    }
+
+    let paginationHTML = '';
+    
+    // Previous button
+    if (data.page > 1) {
+        paginationHTML += `<li class="page-item"><a class="page-link" href="#" onclick="changePage(${data.page - 1})">Previous</a></li>`;
+    }
+    
+    // Page numbers
+    const startPage = Math.max(1, data.page - 2);
+    const endPage = Math.min(totalPages, data.page + 2);
+    
+    for (let i = startPage; i <= endPage; i++) {
+        paginationHTML += `<li class="page-item ${i === data.page ? 'active' : ''}">
+            <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
+        </li>`;
+    }
+    
+    // Next button
+    if (data.page < totalPages) {
+        paginationHTML += `<li class="page-item"><a class="page-link" href="#" onclick="changePage(${data.page + 1})">Next</a></li>`;
+    }
+    
+    pagination.innerHTML = paginationHTML;
+}
+
+function updateResultsInfo(data) {
+    const info = document.getElementById('resultsInfo');
+    const start = (data.page - 1) * data.per_page + 1;
+    const end = Math.min(data.page * data.per_page, data.total);
+    info.textContent = `Showing ${start}-${end} of ${data.total} rules`;
+}
+
+function changePage(page) {
+    currentPage = page;
+    loadRules();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function getSeverityColor(severity) {
+    switch (severity) {
+        case 'error': return 'danger';
+        case 'warning': return 'warning';
+        case 'info': return 'info';
+        default: return 'secondary';
+    }
+}
+
+function truncateText(text, length) {
+    return text.length > length ? text.substring(0, length) + '...' : text;
+}
+
+function showRuleDetail(ruleId) {
+    fetch(`/rule/${ruleId}`)
+        .then(response => response.text())
+        .then(html => {
+            // Extract content from the response
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const content = doc.querySelector('main').innerHTML;
+            
+            document.getElementById('ruleModalTitle').textContent = ruleId;
+            document.getElementById('ruleModalBody').innerHTML = content;
+            
+            new bootstrap.Modal(document.getElementById('ruleModal')).show();
+        })
+        .catch(error => {
+            console.error('Error loading rule details:', error);
+        });
+}
+
+// Load initial rules
+loadRules();
+
+// Handle URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('search')) {
+    document.getElementById('searchInput').value = urlParams.get('search');
+    currentFilters.search = urlParams.get('search');
+    loadRules();
+}
+</script>
+{% endblock %}

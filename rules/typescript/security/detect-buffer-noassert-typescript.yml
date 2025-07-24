@@ -1,0 +1,93 @@
+id: detect-buffer-noassert-typescript
+severity: error
+language: typescript
+message: >-
+  Avoid calls to 'buffer' with 'noAssert' flag set. If you skip the `offset` 
+  validation it can go beyond the end of the `Buffer`.
+note: >-
+  [CWE-119] Buffer Errors.
+ast-grep-essentials: true
+utils:
+  MATCH_BUFFER_NOASSERT_READ:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_expression
+          has:
+            stopBy: neighbor
+            kind: property_identifier
+            regex: "^(readUInt8|readUInt16LE|readUInt16BE|readUInt32LE|readUInt32BE|readInt8|readInt16LE|readInt16BE|readInt32LE|readInt32BE|readFloatLE|readFloatBE|readDoubleLE|readDoubleBE)$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          all:
+            - has:
+                nthChild:
+                  position: 1
+                  ofRule:
+                    not:
+                      kind: comment
+            - has:
+                nthChild:
+                  position: 2
+                  ofRule:
+                    not:
+                      kind: comment
+            - not:
+                has:
+                  nthChild:
+                    position: 3
+                    ofRule:
+                      not:
+                        kind: comment
+            - has:
+                stopBy: neighbor
+                regex: ^true$
+  MATCH_BUFFER_NOASSERT_WRITE:
+    kind: call_expression
+    all:
+      - has:
+          stopBy: neighbor
+          kind: member_expression
+          has:
+            stopBy: neighbor
+            kind: property_identifier
+            regex: "^(writeUInt8|writeUInt16LE|writeUInt16BE|writeUInt32LE|writeUInt32BE|writeInt8|writeInt16LE|writeInt16BE|writeInt32LE|writeInt32BE|writeFloatLE|writeFloatBE|writeDoubleLE|writeDoubleBE)$"
+      - has:
+          stopBy: neighbor
+          kind: arguments
+          all:
+            - has:
+                nthChild:
+                  position: 1
+                  ofRule:
+                    not:
+                      kind: comment
+            - has:
+                nthChild:
+                  position: 2
+                  ofRule:
+                    not:
+                      kind: comment
+            - has:
+                nthChild:
+                  position: 3
+                  ofRule:
+                    not:
+                      kind: comment
+            - not:
+                has:
+                  nthChild:
+                    position: 4
+                    ofRule:
+                      not:
+                        kind: comment
+            - has:
+                stopBy: neighbor
+                regex: ^true$
+rule:
+  kind: call_expression
+  any:
+    - matches: MATCH_BUFFER_NOASSERT_READ
+    - matches: MATCH_BUFFER_NOASSERT_WRITE

@@ -1,0 +1,30 @@
+id: command-injection-typescript
+snapshots:
+  ? |-
+    childprocess.exec(`mv ${src} ${dst}`, (error, stdout, stderr) => {});
+    childprocess.exec('mv ' + src + " " + dst, (error, stdout, stderr) => {});
+  : labels:
+    - source: childprocess.exec(`mv ${src} ${dst}`, (error, stdout, stderr) => {})
+      style: primary
+      start: 0
+      end: 68
+    - source: exec
+      style: secondary
+      start: 13
+      end: 17
+    - source: childprocess.exec
+      style: secondary
+      start: 0
+      end: 17
+    - source: ${src}
+      style: secondary
+      start: 22
+      end: 28
+    - source: '`mv ${src} ${dst}`'
+      style: secondary
+      start: 18
+      end: 36
+    - source: (`mv ${src} ${dst}`, (error, stdout, stderr) => {})
+      style: secondary
+      start: 17
+      end: 68

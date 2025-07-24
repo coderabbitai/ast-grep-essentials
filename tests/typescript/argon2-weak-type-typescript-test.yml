@@ -1,0 +1,9 @@
+id: argon2-weak-type-typescript
+valid:
+  - |
+    await argon2.hash('password', {type: argon2.argon2id})
+    await argon2.hash('password', {})
+invalid:
+  - |
+    await argon2.hash('password', {type: argon2.argon2d})
+    await argon2.hash('password', {type: argon2.argon2i})

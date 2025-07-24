@@ -1,0 +1,9 @@
+id: insecure-hash-typescript
+valid:
+  - |
+    crypto.createHash("sha256")
+    crypto.createHash("sha512")
+invalid:
+  - |
+    crypto.createHash("md5")
+    crypto.createHash("sha1")

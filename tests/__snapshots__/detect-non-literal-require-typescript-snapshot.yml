@@ -1,0 +1,22 @@
+id: detect-non-literal-require-typescript
+snapshots:
+  ? |-
+    const a = require(c);
+    const a = require(`${c}`);
+  : labels:
+    - source: require(c)
+      style: primary
+      start: 10
+      end: 20
+    - source: require
+      style: secondary
+      start: 10
+      end: 17
+    - source: c
+      style: secondary
+      start: 18
+      end: 19
+    - source: (c)
+      style: secondary
+      start: 17
+      end: 20

@@ -1,0 +1,15 @@
+id: jwt-sensitive-data-typescript
+valid:
+  - |
+    jwt.sign(
+        {user: { id: 42 }}
+    )
+invalid:
+  - |
+    jwt.sign(
+        { user: { email: 'foo@bar.com' }}
+    )
+    
+    jwt.sign(
+        { user: { lastname: 'babar' }}
+    )

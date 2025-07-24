@@ -1,0 +1,34 @@
+id: insecure-hash-typescript
+snapshots:
+  ? |-
+    crypto.createHash("md5")
+    crypto.createHash("sha1")
+  : labels:
+    - source: crypto.createHash("md5")
+      style: primary
+      start: 0
+      end: 24
+    - source: crypto
+      style: secondary
+      start: 0
+      end: 6
+    - source: createHash
+      style: secondary
+      start: 7
+      end: 17
+    - source: crypto.createHash
+      style: secondary
+      start: 0
+      end: 17
+    - source: md5
+      style: secondary
+      start: 19
+      end: 22
+    - source: '"md5"'
+      style: secondary
+      start: 18
+      end: 23
+    - source: ("md5")
+      style: secondary
+      start: 17
+      end: 24

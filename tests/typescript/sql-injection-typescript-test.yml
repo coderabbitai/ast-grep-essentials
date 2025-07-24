@@ -1,0 +1,18 @@
+id: sql-injection-typescript
+valid:
+  - |
+    models.sequelize.query('SELECT * FROM Users WHERE email = $1 AND password = $2 AND deletedAt IS NULL',
+      { bind: [ req.body.email, req.body.password ], model: models.User, plain: true })
+  - |
+    // SQL statements inside tagged templates are assumed to be escaped correctly.
+    return prisma.$queryRaw`SELECT id FROM User WHERE name = ${input}`;
+    return sql`SELECT id FROM User WHERE name = ${input}`;
+invalid:
+  - |
+    models.sequelize.query(`SELECT * FROM Products WHERE ((name LIKE '%${criteria}%' OR description LIKE '%${criteria}%') AND deletedAt IS NULL) ORDER BY name`)
+  - |
+    connection.query("SELECT * FROM users WHERE id=" + userId,(err, result) => {
+        res.json(result);
+    });
+  - |
+    sequelize.query('SELECT * FROM Products WHERE name LIKE ' +  req.body.username);
