@@ -11,7 +11,7 @@ note: >-
 ast-grep-essentials: true
 
 utils:
-  PATTERN_1(identifier):
+  PATTERN_1_identifier:
     kind: identifier
     regex: ^(fopen|freopen|remove|rename|access|open|stat|lstat|unlink|mkdir|rmdir|chdir)$
     all:
@@ -97,7 +97,7 @@ utils:
       - kind: identifier
         regex: ^(fopen|freopen|remove|rename|access|open|stat|lstat|unlink|mkdir|rmdir|chdir)$
 
-  PATTERN_3(field_expression):
+  PATTERN_3_field_expression:
     kind: field_expression
     has:
       nthChild: 1
@@ -183,5 +183,5 @@ utils:
 
 rule:
   any:
-    - matches: PATTERN_1(identifier)
-    - matches: PATTERN_3(field_expression)
+    - matches: PATTERN_1_identifier
+    - matches: PATTERN_3_field_expression

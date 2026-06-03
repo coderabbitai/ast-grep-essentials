@@ -29,7 +29,7 @@ utils:
               kind: argument_list
               field: arguments
 
-  AND_2_EQUALS_2_&_S_IXXXX:
+  AND_2_EQUALS_2_S_IXXXX:
     any:
       - kind: number_literal
         regex: ^-?([2367]|[0-9]*(0[2367]|1[014589]|2[2367]|3[014589]|4[2367]|5[014589]|6[2367]|7[014589]|8[2367]|9[014589]))$
@@ -44,7 +44,7 @@ rule:
   any:
     # chmod/fchmod/creat
     - any:
-        - matches: AND_2_EQUALS_2_&_S_IXXXX
+        - matches: AND_2_EQUALS_2_S_IXXXX
         - kind: identifier
           pattern: $MODE
           inside:
@@ -63,7 +63,7 @@ rule:
                               pattern: $MODE
                           - has:
                               nthChild: 2
-                              matches: AND_2_EQUALS_2_&_S_IXXXX
+                              matches: AND_2_EQUALS_2_S_IXXXX
                 - kind: expression_statement
                   any:
                     - has:
@@ -75,7 +75,7 @@ rule:
                               pattern: $MODE
                           - has:
                               nthChild: 2
-                              matches: AND_2_EQUALS_2_&_S_IXXXX
+                              matches: AND_2_EQUALS_2_S_IXXXX
                     - has:
                         kind: comma_expression
                         has:
@@ -87,7 +87,7 @@ rule:
                                 pattern: $MODE
                             - has:
                                 nthChild: 2
-                                matches: AND_2_EQUALS_2_&_S_IXXXX
+                                matches: AND_2_EQUALS_2_S_IXXXX
       nthChild:
         position: 2
         ofRule:
@@ -117,7 +117,7 @@ rule:
 
     # fchmodat
     - any:
-        - matches: AND_2_EQUALS_2_&_S_IXXXX
+        - matches: AND_2_EQUALS_2_S_IXXXX
         - kind: identifier
           pattern: $MODE
           inside:
@@ -136,7 +136,7 @@ rule:
                               pattern: $MODE
                           - has:
                               nthChild: 2
-                              matches: AND_2_EQUALS_2_&_S_IXXXX
+                              matches: AND_2_EQUALS_2_S_IXXXX
                 - kind: expression_statement
                   any:
                     - has:
@@ -148,7 +148,7 @@ rule:
                               pattern: $MODE
                           - has:
                               nthChild: 2
-                              matches: AND_2_EQUALS_2_&_S_IXXXX
+                              matches: AND_2_EQUALS_2_S_IXXXX
                     - has:
                         kind: comma_expression
                         has:
@@ -160,7 +160,7 @@ rule:
                                 pattern: $MODE
                             - has:
                                 nthChild: 2
-                                matches: AND_2_EQUALS_2_&_S_IXXXX
+                                matches: AND_2_EQUALS_2_S_IXXXX
       nthChild:
         position: 3
         ofRule:
@@ -183,7 +183,7 @@ rule:
 
     # open
     - any:
-        - matches: AND_2_EQUALS_2_&_S_IXXXX
+        - matches: AND_2_EQUALS_2_S_IXXXX
         - kind: identifier
           pattern: $MODE
           inside:
@@ -202,7 +202,7 @@ rule:
                               pattern: $MODE
                           - has:
                               nthChild: 2
-                              matches: AND_2_EQUALS_2_&_S_IXXXX
+                              matches: AND_2_EQUALS_2_S_IXXXX
                 - kind: expression_statement
                   any:
                     - has:
@@ -214,7 +214,7 @@ rule:
                               pattern: $MODE
                           - has:
                               nthChild: 2
-                              matches: AND_2_EQUALS_2_&_S_IXXXX
+                              matches: AND_2_EQUALS_2_S_IXXXX
                     - has:
                         kind: comma_expression
                         has:
@@ -226,7 +226,7 @@ rule:
                                 pattern: $MODE
                             - has:
                                 nthChild: 2
-                                matches: AND_2_EQUALS_2_&_S_IXXXX
+                                matches: AND_2_EQUALS_2_S_IXXXX
       nthChild:
         position: 3
         ofRule:
@@ -256,7 +256,7 @@ rule:
 
     # openat
     - any:
-        - matches: AND_2_EQUALS_2_&_S_IXXXX
+        - matches: AND_2_EQUALS_2_S_IXXXX
         - kind: identifier
           pattern: $MODE
           inside:
@@ -275,7 +275,7 @@ rule:
                               pattern: $MODE
                           - has:
                               nthChild: 2
-                              matches: AND_2_EQUALS_2_&_S_IXXXX
+                              matches: AND_2_EQUALS_2_S_IXXXX
                 - kind: expression_statement
                   any:
                     - has:
@@ -287,7 +287,7 @@ rule:
                               pattern: $MODE
                           - has:
                               nthChild: 2
-                              matches: AND_2_EQUALS_2_&_S_IXXXX
+                              matches: AND_2_EQUALS_2_S_IXXXX
                     - has:
                         kind: comma_expression
                         has:
@@ -299,7 +299,7 @@ rule:
                                 pattern: $MODE
                             - has:
                                 nthChild: 2
-                                matches: AND_2_EQUALS_2_&_S_IXXXX
+                                matches: AND_2_EQUALS_2_S_IXXXX
       nthChild:
         position: 4
         ofRule:

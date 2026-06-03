@@ -11,7 +11,7 @@ note: >-
 ast-grep-essentials: true
 
 utils:
-  PATTERN_1(identifier)nth1:
+  PATTERN_1_identifier_nth1:
     kind: identifier
     regex: ^(fopen|freopen|remove|rename|access|open|stat|lstat|unlink|mkdir|rmdir|chdir)$
     all:
@@ -86,7 +86,7 @@ utils:
                             follows:
                               regex: ^==$
 
-  PATTERN_2(qualified_identifier)nth1:
+  PATTERN_2_qualified_identifier_nth1:
     kind: qualified_identifier
     any:
       - regex: ^(folly::readFile|folly::writeFile|folly::writeFileAtomic|folly::writeFileAtomicNoThrow|folly::File)$
@@ -165,7 +165,7 @@ utils:
                             follows:
                               regex: ^==$
 
-  PATTERN_1(identifier)nth2:
+  PATTERN_1_identifier_nth2:
     kind: identifier
     regex: ^(fopen|freopen|remove|rename|access|open|stat|lstat|unlink|mkdir|rmdir|chdir)$
     all:
@@ -242,7 +242,7 @@ utils:
                             follows:
                               regex: ^==$
 
-  PATTERN_2(qualified_identifier)nth2:
+  PATTERN_2_qualified_identifier_nth2:
     kind: qualified_identifier
     any:
       - regex: ^(folly::readFile|folly::writeFile|folly::writeFileAtomic|folly::writeFileAtomicNoThrow|folly::File)$
@@ -330,7 +330,7 @@ utils:
           - regex: ^(folly::readFile|folly::writeFile|folly::writeFileAtomic|folly::writeFileAtomicNoThrow|folly::File)$
           - regex: ^(boost::)?(filesystem::file_size|filesystem::create_directory|filesystem::create_directories|filesystem::remove|filesystem::remove_all|filesystem::rename|filesystem::copy_file|filesystem::copy|filesystem::copy_directory|filesystem::resize_file|filesystem::last_write_time|filesystem::permissions|filesystem::symlink_status|filesystem::create_symlink|filesystem::create_hard_link|filesystem::read_symlink)$
 
-  PATTERN_3(field_expression)(identifier)nth1:
+  PATTERN_3_field_expression_identifier_nth1:
     kind: field_expression
     has:
       nthChild: 1
@@ -410,7 +410,7 @@ utils:
                             follows:
                               regex: ^==$
 
-  PATTERN_3(field_expression)(identifier)nth2:
+  PATTERN_3_field_expression_identifier_nth2:
     kind: field_expression
     has:
       nthChild: 1
@@ -492,9 +492,9 @@ utils:
 
 rule:
   any:
-    - matches: PATTERN_1(identifier)nth1
-    - matches: PATTERN_2(qualified_identifier)nth1
-    - matches: PATTERN_1(identifier)nth2
-    - matches: PATTERN_2(qualified_identifier)nth2
-    - matches: PATTERN_3(field_expression)(identifier)nth1
-    - matches: PATTERN_3(field_expression)(identifier)nth2
+    - matches: PATTERN_1_identifier_nth1
+    - matches: PATTERN_2_qualified_identifier_nth1
+    - matches: PATTERN_1_identifier_nth2
+    - matches: PATTERN_2_qualified_identifier_nth2
+    - matches: PATTERN_3_field_expression_identifier_nth1
+    - matches: PATTERN_3_field_expression_identifier_nth2

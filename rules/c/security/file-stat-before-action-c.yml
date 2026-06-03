@@ -11,7 +11,7 @@ note: >-
 ast-grep-essentials: true
 
 utils:
-  PATTERN_1(identifier)nth1:
+  PATTERN_1_identifier_nth1:
     kind: identifier
     regex: ^(fopen|freopen|remove|rename|access|open|stat|lstat|unlink|mkdir|rmdir|chdir)$
     all:
@@ -88,7 +88,7 @@ utils:
                             follows:
                               regex: ^==$
 
-  PATTERN_1(identifier)nth2:
+  PATTERN_1_identifier_nth2:
     kind: identifier
     regex: ^(fopen|freopen|remove|rename|access|open|stat|lstat|unlink|mkdir|rmdir|chdir)$
     all:
@@ -172,7 +172,7 @@ utils:
       - kind: identifier
         regex: ^(fopen|freopen|remove|rename|access|open|stat|lstat|unlink|mkdir|rmdir|chdir)$
 
-  PATTERN_3(field_expression)(identifier)nth1:
+  PATTERN_3_field_expression_identifier_nth1:
     kind: field_expression
     has:
       nthChild: 1
@@ -251,7 +251,7 @@ utils:
                             follows:
                               regex: ^==$
 
-  PATTERN_3(field_expression)(identifier)nth2:
+  PATTERN_3_field_expression_identifier_nth2:
     kind: field_expression
     has:
       nthChild: 1
@@ -332,7 +332,7 @@ utils:
 
 rule:
   any:
-    - matches: PATTERN_1(identifier)nth1
-    - matches: PATTERN_1(identifier)nth2
-    - matches: PATTERN_3(field_expression)(identifier)nth1
-    - matches: PATTERN_3(field_expression)(identifier)nth2
+    - matches: PATTERN_1_identifier_nth1
+    - matches: PATTERN_1_identifier_nth2
+    - matches: PATTERN_3_field_expression_identifier_nth1
+    - matches: PATTERN_3_field_expression_identifier_nth2

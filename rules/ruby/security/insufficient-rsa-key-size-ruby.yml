@@ -12,7 +12,7 @@ note: >-
 ast-grep-essentials: true
 
 utils:
-  OpenSSL::PKey::RSA.generate($SIZE,...):
+  OpenSSL_PKey_RSA_generate_SIZE:
     # OpenSSL::PKey::RSA.generate($SIZE,...)
     kind: call
     all:
@@ -41,7 +41,7 @@ utils:
                 not:
                   kind: comment
 
-  OpenSSL::PKey::RSA.new($ASSIGN, ...):
+  OpenSSL_PKey_RSA_new_ASSIGN:
     # $ASSIGN = $SIZE
     # OpenSSL::PKey::RSA.new($ASSIGN, ...)
     kind: call
@@ -82,8 +82,8 @@ utils:
 rule:
   kind: call
   any:
-    - matches: OpenSSL::PKey::RSA.generate($SIZE,...)
-    - matches: OpenSSL::PKey::RSA.new($ASSIGN, ...)
+    - matches: OpenSSL_PKey_RSA_generate_SIZE
+    - matches: OpenSSL_PKey_RSA_new_ASSIGN
 constraints:
   KEY:
     any:

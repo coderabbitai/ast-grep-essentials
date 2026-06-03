@@ -10,7 +10,7 @@ note: >-
       - https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html#algorithms
 ast-grep-essentials: true
 utils:
-  PATTERN_require("crypto"):
+  PATTERN_require_crypto:
     pattern: $NUMBER
     all:
       - inside:
@@ -272,7 +272,7 @@ utils:
                                     stopBy: end
                                     kind: array
 
-  PATTERN_require("crypto")_pattern_2:
+  PATTERN_require_crypto_pattern_2:
     pattern: $NUMBER
     all:
       - inside:
@@ -552,7 +552,7 @@ utils:
                                     stopBy: end
                                     kind: array
 
-  PATTERN_require("node-rsa"):
+  PATTERN_require_node-rsa:
     pattern: $NUMBER
     all:
       - inside:
@@ -877,7 +877,7 @@ utils:
                                     stopBy: end
                                     kind: array
 
-  PATTERN_require("node-forge"):
+  PATTERN_require_node-forge:
     pattern: $NUMBER
     all:
       - inside:
@@ -1159,7 +1159,7 @@ utils:
               all:
                 - kind: array
 
-  PATTERN_require("node-forge")_pattern_2:
+  PATTERN_require_node-forge_pattern_2:
     pattern: $NUMBER
     all:
       - inside:
@@ -1466,25 +1466,25 @@ rule:
   any:
     - kind: number
       any:
-        - matches: PATTERN_require("crypto")
-        - matches: PATTERN_require("crypto")_pattern_2
-        - matches: PATTERN_require("node-rsa")
-        - matches: PATTERN_require("node-forge")
-        - matches: PATTERN_require("node-forge")_pattern_2
+        - matches: PATTERN_require_crypto
+        - matches: PATTERN_require_crypto_pattern_2
+        - matches: PATTERN_require_node-rsa
+        - matches: PATTERN_require_node-forge
+        - matches: PATTERN_require_node-forge_pattern_2
     - kind: unary_expression
       any:
-        - matches: PATTERN_require("crypto")
-        - matches: PATTERN_require("crypto")_pattern_2
-        - matches: PATTERN_require("node-rsa")
-        - matches: PATTERN_require("node-forge")
-        - matches: PATTERN_require("node-forge")_pattern_2
+        - matches: PATTERN_require_crypto
+        - matches: PATTERN_require_crypto_pattern_2
+        - matches: PATTERN_require_node-rsa
+        - matches: PATTERN_require_node-forge
+        - matches: PATTERN_require_node-forge_pattern_2
     - kind: binary_expression
       any:
-        - matches: PATTERN_require("crypto")
-        - matches: PATTERN_require("crypto")_pattern_2
-        - matches: PATTERN_require("node-rsa")
-        - matches: PATTERN_require("node-forge")
-        - matches: PATTERN_require("node-forge")_pattern_2
+        - matches: PATTERN_require_crypto
+        - matches: PATTERN_require_crypto_pattern_2
+        - matches: PATTERN_require_node-rsa
+        - matches: PATTERN_require_node-forge
+        - matches: PATTERN_require_node-forge_pattern_2
 constraints:
   NUMBER:
     regex: ^([+-]?(0|[1-9][0-9]?|[1-9][0-9]{2}|1[0-9]{3}|20[0-3][0-9]|204[0-7])(\.[0-9]+)?|([+-]?(0|[1-9][0-9]?|[1-9][0-9]{2}|1[0-9]{3}|20[0-3][0-9]|204[0-7])(\.[0-9]+)?\/[1-9][0-9]*)|[+-]?(\.[0-9]+)|([+-]?\.[0-9]+\/[1-9][0-9]*))$

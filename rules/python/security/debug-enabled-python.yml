@@ -12,7 +12,7 @@ note: >-
       - https://labs.detectify.com/2015/10/02/how-patreon-got-hacked-publicly-exposed-werkzeug-debugger/
 ast-grep-essentials: true
 utils:
-  MATCH_PATTERN_debug=True:
+  MATCH_PATTERN_debug_True:
     kind: call
     all:
       - has:
@@ -90,4 +90,4 @@ utils:
 rule:
   kind: call
   any:
-    - matches: MATCH_PATTERN_debug=True
+    - matches: MATCH_PATTERN_debug_True

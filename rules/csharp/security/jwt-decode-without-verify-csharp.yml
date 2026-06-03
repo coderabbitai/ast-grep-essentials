@@ -14,7 +14,7 @@ note: >-
 ast-grep-essentials: true
 
 utils:
-  (IJwtDecoder $D).Decode($X,verify-false,.):
+  IJwtDecoder_D_Decode_X_verify-false:
     kind: invocation_expression
     all:
       - has:
@@ -70,7 +70,7 @@ utils:
                       kind: identifier
                       pattern: $INST
 
-  (IJwtDecoder $D).Decode(false):
+  IJwtDecoder_D_Decode_false:
     kind: invocation_expression
     all:
       - has:
@@ -121,7 +121,7 @@ utils:
                       kind: identifier
                       pattern: $INST
 
-  $D.Decode($X,verify-false,.):
+  D_Decode_X_verify-false:
     kind: invocation_expression
     all:
       - has:
@@ -192,7 +192,7 @@ utils:
                               kind: identifier
                               regex: ^JwtDecoder$
 
-  ($D).Decode(false):
+  D_Decode_false:
     kind: invocation_expression
     all:
       - has:
@@ -258,7 +258,7 @@ utils:
                               kind: identifier
                               regex: ^JwtDecoder$
 
-  JwtBuilder..Decode(...):
+  JwtBuilder_Decode:
     kind: invocation_expression
     all:
       - not:
@@ -312,7 +312,7 @@ utils:
               - pattern: using JWT.Builder;
               - pattern: using Microsoft.IdentityModel.Tokens;
 
-  $B. ... .Decode(...):
+  B_Decode:
     kind: invocation_expression
     all:
       - has:
@@ -454,7 +454,7 @@ utils:
                   - precedes:
                       kind: argument_list
 
-  new ValidationParameters() {..., ValidateSignature = false, ...}:
+  new_ValidationParameters_ValidateSignature_false:
     kind: object_creation_expression
     all:
       - inside:
@@ -476,7 +476,7 @@ utils:
             kind: assignment_expression
             pattern: ValidateSignature = false
 
-  $V.ValidateSignature = false:
+  V_ValidateSignature_false:
     kind: assignment_expression
     all:
       - has:
@@ -536,7 +536,7 @@ utils:
                           kind: identifier
                           regex: ^ValidationParameters$
 
-  new JwtAuthenticationOptions() {..., VerifySignature = false, ...}:
+  new_JwtAuthenticationOptions_VerifySignature_false:
     kind: object_creation_expression
     all:
       - inside:
@@ -558,7 +558,7 @@ utils:
             kind: assignment_expression
             pattern: VerifySignature = false
 
-  $V.VerifySignature = false:
+  V_VerifySignature_false:
     kind: assignment_expression
     all:
       - has:
@@ -629,7 +629,7 @@ utils:
                     kind: identifier
                     regex: ^AddJwt$
 
-  new TokenValidationParameters() {..., ValidateIssuerSigningKey = false, ...}:
+  new_TokenValidationParameters_ValidateIssuerSigningKey_false:
     kind: object_creation_expression
     all:
       - inside:
@@ -651,7 +651,7 @@ utils:
             kind: assignment_expression
             pattern: ValidateIssuerSigningKey = false
 
-  $V.ValidateIssuerSigningKey = false:
+  V_ValidateIssuerSigningKey_false:
     kind: assignment_expression
     all:
       - has:
@@ -713,15 +713,15 @@ utils:
 
 rule:
   any:
-    - matches: (IJwtDecoder $D).Decode($X,verify-false,.)
-    - matches: (IJwtDecoder $D).Decode(false)
-    - matches: $D.Decode($X,verify-false,.)
-    - matches: ($D).Decode(false)
-    - matches: JwtBuilder..Decode(...)
-    - matches: $B. ... .Decode(...)
-    - matches: new ValidationParameters() {..., ValidateSignature = false, ...}
-    - matches: $V.ValidateSignature = false
-    - matches: new JwtAuthenticationOptions() {..., VerifySignature = false, ...}
-    - matches: $V.VerifySignature = false
-    - matches: new TokenValidationParameters() {..., ValidateIssuerSigningKey = false, ...}
-    - matches: $V.ValidateIssuerSigningKey = false
+    - matches: IJwtDecoder_D_Decode_X_verify-false
+    - matches: IJwtDecoder_D_Decode_false
+    - matches: D_Decode_X_verify-false
+    - matches: D_Decode_false
+    - matches: JwtBuilder_Decode
+    - matches: B_Decode
+    - matches: new_ValidationParameters_ValidateSignature_false
+    - matches: V_ValidateSignature_false
+    - matches: new_JwtAuthenticationOptions_VerifySignature_false
+    - matches: V_VerifySignature_false
+    - matches: new_TokenValidationParameters_ValidateIssuerSigningKey_false
+    - matches: V_ValidateIssuerSigningKey_false

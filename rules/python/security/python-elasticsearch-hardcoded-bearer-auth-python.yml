@@ -15,7 +15,7 @@ note: >-
 ast-grep-essentials: true
 
 utils:
-  elasticsearch.Elasticsearch(..., bearer_auth="...",...):
+  elasticsearch_Elasticsearch_bearer_auth:
     # elasticsearch.Elasticsearch(..., bearer_auth="...",...)
     kind: call
     all:
@@ -59,7 +59,7 @@ utils:
                      kind: string_content
 rule:
   kind: call
-  matches: elasticsearch.Elasticsearch(..., bearer_auth="...",...)
+  matches: elasticsearch_Elasticsearch_bearer_auth
   not:
     all:
       - has:

@@ -51,7 +51,7 @@ utils:
             precedes:
               kind: argument_list
 
-  cookie.of_pattern_for_c_equals_Cookie.of:
+  cookie_of_pattern_for_c_equals_Cookie_of:
     nthChild: 1
     kind: identifier
     any:

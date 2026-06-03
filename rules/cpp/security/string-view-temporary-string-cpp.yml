@@ -14,7 +14,7 @@ note: >-
 ast-grep-essentials: true
 
 utils:
-  $VAR = std::to_string(...):
+  VAR_std_to_string:
     # $VAR = std::to_string(...);
     kind: expression_statement
     has:
@@ -37,7 +37,7 @@ utils:
                   stopBy: neighbor
                   kind: argument_list
 
-  $VAR = $EXPR.substr(...):
+  VAR_EXPR_substr:
     # $VAR = std::to_string(...);
     kind: expression_statement
     has:
@@ -60,7 +60,7 @@ utils:
                   stopBy: neighbor
                   kind: argument_list
 
-  $VAR = $EXPR + ...:
+  VAR_EXPR:
     #  $VAR = $EXPR + ...
     kind: expression_statement
     has:
@@ -80,7 +80,7 @@ utils:
               regex: ^(wstring|string)$
               nthChild: 1
 
-  $VAR = "..." + $EXPR:
+  VAR_EXPR_2:
     #  $VAR = "..." + $EXPR
     kind: expression_statement
     has:
@@ -104,7 +104,7 @@ utils:
                   kind: identifier
                   regex: ^(string|wstring)$
 
-  $VAR_instance = "..." + $EXPR:
+  VAR_instance_EXPR:
     # $VAR_instance = "..." + $EXPR
     kind: expression_statement
     all:
@@ -208,7 +208,7 @@ utils:
                     kind: identifier
                     pattern: $VAR_INSTANCE
 
-  $VAR_instance = $EXPR_instance + ...:
+  VAR_instance_EXPR_instance:
     kind: expression_statement
     all:
       - has:
@@ -292,7 +292,7 @@ utils:
                 kind: identifier
                 pattern: $VAR_INSTANCE
 
-  $VAR_instance = $EXPR_instance.substr(...):
+  VAR_instance_EXPR_instance_substr:
     # $VAR = std::to_string(...);
     kind: expression_statement
     all:
@@ -397,7 +397,7 @@ utils:
                 kind: identifier
                 pattern: $VAR_INSTANCE
 
-  $VAR_instance = std::to_string(...):
+  VAR_instance_std_to_string:
     # $VAR = std::to_string(...);
     kind: expression_statement
     all:
@@ -435,7 +435,7 @@ utils:
                 kind: identifier
                 pattern: $VAR_INSTANCE
 
-  $VAR(std::to_string(...)):
+  VAR_std_to_string_2:
     kind: call_expression
     all:
       - has:
@@ -456,7 +456,7 @@ utils:
                   stopBy: neighbor
                   kind: argument_list
 
-  $VAR(std::to_string(...))_as_declaration:
+  VAR_std_to_string_as_declaration:
     kind: declaration
     all:
       - has:
@@ -474,7 +474,7 @@ utils:
                 stopBy: neighbor
                 kind: argument_list
 
-  $VAR($EXPR + ...):
+  VAR_EXPR_3:
     kind: call_expression
     all:
       - has:
@@ -489,7 +489,7 @@ utils:
             regex: ^(wstring|string)$
             nthChild: 1
 
-  $VAR($EXPR_instance + ...):
+  VAR_EXPR_instance:
     kind: call_expression
     all:
       - has:
@@ -558,7 +558,7 @@ utils:
                       stopBy: end
                       pattern: $EXPR_INSTANCE
 
-  $VAR("..." + $EXPR_instance ):
+  VAR_EXPR_instance_2:
     kind: call_expression
     all:
       - has:
@@ -635,7 +635,7 @@ utils:
                       stopBy: end
                       pattern: $EXPR_INSTANCE
 
-  $VAR("..." + $EXPR):
+  VAR_EXPR_4:
     kind: call_expression
     all:
       - has:
@@ -661,7 +661,7 @@ utils:
                   nthChild: 2
                   regex: ^(wstring|string)$
 
-  $VAR($EXPR.substr(...)):
+  VAR_EXPR_substr_2:
     kind: call_expression
     all:
       - has:
@@ -682,7 +682,7 @@ utils:
                   stopBy: neighbor
                   kind: argument_list
 
-  $VAR($EXPR_instance.substr(...)):
+  VAR_EXPR_instance_substr:
     kind: call_expression
     all:
       - has:
@@ -770,7 +770,7 @@ utils:
                       stopBy: end
                       pattern: $EXPR_INSTANCE
 
-  $VAR_instance $VAR = "..." + $EXPR:
+  VAR_instance_VAR_EXPR:
     # $VAR_instance $VAR = "..." + $EXPR
     kind: declaration
     all:
@@ -831,7 +831,7 @@ utils:
                       kind: identifier
                       pattern: $EXPR_INSTANCE
 
-  $VAR $VAR_instance = "..." + $EXPR:
+  VAR_VAR_instance_EXPR:
     # $VAR_instance = "..." + $EXPR
     kind: declaration
     all:
@@ -909,29 +909,29 @@ rule:
   any:
     - kind: expression_statement
       any:
-        - matches: $VAR = std::to_string(...)
-        - matches: $VAR = $EXPR.substr(...)
-        - matches: $VAR = $EXPR + ...
-        - matches: $VAR = "..." + $EXPR
-        - matches: $VAR_instance = "..." + $EXPR
-        - matches: $VAR_instance = $EXPR_instance + ...
-        - matches: $VAR_instance = $EXPR_instance.substr(...)
-        - matches: $VAR_instance = $EXPR_instance.substr(...)
-        - matches: $VAR_instance = std::to_string(...)
+        - matches: VAR_std_to_string
+        - matches: VAR_EXPR_substr
+        - matches: VAR_EXPR
+        - matches: VAR_EXPR_2
+        - matches: VAR_instance_EXPR
+        - matches: VAR_instance_EXPR_instance
+        - matches: VAR_instance_EXPR_instance_substr
+        - matches: VAR_instance_EXPR_instance_substr
+        - matches: VAR_instance_std_to_string
     - kind: call_expression
       any:
-        - matches: $VAR(std::to_string(...))
-        - matches: $VAR($EXPR + ...)
-        - matches: $VAR($EXPR_instance + ...)
-        - matches: $VAR("..." + $EXPR_instance )
-        - matches: $VAR("..." + $EXPR)
-        - matches: $VAR($EXPR.substr(...))
-        - matches: $VAR($EXPR_instance.substr(...))
+        - matches: VAR_std_to_string_2
+        - matches: VAR_EXPR_3
+        - matches: VAR_EXPR_instance
+        - matches: VAR_EXPR_instance_2
+        - matches: VAR_EXPR_4
+        - matches: VAR_EXPR_substr_2
+        - matches: VAR_EXPR_instance_substr
     - kind: declaration
       any:
-        - matches: $VAR(std::to_string(...))_as_declaration
-        - matches: $VAR_instance $VAR = "..." + $EXPR
-        - matches: $VAR $VAR_instance = "..." + $EXPR
+        - matches: VAR_std_to_string_as_declaration
+        - matches: VAR_instance_VAR_EXPR
+        - matches: VAR_VAR_instance_EXPR
   all:
     - not:
         has:

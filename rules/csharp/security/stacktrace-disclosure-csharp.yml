@@ -25,7 +25,7 @@ utils:
           nthChild: 2
           kind: argument_list
 
-  $APP.UseDeveloperExceptionPage(...):
+  APP_UseDeveloperExceptionPage:
     kind: expression_statement
     pattern: $APP.UseDeveloperExceptionPage($$$);
     not:
@@ -41,7 +41,7 @@ utils:
                 matches: kind_invocation_expression
 rule:
   kind: expression_statement
-  matches: $APP.UseDeveloperExceptionPage(...)
+  matches: APP_UseDeveloperExceptionPage
   all:
     - not:
         has:
