@@ -13,7 +13,7 @@ note: >-
 ast-grep-essentials: true
 
 utils:
-  config.force_ssl = $FAL:
+  config_force_ssl_FAL:
     kind: assignment
     all:
       - has:
@@ -25,4 +25,4 @@ utils:
 rule:
   kind: assignment
   any:
-    - matches: config.force_ssl = $FAL
+    - matches: config_force_ssl_FAL

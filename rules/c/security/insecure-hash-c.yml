@@ -25,7 +25,7 @@ utils:
             stopBy: neighbor
             kind: argument_list
 
-  MATCH_PATTERN_TWO_(EVP_MD_fetch):
+  MATCH_PATTERN_TWO_EVP_MD_fetch:
     kind: expression_statement
     has:
       stopBy: neighbor
@@ -50,7 +50,7 @@ utils:
                     kind: string_content
                     regex: ^(MD2|MD4|MD5|SHA1|SHA-1)$
 
-  MATCH_PATTERN_TWO_with_instance_(EVP_MD_fetch):
+  MATCH_PATTERN_TWO_with_instance_EVP_MD_fetch:
     kind: expression_statement
     all:
       - has:
@@ -142,7 +142,7 @@ utils:
                   not:
                     kind: comment
 
-  MATCH_PATTERN_TWO_(EVP_get_digestbyname):
+  MATCH_PATTERN_TWO_EVP_get_digestbyname:
     kind: expression_statement
     has:
       stopBy: neighbor
@@ -174,7 +174,7 @@ utils:
                     not:
                       kind: comment
 
-  MATCH_PATTERN_TWO_with_instance_(EVP_get_digestbyname):
+  MATCH_PATTERN_TWO_with_instance_EVP_get_digestbyname:
     kind: expression_statement
     all:
       - has:
@@ -250,7 +250,7 @@ utils:
                           kind: string_content
                           regex: ^(MD2|MD4|MD5|SHA1|SHA-1)$
 
-  MATCH_PATTERN_THREE_(gcry_md_hash_buffers):
+  MATCH_PATTERN_THREE_gcry_md_hash_buffers:
     kind: expression_statement
     has:
       stopBy: neighbor
@@ -277,12 +277,12 @@ rule:
     - kind: expression_statement
       any:
         - matches: MATCH_PATTERN_ONE
-        - matches: MATCH_PATTERN_TWO_(EVP_MD_fetch)
-        - matches: MATCH_PATTERN_TWO_with_instance_(EVP_MD_fetch)
+        - matches: MATCH_PATTERN_TWO_EVP_MD_fetch
+        - matches: MATCH_PATTERN_TWO_with_instance_EVP_MD_fetch
         - matches: MATCH_PATTERN_THREE
-        - matches: MATCH_PATTERN_TWO_(EVP_get_digestbyname)
-        - matches: MATCH_PATTERN_TWO_with_instance_(EVP_get_digestbyname)
-        - matches: MATCH_PATTERN_THREE_(gcry_md_hash_buffers)
+        - matches: MATCH_PATTERN_TWO_EVP_get_digestbyname
+        - matches: MATCH_PATTERN_TWO_with_instance_EVP_get_digestbyname
+        - matches: MATCH_PATTERN_THREE_gcry_md_hash_buffers
   not:
     all:
       - has:

@@ -425,7 +425,7 @@ utils:
                stopBy: end
                kind: encapsed_string
    
-  Match_pattern_directly_with_prefix_openssl_encrypt_return_statement_(instance of cbc):
+  Match_pattern_directly_with_prefix_openssl_encrypt_return_statement_instance_of_cbc:
     kind: function_call_expression
     all:
       - not:
@@ -639,7 +639,7 @@ rule:
      any:
      - matches: Match_pattern_with_prefix_openssl_decrypt
      - matches: Match_pattern_directly_with_prefix_openssl_encrypt_return_statement
-     - matches: Match_pattern_directly_with_prefix_openssl_encrypt_return_statement_(instance of cbc)
+     - matches: Match_pattern_directly_with_prefix_openssl_encrypt_return_statement_instance_of_cbc
   all:
     - not:
        has:

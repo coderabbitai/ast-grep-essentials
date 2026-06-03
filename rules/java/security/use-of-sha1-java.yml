@@ -13,7 +13,7 @@ note: >-
 
 ast-grep-essentials: true
 utils:
-  java.security.MessageDigest.getInstance("SHA-1"):
+  java_security_MessageDigest_getInstance_SHA-1:
     kind: method_invocation
     all:
       - has:
@@ -37,7 +37,7 @@ utils:
                 - regex: ^SHA-1
                 - regex: ^SHA1
 
-  MessageDigest.getInstance("SHA-1"):
+  MessageDigest_getInstance_SHA-1:
     kind: method_invocation
     all:
       - has:
@@ -69,7 +69,7 @@ utils:
             kind: import_declaration
             pattern: import java.security.MessageDigest
 
-  MessageDigest.getInstance("SHA-1")_with_Instance:
+  MessageDigest_getInstance_SHA-1_with_Instance:
     kind: method_invocation
     all:
       - has:
@@ -115,7 +115,7 @@ utils:
                       - regex: ^SHA-1
                       - regex: ^SHA1
 
-  java.security.MessageDigest.getInstance("SHA-1")_with_Instance:
+  java_security_MessageDigest_getInstance_SHA-1_with_Instance:
     kind: method_invocation
     all:
       - has:
@@ -156,11 +156,11 @@ utils:
 rule:
   kind: method_invocation
   any:
-    - matches: java.security.MessageDigest.getInstance("SHA-1")
+    - matches: java_security_MessageDigest_getInstance_SHA-1
     - pattern: $DU.getSha1Digest().digest($$$)
-    - matches: MessageDigest.getInstance("SHA-1")
-    - matches: MessageDigest.getInstance("SHA-1")_with_Instance
-    - matches: java.security.MessageDigest.getInstance("SHA-1")_with_Instance
+    - matches: MessageDigest_getInstance_SHA-1
+    - matches: MessageDigest_getInstance_SHA-1_with_Instance
+    - matches: java_security_MessageDigest_getInstance_SHA-1_with_Instance
   all:
     - not:
         inside:

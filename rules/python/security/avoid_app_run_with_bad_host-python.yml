@@ -10,7 +10,7 @@ note: >-
        https://owasp.org/Top10/A01_2021-Broken_Access_Control
 ast-grep-essentials: true
 utils:
-  MATCH_PATTERN_app.run:
+  MATCH_PATTERN_app_run:
     kind: call
     all:
       - has:
@@ -33,7 +33,7 @@ utils:
             kind: string
             regex: ^"0.0.0.0"$
 
-  MATCH_PATTERN_app.run_HOST:
+  MATCH_PATTERN_app_run_HOST:
     kind: call
     all:
       - has:
@@ -70,5 +70,5 @@ utils:
 rule:
   kind: call
   any:
-    - matches: MATCH_PATTERN_app.run
-    - matches: MATCH_PATTERN_app.run_HOST
+    - matches: MATCH_PATTERN_app_run
+    - matches: MATCH_PATTERN_app_run_HOST

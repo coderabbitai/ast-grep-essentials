@@ -15,7 +15,7 @@ note: >-
       - https://www.pycryptodome.org/src/cipher/cipher
 ast-grep-essentials: true
 utils:
-  MATCH_PATTERN_arc4.new:
+  MATCH_PATTERN_arc4_new:
     kind: call
     all:
       - has:
@@ -74,6 +74,6 @@ utils:
 rule:
   kind: call
   any:
-    - matches: MATCH_PATTERN_arc4.new
+    - matches: MATCH_PATTERN_arc4_new
     - pattern: Cryptodome.Cipher.ARC4.new($$$)
     - pattern: Crypto.Cipher.ARC4.new($$$)

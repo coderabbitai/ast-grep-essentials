@@ -11,7 +11,7 @@ note: >-
       - https://googleprojectzero.blogspot.com/2022/10/rc4-is-still-considered-harmful.html
 ast-grep-essentials: true
 utils:
-  $CIPHER.getInstance("RC2"):
+  CIPHER_getInstance_RC2:
     kind: method_invocation
     all:
       - has:
@@ -36,7 +36,7 @@ utils:
                   stopBy: end
                   kind: array_access
 
-  $CIPHER.getInstance("RC2")_with_instance:
+  CIPHER_getInstance_RC2_with_instance:
     kind: method_invocation
     all:
       - has:
@@ -83,5 +83,5 @@ utils:
 rule:
   kind: method_invocation
   any:
-    - matches: $CIPHER.getInstance("RC2")
-    - matches: $CIPHER.getInstance("RC2")_with_instance
+    - matches: CIPHER_getInstance_RC2
+    - matches: CIPHER_getInstance_RC2_with_instance
